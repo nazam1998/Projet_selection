@@ -14,7 +14,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -22,9 +22,9 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user)
     {
-        //
+        return view('backoffice.note.add',compact('user'));
     }
 
     /**
@@ -33,9 +33,20 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $user)
     {
-        //
+        $request->validate([
+            'titre' => 'required|string',
+            'note' => 'required|string',
+
+        ]);
+
+        $note = new Note();
+        $note->titre = $request->titre;
+        $note->note = $request->note;
+        $note->user_id = $user;
+        $note->save();
+        return redirect()->back()->with('msg', 'Note ajoutée avec succés');
     }
 
     /**
@@ -44,9 +55,10 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
+    public function show($user)
     {
-        //
+        $notes = Note::where('user_id', $user)->get();
+        return view('backoffice.note.show', compact('notes'));
     }
 
     /**
@@ -55,9 +67,9 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit(Note $note,$user)
     {
-        //
+        return view('backoffice.note.edit',compact('note','user'));
     }
 
     /**
@@ -67,9 +79,19 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(Request $request, Note $note, $user)
     {
-        //
+        $request->validate([
+            'titre' => 'required|string',
+            'note' => 'required|string',
+
+        ]);
+
+        $note->titre = $request->titre;
+        $note->note = $request->note;
+        $note->user_id = $user;
+        $note->save();
+        return redirect()->back()->with('msg', 'Note modifiée avec succés');
     }
 
     /**
@@ -80,6 +102,7 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        //
+        $note->delete();
+        return redirect()->back()->with('msg', 'Note supprimée avec succés');
     }
 }

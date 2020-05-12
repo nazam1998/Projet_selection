@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Formulaire;
+use App\Interet;
 use Illuminate\Http\Request;
 
 class FormulaireController extends Controller
@@ -14,7 +15,8 @@ class FormulaireController extends Controller
      */
     public function index()
     {
-        //
+        $formulaires = Formulaire::all();
+        return view('backoffice.formulaire.index', compact('formulaires'));
     }
 
     /**
@@ -24,7 +26,8 @@ class FormulaireController extends Controller
      */
     public function create()
     {
-        //
+        $interets = Interet::all();
+        return view('backoffice.formulaire.add', compact('interets'));
     }
 
     /**
@@ -35,7 +38,16 @@ class FormulaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titre' => 'required|string',
+            'interet.*' => 'required|integer'
+        ]);
+
+        $formulaire = new Formulaire();
+        $formulaire->titre = $request->titre;
+        $formulaire->save();
+        $formulaire->interets()->attach($request->interet);
+        return redirect()->route('formulaire.index')->with('msg', 'Formulaire créé avec succès');
     }
 
     /**
@@ -57,7 +69,8 @@ class FormulaireController extends Controller
      */
     public function edit(Formulaire $formulaire)
     {
-        //
+        $interets = Interet::all();
+        return view('backoffice.formulaire.edit', compact('interets', 'formulaire'));
     }
 
     /**
@@ -69,7 +82,16 @@ class FormulaireController extends Controller
      */
     public function update(Request $request, Formulaire $formulaire)
     {
-        //
+        $request->validate([
+            'titre' => 'required|string',
+            'interet.*' => 'required|integer'
+        ]);
+
+        $formulaire->titre = $request->titre;
+        $formulaire->save();
+        $formulaire->interets()->detach();
+        $formulaire->interets()->attach($request->interet);
+        return redirect()->route('formulaire.index')->with('msg', 'Formulaire créé avec succès');
     }
 
     /**
@@ -80,6 +102,7 @@ class FormulaireController extends Controller
      */
     public function destroy(Formulaire $formulaire)
     {
-        //
+        $formulaire->delete();
+        return redirect()->back()->with('msg', 'Formulaire créé avec succès');
     }
 }
