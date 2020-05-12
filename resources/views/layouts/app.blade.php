@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body class="light-bg">
 
 	@yield('content')
 
