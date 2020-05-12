@@ -13,13 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'WelcomeController@index');
+Route::get('etape/{id}/create', 'EtapeController@create')->name('etage.create');
+Route::get('etape/{etape}/edit', 'EtapeController@edit')->name('etage.edit');
+Route::post('etape/{etape}/{id}/store', 'EtapeController@store')->name('etage.store');
+Route::put('etape/{etape}/update', 'EtapeController@update')->name('etage.update');
+Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etage.delete');
 Auth::routes();
 
 Route::resource('matiere', 'MatiereController');
 Route::resource('annonce', 'AnnonceController');
+Route::resource('contact', 'ContactController');
+Route::resource('evenement', 'EvenementController');
+Route::resource('formulaire', 'FormulaireController');
+Route::resource('interet', 'InteretController');
+Route::resource('role', 'RoleController');
 
 Route::get('/home', 'HomeController@index')->name('home');

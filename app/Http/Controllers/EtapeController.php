@@ -71,7 +71,7 @@ class EtapeController extends Controller
      */
     public function edit(Etape $etape)
     {
-        //
+        return view('backoffice.etape.edit',compact('etape'));
     }
 
     /**
@@ -81,7 +81,7 @@ class EtapeController extends Controller
      * @param  \App\Etape  $etape
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Etape $etape,$id)
+    public function update(Request $request, Etape $etape)
     {
         $request->validate([
             'titre'=>'required|string',
@@ -93,7 +93,7 @@ class EtapeController extends Controller
         $etape->description=$request->description;
         $etape->date=$request->date;
         $etape->save();
-        return redirect()->route('evenement.show',$id)->with('msg','Etape modifiée avec succès');
+        return redirect()->route('evenement.show',$etape->evenement->id)->with('msg','Etape modifiée avec succès');
     }
 
     /**
