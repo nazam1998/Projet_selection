@@ -16,18 +16,18 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            // $table->bigInteger('responsable_id')->unsigned();
-            // $table->foreign('responsable_id')
-            //     ->on('users')
-            //     ->references('id')
-            //     ->onDelete('cascade')
-            //     ->onUpdate('cascade');
-            // $table->bigInteger('coach_id')->unsigned()->nullable();
-            // $table->foreign('coach_id')
-            //     ->on('users')
-            //     ->references('id')
-            //     ->onDelete('cascade')
-            //     ->onUpdate('cascade');
+            $table->bigInteger('responsable_id')->unsigned();
+            $table->foreign('responsable_id')
+                ->on('users')
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->bigInteger('coach_id')->unsigned()->nullable();
+            $table->foreign('coach_id')
+                ->on('users')
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -44,7 +44,9 @@ class PermissionSeeder extends Seeder
 
             ['nom' => 'contact'],
             ['nom' => 'groupe'],
+
             ['nom' => 'candidat-full'],
+
             ['nom' => 'candidat-lecture-nom'],
             ['nom' => 'candidat-lecture-prenom'],
             ['nom' => 'candidat-lecture-genre'],
@@ -58,7 +60,6 @@ class PermissionSeeder extends Seeder
             ['nom' => 'candidat-lecture-photo'],
             ['nom' => 'candidat-lecture-abo'],
             ['nom' => 'candidat-lecture-groupe'],
-            ['nom' => 'candidat-lecture-role'],
         ]);
     }
 }

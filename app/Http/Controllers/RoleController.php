@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use App\Permission;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -14,10 +15,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles=Role::all();
-        return view('backoffice.role.index',compact('roles'));
+        $roles = Role::all();
+        return view('backoffice.role.index', compact('roles'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        
+        return view('backoffice.role.add');
     }
 
     /**
@@ -36,7 +36,46 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:roles'
+        ]);
+
+        $role = new Role();
+        $role->nom = $request->nom;
+        $role->save();
+        if ($request->has('full')) {
+            foreach (Permission::all()->pluck('id') as $item) {
+                $role->permissions()->attach($item);
+            }
+        } else {
+            if ($request->has('annonce')) {
+                $role->permissions()->attach(Permission::where('nom', 'annonce')->first()->id);
+            }
+            if ($request->has('contact')) {
+                $role->permissions()->attach(Permission::where('nom', 'contact')->first()->id);
+            }
+            if ($request->has('groupe')) {
+                $role->permissions()->attach(Permission::where('nom', 'groupe')->first()->id);
+            }
+            if ($request->has('candidat-full')) {
+                $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
+            } else {
+                foreach ($request->has('candidat-lecture') as $item) {
+                    $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
+                }
+            }
+            if ($request->has('user-lecture')) {
+                foreach ($request->has('user-lecture') as $item) {
+                    $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
+                }
+            }
+            if ($request->has('user-ecriture')) {
+                foreach ($request->has('user-ecriture') as $item) {
+                    $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
+                }
+            }
+        }
+        return redirect()->route('role.index')->with('Role créé avec succés');
     }
 
     /**
@@ -58,7 +97,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('backoffice.role.edit', compact('role'));
     }
 
     /**
@@ -70,7 +109,47 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:roles,nom,' . $role->id
+        ]);
+
+        $role = new Role();
+        $role->nom = $request->nom;
+        $role->save();
+        $role->permissions()->detach();
+        if ($request->has('full')) {
+            foreach (Permission::all()->pluck('id') as $item) {
+                $role->permissions()->attach($item);
+            }
+        } else {
+            if ($request->has('annonce')) {
+                $role->permissions()->attach(Permission::where('nom', 'annonce')->first()->id);
+            }
+            if ($request->has('contact')) {
+                $role->permissions()->attach(Permission::where('nom', 'contact')->first()->id);
+            }
+            if ($request->has('groupe')) {
+                $role->permissions()->attach(Permission::where('nom', 'groupe')->first()->id);
+            }
+            if ($request->has('candidat-full')) {
+                $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
+            } else {
+                foreach ($request->has('candidat-lecture') as $item) {
+                    $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
+                }
+            }
+            if ($request->has('user-lecture')) {
+                foreach ($request->has('user-lecture') as $item) {
+                    $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
+                }
+            }
+            if ($request->has('user-ecriture')) {
+                foreach ($request->has('user-ecriture') as $item) {
+                    $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
+                }
+            }
+        }
+        return redirect()->route('role.index')->with('Role modifié avec succés');
     }
 
     /**
@@ -81,6 +160,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->with('Role supprimé avec succés');
     }
 }

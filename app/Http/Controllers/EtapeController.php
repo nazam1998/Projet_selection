@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Etape;
+use App\Evenement;
 use Illuminate\Http\Request;
 
 class EtapeController extends Controller
@@ -14,7 +15,7 @@ class EtapeController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -22,9 +23,10 @@ class EtapeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $evenement=Evenement::find($id);
+        return view('backoffice.etape.add',compact('evenement'));
     }
 
     /**
@@ -33,9 +35,21 @@ class EtapeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $request->validate([
+            'titre'=>'required|string',
+            'descripition'=>'required|text',
+            'date'=>'required|date|before:tomorrow|after:yesterday'
+        ]);
+        
+        $etape=new Etape();
+        $etape->titre=$request->titre;
+        $etape->description=$request->description;
+        $etape->date=$request->date;
+        $etape->evenement_id=$id;
+        $etape->save();
+        return redirect()->route('evenement.show',$id)->with('msg','Etape créée avec succès');;
     }
 
     /**
@@ -67,9 +81,19 @@ class EtapeController extends Controller
      * @param  \App\Etape  $etape
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Etape $etape)
+    public function update(Request $request, Etape $etape,$id)
     {
-        //
+        $request->validate([
+            'titre'=>'required|string',
+            'descripition'=>'required|text',
+            'date'=>'required|date|before:tomorrow|after:yesterday'
+        ]);
+        
+        $etape->titre=$request->titre;
+        $etape->description=$request->description;
+        $etape->date=$request->date;
+        $etape->save();
+        return redirect()->route('evenement.show',$id)->with('msg','Etape modifiée avec succès');
     }
 
     /**
@@ -80,6 +104,7 @@ class EtapeController extends Controller
      */
     public function destroy(Etape $etape)
     {
-        //
+        $etape->delete();
+        return redirect()->back()->with('msg','Etape supprimée avec succès');
     }
 }
