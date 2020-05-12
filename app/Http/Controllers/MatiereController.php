@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Matiere;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MatiereController extends Controller
 {
@@ -14,7 +15,8 @@ class MatiereController extends Controller
      */
     public function index()
     {
-        //
+        $matieres = Matiere::all();
+        return view('backoffice.matiere.backoffice', compact('matiere'));
     }
 
     /**
@@ -24,7 +26,7 @@ class MatiereController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice.matiere.add');
     }
 
     /**
@@ -35,7 +37,16 @@ class MatiereController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:matieres',
+            'image' => 'required|image'
+        ]);
+        $matiere = new Matiere();
+        $matiere->nom = $request->nom;
+        $image = Storage::disk('public')->put('', $request->image);
+        $matiere->image = $image;
+        $matiere->save();
+        return redirect()->route('matiere.index')->with('msg', 'Matière créée avec succès');
     }
 
     /**
@@ -57,7 +68,7 @@ class MatiereController extends Controller
      */
     public function edit(Matiere $matiere)
     {
-        //
+        return view('backoffice.matiere.add', compact('matiere'));
     }
 
     /**
@@ -69,7 +80,22 @@ class MatiereController extends Controller
      */
     public function update(Request $request, Matiere $matiere)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:matieres',
+            'image' => 'sometimes|image'
+        ]);
+        if ($request->hasFile('image')) {
+            if (Storage::disk('public')->exists($matiere->image)) {
+                Storage::disk('public')->delete($matiere->image);
+            }
+            $image = Storage::disk('public')->put('', $request->image);
+            $matiere->image = $image;
+        }
+
+        $matiere->nom = $request->nom;
+
+        $matiere->save();
+        return redirect()->route('matiere.index')->with('msg', 'Matière modifié avec succès');
     }
 
     /**
@@ -80,6 +106,10 @@ class MatiereController extends Controller
      */
     public function destroy(Matiere $matiere)
     {
-        //
+        if (Storage::disk('public')->exists($matiere->image)) {
+            Storage::disk('public')->delete($matiere->image);
+        }
+        $matiere->delete();
+        return redirect()->back()->with('msg', 'Matière supprimé avec succès');
     }
 }
