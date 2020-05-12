@@ -64,9 +64,9 @@ class InteretController extends Controller
      * @param  \App\Interet  $interet
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Interet $interet)
     {
-        $interet = Interet::find($id);
+        
         return view('backoffice/interet/edit', compact('interet'));
     }
 
@@ -77,13 +77,13 @@ class InteretController extends Controller
      * @param  \App\Interet  $interet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Interet $interet)
     {
         $request->validate([
-            'nom' => 'required|string|unique:interets,nom,'.$id,
+            'nom' => 'required|string|unique:interets,nom,'.$interet->id,
         ]);
 
-        $interet = Interet::find($id);
+        
         $interet->nom = $request->input('nom');
         $interet->save();
 
