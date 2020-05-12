@@ -14,7 +14,6 @@ class NoteController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -24,7 +23,7 @@ class NoteController extends Controller
      */
     public function create($user)
     {
-        return view('backoffice.note.add',compact('user'));
+        return view('backoffice.note.add', compact('user'));
     }
 
     /**
@@ -67,9 +66,9 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note,$user)
+    public function edit(Note $note, $user)
     {
-        return view('backoffice.note.edit',compact('note','user'));
+        return view('backoffice.note.edit', compact('note', 'user'));
     }
 
     /**

@@ -18,10 +18,11 @@ class FormulaireSeeder extends Seeder
             'titre' => 'Formation courte',
         ]);
 
-        App\Formulaire::all()->each(function ($formulaire) use ($interet) { 
+        $interets = App\Interet::all();
+        App\Formulaire::all()->each(function ($formulaire) use ($interets) {
             $formulaire->interets()->attach(
-                $interet->random(rand(1, 4))->pluck('id')->toArray()
+                $interets->random(rand(1, 4))->pluck('id')->toArray()
             );
-    });
-}
+        });
+    }
 }

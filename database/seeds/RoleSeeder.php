@@ -14,6 +14,7 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'nom' => 'Administrateur',
         ]);
+
         DB::table('roles')->insert([
             'nom' => 'Responsable',
         ]);
@@ -32,5 +33,8 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'nom' => 'Candidat',
         ]);
+
+        App\Role::find(1)->permissions()->attach(App\Permission::all()->pluck('id'));
+        App\Role::find(2)->permissions()->attach(App\Permission::all()->pluck('id'));
     }
 }
