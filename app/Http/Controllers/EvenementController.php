@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Evenement;
+use App\Formulaire;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -14,7 +15,8 @@ class EvenementController extends Controller
      */
     public function index()
     {
-        //
+        $evenements = Evenement::all();
+        return view('backoffice.evenement.index', compact('evenements'));
     }
 
     /**
@@ -24,7 +26,8 @@ class EvenementController extends Controller
      */
     public function create()
     {
-        //
+        $formulaires = Formulaire::all();
+        return view('backoffice.evenement', compact('formulaires'));
     }
 
     /**
@@ -35,7 +38,20 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'description' => 'required|text',
+            'titre' => 'required|string',
+            'etat' => 'required|string',
+            'formulaire' => 'required|integer'
+        ]);
+
+        $evenement = new Evenement();
+        $evenement->titre = $request->titre;
+        $evenement->etat = $request->etat;
+        $evenement->description = $request->description;
+        $evenement->formulaire_id = $request->formulaire_id;
+        $evenement->save();
+        return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
     }
 
     /**
@@ -46,7 +62,7 @@ class EvenementController extends Controller
      */
     public function show(Evenement $evenement)
     {
-        //
+        return view('backoffice.evenement.show', compact('evenement'));
     }
 
     /**
@@ -57,7 +73,8 @@ class EvenementController extends Controller
      */
     public function edit(Evenement $evenement)
     {
-        //
+        $formulaires = Formulaire::all();
+        return view('backoffice.evenement', compact('formulaires', 'evenement'));
     }
 
     /**
@@ -69,7 +86,18 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
-        //
+        $request->validate([
+            'description' => 'required|text',
+            'titre' => 'required|string',
+            'etat' => 'required|string',
+            'formulaire' => 'required|integer'
+        ]);
+        $evenement->titre = $request->titre;
+        $evenement->etat = $request->etat;
+        $evenement->description = $request->description;
+        $evenement->formulaire_id = $request->formulaire_id;
+        $evenement->save();
+        return redirect()->route('evenement.index')->with('msg', 'Evènement modifié avec succès');
     }
 
     /**
@@ -80,6 +108,7 @@ class EvenementController extends Controller
      */
     public function destroy(Evenement $evenement)
     {
-        //
+        $evenement->delete();
+        return redirect()->back()->with('msg', 'Evènement supprimé avec succès');
     }
 }
