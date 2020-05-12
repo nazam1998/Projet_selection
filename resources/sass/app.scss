@@ -1,8 +1,13 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
+	@import'./normalize.css';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+	@import'./bootstrap.css';
+
+	@import'./owl.css';
+
+	@import'./animate.css';
+
+	@import'/fonts/font-awesome-4.1.0/css/font-awesome.min.css';
+	@import'/fonts/eleganticons/et-icons.css';
+
+	@import'./cardio.css';
