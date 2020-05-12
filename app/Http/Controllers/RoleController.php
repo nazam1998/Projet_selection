@@ -14,7 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles=Role::all();
+        return view('backoffice.role.index',compact('roles'));
     }
 
     /**
@@ -24,7 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

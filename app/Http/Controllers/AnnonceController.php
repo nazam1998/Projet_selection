@@ -14,7 +14,8 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        //
+        $annonce= Annonce::all();
+        return view('backoffice.annonce.index',compact('annonce'));
     }
 
     /**
@@ -57,7 +58,7 @@ class AnnonceController extends Controller
      */
     public function edit(Annonce $annonce)
     {
-        //
+        return view('backoffice.annonce.edit',compact('annonce'));
     }
 
     /**
@@ -69,7 +70,16 @@ class AnnonceController extends Controller
      */
     public function update(Request $request, Annonce $annonce)
     {
-        //
+        $request->validate([
+            'texte'=>'required|string',
+            'date'=>'required|date',
+        ]);
+
+        $annonce->texte=$request->texte;
+        $annonce->date=$request->date;
+        $annonce->afficher=$request->has('afficher');
+        $annonce->save();
+        return redirect()->route('annonce.index')->with('msg','Annonce modifiée avec succés');
     }
 
     /**

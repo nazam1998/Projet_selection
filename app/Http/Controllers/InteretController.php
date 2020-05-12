@@ -14,7 +14,8 @@ class InteretController extends Controller
      */
     public function index()
     {
-        //
+        $interet = Interet::all();
+        return view('backoffice/interet/index', compact('interet'));
     }
 
     /**
@@ -24,7 +25,7 @@ class InteretController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice/interet/add');
     }
 
     /**
@@ -35,7 +36,15 @@ class InteretController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:interets',
+        ]);
+
+        $interet = new Interet();
+        $interet->nom = $request->input('nom');
+        $interet->save();
+
+        return redirect()->route('interet.index');
     }
 
     /**
@@ -57,7 +66,8 @@ class InteretController extends Controller
      */
     public function edit(Interet $interet)
     {
-        //
+        
+        return view('backoffice/interet/edit', compact('interet'));
     }
 
     /**
@@ -69,7 +79,15 @@ class InteretController extends Controller
      */
     public function update(Request $request, Interet $interet)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:interets,nom,'.$interet->id,
+        ]);
+
+        
+        $interet->nom = $request->input('nom');
+        $interet->save();
+
+        return redirect()->route('interet.index');
     }
 
     /**
@@ -78,8 +96,10 @@ class InteretController extends Controller
      * @param  \App\Interet  $interet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Interet $interet)
+    public function destroy($id)
     {
-        //
+        $interet = Interet::find($id);
+        $interet->delete();
+        return redirect()->route('interet.index');
     }
 }
