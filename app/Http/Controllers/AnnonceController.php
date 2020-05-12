@@ -14,7 +14,8 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        //
+        $annonce= Annonce::all();
+        return view('backoffice.annonce.index',compact('annonce'));
     }
 
     /**
