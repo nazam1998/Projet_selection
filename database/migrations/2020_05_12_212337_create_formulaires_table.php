@@ -21,6 +21,7 @@ class CreateFormulairesTable extends Migration
 
         Schema::create('formulaire_interet', function (Blueprint $table) {
             $table->id();
+            $table->string('titre');
             $table->bigInteger('interet_id')->unsigned();
             $table->foreign('interet_id')
                 ->on('interets')
