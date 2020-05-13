@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class AnnonceSeeder extends Seeder
@@ -11,6 +12,10 @@ class AnnonceSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('annonces')->insert([
+            'texte'=>'Hello World',
+            'date'=>Carbon::now(),
+            'afficher'=>true
+        ]);
     }
 }
