@@ -12,7 +12,7 @@
     @method('PUT')
     <div class="card-body">
       <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Interet</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Nom de l'interet</label>
         @error('nom')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
