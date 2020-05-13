@@ -194,9 +194,9 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 /* Buttons */
 
 .btn {
-	font-size: 18px;
+	font-size: 12px;
 	display: inline-block;
-	padding: 15px 30px;
+	padding: 5px 10px;
 	color: white;
 	border: 2px solid transparent;
 	border-radius: 2px;
@@ -301,74 +301,26 @@ section {
 
 
 .intro-tables {
-	top: -130px;
+	top: -100px;
 	position: relative;
 }
 
 .intro-table {
 	-webkit-background-size: cover;
 	background-size: cover;
+	background: rgba(48, 47, 47, 0.7);
 	background-repeat: repeat;
 	background-position: 0% 0%;
+	border-radius: 5px;
 }
 
-.intro-table-first {
-	background-image: url('/img/table-1.jpg');
+
+.intro-table:hover{
+	background: rgba(100, 99, 99, 0.5);
+	transition: 0.3s ease;
 }
 
-.intro-table-hover {
-	-webkit-transition: background-image 0.3s ease, background-position 0.3s;
-	transition: background-image 0.3s ease, background-position 0.3s;
-	background-image: url('/img/table-2.jpg');
-}
 
-.intro-table-hover h4 {
-	-webkit-transform: translateY(170px);
-	transform: translateY(170px);
-	-webkit-transition: -webkit-transform 0.3s;
-	transition: transform 0.3s;
-}
-
-.intro-table-hover:hover {
-	background-image: url('/img/table-2-hover.jpg');
-	background-position: 50% 50%;
-}
-
-.intro-table-third {
-	background-image: url('/img/table-3.jpg');
-}
-
-.intro-table-hover .expand {
-	margin: 30px;
-	margin-top: 120px;
-	opacity: 0;
-	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-	transition: transform 0.3s ease, opacity 0.3s;
-	-webkit-transform: scale(0.6);
-	-ms-transform: scale(0.6);
-	transform: scale(0.6);
-}
-
-.intro-table-hover:hover h4 {
-	-webkit-transform: translateY(0);
-	transform: translateY(0);
-}
-
-.intro-table-hover:hover .expand {
-	opacity: 1;
-	-webkit-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1);
-}
-
-.intro-table-hover .hide-hover {
-	-webkit-transition: opacity 0.3s ease;
-	transition: opacity 0.3s ease;
-}
-
-.intro-table-hover:hover .hide-hover {
-	opacity: 0;
-}
 
 .intro-tables .intro-table {
 	position: relative;
@@ -458,13 +410,16 @@ section {
 
 .service .icon-holder {
 	position: relative;
-	top: 100px;
+	top: 80px;
 	display: inline-block;
 	margin-bottom: 40px;
 	padding: 10px;
-	background: white;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
+}
+
+.icon-holder i{
+	color: #fffce9;
 }
 
 .service .heading {
@@ -474,16 +429,14 @@ section {
 	transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.service .icon-holder > img.icon {
-	width: 40px;
-}
+
 
 .service:hover {
 	border-color: #fffce9;
 }
 
 .service:hover .icon-holder {
-	top: -30px;
+	top: -1px;
 }
 
 .service:hover .heading {
@@ -653,7 +606,7 @@ footer {
 }
 
 .contenu2{
-	padding: 5% 10%;
+	padding: 5% 10% 1% 10%;
 	background: rgba(0, 0, 0, 0.7);
 }
 
@@ -698,7 +651,7 @@ footer .opening-hours {
 }
 
 footer .bottom-footer {
-	margin-top: 150px;
+	margin-top: 70px;
 }
 
 footer .social-footer {
@@ -717,7 +670,7 @@ footer .social-footer li a {
 }
 
 .face:hover{
-	color: rgb(65, 94, 255);
+	color: rgb(70, 104, 255);
 }
 
 .twit:hover{
@@ -1010,6 +963,10 @@ footer .social-footer li a {
 
 .light {
 	color: #fffce9;
+}
+
+.dark{
+	color: #272626;
 }
 
 
