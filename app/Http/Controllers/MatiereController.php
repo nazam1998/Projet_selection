@@ -16,7 +16,7 @@ class MatiereController extends Controller
     public function index()
     {
         $matieres = Matiere::all();
-        return view('backoffice.matiere.backoffice', compact('matiere'));
+        return view('backoffice.matiere.index', compact('matiere'));
     }
 
     /**
@@ -68,7 +68,7 @@ class MatiereController extends Controller
      */
     public function edit(Matiere $matiere)
     {
-        return view('backoffice.matiere.add', compact('matiere'));
+        return view('backoffice.matiere.edit', compact('matiere'));
     }
 
     /**
