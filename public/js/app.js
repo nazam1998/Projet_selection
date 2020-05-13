@@ -26038,6 +26038,17 @@ jQuery(function ($) {
 
 /***/ }),
 
+/***/ "./resources/sass/admin.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/admin.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -26045,19 +26056,20 @@ jQuery(function ($) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n   ╷\n16 │     @import '~@fortawesome/fontawesome-free';\n   │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   ╵\n  /home/molengeek/Projet_selection/resources/sass/app.scss 16:10  root stylesheet\n    at /home/molengeek/Projet_selection/node_modules/webpack/lib/NormalModule.js:316:20\n    at /home/molengeek/Projet_selection/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /home/molengeek/Projet_selection/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/home/molengeek/Projet_selection/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /home/molengeek/Projet_selection/node_modules/sass-loader/dist/index.js:73:7\n    at Function.call$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:87584:16)\n    at _render_closure1.call$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:77359:12)\n    at _RootZone.runBinary$3$3 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:25587:18)\n    at _RootZone.runBinary$3 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:25591:19)\n    at _FutureListener.handleError$1 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24041:19)\n    at _Future__propagateToListeners_handleError.call$0 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24337:40)\n    at Object._Future__propagateToListeners (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3497:88)\n    at _Future._completeError$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24165:9)\n    at _AsyncAwaitCompleter.completeError$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:23557:12)\n    at Object._asyncRethrow (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3253:17)\n    at /home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:13333:20\n    at _wrapJsFunctionForAsync_closure.$protected (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3276:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:23578:12)\n    at _awaitOnObject_closure0.call$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:23570:25)\n    at _RootZone.runBinary$3$3 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:25587:18)\n    at _RootZone.runBinary$3 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:25591:19)\n    at _FutureListener.handleError$1 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24041:19)\n    at _Future__propagateToListeners_handleError.call$0 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24337:40)\n    at Object._Future__propagateToListeners (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3497:88)\n    at _Future._completeError$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24165:9)\n    at _AsyncAwaitCompleter.completeError$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:23557:12)\n    at Object._asyncRethrow (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3253:17)\n    at /home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:15991:20\n    at _wrapJsFunctionForAsync_closure.$protected (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3276:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:23578:12)\n    at _awaitOnObject_closure0.call$2 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:23570:25)\n    at _RootZone.runBinary$3$3 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:25587:18)\n    at _RootZone.runBinary$3 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:25591:19)\n    at _FutureListener.handleError$1 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24041:19)\n    at _Future__propagateToListeners_handleError.call$0 (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:24337:40)\n    at Object._Future__propagateToListeners (/home/molengeek/Projet_selection/node_modules/sass/sass.dart.js:3497:88)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!*****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/admin.scss ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/molengeek/Projet_selection/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/molengeek/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Selection/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Selection/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })
