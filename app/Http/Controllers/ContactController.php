@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -27,6 +29,7 @@ class ContactController extends Controller
     {
         return view('backoffice/contact/add');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -53,12 +56,15 @@ class ContactController extends Controller
         $nom = $request->input('nom');
         $prenom =  $request->input('prenom');
         $email =  $request->input('email');
-        $message = $request->input('message');
+        $msg = $request->input('message');
         
-        Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $message));
+        Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
 
         return redirect()->route('contact.index');
     }
+
+
+    public function
 
     /**
      * Display the specified resource.

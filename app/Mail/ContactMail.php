@@ -20,12 +20,12 @@ class ContactMail extends Mailable
      *
      * @return void
      */
-    public function __construct($nom, $prenom, $email, $message)
+    public function __construct($nom, $prenom, $email, $msg)
     {
         $this->name = $nom;
         $this->prename = $prenom;
         $this->mail = $email;
-        $this->msg = $message;
+        $this->msg = $msg;
     }
 
     /**
