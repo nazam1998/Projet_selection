@@ -112,18 +112,20 @@ ul.white-list li:before {
 header {
 	position: relative;
 	width: 100%;
-	color: white;
-	background: url('/img/header.jpg');
+	background: url('/img/code1.jpg');
 	background-size: cover;
 }
+
+
 
 header .table {
 	display: table;
 	height: 100%;
 }
 
-header .container {
+header .contenu {
 	height: 100%;
+	background: rgba(0, 0, 0, 0.7) !important;
 }
 
 header .header-text {
@@ -645,11 +647,16 @@ section {
 /* Footer */
 
 footer {
-	padding: 140px 0 40px;
-	background: url('/img/footer.jpg');
+	background-image: url('/img/code2.jpg');
 	-webkit-background-size: cover;
 	background-size: cover;
 }
+
+.contenu2{
+	padding: 5% 10%;
+	background: rgba(0, 0, 0, 0.7);
+}
+
 
 footer .trial-button {
 	overflow: hidden !important;
@@ -709,8 +716,16 @@ footer .social-footer li a {
 	color: #fff;
 }
 
-footer .social-footer li:hover a {
-	color: #00a8ff;
+.face:hover{
+	color: rgb(65, 94, 255);
+}
+
+.twit:hover{
+	color: rgb(87, 179, 255);
+}
+
+.google:hover{
+	color: rgb(248, 42, 42);
 }
 /* Form Control */
 
