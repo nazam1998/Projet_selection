@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->boolean('ordinateur');
             $table->string('objectif');
             $table->string('photo');
-            $table->string('abo');
+            $table->boolean('abo');
             $table->string('password')->nullable();
             $table->bigInteger('formulaire_id')->unsigned();
             $table->foreign('formulaire_id')
