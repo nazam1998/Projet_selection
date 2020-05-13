@@ -5,7 +5,7 @@
 <div class="card">
     
     <div class="card-header bg-info">
-        <h3 class="card-title">Base de données pour les interets</h3>
+        <h3 class="card-title">Base de données pour les matieres</h3>
     </div>
     @if (session()->has('msg'))
     <div class="card-header alert alert-success alert-dismissible fade show" role="alert">
@@ -22,16 +22,18 @@
             <thead>
                 <tr>
                     <th>Nom</th>
+                    <th>Image</th>
                     <th>Action: EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($interet as $item)
+                @foreach ($matieres as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td class="d-flex"><a href="{{route('interet.edit', $item->id)}}"
+                    <td><img src="{{'storage/'.$item->image}}" width="8%" alt=""></td>
+                    <td class="d-flex"><a href="{{route('matiere.edit', $item->id)}}"
                             class="btn btn-warning mr-3">Edit</a>
-                        <form action="{{route('interet.destroy', $item->id)}}" method="POST">@csrf
+                        <form action="{{route('matiere.destroy', $item->id)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>

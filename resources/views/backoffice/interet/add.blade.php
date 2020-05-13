@@ -11,9 +11,9 @@
     @csrf
     <div class="card-body">
       <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Interet</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Nom de l'interet</label>
         @error('nom')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert text-danger font-weight-bold">{{ $message }}</div>
         @enderror
         <div class="col-sm-10">
           <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror" value="@if($errors->first('nom'))@else{{old('nom')}}@endif" id="inputEmail3" placeholder="Veuillez saisir un interet">

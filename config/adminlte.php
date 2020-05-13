@@ -260,7 +260,7 @@ return [
             'text'        => 'Interets',
             'url'         => 'interet',
             'icon'        => 'fas fa-boxes',
-            'icon_color'  => 'red',
+            'icon_color'  => 'purple',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -270,6 +270,24 @@ return [
                 [
                     'text' => 'Ajoutez un interet',
                     'url'  => 'interet/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Matieres',
+            'url'         => 'matiere',
+            'icon'        => 'fas fa-language',
+            'icon_color'  => 'purple',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'matiere',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez une matiere',
+                    'url'  => 'matiere/create',
                     'icon_color' => 'yellow'
                 ],
             ],
