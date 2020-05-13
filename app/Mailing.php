@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Annonce extends Model
+class Mailing extends Model
 {
-    protected $dates = ['date'];
+    //
 }

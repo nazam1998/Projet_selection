@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>NKN</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -219,74 +219,80 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'        => 'Accueil',
+            'url'         => '/',
+            'icon'        => 'fas fa-home',
+            'icon_color' => 'success',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'header'=>'Annonce'
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'        => 'Base de donnée',
+            'url'         => 'annonce',
+            'icon'        => 'fas fa-home',
+            'icon_color' => 'success',
+        ],  
+        [
+            'header'=>'Évènement'
+        ],
+        [
+            'text'        => 'Évènement',
+            'url'         => 'evenement',
+            'icon'        => 'fas fa-fish',
+            'icon_color'  => 'red',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Base de données',
+                    'url'  => 'interet',
+                    'icon_color' => 'cyan'
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Ajoutez un evenement',
+                    'url'  => 'evenement/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],        [
+            'header'=>'Formulaire Insciption'
+        ],
+        [
+            'text'        => 'Interets',
+            'url'         => 'interet',
+            'icon'        => 'fas fa-boxes',
+            'icon_color'  => 'purple',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'interet',
+                    'icon_color' => 'cyan'
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Ajoutez un interet',
+                    'url'  => 'interet/create',
+                    'icon_color' => 'yellow'
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'        => 'Matieres',
+            'url'         => 'matiere',
+            'icon'        => 'fas fa-language',
+            'icon_color'  => 'purple',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'matiere',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez une matiere',
+                    'url'  => 'matiere/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-        ],
+        
     ],
 
     /*
