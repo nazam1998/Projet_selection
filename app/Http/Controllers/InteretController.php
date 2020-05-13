@@ -44,7 +44,7 @@ class InteretController extends Controller
         $interet->nom = $request->input('nom');
         $interet->save();
 
-        return redirect()->route('interet.index');
+        return redirect()->route('interet.index')->with('msg', 'Intérêt ajouté avec succès');
     }
 
     /**
@@ -66,7 +66,7 @@ class InteretController extends Controller
      */
     public function edit(Interet $interet)
     {
-        
+
         return view('backoffice/interet/edit', compact('interet'));
     }
 
@@ -80,14 +80,14 @@ class InteretController extends Controller
     public function update(Request $request, Interet $interet)
     {
         $request->validate([
-            'nom' => 'required|string|unique:interets,nom,'.$interet->id,
+            'nom' => 'required|string|unique:interets,nom,' . $interet->id,
         ]);
 
-        
+
         $interet->nom = $request->input('nom');
         $interet->save();
 
-        return redirect()->route('interet.index');
+        return redirect()->route('interet.index')->with('msg', 'Intérêt modifié avec succès');
     }
 
     /**
@@ -100,6 +100,6 @@ class InteretController extends Controller
     {
         $interet = Interet::find($id);
         $interet->delete();
-        return redirect()->route('interet.index');
+        return redirect()->route('interet.index')->with('msg', 'Intérêt supprimé avec succès');
     }
 }
