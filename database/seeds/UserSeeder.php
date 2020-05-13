@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
                 'ordinateur'=>true,
                 'objectif'=>'Tout réussir',
                 'photo'=>'On va Tous Rater.png',
-                ''
             ]
         ]);
     }
