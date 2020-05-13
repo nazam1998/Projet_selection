@@ -225,6 +225,29 @@ return [
             'icon_color' => 'success',
         ],
         [
+            'header'=>'Évènement'
+        ],
+        [
+            'text'        => 'Évènement',
+            'url'         => 'evenement',
+            'icon'        => 'fas fa-fish',
+            'icon_color'  => 'red',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'interet',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez un evenement',
+                    'url'  => 'evenement/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],        [
+            'header'=>'Formulaire Insciption'
+        ],
+        [
             'text'        => 'Interets',
             'url'         => 'interet',
             'icon'        => 'fas fa-boxes',
@@ -242,78 +265,7 @@ return [
                 ],
             ],
         ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-        ],
+        
     ],
 
     /*
