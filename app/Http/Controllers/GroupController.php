@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\User;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -14,7 +15,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups = Group::all();
+        return view('backoffice.group.index', compact('groups'));
     }
 
     /**
@@ -24,7 +26,9 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        $responsables = User::where('role_id', 2)->get();
+        $coachs = User::where('role_id', 3)->get();
+        return view('backoffice.group.add', compact('coachs', 'responsables'));
     }
 
     /**
@@ -35,7 +39,20 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:groups',
+            'responsable_id' => 'required|integer',
+            'coach_id' => 'nullable|integer'
+        ]);
+
+        $group = new Group();
+        $group->nom = $request->nom;
+        $group->responsable_id = $request->responsable_id;
+        if ($request->has('coach_id')) {
+            $group->coach_id = $request->coach_id;
+        }
+        $group->save();
+        return redirect()->route('group.index')->with('msg', 'Groupe créé avec succès');
     }
 
     /**
@@ -46,7 +63,8 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        //
+        $users = $group->users()->get();
+        return view('backoffice.group.show', compact('users', 'group'));
     }
 
     /**
@@ -57,7 +75,9 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        $responsables = User::where('role_id', 2)->get();
+        $coachs = User::where('role_id', 3)->get();
+        return view('backoffice.group.add', compact('coachs', 'responsables', 'group'));
     }
 
     /**
@@ -69,7 +89,19 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|unique:groups,nom,' . $group->id,
+            'responsable_id' => 'required|integer',
+            'coach_id' => 'nullable|integer'
+        ]);
+
+        $group->nom = $request->nom;
+        $group->responsable_id = $request->responsable_id;
+        if ($request->has('coach_id')) {
+            $group->coach_id = $request->coach_id;
+        }
+        $group->save();
+        return redirect()->route('group.index')->with('msg', 'Groupe modifié avec succès');
     }
 
     /**
@@ -80,6 +112,7 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        return redirect()->back()->with('msg', 'Groupe supprimé avec succès');
     }
 }
