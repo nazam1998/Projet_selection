@@ -292,23 +292,6 @@ return [
                 ],
             ],
         ],
-        [
-            'text'=>'Contact',
-            'submenu'=>[
-                [
-                    'text'=>'Reçu',
-                    'url'=>'contact',
-                ],
-                [
-                    'text'=>'Envoyé',
-                    'url'=>'mailing'
-                ],
-                [
-                    'text'=>'Envoyer un message',
-                    'url'=>'mailing/create'
-                ],
-            ]
-        ],
         
     ],
 

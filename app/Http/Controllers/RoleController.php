@@ -73,7 +73,7 @@ class RoleController extends Controller
                 }
             }
             if ($request->has('user-lecture')) {
-                foreach ($request->user_lecture as $item) {
+                foreach ($request->has('user-lecture') as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                 }
             }

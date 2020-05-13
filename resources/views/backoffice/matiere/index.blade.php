@@ -30,7 +30,7 @@
                 @foreach ($matieres as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td><img src="{{asset('storage/'.$item->image)}}" width="8%" alt=""></td>
+                    <td><img src="{{'storage/'.$item->image}}" width="8%" alt=""></td>
                     <td class="d-flex"><a href="{{route('matiere.edit', $item->id)}}"
                             class="btn btn-warning mr-3">Edit</a>
                         <form action="{{route('matiere.destroy', $item->id)}}" method="POST">@csrf
@@ -47,7 +47,3 @@
 </div>
 
 @stop
-
-@section('css')
-<link rel="stylesheet" href="{{asset('css/admin.css')}}">
-@endsection

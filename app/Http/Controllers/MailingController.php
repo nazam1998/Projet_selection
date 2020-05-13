@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MailingMail;
+use App\Mail\ContactMail;
 use App\Mailing;
 use App\User;
 use Illuminate\Http\Request;
@@ -50,28 +50,24 @@ class MailingController extends Controller
         $mailing->message = $request->message;
         if ($request->has('role_id')) {
             $mailing->role_id = $request->role_id;
-            $users = User::where('role_id', $request->role_id)->get();
+            $users=User::where('role_id',$request->role_id)->get();
         } else if ($request->has('group_id')) {
             $mailing->group_id = $request->group_id;
-            $users = User::where('group_id', $request->group_id)->get();
+            $users=User::where('group_id',$request->group_id)->get();
         } else {
             $mailing->user_id = $request->user_id;
             $user = User::find($request->user_id);
         }
 
-        if ($request->has('user_id')) {
-            $nom = $user->nom;
-            $prenom =  $user->prenom;
-            $email =  $user->email;
-            $msg = $request->message;
-            Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
-        } else {
-            foreach ($users as $item) {
-                $nom = $item->nom;
-                $prenom =  $item->prenom;
-                $email =  $item->email;
-                $msg = $request->message;
-                Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
+        if($request->has('user_id')){
+        $nom = $user->nom;
+        $prenom =  $user->prenom;
+        $email =  $user->email;
+        $msg = $request->message;
+        Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
+        }else{
+            foreach ($users as $value) {
+                # code...
             }
         }
         $mailing->save();
