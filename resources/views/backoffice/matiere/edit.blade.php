@@ -7,7 +7,7 @@
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form class="form-horizontal" action="{{route('matiere.update')}}" method="POST" enctype="multipart/form-data">
+  <form class="form-horizontal" action="{{route('matiere.update',$matiere)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="card-body">
