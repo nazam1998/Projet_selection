@@ -64,7 +64,6 @@ class ContactController extends Controller
     }
 
 
-    public function
 
     /**
      * Display the specified resource.
