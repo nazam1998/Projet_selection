@@ -30,5 +30,6 @@ Route::resource('evenement', 'EvenementController');
 Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
+Route::resource('group', 'GroupController');
 
 Route::get('/home', 'HomeController@index')->name('home');
