@@ -26,6 +26,7 @@ Auth::routes();
 Route::resource('matiere', 'MatiereController');
 Route::resource('annonce', 'AnnonceController');
 Route::resource('contact', 'ContactController');
+Route::resource('mailing', 'MailingController');
 Route::resource('evenement', 'EvenementController');
 Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');

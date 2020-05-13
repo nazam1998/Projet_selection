@@ -1,5 +1,5 @@
-<p>L'expéditeur <span style="color:green;">{{$prename}} {{$name}}</span>, avec l'email: <span style="color:green;">{{$mail}}</span>, vous a laissés un message:</p>
+<h1>Bonjour {{$prename.' '.$name}}</h1>
 
 <p>{{$msg}}</p>
 
-<h4 style="color:blue; font-weight:bold;">Merci pour votre message !</h4>
+<h4 style="color:blue; font-weight:bold;">Merci pour votre compréhension !</h4>

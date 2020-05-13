@@ -1,0 +1,10 @@
+table td,
+table th {
+  padding: 20px;
+}
+
+table img {
+  text-align: left;
+  width: 80px;
+}
+

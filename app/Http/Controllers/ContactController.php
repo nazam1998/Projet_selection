@@ -16,8 +16,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact = Contact::all();
-        return view('backoffice/contact/index', compact('contact'));
+        $contacts = Contact::all();
+        return view('backoffice/contact/index', compact('contacts'));
     }
 
     /**
@@ -57,14 +57,13 @@ class ContactController extends Controller
         $prenom =  $request->input('prenom');
         $email =  $request->input('email');
         $msg = $request->input('message');
-        
+
         Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
 
-        return redirect()->route('contact.index');
+        return redirect()->back();
     }
 
 
-    public function
 
     /**
      * Display the specified resource.

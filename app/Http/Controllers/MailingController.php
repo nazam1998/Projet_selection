@@ -6,7 +6,7 @@ use App\Mail\MailingMail;
 use App\Mailing;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;    
+use Illuminate\Support\Facades\Mail;
 
 class MailingController extends Controller
 {
@@ -72,7 +72,6 @@ class MailingController extends Controller
                 $email =  $item->email;
                 $msg = $request->message;
                 Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
-                
             }
         }
         $mailing->save();

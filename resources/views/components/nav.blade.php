@@ -16,7 +16,7 @@
                 <li><a href="#intro">Intro</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#team">Team</a></li>
-                <li><a href="#" class="">Sign Up</a></li>
+            <li><a href="{{route('login')}}" class="">Sign in</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

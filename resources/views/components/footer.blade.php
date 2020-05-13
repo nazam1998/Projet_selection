@@ -4,22 +4,23 @@
             <div class="col-sm-5 text-center-mobile">
                 <h3 class="light">Contact us!</h3>
                 <h5 class="light regular">We'd like to know if you have any comments.</h5>
-                <form style="margin-top: 30px;" action="">
+            <form style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
+                @csrf
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Nom</label>
-                        <input style="width: 100%;" name="" type="text">
+                        <input style="width: 100%;" name="nom" type="text">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Prenom</label>
-                        <input style="width: 100%;" name="" type="text">
+                        <input style="width: 100%;" name="prenom" type="text">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Email</label>
-                        <input style="width: 100%;" name="" type="text">
+                        <input style="width: 100%;" name="email" type="text">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Message</label>
-                        <input style="width: 100%;" name="" type="text">
+                        <input style="width: 100%;" name="message" type="text">
                     </div>
                     <div style="margin-top: 15px;" class="text-center">
                         <button class="btn btn-blue" type="submit">Send</button>
