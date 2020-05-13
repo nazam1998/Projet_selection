@@ -21,7 +21,7 @@ Route::put('etape/{etape}/update', 'EtapeController@update')->name('etage.update
 Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etage.delete');
 
 
-// Auth::routes();
+Auth::routes();
 
 Route::resource('matiere', 'MatiereController');
 Route::resource('annonce', 'AnnonceController');
