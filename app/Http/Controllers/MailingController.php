@@ -72,6 +72,7 @@ class MailingController extends Controller
                 $email =  $item->email;
                 $msg = $request->message;
                 Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
+                
             }
         }
         $mailing->save();
