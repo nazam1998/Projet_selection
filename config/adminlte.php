@@ -225,6 +225,15 @@ return [
             'icon_color' => 'success',
         ],
         [
+            'header'=>'Annonce'
+        ],
+        [
+            'text'        => 'Base de donnée',
+            'url'         => 'annonce',
+            'icon'        => 'fas fa-home',
+            'icon_color' => 'success',
+        ],  
+        [
             'header'=>'Évènement'
         ],
         [
