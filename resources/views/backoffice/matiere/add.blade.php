@@ -10,18 +10,18 @@
   <form class="form-horizontal" action="{{route('matiere.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="card-body">
-      <div class="form-group row">
+      <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Nom de la matiere</label>
         @error('nom')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert text-danger font-weight-bold w-25">{{ $message }}</div>
         @enderror
         <div class="col-sm-10">
           <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror" value="@if($errors->first('nom'))@else{{old('nom')}}@endif" id="inputEmail3" placeholder="Veuillez saisir une matiere">
         </div>
-
+        
         <label for="inputEmail3" class="col-sm-2 col-form-label">Image de la matiere</label>
         @error('image')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert text-danger font-weight-bold w-25">{{ $message }}</div>
         @enderror
         <div class="col-sm-10">
           <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="@if($errors->first('image'))@else{{old('image')}}@endif" id="inputEmail3" placeholder="Veuillez choisir une image">
