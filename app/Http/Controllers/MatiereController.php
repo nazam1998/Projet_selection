@@ -81,7 +81,7 @@ class MatiereController extends Controller
     public function update(Request $request, Matiere $matiere)
     {
         $request->validate([
-            'nom' => 'required|string|unique:matieres',
+            'nom' => 'required|string|unique:matieres,nom,'.$matiere->id,
             'image' => 'sometimes|image'
         ]);
         if ($request->hasFile('image')) {
