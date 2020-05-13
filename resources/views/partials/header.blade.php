@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h3 class="light">Welcome to CodeWizard.</h3>
-                        <h1 class="light typed">It's the best place to learn code!</h1>
+                        <h1 class="light typed">The best place to learn about the digital world!</h1>
                         <span class="typed-cursor">|</span>
                     </div>
                 </div>
