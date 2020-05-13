@@ -25,7 +25,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('backoffice.role.add');
+        $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
+        $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
+        $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
+        return view('backoffice.role.add', compact('candidat_lectures', 'user_lectures', 'user_ecritures'));
     }
 
     /**
@@ -37,7 +40,8 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required|string|unique:roles'
+            'nom' => 'required|string|unique:roles',
+
         ]);
 
         $role = new Role();
@@ -45,6 +49,10 @@ class RoleController extends Controller
         $role->save();
         if ($request->has('full')) {
             foreach (Permission::all()->pluck('id') as $item) {
+                $role->permissions()->attach($item);
+            }
+        } else if ($request->has('lecture')) {
+            foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
         } else {
@@ -59,7 +67,7 @@ class RoleController extends Controller
             }
             if ($request->has('candidat-full')) {
                 $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
-            } else if($request->has('candidat-lecture')){
+            } else if ($request->has('candidat-lecture')) {
                 foreach ($request->candidat_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
@@ -97,7 +105,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('backoffice.role.edit', compact('role'));
+        $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
+        $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
+        $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
+        return view('backoffice.role.edit', compact('role','candidat_lectures', 'user_lectures', 'user_ecritures'));
     }
 
     /**
@@ -110,7 +121,7 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'nom' => 'required|string|unique:roles,nom,' . $role->id
+            'nom' => 'required|string|unique:roles,nom,' . $role->id,
         ]);
 
         $role = new Role();
@@ -119,6 +130,10 @@ class RoleController extends Controller
         $role->permissions()->detach();
         if ($request->has('full')) {
             foreach (Permission::all()->pluck('id') as $item) {
+                $role->permissions()->attach($item);
+            }
+        } else if ($request->has('lecture')) {
+            foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
         } else {
@@ -161,6 +176,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->with('Role supprimé avec succés');
+        return redirect()->back()->with('Role supprimé avec succés');
     }
 }

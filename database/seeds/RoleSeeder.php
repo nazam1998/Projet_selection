@@ -36,5 +36,6 @@ class RoleSeeder extends Seeder
 
         App\Role::find(1)->permissions()->attach(App\Permission::all()->pluck('id'));
         App\Role::find(2)->permissions()->attach(App\Permission::all()->pluck('id'));
+        App\Role::find(3)->permissions()->attach(App\Permission::all()->pluck('id'));
     }
 }

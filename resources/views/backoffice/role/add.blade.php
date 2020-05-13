@@ -19,11 +19,15 @@
           <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror" value="@if($errors->first('nom'))@else{{old('nom')}}@endif" id="inputEmail3" placeholder="Veuillez saisir un role">
         </div>
       </div>
-
+      <label for="">Permission</label>
       <div class="form-group">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" name="full" value="full">
           <label class="form-check-label">Tout les droits</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="lecture" value="lecture">
+          <label class="form-check-label">Lecture Seulement</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" name="annonce" value="annonce">
@@ -34,10 +38,47 @@
           <label class="form-check-label">Groupe</label>
         </div>
         <label for="">Candidat</label>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="candidat-full">
-          <label class="form-check-label">Tous</label>
+        
+        <div class="row">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="candidat-full">
+            <label class="form-check-label">Tous</label>
+          </div>
+          @foreach ($candidat_lectures as $item)
+          <div class="form-check mx-5">
+            <input class="form-check-input" type="checkbox" name="candidat-lecture[]">
+          <label class="form-check-label">{{substr($item->nom,17)}}</label>
+          </div>
+          @endforeach
+        
         </div>
+
+        <label for="">Users Ecriture</label>
+        
+        <div class="row">
+          @foreach ($user_ecritures as $item)
+          <div class="form-check mx-5">
+            <input class="form-check-input" type="checkbox" name="user-ecriture[]">
+          <label class="form-check-label">{{substr($item->nom,14)}}</label>
+          </div>
+          @endforeach
+        
+        </div>
+
+        <label for="">Users Lecture</label>
+        
+        <div class="row">
+          @foreach ($user_lectures as $item)
+          <div class="form-check mx-5">
+            <input class="form-check-input" type="checkbox" name="user-lecture[]">
+          <label class="form-check-label">{{substr($item->nom,13)}}</label>
+          </div>
+          @endforeach
+        
+        </div>
+
+        
       </div>
     </div>
     <!-- /.card-body -->
