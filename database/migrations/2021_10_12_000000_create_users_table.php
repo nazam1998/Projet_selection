@@ -27,17 +27,11 @@ class CreateUsersTable extends Migration
             $table->boolean('ordinateur');
             $table->string('objectif');
             $table->string('photo');
-            $table->string('abo');
-            $table->string('password');
+            $table->boolean('abo');
+            $table->string('password')->nullable();
             $table->bigInteger('formulaire_id')->unsigned();
             $table->foreign('formulaire_id')
                 ->on('formulaires')
-                ->references('id')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->bigInteger('group_id')->unsigned()->nullable();
-            $table->foreign('group_id')
-                ->on('groups')
                 ->references('id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

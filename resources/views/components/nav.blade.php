@@ -16,6 +16,7 @@
                 <li><a href="#intro">Intro</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#team">Team</a></li>
+                <li><a href="{{route('home')}}">Back-Office</a></li>
                 <li><a href="#" class="">Sign Up</a></li>
             </ul>
         </div>
