@@ -30,6 +30,23 @@ class CreateGroupsTable extends Migration
                 ->onUpdate('cascade');
             $table->timestamps();
         });
+        Schema::create('group_user', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('group_id')->unsigned();
+            $table->foreign('group_id')
+                ->on('groups')
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->on('users')
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->boolean('valide');
+            $table->timestamps();
+        });
     }
 
     /**
