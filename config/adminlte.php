@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>NKN</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -219,11 +219,38 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Accueil',
+            'url'         => '/',
+            'icon'        => 'fas fa-home',
+            'icon_color' => 'success',
+        ],
+        [
+            'text'        => 'Interets',
+            'url'         => 'interet',
+            'icon'        => 'fas fa-boxes',
+            'icon_color'  => 'red',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'interet',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez un interet',
+                    'url'  => 'interet/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],
+        [
+            'text'    => 'multilevel',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'level_one',
+                    'url'  => '#',
+                ],
+            ],
         ],
         ['header' => 'account_settings'],
         [
