@@ -38,3 +38,10 @@
   </form>
 </div>
 @stop
+
+@section('css')
+ <link rel="stylesheet" href="{{asset('css/admin.css')}}">   
+@endsection
+@section('js')
+<script type="text/javascript" src="{{asset('js/admin.js')}}"></script>
+@endsection

@@ -59,13 +59,13 @@ class RoleController extends Controller
             }
             if ($request->has('candidat-full')) {
                 $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
-            } else {
-                foreach ($request->has('candidat-lecture') as $item) {
+            } else if($request->has('candidat-lecture')){
+                foreach ($request->candidat_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
             }
             if ($request->has('user-lecture')) {
-                foreach ($request->has('user-lecture') as $item) {
+                foreach ($request->user_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                 }
             }
