@@ -12,4 +12,7 @@ class Group extends Model
     public function coach(){
         return $this->belongsTo('App\User','coach_id');
     }
+    public function users(){
+        return $this->belongsToMany('App\User', 'group_user', 'group_id', 'user_id');
+    }
 }
