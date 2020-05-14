@@ -24,8 +24,7 @@
 
 </head>
 
-<body class="light-bg">
-
+<body>
 	@yield('content')
 
     <div class="preloader">
