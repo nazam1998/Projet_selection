@@ -42,16 +42,19 @@ class EvenementController extends Controller
             'description' => 'required|text',
             'titre' => 'required|string',
             'etat' => 'required|string',
-            'formulaire' => 'required|integer'
+            'formulaire_id' => 'required|integer'
         ]);
+        if ($request->etat == 'Futur' || $request->etat == 'En Cours' || $request->etat == 'Fini') {
 
-        $evenement = new Evenement();
-        $evenement->titre = $request->titre;
-        $evenement->etat = $request->etat;
-        $evenement->description = $request->description;
-        $evenement->formulaire_id = $request->formulaire_id;
-        $evenement->save();
-        return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
+            $evenement = new Evenement();
+            $evenement->titre = $request->titre;
+            $evenement->etat = $request->etat;
+            $evenement->description = $request->description;
+            $evenement->formulaire_id = $request->formulaire_id;
+            $evenement->save();
+            return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
+        }
+        return redirect()->back()->withErrors(['etat' => 'Veuillez choisir un état valide']);
     }
 
     /**
@@ -90,14 +93,19 @@ class EvenementController extends Controller
             'description' => 'required|text',
             'titre' => 'required|string',
             'etat' => 'required|string',
-            'formulaire' => 'required|integer'
+            'formulaire_id' => 'required|integer'
         ]);
-        $evenement->titre = $request->titre;
-        $evenement->etat = $request->etat;
-        $evenement->description = $request->description;
-        $evenement->formulaire_id = $request->formulaire_id;
-        $evenement->save();
-        return redirect()->route('evenement.index')->with('msg', 'Evènement modifié avec succès');
+        if ($request->etat == 'Futur' || $request->etat == 'En Cours' || $request->etat == 'Fini') {
+
+            $evenement = new Evenement();
+            $evenement->titre = $request->titre;
+            $evenement->etat = $request->etat;
+            $evenement->description = $request->description;
+            $evenement->formulaire_id = $request->formulaire_id;
+            $evenement->save();
+            return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
+        }
+        return redirect()->back()->withErrors(['etat' => 'Veuillez choisir un état valide']);
     }
 
     /**

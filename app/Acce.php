@@ -8,10 +8,10 @@ class Acce extends Model
 {
     public function permission()
     {
-        return $this->belongsToMany('App\Role', 'acces', 'permission_role', 'auth_role');
+        return $this->belongsTo('App\Role','permission_role');
     }
     public function auth()
     {
-        return $this->belongsToMany('App\Role', 'acces', 'auth_role', 'permission_role');
+        return $this->belongsTo('App\Role', 'auth_role');
     }
 }

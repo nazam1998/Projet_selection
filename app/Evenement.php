@@ -12,6 +12,6 @@ class Evenement extends Model
     }
     public function etapes()
     {
-        return $this->hasMany('App\Evenement');
+        return $this->hasMany('App\Etape');
     }
 }

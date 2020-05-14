@@ -243,7 +243,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Base de données',
-                    'url'  => 'interet',
+                    'url'  => 'evenement',
                 ],
                 [
                     'text' => 'Ajoutez un evenement',
@@ -253,6 +253,22 @@ return [
         ],
         [
             'header' => 'Formulaire Inscription'
+        ],
+        
+        [
+            'text'        => 'Formulaires',
+            'url'         => 'formulaire',
+            'icon'        => 'fas fa-boxes',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'formulaire',
+                ],
+                [
+                    'text' => 'Ajoutez un formulaire',
+                    'url'  => 'formulaire/create',
+                ],
+            ],
         ],
         [
             'text'        => 'Interets',
