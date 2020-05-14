@@ -104,11 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
-=======
-module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
->>>>>>> 524898fed0acfc61844d1df0683b187829e470c3
+module.exports = __webpack_require__(/*! /home/molengeek/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })

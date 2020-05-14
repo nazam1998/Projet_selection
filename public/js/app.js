@@ -26067,15 +26067,9 @@ jQuery(function ($) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
-=======
-__webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
->>>>>>> 524898fed0acfc61844d1df0683b187829e470c3
+__webpack_require__(/*! /home/molengeek/Projet_selection/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/molengeek/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/molengeek/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })
