@@ -224,12 +224,14 @@ return [
             'icon'        => 'fas fa-home',
         ],
         [
-            'header' => 'Annonce'
+            'header' => 'Annonce',
+            'can'=>'annonce',
         ],
         [
             'text'        => 'Annonces',
             'url'         => 'annonce',
             'icon'        => 'fas fa-microphone',
+            'can'=>'annonce',
         ],
         [
             'header' => 'Évènement'
@@ -283,13 +285,15 @@ return [
             ],
         ],
         [
-            'header' => 'Users'
+            'header' => 'Users',
+            'can'=>'groupe',
         ],
         [
             'text'        => 'Groupes',
             'url'         => 'group',
             'icon'        => 'fas fa-users',
             'icon_color'  => 'yellow',
+            'can'=>'groupe',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -304,18 +308,22 @@ return [
             ],
         ],
         [
-            'header' => 'Formulaire Contact'
+            'header' => 'Formulaire Contact',
+            'can'=>'contact',
         ],
         [
             'text'=>'Reçus',
             'url'=>'contact',
+            'can'=>'contact',
         ],
         [
             'text'=>'Envoyés',
-            'url'=>'mailing'
+            'url'=>'mailing',
+            'can'=>'contact',
         ],
         [
             'text'=>'Envoyer',
+            'can'=>'contact',
             'submenu'=>
             [
                 [
