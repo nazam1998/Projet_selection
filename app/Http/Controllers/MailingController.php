@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Mail;
 
 class MailingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('index');
+        $this->middleware('contact')->only('index');
+    }
     /**
      * Display a listing of the resource.
      *
