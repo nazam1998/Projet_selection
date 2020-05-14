@@ -2,12 +2,12 @@
 
 @section('content')
 
-<form action="{{route('mailing.store')}}" method="POST">
+<form action="{{route('mailing.storeUser')}}" method="POST">
     @csrf 
 
     <div class="form-group">
         <label>Users</label>
-        @error('coach_id')
+        @error('user_id')
         <div class="alert text-danger font-weight-bold">{{ $message }}</div>    
         @enderror
         <select class="form-control" name="user_id">

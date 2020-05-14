@@ -43,37 +43,44 @@ class MailingController extends Controller
     {
         $request->validate([
             'message' => 'required|string',
-            'group_id' => 'required_without: user_id,role_id|integer|nullable',
-            'role_id' => 'required_without: user_id,group_id|integer|nullable',
             'user_id' => 'required|integer|nullable'
+        ]);
+        $mailing = new Mailing();
+        $mailing->message = $request->message;
+        $mailing->user_id = $request->user_id;
+        $user = User::find($request->user_id);
+
+        $nom = $user->nom;
+        $prenom =  $user->prenom;
+        $email =  $user->email;
+        $msg = $request->message;
+        Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
+        $mailing->save();
+        return redirect()->back()->with('msg', 'Message envoyé avec succès');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'message' => 'required|string',
+            'group_id' => 'required_without:role_id|integer|nullable',
+            'role_id' => 'required_without:group_id|integer|nullable',
         ]);
         $mailing = new Mailing();
         $mailing->message = $request->message;
         if ($request->has('role_id')) {
             $mailing->role_id = $request->role_id;
             $users = User::where('role_id', $request->role_id)->get();
-        } else if ($request->has('group_id')) {
+        } else {
             $mailing->group_id = $request->group_id;
             $users = User::where('group_id', $request->group_id)->get();
-        } else {
-            $mailing->user_id = $request->user_id;
-            $user = User::find($request->user_id);
         }
-
-        if ($request->has('user_id')) {
-            $nom = $user->nom;
-            $prenom =  $user->prenom;
-            $email =  $user->email;
+        foreach ($users as $value) {
+            $nom = $value->nom;
+            $prenom =  $value->prenom;
+            $email =  $value->email;
             $msg = $request->message;
             Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
-        } else {
-            foreach ($users as $value) {
-                $nom = $value->nom;
-                $prenom =  $value->prenom;
-                $email =  $value->email;
-                $msg = $request->message;
-                Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
-            }
         }
         $mailing->save();
         return redirect()->back()->with('msg', 'Message envoyé avec succès');
