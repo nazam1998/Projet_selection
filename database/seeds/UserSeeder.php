@@ -29,6 +29,40 @@ class UserSeeder extends Seeder
                 'role_id'=>1,
                 'email'=>'nazam98-be@email.com',
                 'password'=>Hash::make('nazam98-be@email.com')
+            ],
+            [
+                'nom' => 'Primo',
+                'prenom' => 'Nicolas',
+                'genre' => 'Homme',
+                'statut' => 'Célibataire',
+                'commune' => 'Anderlecht',
+                'adresse' => 'Place de la minoterie',
+                'telephone' => '+32 123 77 88 99',
+                'ordinateur' => true,
+                'objectif' => 'Tout réussir',
+                'photo' => 'On va Tous Rater.png',
+                'abo'=>true,
+                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'role_id'=>2,
+                'email'=>'nico@nico.com',
+                'password'=>Hash::make('nico@nico.com')
+            ],
+            [
+                'nom' => 'Fz',
+                'prenom' => 'Elias',
+                'genre' => 'Homme',
+                'statut' => 'Célibataire',
+                'commune' => 'Molenbeek',
+                'adresse' => 'Place de la minoterie',
+                'telephone' => '+32 123 77 88 99',
+                'ordinateur' => true,
+                'objectif' => 'Tout réussir',
+                'photo' => 'On va Tous Rater.png',
+                'abo'=>true,
+                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'role_id'=>5,
+                'email'=>'eli@eli.com',
+                'password'=>Hash::make('eli@eli.com')
             ]
         ]);
     }

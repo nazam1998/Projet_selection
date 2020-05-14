@@ -4,8 +4,8 @@
             <div class="col-sm-5 text-center-mobile">
                 <h3 class="light">Contact us!</h3>
                 <h5 class="light regular">We'd like to know if you have any comments.</h5>
-            <form style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
-                @csrf 
+                <form style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
+                    @csrf
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Nom</label>
                         <input style="width: 100%;" name="nom" type="text">
@@ -44,10 +44,12 @@
         <div class="bottom-footer text-center">
             <div class="text-center">
                 <ul class="social-footer">
-                    <li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i class="fab fa-facebook face"></i></a>
+                    <li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i
+                                class="fab fa-facebook face"></i></a>
                     </li>
                     <li><a href="http://www.twitter.com/codrops"><i class="fab fa-twitter twit"></i></a></li>
-                    <li><a href="https://plus.google.com/101095823814290637419"><i class="fab fa-google-plus-g google"></i></a>
+                    <li><a href="https://plus.google.com/101095823814290637419"><i
+                                class="fab fa-google-plus-g google"></i></a>
                     </li>
                 </ul>
             </div>
