@@ -10,7 +10,7 @@ class Evenement extends Model
     {
         return $this->belongsToMany('App\Interet');
     }
-    public function evenments()
+    public function etapes()
     {
         return $this->hasMany('App\Evenement');
     }

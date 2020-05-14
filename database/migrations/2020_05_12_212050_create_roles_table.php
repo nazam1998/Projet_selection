@@ -26,6 +26,7 @@ class CreateRolesTable extends Migration
             $table->foreign('permission_id')->on('permissions')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
+        
     }
 
     /**
