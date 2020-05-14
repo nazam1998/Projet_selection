@@ -27,7 +27,7 @@ class GroupController extends Controller
     public function create()
     {
         $responsables = User::where('role_id', 2)->get();
-        $coachs = User::where('role_id', 3)->get();
+        $coachs = User::where('role_id', 5)->get();
         return view('backoffice.group.add', compact('coachs', 'responsables'));
     }
 
@@ -63,8 +63,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        $users = $group->users()->get();
-        return view('backoffice.group.show', compact('users', 'group'));
+        return view('backoffice.group.show', compact('group'));
     }
 
     /**
@@ -76,8 +75,8 @@ class GroupController extends Controller
     public function edit(Group $group)
     {
         $responsables = User::where('role_id', 2)->get();
-        $coachs = User::where('role_id', 3)->get();
-        return view('backoffice.group.add', compact('coachs', 'responsables', 'group'));
+        $coachs = User::where('role_id', 5)->get();
+        return view('backoffice.group.edit', compact('coachs', 'responsables', 'group'));
     }
 
     /**
