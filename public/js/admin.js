@@ -104,11 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
-=======
-module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
->>>>>>> 758fdd4882e552eb8a60027055a65cf1ed9ad4f7
 
 
 /***/ })

@@ -10240,8 +10240,6 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 	display: inline-block;
 	padding: 5px 10px;
 	color: white;
-	border: 2px solid transparent;
-	border-radius: 2px;
 	background: transparent;
 	transition: all 0.3s ease;
 }
@@ -10252,6 +10250,7 @@ nav.navbar-fixed-top .navbar-nav > li > a:not(.btn) {
 }
 
 .btn.btn-blue {
+	margin-top: 30px;
 	color: #2a3237;
 	background: #fffce9;
 }
