@@ -22,10 +22,12 @@ class GroupSeeder extends Seeder
             [
                 'nom' => 'Coding Test 11',
                 'responsable_id' => User::inRandomOrder()->where('role_id', 2)->first()->id,
+                'coach_id' => null
             ],
             [
                 'nom' => 'Marketing Labs 20',
                 'responsable_id' => User::inRandomOrder()->where('role_id', 2)->first()->id,
+                'coach_id' => null
             ],
 
         ]);

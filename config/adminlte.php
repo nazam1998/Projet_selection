@@ -313,11 +313,11 @@ return [
                     'url'=>'mailing/personne'
                 ],
                 [
-                    'text'=>'groupe',
-                    'url'=>'mailing/groupe'
+                    'text'=>'Groupe',
+                    'url'=>'mailing/group'
                 ],
                 [
-                    'text'=>'role',
+                    'text'=>'Role',
                     'url'=>'mailing/role'
                 ],
             ],

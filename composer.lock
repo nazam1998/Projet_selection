@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "38735df2c3d096cbeb2b53cd77504851",
@@ -1416,6 +1416,7 @@
                 "datetime",
                 "time"
             ],
+<<<<<<< HEAD
             "funding": [
                 {
                     "url": "https://opencollective.com/Carbon",
@@ -1426,6 +1427,8 @@
                     "type": "tidelift"
                 }
             ],
+=======
+>>>>>>> 758fdd4882e552eb8a60027055a65cf1ed9ad4f7
             "time": "2020-05-12T19:53:34+00:00"
         },
         {
