@@ -39,13 +39,13 @@ class MailingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeUser(Request $request)
     {
         $request->validate([
             'message' => 'required|string',
             'group_id' => 'required_without: user_id,role_id|integer|nullable',
             'role_id' => 'required_without: user_id,group_id|integer|nullable',
-            'user_id' => 'required_without: group_id,role_id|integer|nullable'
+            'user_id' => 'required|integer|nullable'
         ]);
         $mailing = new Mailing();
         $mailing->message = $request->message;

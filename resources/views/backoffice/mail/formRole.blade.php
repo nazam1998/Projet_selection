@@ -10,6 +10,12 @@
         @error('role_id')
         <div class="alert text-danger font-weight-bold">{{ $message }}</div>    
         @enderror
+        @error('user_id')
+        <div class="alert text-danger font-weight-bold">{{ $message }}</div>    
+        @enderror
+        @error('group_id')
+        <div class="alert text-danger font-weight-bold">{{ $message }}</div>    
+        @enderror
         <select class="form-control" name="role_id">
           <option>Choisir un role...</option>
             @foreach ($roles as $item)
