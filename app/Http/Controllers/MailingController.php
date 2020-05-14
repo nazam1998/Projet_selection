@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Mail\MailingMail;
 use App\Mailing;
 use App\User;
+use App\Role;
+use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -120,5 +122,17 @@ class MailingController extends Controller
     public function destroy(Mailing $mailing)
     {
         //
+    }
+    public function role(){
+        $roles = Role::all();
+        return view('backoffice.mail.formRole', compact('roles'));
+    }
+    public function personne(){
+        $users = User::all();
+        return view('backoffice.mail.formPersonne', compact('users'));
+    }
+    public function group(){
+        $groups = Group::all();
+        return view('backoffice.mail.formGroup', compact('groups'));
     }
 }
