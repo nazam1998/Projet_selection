@@ -26067,15 +26067,9 @@ jQuery(function ($) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
-=======
 __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
 module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
->>>>>>> 758fdd4882e552eb8a60027055a65cf1ed9ad4f7
 
 
 /***/ })
