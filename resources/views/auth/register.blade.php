@@ -1,4 +1,4 @@
-@extends('adminlte::register')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
