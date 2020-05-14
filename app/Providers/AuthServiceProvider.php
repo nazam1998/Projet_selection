@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('backoffice', function ($user) {
+            return count($user->role->permissions) != 0;
+        });
     }
 }

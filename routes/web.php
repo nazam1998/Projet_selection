@@ -23,6 +23,8 @@ Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etage.de
 
 Auth::routes();
 
+Route::get('mailing/personne','MailingController@personne');
+
 Route::resource('matiere', 'MatiereController');
 Route::resource('annonce', 'AnnonceController');
 Route::resource('contact', 'ContactController');

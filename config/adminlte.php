@@ -225,16 +225,16 @@ return [
             'icon_color' => 'success',
         ],
         [
-            'header'=>'Annonce'
+            'header' => 'Annonce'
         ],
         [
             'text'        => 'Base de donnée',
             'url'         => 'annonce',
             'icon'        => 'fas fa-home',
             'icon_color' => 'success',
-        ],  
+        ],
         [
-            'header'=>'Évènement'
+            'header' => 'Évènement'
         ],
         [
             'text'        => 'Évènement',
@@ -253,8 +253,9 @@ return [
                     'icon_color' => 'yellow'
                 ],
             ],
-        ],        [
-            'header'=>'Formulaire Insciption'
+        ],
+        [
+            'header' => 'Formulaire Insciption'
         ],
         [
             'text'        => 'Interets',
@@ -292,7 +293,37 @@ return [
                 ],
             ],
         ],
-        
+        [
+            'header' => 'Formulaire Contact'
+        ],
+        [
+            'text'=>'Reçus',
+            'url'=>'contact',
+        ],
+        [
+            'text'=>'Envoyés',
+            'url'=>'mailing'
+        ],
+        [
+            'text'=>'Envoyer',
+            'submenu'=>
+            [
+                [
+                    'text'=>'Personne',
+                    'url'=>'mailing/personne'
+                ],
+                [
+                    'text'=>'groupe',
+                    'url'=>'mailing/groupe'
+                ],
+                [
+                    'text'=>'role',
+                    'url'=>'mailing/role'
+                ],
+            ],
+        ],
+
+
     ],
 
     /*
