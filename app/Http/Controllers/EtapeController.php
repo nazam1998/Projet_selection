@@ -39,8 +39,8 @@ class EtapeController extends Controller
     {
         $request->validate([
             'titre'=>'required|string',
-            'descripition'=>'required|text',
-            'date'=>'required|date|before:tomorrow|after:yesterday'
+            'description'=>'required|string',
+            'date'=>'required|date|after:yesterday'
         ]);
         
         $etape=new Etape();
@@ -85,8 +85,8 @@ class EtapeController extends Controller
     {
         $request->validate([
             'titre'=>'required|string',
-            'descripition'=>'required|text',
-            'date'=>'required|date|before:tomorrow|after:yesterday'
+            'description'=>'required|string',
+            'date'=>'required|date|after:yesterday'
         ]);
         
         $etape->titre=$request->titre;

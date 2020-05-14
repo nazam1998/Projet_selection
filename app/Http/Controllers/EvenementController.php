@@ -39,7 +39,7 @@ class EvenementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required|text',
+            'description' => 'required|string',
             'titre' => 'required|string',
             'etat' => 'required|string',
             'formulaire_id' => 'required|integer'
@@ -90,7 +90,7 @@ class EvenementController extends Controller
     public function update(Request $request, Evenement $evenement)
     {
         $request->validate([
-            'description' => 'required|text',
+            'description' => 'required|string',
             'titre' => 'required|string',
             'etat' => 'required|string',
             'formulaire_id' => 'required|integer'

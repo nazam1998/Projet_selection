@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'WelcomeController@index');
 Route::get('etape/{id}/create', 'EtapeController@create')->name('etape.create');
 Route::get('etape/{etape}/edit', 'EtapeController@edit')->name('etape.edit');
-Route::post('etape/{etape}/{id}/store', 'EtapeController@store')->name('etape.store');
+Route::post('etape/{id}/store', 'EtapeController@store')->name('etape.store');
 Route::put('etape/{etape}/update', 'EtapeController@update')->name('etape.update');
-Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etape.delete');
+Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etape.destroy');
 
 
 Auth::routes();
