@@ -44,7 +44,6 @@ class CreateGroupsTable extends Migration
                 ->references('id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->boolean('valide');
             $table->timestamps();
         });
     }

@@ -283,6 +283,27 @@ return [
             ],
         ],
         [
+            'header' => 'Users'
+        ],
+        [
+            'text'        => 'Groupes',
+            'url'         => 'group',
+            'icon'        => 'fas fa-users',
+            'icon_color'  => 'yellow',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'group',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez un groupe',
+                    'url'  => 'group/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],
+        [
             'header' => 'Formulaire Contact'
         ],
         [
@@ -314,6 +335,7 @@ return [
                 ],
             ],
         ],
+        
 
 
     ],
