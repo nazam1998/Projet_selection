@@ -60,9 +60,8 @@ class RegisterController extends Controller
             'ordinateur' => ['required', 'boolean'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo'=>['required','image'],
-            '',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -82,9 +81,10 @@ class RegisterController extends Controller
         }
 
         return User::create([
-            'nom' => $data['name'],
+            'prenom' => $data['prenim'],
+            'nom' => $data['nom'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            // 'password' => Hash::make($data['password']),
             'genre' => $data['genre'],
             'statut' => $data['statut'],
             'commune' => $data['commune'],

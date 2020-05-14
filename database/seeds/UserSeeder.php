@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
                 'abo'=>true,
                 'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
                 'role_id'=>1,
-                'email'=>'nazam98-be@email.com',
-                'password'=>Hash::make('nazam98-be@email.com')
+                'email'=>'admin@admin',
+                'password'=>Hash::make('admin@admin')
             ],
             [
                 'nom' => 'Primo',
