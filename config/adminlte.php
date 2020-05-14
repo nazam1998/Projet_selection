@@ -222,56 +222,48 @@ return [
             'text'        => 'Accueil',
             'url'         => '/',
             'icon'        => 'fas fa-home',
-            'icon_color' => 'success',
         ],
         [
             'header' => 'Annonce'
         ],
         [
-            'text'        => 'Base de donnée',
+            'text'        => 'Annonces',
             'url'         => 'annonce',
-            'icon'        => 'fas fa-home',
-            'icon_color' => 'success',
+            'icon'        => 'fas fa-microphone',
         ],
         [
             'header' => 'Évènement'
         ],
         [
-            'text'        => 'Évènement',
+            'text'        => 'Évènements',
             'url'         => 'evenement',
-            'icon'        => 'fas fa-fish',
-            'icon_color'  => 'red',
+            'icon'        => 'far fa-calendar-alt',
             'submenu' => [
                 [
                     'text' => 'Base de données',
                     'url'  => 'interet',
-                    'icon_color' => 'cyan'
                 ],
                 [
                     'text' => 'Ajoutez un evenement',
                     'url'  => 'evenement/create',
-                    'icon_color' => 'yellow'
                 ],
             ],
         ],
         [
-            'header' => 'Formulaire Insciption'
+            'header' => 'Formulaire Inscription'
         ],
         [
             'text'        => 'Interets',
             'url'         => 'interet',
             'icon'        => 'fas fa-boxes',
-            'icon_color'  => 'purple',
             'submenu' => [
                 [
                     'text' => 'Base de données',
                     'url'  => 'interet',
-                    'icon_color' => 'cyan'
                 ],
                 [
                     'text' => 'Ajoutez un interet',
                     'url'  => 'interet/create',
-                    'icon_color' => 'yellow'
                 ],
             ],
         ],
@@ -279,17 +271,14 @@ return [
             'text'        => 'Matieres',
             'url'         => 'matiere',
             'icon'        => 'fas fa-language',
-            'icon_color'  => 'purple',
             'submenu' => [
                 [
                     'text' => 'Base de données',
                     'url'  => 'matiere',
-                    'icon_color' => 'cyan'
                 ],
                 [
                     'text' => 'Ajoutez une matiere',
                     'url'  => 'matiere/create',
-                    'icon_color' => 'yellow'
                 ],
             ],
         ],
@@ -310,15 +299,18 @@ return [
             [
                 [
                     'text'=>'Personne',
-                    'url'=>'mailing/personne'
+                    'url'=>'mailing/personne',
+                    'icon'=>'fas fa-grip-lines'
                 ],
                 [
                     'text'=>'Groupe',
-                    'url'=>'mailing/group'
+                    'url'=>'mailing/group',
+                    'icon'=>'fas fa-grip-lines'
                 ],
                 [
                     'text'=>'Role',
-                    'url'=>'mailing/role'
+                    'url'=>'mailing/role',
+                    'icon'=>'fas fa-grip-lines'
                 ],
             ],
         ],
