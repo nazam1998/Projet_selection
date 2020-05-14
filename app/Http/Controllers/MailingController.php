@@ -20,7 +20,7 @@ class MailingController extends Controller
     public function index()
     {
         $mailings = Mailing::all();
-        return view('backoffice.mailing.index', compact('mailings'));
+        return view('backoffice.mail.index', compact('mailings'));
     }
 
     /**
@@ -43,11 +43,10 @@ class MailingController extends Controller
     {
         $request->validate([
             'message' => 'required|string',
-            'role_id' => 'required_without:group_id,user_id|integer',
-            'user_id' => 'required_without:group_id,role_id|integer',
-            'group_id' => 'required_without:role_id,user_id|integer',
+            'group_id' => 'required_without: user_id,role_id|integer|nullable',
+            'role_id' => 'required_without: user_id,group_id|integer|nullable',
+            'user_id' => 'required_without: group_id,role_id|integer|nullable'
         ]);
-
         $mailing = new Mailing();
         $mailing->message = $request->message;
         if ($request->has('role_id')) {
@@ -77,6 +76,7 @@ class MailingController extends Controller
             }
         }
         $mailing->save();
+        return redirect()->back()->with('msg', 'Message envoyé avec succès');
     }
 
     /**
@@ -123,15 +123,18 @@ class MailingController extends Controller
     {
         //
     }
-    public function role(){
+    public function role()
+    {
         $roles = Role::all();
         return view('backoffice.mail.formRole', compact('roles'));
     }
-    public function personne(){
+    public function personne()
+    {
         $users = User::all();
         return view('backoffice.mail.formPersonne', compact('users'));
     }
-    public function group(){
+    public function group()
+    {
         $groups = Group::all();
         return view('backoffice.mail.formGroup', compact('groups'));
     }
