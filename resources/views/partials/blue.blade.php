@@ -3,8 +3,10 @@
         <h1 class="text-center light">Inscription</h1>
         <div class="owl-twitter owl-carousel">
             <div class="item">
-                <form class="row" style="margin-top: 30px;" action="" method="POST">
+                <form class="row" style="margin-top: 30px;" action="{{route('register')}}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="formulaire_id" value="1">
                     <div class="col-md-6">
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Nom</label>
@@ -45,22 +47,38 @@
                             <label style="margin-right: 5px;" class="white" for="">Homme</label>
                             <input style="margin-right: 8px;" name="genre" type="radio">
                             <label style="margin-right: 5px;" class="white" for="">Femme</label>
-                            <input name="genre" type="radio">      
+                            <input name="genre" type="radio">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label style="margin-right: 10px;" class="light" for="">Statut</label>
                             <select name="statut" id="">
-                                <option value=""></option>
+                                <option value="Célibataire">Célibataire</option>
+                                <option value="Divorcé(e)">Divorcé(e)</option>
+                                <option value="Marié(e)">Marié(e)</option>
                             </select>
                         </div>
+
                         <div style="margin-bottom: 10px;">
-                            <label style="margin-right: 10px;" class="light" for="">Abonnement</label>
+                            <label style="margin-right: 10px;" class="light" for="">S'abonner pour découvrir prochains
+                                évènements</label>
                             <input name="abo" type="checkbox">
                         </div>
                         <div style="margin-bottom: 10px;">
-                            <label style="margin-right: 10px;" class="light" for="">Ordinateur</label>
+                            <label style="margin-right: 10px;" class="light" for="">Possède un ordinateur</label>
                             <input name="ordinateur" type="checkbox">
                         </div>
+                    </div>
+                    <div style="margin-bottom: 10px; text-align: center;">
+                        <label style="margin-right: 12px;" class="light" for="">Intérêt: </label>
+                        @foreach ($interets as $item)
+                        @if(!$loop->last)
+                        <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
+                        <input style="margin-right: 8px;" name="interet[]" value="{{$item->id}}" type="checkbox">
+                        @else
+                        <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
+                        <input name="interet[]" type="checkbox" value="{{$item->id}}">
+                        @endif
+                        @endforeach
                     </div>
                     <div class="text-center">
                         <button class="btn btn-blue" type="submit">Send</button>

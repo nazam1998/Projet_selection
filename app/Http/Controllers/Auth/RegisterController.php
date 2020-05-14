@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -57,7 +58,6 @@ class RegisterController extends Controller
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'string', 'max:255'],
-            'ordinateur' => ['required', 'boolean'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo'=>['required','image'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -79,9 +79,9 @@ class RegisterController extends Controller
         }else{
             $role = 7;
         }
-
-        return User::create([
-            'prenom' => $data['prenim'],
+        $image=Storage::disk('public')->put('',$data['photo']);
+        $user= User::create([
+                'prenom' => $data['prenom'],
             'nom' => $data['nom'],
             'email' => $data['email'],
             // 'password' => Hash::make($data['password']),
@@ -91,12 +91,15 @@ class RegisterController extends Controller
             'adresse' => $data['adresse'],
             'email' => $data['email'],
             'telephone' => $data['telephone'],
-            'ordinateur' => $data['ordinateur'],
+            'ordinateur' => isset($data['ordinateur']),
             'objectif' => $data['objectif'],
-            'photo' => $data['photo'],
-            'abo' => $data['abo'],
+            'photo' => $image,
+            'abo' => isset($data['abo']),
             'formulaire_id' => $data['formulaire_id'],
             'role_id' => $role,
+            
         ]);
+        $user->interets()->attach($data['interet']);
+        return $user;
     }
 }

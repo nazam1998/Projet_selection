@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'genre', 'statut', 'commune', 'ordinateur', 'adresse', 'telephone', 'objectif', 'photo', 'abo', 'evenement_id', 'group_id', 'role_id'
+        'nom','prenom', 'email', 'password', 'genre', 'statut', 'commune', 'ordinateur', 'adresse', 'telephone', 'objectif', 'photo', 'abo', 'formulaire_id', 'group_id', 'role_id'
     ];
 
     /**
@@ -52,5 +52,8 @@ class User extends Authenticatable
     }
     public function matieres(){
         return $this->belongsToMany('App\Matiere');
+    }
+    public function interets(){
+        return $this->belongsToMany('App\Interet');
     }
 }

@@ -27,7 +27,7 @@ class EvenementController extends Controller
     public function create()
     {
         $formulaires = Formulaire::all();
-        return view('backoffice.evenement', compact('formulaires'));
+        return view('backoffice.evenement.add', compact('formulaires'));
     }
 
     /**
@@ -74,7 +74,7 @@ class EvenementController extends Controller
     public function edit(Evenement $evenement)
     {
         $formulaires = Formulaire::all();
-        return view('backoffice.evenement', compact('formulaires', 'evenement'));
+        return view('backoffice.evenement.edit', compact('formulaires', 'evenement'));
     }
 
     /**
