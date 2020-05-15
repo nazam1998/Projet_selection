@@ -95,7 +95,7 @@ class RegisterController extends Controller
             'objectif' => $data['objectif'],
             'photo' => $image,
             'abo' => isset($data['abo']),
-            'formulaire_id' => $data['formulaire_id'],
+            'evenement_id' => $data['evenement_id'],
             'role_id' => $role,
             
         ]);

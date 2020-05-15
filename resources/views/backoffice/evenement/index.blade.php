@@ -21,16 +21,19 @@
         <table class="table table-hover text-nowrap">
             <thead>
                 <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
+                    <th>Titre Formulaire</th>
+                    <th>Etat</th>
+                    <th>Date</th>
                     <th>Action: SHOW & EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($evenements as $item)
                 <tr>
-                    <td>{{$item->titre}}</td>
-                    <td>{{$item->description}}</td>
+                    <td>{{$item->formulaire->titre}}</td>
+                    <td>{{$item->etat}}</td>
+                
+                    <td>{{$item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</td>
                     <td class="d-flex"><a href="{{route('evenement.show', $item->id)}}"
                         class="btn btn-primary mr-3">Show</a>
                         <a href="{{route('evenement.edit', $item->id)}}"

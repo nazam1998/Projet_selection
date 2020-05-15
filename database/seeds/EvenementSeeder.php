@@ -1,6 +1,7 @@
 <?php
 
 use App\Formulaire;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class EvenementSeeder extends Seeder
@@ -13,15 +14,15 @@ class EvenementSeeder extends Seeder
     public function run()
     {
         DB::table('evenements')->insert([
-            'description'=>'Venez servir de Coding Test dans la Coding X',
+            'date'=>Carbon::now(),
             'etat'=>'En Cours',
-            'Titre'=>'Séléction Coding X',
+            
             'formulaire_id'=>Formulaire::inRandomOrder()->first()->id
         ]);
         DB::table('evenements')->insert([
-            'description'=>'Venez servir de Coding Test dans la Coding X',
+            'date'=>Carbon::now(),
             'etat'=>'Terminé',
-            'Titre'=>'Séléction Coding X',
+            
             'formulaire_id'=>Formulaire::inRandomOrder()->first()->id
         ]);
     }

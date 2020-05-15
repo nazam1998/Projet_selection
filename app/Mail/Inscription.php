@@ -10,13 +10,14 @@ use Illuminate\Queue\SerializesModels;
 class Inscription extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $titre;
+    public $user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($form,$user)
+    public function __construct($titre,$user,$evenement)
     {
         
     }
