@@ -11,26 +11,18 @@
         @csrf
         @method('PUT')
         <div class="card-body">
-            <div class="form-group row">
-                @error('titre')
-                <div class="alert text-danger font-weight-bold">{{ $message }}</div>
-                @enderror
-                <div class="col-sm-10">
-                    <label>Titre</label>
-                    <input type="text" name="titre" class="form-control @error('titre') is-invalid @enderror"
-                value="@if($errors->first('titre')){{$evenement->titre}}@else{{old('titre',$evenement->titre)}}@endif" id="inputEmail3"
-                        placeholder="Veuillez saisir le titre de l'évènement">
-                </div>
-            </div>
+
+
 
             <div class="form-group row">
                 @error('description')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
                 @enderror
                 <div class="col-sm-10">
-                    <label>Description</label>
-                    <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="inputEmail3"
-                placeholder="Veuillez saisir la description de l'évènement">@if($errors->first('description')){{$evenement->description}}@else{{old('description',$evenement->description)}}@endif</textarea>
+                    <label>Date</label>
+                    <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
+                        value="@if($errors->first('date')){{$evenement->date}}@else{{old('date',$evenement->date)}}@endif"
+                        id="inputEmail3" placeholder="Veuillez saisir la date de l'évènement">
                 </div>
             </div>
             @error('formulaire_id')
@@ -42,10 +34,10 @@
                     <option>Choisir un formulaire...</option>
                     @foreach ($formulaires as $item)
                     @if ($item->id==$evenement->formulaire_id)
-                    
+
                     <option selected value="{{$item->id}}">{{$item->titre}}</option>
                     @else
-                        
+
                     <option value="{{$item->id}}">{{$item->titre}}</option>
                     @endif
                     @endforeach
@@ -53,20 +45,33 @@
             </div>
 
 
+
+            @if (Carbon\Carbon::now() >= $evenement->date)
             @error('etat')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror
             <div class="form-group col-sm-10">
                 <label>Etat</label>
-                <select class="form-control" name="etat">
-                    <option>Choisir un état...</option>
-                  
-                    <option @if($evenement->etat=='Futur')selected @endif value="Futur">Futur</option>
-                    <option @if($evenement->etat=='En Cours')selected @endif value="En Cours">En Cours</option>
-                    <option @if($evenement->etat=='Fini')selected @endif value="Fini">Fini</option>
+                <select class="form-control" name="formulaire_id">
+
+                    @if ('En cours'==$evenement->etat)
+                    <option selected value="En cours">En cours</option>
+                    @else
+                    <option value="En cours">En cours</option>
+                    @endif
+
+                    @if ('Terminé'==$evenement->etat)
+                    <option selected value="Terminé">Terminé</option>
+                    @else
+                    <option value="Terminé">Terminé</option>
+                    @endif
 
                 </select>
             </div>
+            @endif
+
+
+
 
 
         </div>
@@ -80,5 +85,5 @@
 @stop
 
 @section('css')
-  <link rel="stylesheet" href="{{asset('css/admin.css')}}">    
+<link rel="stylesheet" href="{{asset('css/admin.css')}}">
 @endsection

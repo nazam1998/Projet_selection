@@ -29,9 +29,9 @@ class CreateUsersTable extends Migration
             $table->string('photo');
             $table->boolean('abo');
             $table->string('password')->nullable();
-            $table->bigInteger('formulaire_id')->unsigned();
-            $table->foreign('formulaire_id')
-                ->on('formulaires')
+            $table->bigInteger('evenement_id')->unsigned();
+            $table->foreign('evenement_id')
+                ->on('evenements')
                 ->references('id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

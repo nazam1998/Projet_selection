@@ -10,28 +10,20 @@
     <form class="form-horizontal" action="{{route('evenement.store')}}" method="POST">
         @csrf
         <div class="card-body">
-            <div class="form-group row">
-                @error('titre')
-                <div class="alert text-danger font-weight-bold">{{ $message }}</div>
-                @enderror
-                <div class="col-sm-10">
-                    <label>Titre</label>
-                    <input type="text" name="titre" class="form-control @error('titre') is-invalid @enderror"
-                        value="@if($errors->first('titre'))@else{{old('titre')}}@endif" id="inputEmail3"
-                        placeholder="Veuillez saisir le titre de l'évènement">
-                </div>
-            </div>
+
 
             <div class="form-group row">
-                @error('description')
+                @error('date')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
                 @enderror
                 <div class="col-sm-10">
-                    <label>Description</label>
-                    <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="inputEmail3"
-                        placeholder="Veuillez saisir la description de l'évènement">@if($errors->first('description'))@else{{old('description')}}@endif</textarea>
+                    <label>Date</label>
+                    <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
+                        value="@if($errors->first('date'))@else{{old('date')}}@endif" id="inputEmail3"
+                        placeholder="Veuillez saisir la date de l'évènement">
                 </div>
             </div>
+            
             @error('formulaire_id')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror
@@ -44,24 +36,7 @@
                     @endforeach
                 </select>
             </div>
-
-
-            @error('etat')
-            <div class="alert text-danger font-weight-bold">{{ $message }}</div>
-            @enderror
-            <div class="form-group col-sm-10">
-                <label>Etat</label>
-                <select class="form-control" name="etat">
-                    <option>Choisir un état...</option>
-
-                    <option value="Futur">Futur</option>
-                    <option value="En Cours">En Cours</option>
-                    <option value="Fini">Fini</option>
-
-                </select>
-            </div>
-
-
+            
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -73,5 +48,5 @@
 @stop
 
 @section('css')
-  <link rel="stylesheet" href="{{asset('css/admin.css')}}">    
+<link rel="stylesheet" href="{{asset('css/admin.css')}}">
 @endsection
