@@ -37,12 +37,14 @@ class NoteController extends Controller
         $request->validate([
             'titre' => 'required|string',
             'note' => 'required|string',
+            'date' => 'required|date',
 
         ]);
 
         $note = new Note();
         $note->titre = $request->titre;
         $note->note = $request->note;
+        $note->date = $request->date;
         $note->user_id = $user;
         $note->save();
         return redirect()->back()->with('msg', 'Note ajoutée avec succés');
@@ -66,9 +68,10 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note, $user)
+    public function edit($id)
     {
-        return view('backoffice.note.edit', compact('note', 'user'));
+        $note = Note::find($id);
+        return view('backoffice.note.edit', compact('note'));
     }
 
     /**
@@ -78,19 +81,21 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note, $user)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'titre' => 'required|string',
             'note' => 'required|string',
+            'date' => 'required|date',
 
         ]);
 
+        $note = Note::find($id);
         $note->titre = $request->titre;
         $note->note = $request->note;
-        $note->user_id = $user;
+        $note->date = $request->date;
         $note->save();
-        return redirect()->back()->with('msg', 'Note modifiée avec succés');
+        return redirect()->route('suivi.show', $note->user_id)->with('msg', 'Note modifiée avec succés');
     }
 
     /**
@@ -99,8 +104,9 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
+    public function destroy($id)
     {
+        $note = Note::find($id);
         $note->delete();
         return redirect()->back()->with('msg', 'Note supprimée avec succés');
     }
