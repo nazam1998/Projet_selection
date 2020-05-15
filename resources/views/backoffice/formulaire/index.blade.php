@@ -22,23 +22,23 @@
             <thead>
                 <tr>
                     <th>Titre</th>
-                    <th>Intérêts</th>
-                    <th>Action: EDIT & DELETE</th>
+                    <th class="pl-5">Intérêts</th>
+                    <th class="text-center">Action: EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($formulaires as $item)
                 <tr>
                     <td>{{$item->titre}}</td>
-                    <td>
+                    <td class="pr-2">
                         <ul class="row">
                             @foreach ($item->interets as $interet)
                         <li class="col-lg-5">{{$interet->nom}}</li>
                             @endforeach
                         </ul>
                     </td>
-                    <td class="d-flex"><a href="{{route('formulaire.edit', $item->id)}}"
-                            class="btn btn-warning mr-3">Edit</a>
+                    <td class="d-flex justify-content-center"><a href="{{route('formulaire.edit', $item->id)}}"
+                            class="btn btn-warning mr-2">Edit</a>
                         <form action="{{route('formulaire.destroy', $item->id)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

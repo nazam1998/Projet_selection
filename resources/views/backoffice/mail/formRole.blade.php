@@ -25,11 +25,11 @@
       </div>
 
         <div class="form-group">
-            <label class="light" for="">Message</label>
+            <label class="text-dark" for="">Message</label>
             <textarea class="form-control" name="message"></textarea>
         </div>
         <div style="margin-top: 15px;" class="text-center">
-            <button class="btn btn-primary" type="submit">Send</button>
+            <button class="btn btnMail text-white" type="submit">Send</button>
         </div>
 </form>
 

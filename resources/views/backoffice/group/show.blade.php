@@ -6,7 +6,7 @@
 
 
 <table class="table table-bordered table-hover shadow">
-    <thead>
+    <thead class="headShow text-white">
         <tr>
             <th>ID</th>
             <th>Nom</th>
@@ -14,7 +14,7 @@
             <th>Role</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="bg-white">
         <tr>
             <td>{{$group->responsable->id}}</td>
             <td>{{$group->responsable->nom}}</td>
