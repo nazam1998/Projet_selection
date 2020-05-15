@@ -29,11 +29,10 @@
                 <div class="col-sm-10">
                     <label>Date</label>
                     <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
-                value="@if($errors->first('date')){{$etape->date}}@else{{old('date',$etape->date)}}@endif" id="inputEmail3"
+                value="@if($errors->first('date')){{$etape->inputDate}}@else{{old('date',$etape->date->format('y-m-d'))}}@endif" id="inputEmail3"
                         placeholder="Veuillez saisir le date de l'évènement">
                 </div>
             </div>
-
             <div class="form-group row">
                 @error('description')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>

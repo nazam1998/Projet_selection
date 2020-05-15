@@ -12,6 +12,7 @@ class Inscription extends Mailable
     use Queueable, SerializesModels;
     public $titre;
     public $user;
+    public $evenement;
     /**
      * Create a new message instance.
      *
