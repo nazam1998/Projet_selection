@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'objectif' => 'Tout réussir',
                 'photo' => 'On va Tous Rater.png',
                 'abo'=>true,
-                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
                 'role_id'=>1,
                 'email'=>'admin@admin',
                 'password'=>Hash::make('admin@admin')
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 'objectif' => 'Tout réussir',
                 'photo' => 'On va Tous Rater.png',
                 'abo'=>true,
-                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
                 'role_id'=>2,
                 'email'=>'nico@nico.com',
                 'password'=>Hash::make('nico@nico.com')
@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
                 'objectif' => 'Tout réussir',
                 'photo' => 'On va Tous Rater.png',
                 'abo'=>true,
-                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
                 'role_id'=>5,
                 'email'=>'eli@eli.com',
                 'password'=>Hash::make('eli@eli.com')
@@ -76,7 +76,7 @@ class UserSeeder extends Seeder
                 'objectif' => 'Tout réussir',
                 'photo' => 'On va Tous Rater.png',
                 'abo'=>true,
-                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
                 'role_id'=>5,
                 'email'=>'max@max.com',
                 'password'=>Hash::make('max@max.com')
@@ -93,7 +93,7 @@ class UserSeeder extends Seeder
                 'objectif' => 'Tout réussir',
                 'photo' => 'On va Tous Rater.png',
                 'abo'=>true,
-                'formulaire_id'=>App\Formulaire::inRandomOrder()->first()->id,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
                 'role_id'=>2,
                 'email'=>'zak@zak.com',
                 'password'=>Hash::make('zak@zak.com')

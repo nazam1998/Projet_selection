@@ -16,7 +16,7 @@ class StudentController extends Controller
         return view('backoffice.suivi.student', compact('users'));
     }
 
-    // Permet de voir le suivi d'un student précis
+    // Permet de voir le suivi d'un student précis et pouvoir lui écrire une note
     
     public function show($id)
     {

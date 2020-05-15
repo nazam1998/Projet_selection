@@ -18,6 +18,14 @@ class CreateInteretsTable extends Migration
             $table->string('nom');
             $table->timestamps();
         });
+        Schema::create('interet_user', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('interet_id');
+            $table->foreign('user_id')->on('users')->references('id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('interet_id')->on('interets')->references('id')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**

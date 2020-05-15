@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($contacts as $item)
+                @foreach ($contact as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
@@ -43,3 +43,7 @@
 </div>
 
 @stop
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+@endsection

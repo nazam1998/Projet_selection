@@ -37,10 +37,12 @@ class EtapeController extends Controller
      */
     public function store(Request $request,$id)
     {
+        $evenement=Evenement::find($id);
+        $min=$evenement->date.' -1 day';
         $request->validate([
             'titre'=>'required|string',
-            'descripition'=>'required|text',
-            'date'=>'required|date|before:tomorrow|after:yesterday'
+            'description'=>'required|string',
+            'date'=>'required|date|after:'.$min
         ]);
         
         $etape=new Etape();
@@ -83,10 +85,12 @@ class EtapeController extends Controller
      */
     public function update(Request $request, Etape $etape)
     {
+        $evenement=Evenement::find($etape->evenement_id);
+        $min=$evenement->date.' -1 day';
         $request->validate([
             'titre'=>'required|string',
-            'descripition'=>'required|text',
-            'date'=>'required|date|before:tomorrow|after:yesterday'
+            'description'=>'required|string',
+            'date'=>'required|date|after:'.$min
         ]);
         
         $etape->titre=$request->titre;

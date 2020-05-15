@@ -21,7 +21,9 @@
                 @can('backoffice')
                 <li><a href="{{route('home')}}">Backoffice</a></li>
                 @endcan
+                @guest    
                 <li><a href="{{route('login')}}" class="">Sign in</a></li>
+                @endguest
             </ul>
         </div>
         <!-- /.navbar-collapse -->

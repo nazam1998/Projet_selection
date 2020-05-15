@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Evenement;
 use App\Formulaire;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -27,7 +28,7 @@ class EvenementController extends Controller
     public function create()
     {
         $formulaires = Formulaire::all();
-        return view('backoffice.evenement', compact('formulaires'));
+        return view('backoffice.evenement.add', compact('formulaires'));
     }
 
     /**
@@ -39,16 +40,21 @@ class EvenementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required|text',
-            'titre' => 'required|string',
-            'etat' => 'required|string',
-            'formulaire' => 'required|integer'
+            'date' => 'required|date',
+            'formulaire_id' => 'required|integer'
         ]);
 
+
         $evenement = new Evenement();
-        $evenement->titre = $request->titre;
-        $evenement->etat = $request->etat;
-        $evenement->description = $request->description;
+        $evenement->date = $request->date;
+        $date = new Carbon();
+        if ($evenement->date->isToday()) {
+            $evenement->etat = 'En cours';
+        } else if ($date < $evenement->date) {
+            $evenement->etat = 'Futur';
+        } else {
+            $evenement->etat = 'Terminé';
+        }
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
@@ -74,7 +80,7 @@ class EvenementController extends Controller
     public function edit(Evenement $evenement)
     {
         $formulaires = Formulaire::all();
-        return view('backoffice.evenement', compact('formulaires', 'evenement'));
+        return view('backoffice.evenement.edit', compact('formulaires', 'evenement'));
     }
 
     /**
@@ -86,18 +92,29 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
+        $date = new Carbon();
         $request->validate([
-            'description' => 'required|text',
-            'titre' => 'required|string',
-            'etat' => 'required|string',
-            'formulaire' => 'required|integer'
+            'date' => 'required|date',
+            'formulaire_id' => 'required|integer',
+            'etat'=>($date >= $request->date?'required|string':'nullable')
         ]);
-        $evenement->titre = $request->titre;
-        $evenement->etat = $request->etat;
-        $evenement->description = $request->description;
+
+
+        $evenement->date = $request->date;
+        $date = new Carbon();
+
+        if ($date >= $evenement->date) {
+            $evenement->etat=$evenement->etat;
+        } else if ($evenement->date->isToday()) {
+            $evenement->etat = 'En cours';
+        } else if ($date < $evenement->date) {
+            $evenement->etat = 'Futur';
+        } else {
+            $evenement->etat = 'Terminé';
+        }
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
-        return redirect()->route('evenement.index')->with('msg', 'Evènement modifié avec succès');
+        return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
     }
 
     /**

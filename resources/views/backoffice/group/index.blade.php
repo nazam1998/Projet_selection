@@ -32,7 +32,7 @@
                 <tr>
                     <td>{{$item->nom}}</td>
                     <td>{{$item->responsable->nom}}</td>
-                    <td>@if($item->coach != null){{$item->coach->nom}}@endif</td>
+                    <td>@if($item->coach != null){{$item->coach->nom}}@else/@endif</td>
                     <td class="d-flex"><a href="{{route('group.show', $item->id)}}"
                         class="btn btn-primary mr-3">Show</a>
                         <a href="{{route('group.edit', $item->id)}}"
@@ -51,3 +51,6 @@
 </div>
 
 @stop
+@section('css')
+  <link rel="stylesheet" href="{{asset('css/admin.css')}}">    
+@endsection

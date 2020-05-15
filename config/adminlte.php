@@ -208,11 +208,7 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
+        
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -222,56 +218,66 @@ return [
             'text'        => 'Accueil',
             'url'         => '/',
             'icon'        => 'fas fa-home',
-            'icon_color' => 'success',
         ],
         [
-            'header' => 'Annonce'
+            'header' => 'Annonce',
+            'can'=>'annonce',
         ],
         [
-            'text'        => 'Base de donnée',
+            'text'        => 'Annonces',
             'url'         => 'annonce',
-            'icon'        => 'fas fa-home',
-            'icon_color' => 'success',
+            'icon'        => 'fas fa-microphone',
+            'can'=>'annonce',
         ],
         [
             'header' => 'Évènement'
         ],
         [
-            'text'        => 'Évènement',
+            'text'        => 'Évènements',
             'url'         => 'evenement',
-            'icon'        => 'fas fa-fish',
-            'icon_color'  => 'red',
+            'icon'        => 'far fa-calendar-alt',
             'submenu' => [
                 [
                     'text' => 'Base de données',
-                    'url'  => 'interet',
-                    'icon_color' => 'cyan'
+                    'url'  => 'evenement',
                 ],
                 [
                     'text' => 'Ajoutez un evenement',
                     'url'  => 'evenement/create',
-                    'icon_color' => 'yellow'
                 ],
             ],
         ],
         [
-            'header' => 'Formulaire Insciption'
+            'header' => 'Formulaire Inscription'
+        ],
+        
+        [
+            'text'        => 'Formulaires',
+            'url'         => 'formulaire',
+            'icon'        => 'fas fa-marker',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'formulaire',
+                ],
+                [
+                    'text' => 'Ajoutez un formulaire',
+                    'url'  => 'formulaire/create',
+                ],
+            ],
         ],
         [
             'text'        => 'Interets',
             'url'         => 'interet',
             'icon'        => 'fas fa-boxes',
-            'icon_color'  => 'purple',
             'submenu' => [
                 [
                     'text' => 'Base de données',
                     'url'  => 'interet',
-                    'icon_color' => 'cyan'
                 ],
                 [
                     'text' => 'Ajoutez un interet',
                     'url'  => 'interet/create',
-                    'icon_color' => 'yellow'
                 ],
             ],
         ],
@@ -279,28 +285,27 @@ return [
             'text'        => 'Matieres',
             'url'         => 'matiere',
             'icon'        => 'fas fa-language',
-            'icon_color'  => 'purple',
             'submenu' => [
                 [
                     'text' => 'Base de données',
                     'url'  => 'matiere',
-                    'icon_color' => 'cyan'
                 ],
                 [
                     'text' => 'Ajoutez une matiere',
                     'url'  => 'matiere/create',
-                    'icon_color' => 'yellow'
                 ],
             ],
         ],
         [
-            'header' => 'Users'
+            'header' => 'Users',
+            'can'=>'groupe',
         ],
         [
             'text'        => 'Groupes',
             'url'         => 'group',
             'icon'        => 'fas fa-users',
             'icon_color'  => 'yellow',
+            'can'=>'groupe',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -333,26 +338,32 @@ return [
         [
             'text'=>'Reçus',
             'url'=>'contact',
+            'can'=>'contact',
         ],
         [
             'text'=>'Envoyés',
-            'url'=>'mailing'
+            'url'=>'mailing',
+            'can'=>'contact',
         ],
         [
             'text'=>'Envoyer',
+            'can'=>'contact',
             'submenu'=>
             [
                 [
                     'text'=>'Personne',
-                    'url'=>'mailing/personne'
+                    'url'=>'mailing/personne',
+                    'icon'=>'fas fa-grip-lines'
                 ],
                 [
                     'text'=>'Groupe',
-                    'url'=>'mailing/group'
+                    'url'=>'mailing/group',
+                    'icon'=>'fas fa-grip-lines'
                 ],
                 [
                     'text'=>'Role',
-                    'url'=>'mailing/role'
+                    'url'=>'mailing/role',
+                    'icon'=>'fas fa-grip-lines'
                 ],
             ],
         ],
