@@ -59,8 +59,8 @@ class MailingController extends Controller
         $prenom =  $user->prenom;
         $email =  $user->email;
         $msg = $request->message;
-        Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
         $mailing->save();
+        Mail::to($email)->send(new MailingMail($nom, $prenom, $msg));
         return redirect()->back()->with('msg', 'Message envoyé avec succès');
     }
 
