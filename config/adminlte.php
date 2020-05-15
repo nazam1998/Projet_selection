@@ -258,7 +258,7 @@ return [
         [
             'text'        => 'Formulaires',
             'url'         => 'formulaire',
-            'icon'        => 'fas fa-boxes',
+            'icon'        => 'fas fa-marker',
             'submenu' => [
                 [
                     'text' => 'Base de données',
