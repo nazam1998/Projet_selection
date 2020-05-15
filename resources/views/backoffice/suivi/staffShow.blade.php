@@ -55,7 +55,10 @@
                     <td>{{$item->titre}}</td>
                     <td>{{$item->note}}</td>
                     <td>{{$item->date}}</td>
-                    <td class="d-flex"><a href="{{route('note.edit', $item->id)}}"
+                    <td class="d-flex">
+                        {{-- <a href="{{route('note.show', $item->id)}}"
+                        class="btn btn-info mr-3">Show</a> --}}
+                        <a href="{{route('note.edit', $item->id)}}"
                         class="btn btn-warning mr-3">Edit</a>
                     <form action="{{route('note.destroy', $item->id)}}" method="POST">@csrf
                         @method('DELETE')
