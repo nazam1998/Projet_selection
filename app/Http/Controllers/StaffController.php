@@ -19,7 +19,7 @@ class StaffController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('backoffice.suivi.staffShow', compact('user'));
+        return view('backoffice.suivi.staffShow', compact('user', 'notes'));
     }
 
 

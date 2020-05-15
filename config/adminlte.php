@@ -320,8 +320,20 @@ return [
             ],
         ],
         [
-            'header' => 'Formulaire Contact',
-            'can'=>'contact',
+            'text'        => 'Suivi du staff',
+            'url'         => 'suivi',
+            'icon'        => 'fas fa-users',
+            'icon_color'  => 'yellow',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'suivi',
+                    'icon_color' => 'cyan'
+                ],
+            ],
+        ],
+        [
+            'header' => 'Formulaire Contact'
         ],
         [
             'text'=>'Reçus',
