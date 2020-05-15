@@ -11,7 +11,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $evenements = Evenement::latest();
+        $evenements = Evenement::latest()->where('etat','En cours')->whereHas('etapes')->get();
         $annonce = Annonce::first();
         $interets=Interet::all();
         return view('welcome',compact('interets','annonce','evenements'));

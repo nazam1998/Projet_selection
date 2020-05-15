@@ -37,5 +37,13 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
+Route::resource('suivi', 'StaffController');
+
+Route::get('note/{id}/create', 'NoteController@create')->name('note.create');
+Route::get('note/{id}/edit', 'NoteController@edit')->name('note.edit');
+Route::post('note/{id}/store', 'NoteController@store')->name('note.store');
+Route::post('note/{id}/show', 'NoteController@show')->name('note.show');
+Route::post('note/{id}/update', 'NoteController@update')->name('note.update');
+Route::delete('note/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
