@@ -23,8 +23,8 @@
                 <tr>
                     <th>Texte</th>
                     <th>Date</th>
-                    <th>Afficher</th>
-                    <th>Action: EDIT</th>
+                    <th class="text-center">Afficher</th>
+                    <th class="text-center">Action: EDIT</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,10 +32,9 @@
                 <tr>
                     <td>{{$item->texte}}</td>
                     <td>{{$item->date->format('d/m/Y')}}</td>
-                    <td><i class="fas @if($item->afficher)fa-check text-success @else fa-times text-danger @endif"></i></td>
-                    <td class="d-flex"><a href="{{route('annonce.edit', $item->id)}}"
+                    <td class="text-center"><i class="fas @if($item->afficher)fa-check text-success @else fa-times text-danger @endif"></i></td>
+                    <td class="text-center"><a href="{{route('annonce.edit', $item->id)}}"
                             class="btn btn-warning mr-3">Edit</a>
-                        
                     </td>
                 </tr>
                 @endforeach

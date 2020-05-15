@@ -26,6 +26,7 @@ Auth::routes();
 Route::get('mailing/personne','MailingController@personne');
 Route::get('mailing/role','MailingController@role');
 Route::get('mailing/group','MailingController@group');
+Route::post('mailing/StoreUser', 'MailingController@storeUser')->name('mailing.storeUser');
 
 Route::resource('matiere', 'MatiereController');
 Route::resource('mailing', 'MailingController');

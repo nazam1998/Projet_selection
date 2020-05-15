@@ -24,7 +24,7 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
-                    <th>Message</th>
+                    <th class="text-center">Message</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +33,7 @@
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td>{{$item->message}}</td>
+                    <td class="text-center">{{$item->message}}</td>
                 </tr>
                 @endforeach
             </tbody>

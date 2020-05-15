@@ -21,10 +21,10 @@
                         placeholder="Veuillez saisir un titre">
                 </div>
             </div>
-            <label for="">Intérêts</label>
-            <div class="form-group row">
+            <label class="mt-2" for="">Intérêts</label>
+            <div class="form-group row mt-2">
                 @foreach ($interets as $item)
-                <div class="form-check col-lg-4">
+                <div class="form-check col-lg-2">
                     <input class="form-check-input" type="checkbox" name="interet[]" value="{{$item->id}}">
                     <label class="form-check-label">{{$item->nom}}</label>
                 </div>

@@ -38,14 +38,14 @@
                 <div class="form-check mx-auto">
                     @if ($annonce->afficher)
 
-                    <input checked class="form-check-input" type="checkbox" name="afficher">
+                    <input style="margin-top: 37px;" checked class="form-check-input" type="checkbox" name="afficher">
 
                     @else
 
-                    <input class="form-check-input" type="checkbox" name="afficher">
+                    <input style="margin-top: 37px;" class="form-check-input" type="checkbox" name="afficher">
 
                     @endif
-                    <label class="form-check-label">Afficher</label>
+                    <label style="margin-top: 30px;" class="form-check-label">Afficher</label>
                 </div>
                 @error('afficher')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
