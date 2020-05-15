@@ -22,17 +22,17 @@
             <thead>
                 <tr>
                     <th>Nom</th>
-                    <th>Image</th>
-                    <th>Action: EDIT & DELETE</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Action: EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($matieres as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td><img src="{{'storage/'.$item->image}}" width="8%" alt=""></td>
-                    <td class="d-flex"><a href="{{route('matiere.edit', $item->id)}}"
-                            class="btn btn-warning mr-3">Edit</a>
+                    <td width="40%" class="text-center"><img src="{{'storage/'.$item->image}}" width="8%" alt=""></td>
+                    <td class="d-flex justify-content-center"><a href="{{route('matiere.edit', $item->id)}}"
+                            class="btn btn-warning mr-2">Edit</a>
                         <form action="{{route('matiere.destroy', $item->id)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

@@ -22,15 +22,15 @@
             <thead>
                 <tr>
                     <th>Nom</th>
-                    <th>Action: EDIT & DELETE</th>
+                    <th class="text-center">Action: EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($interet as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td class="d-flex"><a href="{{route('interet.edit', $item->id)}}"
-                            class="btn btn-warning mr-3">Edit</a>
+                    <td class="d-flex justify-content-center"><a href="{{route('interet.edit', $item->id)}}"
+                            class="btn btn-warning mr-2">Edit</a>
                         <form action="{{route('interet.destroy', $item->id)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

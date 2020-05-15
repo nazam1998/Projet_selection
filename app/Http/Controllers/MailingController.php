@@ -53,6 +53,8 @@ class MailingController extends Controller
         $mailing = new Mailing();
         $mailing->message = $request->message;
         $mailing->user_id = $request->user_id;
+        $mailing->group_id = null;
+        $mailing->role_id = null;
         $user = User::find($request->user_id);
 
         $nom = $user->nom;
@@ -75,10 +77,14 @@ class MailingController extends Controller
         $mailing->message = $request->message;
         if ($request->has('role_id')) {
             $mailing->role_id = $request->role_id;
+            $mailing->group_id = null;
+            $mailing->user_id = null;
             $users = User::where('role_id', $request->role_id)->get();
         } else {
             $mailing->group_id = $request->group_id;
-            $users = User::where('group_id', $request->group_id)->get();
+            $mailing->role_id = null;
+            $mailing->user_id = null;
+            $users =Group::find($request->group_id)->users;
         }
         foreach ($users as $value) {
             $nom = $value->nom;

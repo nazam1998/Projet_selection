@@ -23,10 +23,10 @@
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Groupe</th>
-                    <th>Message</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Role</th>
+                    <th class="text-center">Groupe</th>
+                    <th class="text-center">Message</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,34 +36,39 @@
                     <td>
                         @if ($item->user_id!=null)
                         {{$item->user->nom}}
-
+                        @else
+                            /
                         @endif
                     </td>
                     <td>
                         @if ($item->user_id!=null)
                         {{$item->user->prenom}}
-
+                        @else
+                        /
                         @endif
                     </td>
-                    <td>
+                    <td class="text-center">
                         @if ($item->user_id!=null)
                         {{$item->user->email}}
-
+                        @else
+                        /
                         @endif
                     </td>
-                    <td>
-                        @if ($item->coach_id!=null)
-                        {{$item->coach->nom.' '.$item->coach->prenom}}
-
+                    <td class="text-center">
+                        @if ($item->role_id!=null)
+                        {{$item->role->nom}}
+                        @else
+                        /
                         @endif
                     </td>
-                    <td>
-                        @if ($item->coach_id!=null)
-                        {{$item->coach->nom.' '.$item->coach->prenom}}
-
+                    <td class="text-center">
+                        @if ($item->group_id!=null)
+                        {{$item->group->nom}}
+                        @else
+                        /
                         @endif
                     </td>
-                    <td>{{$item->message}}</td>
+                    <td class="text-center">{{$item->message}}</td>
                 </tr>
                 @endforeach
             </tbody>

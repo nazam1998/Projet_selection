@@ -22,21 +22,21 @@
             <thead>
                 <tr>
                     <th>Nom du groupe</th>
-                    <th>Responsable appartenant à ce groupe</th>
-                    <th>Coach appartenant à ce groupe</th>
-                    <th>Action: SHOW & EDIT & DELETE</th>
+                    <th class="text-center">Responsable appartenant à ce groupe</th>
+                    <th class="text-center">Coach appartenant à ce groupe</th>
+                    <th class="text-center">Action: SHOW & EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($groups as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td>{{$item->responsable->nom}}</td>
-                    <td>@if($item->coach != null){{$item->coach->nom}}@else/@endif</td>
-                    <td class="d-flex"><a href="{{route('group.show', $item->id)}}"
-                        class="btn btn-primary mr-3">Show</a>
+                    <td class="text-center">{{$item->responsable->nom}}</td>
+                    <td class="text-center">@if($item->coach != null){{$item->coach->nom}}@else/@endif</td>
+                    <td class="d-flex justify-content-center"><a href="{{route('group.show', $item->id)}}"
+                        class="btn btn-primary">Show</a>
                         <a href="{{route('group.edit', $item->id)}}"
-                            class="btn btn-warning mr-3">Edit</a>
+                            class="btn btn-warning mx-2">Edit</a>
                         <form action="{{route('group.destroy', $item->id)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
