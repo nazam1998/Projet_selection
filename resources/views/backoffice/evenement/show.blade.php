@@ -32,7 +32,7 @@
             <td>{{ $item->id }}</td>
             <td>{{$item->titre}}</td>
             <td>{{ $item->description }}</td>
-            <td>{{ $item->date->format('d/m')}}</td>
+            <td>{{ $item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</td>
             <td class="d-flex justify-content-center">
                 <a href="{{route('etape.edit', $item->id)}}"
                     class="btn btn-warning mr-2">Edit</a>

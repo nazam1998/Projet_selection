@@ -12,3 +12,19 @@ require('./wow.min.js');
 require('./typewriter.js');
 require('./jquery.onepagenav.js');
 require('./main.js');
+
+var banniere = document.getElementById('banniere');
+var texte = banniere.firstElementChild;
+var tailleTexte = banniere.scrollWidth;
+
+function defile() {
+    var pos = texte.style.marginLeft.replace('px', '');
+    if (pos-100 < -tailleTexte) {
+        pos = 1200;
+    }
+    pos -= 1;
+    texte.style.marginLeft = pos + "px";
+
+    setTimeout(defile, 1);
+}
+defile();

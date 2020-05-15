@@ -58,7 +58,7 @@ class FormulaireController extends Controller
      */
     public function show(Formulaire $formulaire)
     {
-        //
+        
     }
 
     /**

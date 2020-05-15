@@ -18,9 +18,11 @@ class Inscription extends Mailable
      *
      * @return void
      */
-    public function __construct($titre,$user,$evenement)
+    public function __construct($titre, $user, $evenement)
     {
-        
+        $this->titre = $titre;
+        $this->user = $user;
+        $this->evenement = $evenement;
     }
 
     /**
@@ -30,6 +32,6 @@ class Inscription extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('admin@email.com')->view('mails.inscription', compact('titre', 'user', 'evenement'));
     }
 }

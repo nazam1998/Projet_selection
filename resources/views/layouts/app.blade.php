@@ -16,8 +16,8 @@
     <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="img/favicons/manifest.json">
-	<link rel="shortcut icon" href="img/favicons/favicon.ico">
-	<link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="shortcut icon" href="img/favicons/favicon.ico">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <meta name="msapplication-TileColor" content="#00a8ff">
     <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -25,7 +25,8 @@
 </head>
 
 <body>
-	@yield('content')
+    
+    @yield('content')
 
     <div class="preloader">
         <img src="img/loader.gif" alt="Preloader image">
@@ -35,9 +36,10 @@
         </ul>
         <a href="#" class="close-link"><i class="arrow_up"></i></a>
     </div>
-	<!-- Scripts -->
-	
-	<script src="{{asset('js/app.js')}}"></script>
+
+    <!-- Scripts -->
+
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 
 </html>

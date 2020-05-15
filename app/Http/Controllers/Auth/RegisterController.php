@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'adresse' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'string', 'max:255'],
             'objectif' => ['required', 'string', 'max:255'],
-            'photo'=>['required','image'],
+            'photo' => ['required', 'image'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -71,17 +71,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data, $id)
     {
 
-        if(count(User::all()) == 0){
+        if (count(User::all()) == 0) {
             $role = 1;
-        }else{
+        } else {
             $role = 7;
         }
-        $image=Storage::disk('public')->put('',$data['photo']);
-        $user= User::create([
-                'prenom' => $data['prenom'],
+
+        $image = Storage::disk('public')->put('', $data['photo']);
+        $user = User::create([
+            'prenom' => $data['prenom'],
             'nom' => $data['nom'],
             'email' => $data['email'],
             // 'password' => Hash::make($data['password']),
@@ -97,7 +98,7 @@ class RegisterController extends Controller
             'abo' => isset($data['abo']),
             'evenement_id' => $data['evenement_id'],
             'role_id' => $role,
-            
+
         ]);
         $user->interets()->attach($data['interet']);
         return $user;

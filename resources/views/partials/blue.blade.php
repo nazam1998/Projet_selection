@@ -2,8 +2,19 @@
     <div class="container">
         <h1 class="text-center light">Inscription</h1>
         <div class="owl-twitter owl-carousel">
-            <div class="item">
-                <form class="row" style="margin-top: 30px;" action="{{route('register')}}" method="POST"
+            @if (count($form)>1)
+            <div class="item" id="formulaire">
+                    @foreach ($form as $item)
+            <a href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre}}</a>
+                    @endforeach
+            </div>
+            @elseif(count($form)==1)
+            <div class="item" id="formulaire">
+                @if (session()->has('msg'))
+            <p class="light text-center">{{session('msg')}}</p>
+                @endif
+            <h3 class="light text-center">{{$form->first()->formulaire->titre}}</h3>
+                <form class="row" style="margin-top: 30px;" action="{{route('inscription',$form->first()->id)}}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="formulaire_id" value="1">
@@ -70,7 +81,7 @@
                     </div>
                     <div style="margin-bottom: 10px; text-align: center;">
                         <label style="margin-right: 12px;" class="light" for="">Intérêt: </label>
-                        @foreach ($interets as $item)
+                        @foreach ($form->first()->formulaire->interets as $item)
                         @if(!$loop->last)
                         <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
                         <input style="margin-right: 8px;" name="interet[]" value="{{$item->id}}" type="checkbox">
@@ -85,30 +96,9 @@
                     </div>
                 </form>
             </div>
-            <div class="item text-center">
-                <form style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
-                    @csrf
-                    <div style="margin-bottom: 10px;">
-                        <label class="light" for="">Nom</label>
-                        <input style="width: 100%;" name="nom" type="text">
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label class="light" for="">Prenom</label>
-                        <input style="width: 100%;" name="prenom" type="text">
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label class="light" for="">Email</label>
-                        <input style="width: 100%;" name="email" type="text">
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label class="light" for="">Message</label>
-                        <input style="width: 100%;" name="message" type="text">
-                    </div>
-                    <div style="margin-top: 15px;" class="text-center">
-                        <button class="btn btn-blue" type="submit">Send</button>
-                    </div>
-                </form>
-            </div>
+            @else
+                <h3 class="light text-center">Désolé, il n'y a pas d'évènement actuellement</h3>
+            @endif
         </div>
     </div>
 </section>
