@@ -21,7 +21,7 @@ class CandidatController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', 7)->paginate(10);
+        $users = User::withTrashed()->where('role_id', 7)->paginate(10);
         return view('backoffice.candidat.index', compact('users'));
     }
 
@@ -70,7 +70,7 @@ class CandidatController extends Controller
             'telephone' => ['required', 'string', 'max:255'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         if ($validator->fails()) {
@@ -99,7 +99,17 @@ class CandidatController extends Controller
         $user->abo = $request->has('abo');
         $user->role_id = $request->role_id;
         $user->group()->detach();
-        $user->group()->attach($request->group);
+        if ($user->role_id == 5) {
+            $group = Group::find($request->group_id);
+            $group->coach_id = $user->id;
+            $group->save();
+        } else if ($user->role_id == 2) {
+            $group = Group::find($request->group_id);
+            $group->responsable_id = $user->id;
+            $group->save();
+        } else {
+            $user->group()->attach($request->group);
+        }
         if ($request->role_id != 7 && $request->password != $user->password) {
             $user->password = Hash::make($request->password);
             Mail::to($user->email)->send(new PasswordMail($user, $request->password));
@@ -117,6 +127,21 @@ class CandidatController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->back()->with('msg','Le candidat a été supprimé avec succès');
+        return redirect()->back()->with('msg', 'Le candidat a été supprimé avec succès');
+    }
+
+    public function forceDestroy($user)
+    {
+        dd('fdfd');
+        $user = User::withTrashed()->whereId($user)->first();
+        $user->forceDelete();
+        return redirect()->back()->with('msg', 'Le candidat a été supprimé définitivement avec succès');
+    }
+
+    public function restore($user)
+    {
+        $user = User::withTrashed()->whereId($user)->first();
+        $user->restore();
+        return redirect()->back()->with('msg', 'Le candidat a été restauré avec succès');
     }
 }

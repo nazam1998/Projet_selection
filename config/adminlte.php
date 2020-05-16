@@ -333,6 +333,7 @@ return [
             ],
         ],
         [
+            'can'=>'contact',
             'header' => 'Formulaire Contact'
         ],
         [

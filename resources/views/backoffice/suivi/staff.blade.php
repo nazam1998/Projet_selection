@@ -31,7 +31,8 @@
             <tbody>
                 @foreach ($users as $item)
                 <tr>
-                    <td><a href="{{route('group.show', $item->id)}}">@if ($item->group == null)
+                    <td><a href="{{route('group.show', $item->id)}}">
+                        @if ($item->group == null && $item->role_id<4)
                         Pas de groupe
                         @elseif($item->role_id == 2)
                             @if ($item->group_responsable->first())
@@ -45,6 +46,7 @@
                                 
                             {{$item->group_coach->first()->nom}}
                             @else
+                            {{$item->group_coach}}
                             Pas de groupe
                             @endif
                         @else 

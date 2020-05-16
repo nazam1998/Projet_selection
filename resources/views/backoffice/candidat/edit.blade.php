@@ -17,18 +17,30 @@
 
 
         <div class="col-lg-6">
+            @error('nom')
+    <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+    @enderror
             <div class='form-group'>
                 <label for="">Nom</label>
                 <input class="form-control" name="nom" type="text" value="{{old('nom',$user->nom)}}">
             </div>
+            @error('prenom')
+    <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+    @enderror
             <div class='form-group'>
                 <label for="">Prenom</label>
                 <input class="form-control" name="prenom" type="text" value="{{old('prenom',$user->prenom)}}">
             </div>
+            @error('email')
+    <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+    @enderror
             <div class='form-group'>
                 <label for="">Email</label>
                 <input class="form-control" name="email" type="text" value="{{old('email',$user->email)}}">
             </div>
+            @error('commune')
+    <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+    @enderror
             <div class='form-group'>
                 <label for="">Commune</label>
                 <input class="form-control" name="commune" type="text" value="{{old('commune',$user->commune)}}">
