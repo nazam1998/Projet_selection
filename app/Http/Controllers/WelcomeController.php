@@ -19,7 +19,7 @@ class WelcomeController extends Controller
         $evenements = Evenement::latest()->where('etat', 'En cours')->whereHas('etapes')->get();
         // $form = Evenement::orderBy('date', 'asc')->where('etat', 'Futur')->get();
         $form=Evenement::all();
-        $annonce = Annonce::first();
+        $annonce = Annonce::all();
         $interets = Interet::all();
         return view('welcome', compact('interets', 'annonce', 'evenements', 'form'));
     }

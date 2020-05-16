@@ -4,16 +4,20 @@
         <div class="owl-twitter owl-carousel">
             @if (count($form)>1)
             <div class="item" id="formulaire">
+                <ul>
                     @foreach ($form as $item)
-            <a href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre}}</a>
+                    <li class="light">
+                        <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a>
+                    </li>
                     @endforeach
+                </ul>
             </div>
             @elseif(count($form)==1)
             <div class="item" id="formulaire">
                 @if (session()->has('msg'))
             <p class="light text-center">{{session('msg')}}</p>
                 @endif
-            <h3 class="light text-center">{{$form->first()->formulaire->titre}}</h3>
+            <h3 class="light text-center">{{$form->first()->formulaire->titre.' '.$form->first()->id}}</h3>
                 <form class="row" style="margin-top: 30px;" action="{{route('inscription',$form->first()->id)}}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
