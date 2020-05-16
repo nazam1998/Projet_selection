@@ -46,7 +46,6 @@
                                 
                             {{$item->group_coach->first()->nom}}
                             @else
-                            {{$item->group_coach}}
                             Pas de groupe
                             @endif
                         @else 

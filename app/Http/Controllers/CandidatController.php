@@ -70,6 +70,8 @@ class CandidatController extends Controller
             'telephone' => ['required', 'string', 'max:255'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
+            'role_id' => ['required', 'integer'],
+            'group_id' => ['required', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);

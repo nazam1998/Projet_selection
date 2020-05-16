@@ -111,12 +111,12 @@
     </div>
 
 
-    @error('group')
+    @error('group_id')
     <div class="alert text-danger font-weight-bold">{{ $message }}</div>
     @enderror
     <div class="form-group col-sm-10">
         <label>Groupes</label>
-        <select class="form-control" name="group">
+        <select class="form-control" name="group_id">
             <option>Choisir un groupe...</option>
             @foreach ($groups as $item)
             @if ($item->id==$user->group->contains($item->id))
