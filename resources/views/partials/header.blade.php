@@ -10,9 +10,9 @@
                     </div>
                     @foreach ($annonce as $item)
 
-                    @if ($annonce->afficher && $annonce->date<Carbon\Carbon::now())
+                    @if ($item->afficher && $item->date<Carbon\Carbon::now())
                 <div id="banniere">
-                        <p>{{$annonce->texte}} {{$annonce->date->format('d-m-y')}}</p>
+                        <p>{{$item->texte}} {{$item->date->format('d-m-y')}}</p>
                 </div>
                 @endif
                 @endforeach

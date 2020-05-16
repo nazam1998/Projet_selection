@@ -40,7 +40,9 @@ Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
 Route::resource('suivi', 'StaffController');
-
+Route::resource('candidat', 'CandidatController', ['parameters' => [
+    'candidat' => 'user'
+]]);
 Route::get('note/{id}/create', 'NoteController@create')->name('note.create');
 Route::get('note/{id}/edit', 'NoteController@edit')->name('note.edit');
 Route::post('note/{id}/store', 'NoteController@store')->name('note.store');
