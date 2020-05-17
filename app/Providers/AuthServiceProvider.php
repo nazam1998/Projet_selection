@@ -36,6 +36,12 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role->permissions->contain($lecture) || $user->role->permissions->contain($ecriture);
         });
 
+        Gate::define('candidat-lecture', function ($user, $input) {
+            $lecture = Permission::where('nom', 'LIKE', 'user-lecture-' . $input)->first()->id;
+            $ecriture = Permission::where('nom', 'LIKE', 'user-ecriture-' . $input)->first()->id;
+            return $user->role->permissions->contain($lecture) || $user->role->permissions->contain($ecriture);
+        });
+
         Gate::define('annonce',function($user){
             $annonce=Permission::where('nom','LIKE','%annonce%')->first()->id;
             return $user->role->permissions->contains($annonce);

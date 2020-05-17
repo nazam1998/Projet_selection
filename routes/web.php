@@ -40,6 +40,8 @@ Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
 Route::resource('suivi', 'StaffController');
+Route::resource('titre', 'TitreController');
+Route::resource('description', 'DescriptionController');
 // Candidat
 Route::get('candidat/{user}/restore','CandidatController@restore')->name('candidat.restore');
 Route::delete('candidat/{user}/forceDestroy','CandidatController@forceDestroy')->name('candidat.forceDestroy');

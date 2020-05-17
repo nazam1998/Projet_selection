@@ -22,7 +22,10 @@
             <thead>
                 <tr>
                     <th>Titre Formulaire</th>
+                    @can('candidat-lecture-','nom')
+                        
                     <th>Nom</th>
+                    @endcan
                     <th>Prenom</th>
                     <th>Email</th>
                     <th>Action: SHOW & EDIT & DELETE | RESTORE |FORCE DELETE</th>

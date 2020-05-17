@@ -7,7 +7,7 @@
                 <ul>
                     @foreach ($form as $item)
                     <li class="light">
-                        <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a>
+                    <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a> <span>limite:{{$item->date->format('d/M/y')}}</span>
                     </li>
                     @endforeach
                 </ul>
@@ -101,7 +101,9 @@
                 </form>
             </div>
             @else
-                <h3 class="light text-center">Désolé, il n'y a pas d'évènement actuellement</h3>
+            @foreach ($phrase as $item)
+        <h3 class="light text-center">{{$item->texte}}</h3>
+            @endforeach
             @endif
         </div>
     </div>

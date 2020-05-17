@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Description;
 use App\Etape;
 use App\Evenement;
+use App\Titre;
 use Illuminate\Http\Request;
 
 class EtapeController extends Controller
@@ -15,7 +17,6 @@ class EtapeController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -25,8 +26,10 @@ class EtapeController extends Controller
      */
     public function create($id)
     {
-        $evenement=Evenement::find($id);
-        return view('backoffice.etape.add',compact('evenement'));
+        $evenement = Evenement::find($id);
+        $titres = Titre::all();
+        $descriptions = Description::all();
+        return view('backoffice.etape.add', compact('evenement','titres','descriptions'));
     }
 
     /**
@@ -35,23 +38,23 @@ class EtapeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
-        $evenement=Evenement::find($id);
-        $min=$evenement->date.' -1 day';
+        $evenement = Evenement::find($id);
+        $min = $evenement->date . ' -1 day';
         $request->validate([
-            'titre'=>'required|string',
-            'description'=>'required|string',
-            'date'=>'required|date|after:'.$min
+            'titre' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'required|date|after:' . $min
         ]);
-        
-        $etape=new Etape();
-        $etape->titre=$request->titre;
-        $etape->description=$request->description;
-        $etape->date=$request->date;
-        $etape->evenement_id=$id;
+
+        $etape = new Etape();
+        $etape->titre = $request->titre;
+        $etape->description = $request->description;
+        $etape->date = $request->date;
+        $etape->evenement_id = $id;
         $etape->save();
-        return redirect()->route('evenement.show',$id)->with('msg','Etape créée avec succès');;
+        return redirect()->route('evenement.show', $id)->with('msg', 'Etape créée avec succès');;
     }
 
     /**
@@ -73,7 +76,9 @@ class EtapeController extends Controller
      */
     public function edit(Etape $etape)
     {
-        return view('backoffice.etape.edit',compact('etape'));
+        $titres = Titre::all();
+        $descriptions = Description::all();
+        return view('backoffice.etape.edit', compact('etape','titres','descriptions'));
     }
 
     /**
@@ -85,19 +90,19 @@ class EtapeController extends Controller
      */
     public function update(Request $request, Etape $etape)
     {
-        $evenement=Evenement::find($etape->evenement_id);
-        $min=$evenement->date.' -1 day';
+        $evenement = Evenement::find($etape->evenement_id);
+        $min = $evenement->date . ' -1 day';
         $request->validate([
-            'titre'=>'required|string',
-            'description'=>'required|string',
-            'date'=>'required|date|after:'.$min
+            'titre' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'required|date|after:' . $min
         ]);
-        
-        $etape->titre=$request->titre;
-        $etape->description=$request->description;
-        $etape->date=$request->date;
+
+        $etape->titre = $request->titre;
+        $etape->description = $request->description;
+        $etape->date = $request->date;
         $etape->save();
-        return redirect()->route('evenement.show',$etape->evenement->id)->with('msg','Etape modifiée avec succès');
+        return redirect()->route('evenement.show', $etape->evenement->id)->with('msg', 'Etape modifiée avec succès');
     }
 
     /**
@@ -109,6 +114,6 @@ class EtapeController extends Controller
     public function destroy(Etape $etape)
     {
         $etape->delete();
-        return redirect()->back()->with('msg','Etape supprimée avec succès');
+        return redirect()->back()->with('msg', 'Etape supprimée avec succès');
     }
 }

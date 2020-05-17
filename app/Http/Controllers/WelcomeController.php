@@ -6,6 +6,7 @@ use App\Annonce;
 use App\Evenement;
 use App\Interet;
 use App\Mail\Inscription;
+use App\Phrase;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -19,8 +20,9 @@ class WelcomeController extends Controller
         $evenements = Evenement::latest()->where('etat', 'En cours')->whereHas('etapes')->get();
         $form = Evenement::orderBy('date', 'asc')->where('etat', 'Futur')->get();
         $annonce = Annonce::all();
+        $phrase = Phrase::all();
         $interets = Interet::all();
-        return view('welcome', compact('interets', 'annonce', 'evenements', 'form'));
+        return view('welcome', compact('interets', 'annonce', 'evenements', 'form','phrase'));
     }
 
     public function register(Request $data, $id)
