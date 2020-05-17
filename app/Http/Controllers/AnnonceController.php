@@ -23,37 +23,6 @@ class AnnonceController extends Controller
         return view('backoffice.annonce.index',compact('annonce'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Annonce  $annonce
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Annonce $annonce)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,14 +56,5 @@ class AnnonceController extends Controller
         return redirect()->route('annonce.index')->with('msg','Annonce modifiée avec succés');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Annonce  $annonce
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Annonce $annonce)
-    {
-        //
-    }
+    
 }

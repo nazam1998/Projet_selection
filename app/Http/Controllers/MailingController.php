@@ -97,50 +97,7 @@ class MailingController extends Controller
         return redirect()->back()->with('msg', 'Message envoyé avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Mailing  $mailing
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Mailing $mailing)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Mailing  $mailing
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Mailing $mailing)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mailing  $mailing
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Mailing $mailing)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Mailing  $mailing
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Mailing $mailing)
-    {
-        //
-    }
+    
     public function role()
     {
         $roles = Role::all();

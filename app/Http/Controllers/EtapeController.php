@@ -10,14 +10,7 @@ use Illuminate\Http\Request;
 
 class EtapeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -57,16 +50,7 @@ class EtapeController extends Controller
         return redirect()->route('evenement.show', $id)->with('msg', 'Etape créée avec succès');;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Etape  $etape
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Etape $etape)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

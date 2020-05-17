@@ -42,19 +42,10 @@ class TitreController extends Controller
         $titre = new Titre();
         $titre->titre = $request->titre;
         $titre->save();
-        return redirect()->back()->with('msg', 'Titre créé avec succès');
+        return redirect()->route('titre.index')->with('msg', 'Titre créé avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Titre  $titre
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Titre $titre)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -81,7 +72,7 @@ class TitreController extends Controller
         ]);
         $titre->titre = $request->titre;
         $titre->save();
-        return redirect()->back()->with('msg', 'Titre modifié avec succès');
+        return redirect()->route('titre.index')->with('msg', 'Titre modifié avec succès');
     }
 
     /**

@@ -49,16 +49,7 @@ class MatiereController extends Controller
         return redirect()->route('matiere.index')->with('msg', 'Matière créée avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Matiere  $matiere
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Matiere $matiere)
-    {
-        //
-    }
+  
 
     /**
      * Show the form for editing the specified resource.

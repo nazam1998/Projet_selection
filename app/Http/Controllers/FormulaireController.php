@@ -50,16 +50,6 @@ class FormulaireController extends Controller
         return redirect()->route('formulaire.index')->with('msg', 'Formulaire créé avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Formulaire  $formulaire
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Formulaire $formulaire)
-    {
-        
-    }
 
     /**
      * Show the form for editing the specified resource.

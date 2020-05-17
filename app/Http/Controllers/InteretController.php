@@ -47,16 +47,6 @@ class InteretController extends Controller
         return redirect()->route('interet.index')->with('msg', 'Intérêt ajouté avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Interet  $interet
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Interet $interet)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -42,19 +42,9 @@ class DescriptionController extends Controller
         $description = new Description();
         $description->description = $request->description;
         $description->save();
-        return redirect()->back()->with('msg', 'Description modifié avec succès');
+        return redirect()->route('description.index')->with('msg', 'Description ajoutée avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Description  $description
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Description $description)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +54,7 @@ class DescriptionController extends Controller
      */
     public function edit(Description $description)
     {
-        //
+        return view('backoffice.description.edit',compact('description'));
     }
 
     /**
@@ -81,7 +71,7 @@ class DescriptionController extends Controller
         ]);
         $description->description = $request->description;
         $description->save();
-        return redirect()->back()->with('msg', 'Description modifié avec succès');
+        return redirect()->route('description.index')->with('msg', 'Description modifiéé avec succès');
     }
 
     /**
@@ -94,6 +84,6 @@ class DescriptionController extends Controller
     {
 
         $description->save();
-        return redirect()->back()->with('msg', 'Description modifié avec succès');
+        return redirect()->back()->with('msg', 'Description supprimée avec succès');
     }
 }
