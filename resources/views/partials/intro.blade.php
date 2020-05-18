@@ -1,4 +1,4 @@
-<section>
+<section class="light-bg">
     <div class="container">
         <div class="row intro-tables">
             @foreach ($evenements as $item)
@@ -17,12 +17,12 @@
                             
                             <div class="schedule-row row">
                                 <div class="col-xs-6">
-                                <h5 class="regular white">{{$etape->titre}}</h5>
+                                    <h5 class="regular white">{{$etape->titre}}</h5>
                                 </div>
                                 <div class="col-xs-6 text-right">
-                                <h5 class="white">{{$etape->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</h5>
+                                    <h5 class="white">{{$etape->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</h5>
                                 </div>
-                            <h4 class="white heading content">{{$etape->description}}</h4>
+                                <p style="margin-top: 36px; font-weight: 15;" class="white heading content">{{$etape->description}}</p>
                             </div>
                             
                             
