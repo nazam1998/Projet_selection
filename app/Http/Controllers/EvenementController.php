@@ -101,6 +101,7 @@ class EvenementController extends Controller
 
 
         $evenement->date = $request->date;
+        
         $date = new Carbon();
 
         if ($date >= $evenement->date) {

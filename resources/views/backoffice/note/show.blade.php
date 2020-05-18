@@ -1,4 +1,4 @@
-{{-- @extends('adminlte::page')
+@extends('adminlte::page')
 
 @section('content')
 
@@ -27,4 +27,8 @@
     <!-- /.card-body -->
 </div>
 
-@stop --}}
+@stop
+
+@section('css')
+ <link rel="stylesheet" href="{{asset('css/admin.css')}}">   
+@endsection

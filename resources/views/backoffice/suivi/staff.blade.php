@@ -92,7 +92,27 @@
             <tbody>
                 @foreach ($users as $item)
                 <tr>
-                   
+                <td>
+                    @if ($item->group == null && $item->role_id<4)
+                        Pas de groupe
+                        @elseif($item->role_id == 2)
+                            @if ($item->group_responsable->first())
+                                
+                            {{$item->group_responsable->first()->nom}}
+                            @else
+                            Pas de groupe
+                            @endif
+                        @elseif($item->role_id == 5)
+                            @if ($item->group_coach->first())
+                                
+                            {{$item->group_coach->first()->nom}}
+                            @else
+                            Pas de groupe
+                            @endif
+                        @else 
+                        {{$item->group->first()->nom}}
+                        @endif 
+                </td>
                     <td>{{$item->nom}} {{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
                     <td class="d-flex"><a href="{{route('suivi.show', $item->id)}}"
@@ -107,3 +127,7 @@
 </div>
 
 @stop
+
+@section('css')
+ <link rel="stylesheet" href="{{asset('css/admin.css')}}">   
+@endsection

@@ -12,8 +12,6 @@
         @method('PUT')
         <div class="card-body">
 
-
-
             <div class="form-group row">
                 @error('description')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
