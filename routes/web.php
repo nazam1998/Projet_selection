@@ -31,8 +31,8 @@ Route::get('mailing/group', 'MailingController@group');
 Route::post('mailing/StoreUser', 'MailingController@storeUser')->name('mailing.storeUser');
 
 
-Route::get('suivi/staff/group/', 'StaffController@indexGroup')->name('staff.group');
 Route::get('suivi/student/group/', 'StudentController@indexGroup')->name('student.group');
+Route::get('suivi/staff/group/', 'StaffController@indexGroup')->name('staff.group');
 
 Route::resource('matiere', 'MatiereController');
 Route::resource('mailing', 'MailingController');

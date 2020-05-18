@@ -13,8 +13,8 @@ class StudentController extends Controller
     public function index()
     {
         $groups = Group::all();
-        $users = User::where('role_id', '6')->orWhere('role_id', '7')->get();
-        return view('backoffice.suivi.student', compact('users','groups'));
+        $users = User::where('role_id', 6)->get();
+        return view('backoffice.suivi.student', compact('users', 'groups'));
     }
 
     // Permet de voir le suivi d'un student précis et pouvoir lui écrire une note
@@ -39,18 +39,24 @@ class StudentController extends Controller
         if ($request->has('group')) {
 
             $groups = Group::whereIn('id', $request->group)->get();
-            $users = $groups->pluck('users')->where('role_id', '6')->orWhere('role_id', '7');
+            $users = $groups->pluck('users')->where('role_id', 6);
             $groups = Group::all();
+            $related = $users->first();
+            
+            if ($users->first()) {
+
+                foreach ($users as $tag) {
+                    $related = $related->merge($tag);
+                }
+                $users = $related;
+            }
+            
         } else {
             $groups = Group::all();
-            $users = $groups->pluck('users')->where('role_id', '6')->orWhere('role_id', '7');
+            $users = User::where('role_id', 6)->get();
         }
-        $related = $users->first();
-        foreach ($users as $tag) {
-            $related = $related->merge($tag);
-        }
-        $users = $related;
-        return view('backoffice.suivi.student', compact('users','groups'));
+
+        return view('backoffice.suivi.student', compact('users', 'groups'));
     }
     // Permet de modifier un student ou candidat
     public function edit($id)

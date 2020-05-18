@@ -7,7 +7,6 @@
     </div>
 
     <form class="form-horizontal" action="{{route('staff.group')}}" method="GET">
-        @csrf
         <div class="card-body">
             <div class="form-group row mt-2">
                 @foreach ($groups as $item)
@@ -56,13 +55,13 @@
             <tbody>
                 @foreach ($users as $item)
                 <tr>
-                    <td><a href="{{route('group.show', $item->group->first()->id)}}">
-                            @if ($item->group == null)
-                            Pas de groupe
+                    <td>
+                        @if (!$item->group->first()||!$item->group == null)
+                        Pas de groupe
 
-                            @else
-                            {{$item->group->first()->nom}}
-                            @endif </a>
+                        @else
+                        <a href="{{route('group.show', $item->group->first()->id)}}">{{$item->group->first()->nom}} </a>
+                        @endif
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>

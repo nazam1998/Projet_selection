@@ -12,7 +12,7 @@ class StaffController extends Controller
     public function index()
     {
         $groups = Group::all();
-        $users = User::where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7')->whereHas('group')->get();
+        $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7)->whereHas('group')->get();
         return view('backoffice.suivi.staff', compact('users', 'groups'));
     }
 
@@ -35,17 +35,21 @@ class StaffController extends Controller
         if ($request->has('group')) {
 
             $groups = Group::whereIn('id', $request->group)->get();
-            $users = $groups->pluck('users')->where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7');
+            $users = $groups->pluck('users')->where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7);
             $groups = Group::all();
+            $related = $users->first();
+            if ($users->first()) {
+
+                foreach ($users as $tag) {
+                    $related = $related->merge($tag);
+                }
+                $users = $related;
+            }
         } else {
             $groups = Group::all();
-            $users = $groups->pluck('users')->where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7');
+            $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7)->get();
         }
-        $related = $users->first();
-        foreach ($users as $tag) {
-            $related = $related->merge($tag);
-        }
-        $users = $related;
+
         return view('backoffice.suivi.staff', compact('users', 'groups'));
     }
 }
