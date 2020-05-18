@@ -102,13 +102,14 @@ class GroupController extends Controller
         $group->nom = $request->nom;
 
         $group->users()->detach($group->users->where('role_id', 2)->first()->id);
-
+        User::find($request->responsable_id)->group()->detach();
         $group->users()->attach($request->responsable_id, ['role_id' => User::find($request->responsable_id)->role_id]);
 
         if ($group->users->where('role_id', 5)->first()) {
             $group->users()->detach($group->users->where('role_id', 5)->first()->id);
         }
         if ($request->coach_id != '') {
+            User::find($request->coach_id)->group()->detach();
             $group->users()->attach($request->coach_id, ['role_id' => User::find($request->coach_id)->role_id]);
         }
 

@@ -16,11 +16,11 @@ class UserLecture
      */
     public function handle($request, Closure $next)
     {
-        $permissions=Auth::user()->permissions->where('nom','LIKE','%user%')->first();
-        if($permissions){
+        $permissions = Auth::user()->permissions->where('nom', 'LIKE', '%user%')->first();
+        if ($permissions) {
 
-            return $next($request); 
+            return $next($request);
         }
-        return redirect()->back()->with("Vous n'avez pas les permissions d'accèder à cette page");
+        return redirect()->back()->with('msg', "Vous n'avez pas les permissions d'accèder à cette page");
     }
 }

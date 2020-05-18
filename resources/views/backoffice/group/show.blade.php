@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center p-3">Détails du groupe</h1>
+<h1 class="text-center p-3">Détails du groupe <span class="text-secondary">{{$group->nom}}</span></h1>
 
 
 <table class="table table-bordered table-hover shadow">
