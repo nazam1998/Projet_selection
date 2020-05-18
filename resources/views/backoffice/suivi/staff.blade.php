@@ -32,29 +32,16 @@
                 @foreach ($users as $item)
                 <tr>
                     <td><a href="{{route('group.show', $item->id)}}">
-                        @if ($item->group == null && $item->role_id<4)
+                        @if ($item->group == null)
                         Pas de groupe
-                        @elseif($item->role_id == 2)
-                            @if ($item->group_responsable->first())
-                                
-                            {{$item->group_responsable->first()->nom}}
-                            @else
-                            Pas de groupe
-                            @endif
-                        @elseif($item->role_id == 5)
-                            @if ($item->group_coach->first())
-                                
-                            {{$item->group_coach->first()->nom}}
-                            @else
-                            Pas de groupe
-                            @endif
+                        
                         @else 
                         {{$item->group->first()->nom}}
                         @endif </a>
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td class="d-flex justify-content-center"><a href="{{route('suivi.show', $item->id)}}"
+                    <td class="d-flex justify-content-center"><a href="{{route('staff.show', $item->id)}}"
                         class="btn btn-primary mr-3">Show</a>
                     </td>
                 </tr>
@@ -94,28 +81,16 @@
                 <tr>
                 <td>
 
-                    @if ($item->group == null && $item->role_id<4)
+                    @if ($item->group == null)
                         Pas de groupe
-                        @elseif($item->role_id == 2)
-                            @if ($item->group_responsable->first())
-                            {{$item->group_responsable->first()->nom}}
-                            @else
-                            Pas de groupe
-                            @endif
-                        @elseif($item->role_id == 5)
-                            @if ($item->group_coach->first())
-                                
-                            {{$item->group_coach->first()->nom}}
-                            @else
-                            Pas de groupe
-                            @endif
+                        
                         @else 
                         {{$item->group->first()->nom}}
                         @endif 
                 </td>
                     <td>{{$item->nom}} {{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td class="d-flex justify-content-center"><a href="{{route('suivi.show', $item->id)}}"
+                    <td class="d-flex justify-content-center"><a href="{{route('staff.show', $item->id)}}"
                         class="btn btn-primary mr-3">Show</a>
                     </td>
                 </tr>

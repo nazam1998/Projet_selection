@@ -10,7 +10,7 @@ class StaffController extends Controller
     // Afficher tout les membres du staff, càd tout le monde sauf les candidats et users 
     public function index()
     {
-        $users = User::where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7')->whereHas('group')->orWhereHas('group_responsable')->orWhereHas('group_coach')->get();
+        $users = User::where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7')->whereHas('group')->get();
         return view('backoffice.suivi.staff', compact('users'));
     }
 
