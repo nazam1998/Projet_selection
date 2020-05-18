@@ -44,10 +44,6 @@
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 276db05bc689d8fd83701b4e16773447a7d958ab
             @error('etat')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror

@@ -93,11 +93,11 @@
                 @foreach ($users as $item)
                 <tr>
                 <td>
+
                     @if ($item->group == null && $item->role_id<4)
                         Pas de groupe
                         @elseif($item->role_id == 2)
                             @if ($item->group_responsable->first())
-                                
                             {{$item->group_responsable->first()->nom}}
                             @else
                             Pas de groupe
@@ -129,9 +129,5 @@
 @stop
 
 @section('css')
-<<<<<<< HEAD
-    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
-=======
  <link rel="stylesheet" href="{{asset('css/admin.css')}}">   
->>>>>>> 276db05bc689d8fd83701b4e16773447a7d958ab
 @endsection

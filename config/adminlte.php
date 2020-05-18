@@ -321,13 +321,13 @@ return [
         ],
         [
             'text'        => 'Suivi du staff',
-            'url'         => 'suivi',
+            'url'         => 'suivi/staff',
             'icon'        => 'fas fa-users',
             'icon_color'  => 'yellow',
             'submenu' => [
                 [
                     'text' => 'Base de données',
-                    'url'  => 'suivi',
+                    'url'  => 'suivi/staff',
                     'icon_color' => 'cyan'
                 ],
             ],

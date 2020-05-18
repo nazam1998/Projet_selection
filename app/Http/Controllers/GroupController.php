@@ -52,11 +52,11 @@ class GroupController extends Controller
 
         $group = new Group();
         $group->nom = $request->nom;
-        $group->responsable_id = $request->responsable_id;
+            $group->save(); 
+        $group->users()->attach($request->responsable_id);
         if ($request->has('coach_id')) {
-            $group->coach_id = $request->coach_id;
+            $group->users()->attach($request->coach_id);
         }
-        $group->save();
         return redirect()->route('group.index')->with('msg', 'Groupe créé avec succès');
     }
 
@@ -100,7 +100,9 @@ class GroupController extends Controller
         ]);
 
         $group->nom = $request->nom;
-        $group->responsable_id = $request->responsable_id;
+        $group->users()->detach($group->user()->where('role_id',2)->first()->id);
+        $group->users()->detach($group->user()->where('role_id',5)->first()->id);
+        $group->users()->attachp($request->responsable_id);
         if ($request->has('coach_id')) {
             $group->coach_id = $request->coach_id;
         }

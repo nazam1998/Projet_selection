@@ -23,7 +23,7 @@
             <select class="form-control" name="responsable_id">
               <option>Choisir un responsable...</option>
                 @foreach ($responsables as $item)
-                @if ($item->id == $group->responsable_id)    
+                @if ($item->id == $group->responsable->id)    
                     <option selected value="{{$item->id}}">{{$item->nom}}</option>
                 @else
                     <option value="{{$item->id}}">{{$item->nom}}</option>
@@ -36,7 +36,7 @@
             <select class="form-control" name="responsable_id">
               <option>Choisir un coach...</option>
                 @foreach ($coachs as $item)
-                @if ($item->id == $group->coach_id)    
+                @if ($item->id == $group->coach->id)    
                     <option selected value="{{$item->id}}">{{$item->nom}}</option>
                 @else
                     <option value="{{$item->id}}">{{$item->nom}}</option>

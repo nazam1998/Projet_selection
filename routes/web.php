@@ -39,7 +39,8 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
-Route::resource('suivi', 'StaffController');
+Route::resource('suivi/staff', 'StaffController');
+Route::resource('suivi/student', 'StaffController');
 Route::resource('titre', 'TitreController');
 Route::resource('description', 'DescriptionController');
 // Candidat

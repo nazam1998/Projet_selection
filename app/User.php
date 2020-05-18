@@ -46,18 +46,12 @@ class User extends Authenticatable
     public function group(){
         return $this->belongsToMany('App\Group', 'group_user', 'user_id', 'group_id');
     }
-    public function group_responsable(){
-        return $this->hasMany('App\Group', 'responsable_id');
-    }
-    public function group_coach(){
-        return $this->hasMany('App\Group', 'coach_id');
-    }
 
     public function notes(){
         return $this->hasMany('App\Note');
     }
     public function matieres(){
-        return $this->belongsToMany('App\Matiere');
+        return $this->belongsToMany('App\Matiere')->withPivot('valide');
     }
     public function interets(){
         return $this->belongsToMany('App\Interet');

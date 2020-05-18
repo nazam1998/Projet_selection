@@ -22,8 +22,6 @@
             <thead>
                 <tr>
                     <th>Nom du groupe</th>
-                    <th class="text-center">Responsable appartenant à ce groupe</th>
-                    <th class="text-center">Coach appartenant à ce groupe</th>
                     <th class="text-center">Action: SHOW & EDIT & DELETE</th>
                 </tr>
             </thead>
@@ -31,8 +29,6 @@
                 @foreach ($groups as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td class="text-center">{{$item->responsable->nom}}</td>
-                    <td class="text-center">@if($item->coach != null){{$item->coach->nom}}@else/@endif</td>
                     <td class="d-flex justify-content-center"><a href="{{route('group.show', $item->id)}}"
                         class="btn btn-primary">Show</a>
                         <a href="{{route('group.edit', $item->id)}}"

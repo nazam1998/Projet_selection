@@ -17,18 +17,14 @@ class GroupSeeder extends Seeder
         DB::table('groups')->insert([
             [
                 'nom' => 'Coding Test X',
-                'responsable_id' => User::inRandomOrder()->where('role_id', 2)->whereDoesntHave('group_responsable')->first()->id,
-                'coach_id' => User::inRandomOrder()->where('role_id', 5)->first()->id
             ],
             [
                 'nom' => 'Coding Test 11',
-                'responsable_id' => User::inRandomOrder()->where('role_id', 2)->whereDoesntHave('group_responsable')->first()->id,
-                'coach_id' => null,
+                
             ],
             [
                 'nom' => 'Marketing Labs 20',
-                'responsable_id' => User::inRandomOrder()->where('role_id', 2)->whereDoesntHave('group_responsable')->first()->id,
-                'coach_id' => null,
+                
             ],
 
         ]);

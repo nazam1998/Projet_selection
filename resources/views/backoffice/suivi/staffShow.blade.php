@@ -58,13 +58,8 @@
                 <tr>
                     <td>{{$item->titre}}</td>
                     <td>{{$item->note}}</td>
-<<<<<<< HEAD
                     <td>{{$item->date}}</td>
                     <td class="d-flex justify-content-center">
-=======
-                    <td>{{$item->date->localizedFormat('')}}</td>
-                    <td class="d-flex">
->>>>>>> 276db05bc689d8fd83701b4e16773447a7d958ab
                         {{-- <a href="{{route('note.show', $item->id)}}"
                         class="btn btn-info mr-3">Show</a> --}}
                         <a href="{{route('note.edit', $item->id)}}"
@@ -114,10 +109,5 @@
 @stop
 
 @section('css')
-<<<<<<< HEAD
-    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
-@endsection
-=======
  <link rel="stylesheet" href="{{asset('css/admin.css')}}">   
 @endsection
->>>>>>> 276db05bc689d8fd83701b4e16773447a7d958ab

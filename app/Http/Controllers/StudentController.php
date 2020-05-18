@@ -17,7 +17,7 @@ class StudentController extends Controller
     }
 
     // Permet de voir le suivi d'un student précis et pouvoir lui écrire une note
-    
+
     public function show($id)
     {
         $user = User::find($id);
@@ -39,27 +39,28 @@ class StudentController extends Controller
         return view('backoffice.suivi.student', compact('users'));
     }
     // Permet de modifier un student ou candidat
-    public function edit($id){
-        $user= User::find($id);
-        $matieres=Matiere::all();
-        $groups=Group::all();
-        return view('backoffice.suivi.editStudent',compact('user','groups','matieres'));
+    public function edit($id)
+    {
+        $user = User::find($id);
+        $matieres = Matiere::all();
+        $groups = Group::all();
+        return view('backoffice.suivi.editStudent', compact('user', 'groups', 'matieres'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $request->validate([
-            'matiere.*'=>'required|integer',
-            'group_id'=>'required|integer',
-            'role_id'=>'required|integer'
+            'matiere.*' => 'required|integer',
+            'group_id' => 'required|integer',
+            'role_id' => 'required|integer'
         ]);
 
-        $user=User::find($id);
-        $user->group_id=$request->group_id;
-        $user->role_id=$request->role_id;
+        $user = User::find($id);
+        $user->group_id = $request->group_id;
+        $user->role_id = $request->role_id;
         $user->save();
         $user->detach();
         $user->matieres()->attach($request->matiere);
-        return redirect()->back()->with('msg','Le student a été modifié avec succès');
-
+        return redirect()->back()->with('msg', 'Le student a été modifié avec succès');
     }
 }
