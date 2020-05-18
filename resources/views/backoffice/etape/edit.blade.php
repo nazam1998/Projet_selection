@@ -36,7 +36,7 @@
             <div class="col-sm-10">
                 <label>Date</label>
                 <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
-                    value="@if($errors->first('date')){{$etape->inputDate}}@else{{old('date',$etape->date->format('y-m-d'))}}@endif"
+                    value="@if($errors->first('date')){{$etape->inputDate}}@else{{old('date',$etape->date->format('m/d/Y'))}}@endif"
                     id="inputEmail3" placeholder="Veuillez saisir le date de l'évènement">
             </div>
         </div>
