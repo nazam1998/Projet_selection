@@ -54,7 +54,7 @@
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td class="d-flex justify-content-center"><a href="{{route('staff.show', $item->id)}}"
+                    <td class="d-flex justify-content-center"><a href="{{route('student.show', $item->id)}}"
                         class="btn btn-primary mr-3">Show</a>
                     </td>
                 </tr>

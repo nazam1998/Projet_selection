@@ -321,13 +321,26 @@ return [
         ],
         [
             'text'        => 'Suivi du staff',
-            'url'         => 'suivi',
-            'icon'        => 'fas fa-users',
+            'url'         => 'suivi/staff',
+            'icon'        => 'fas fa-user-friends',
             'icon_color'  => 'yellow',
             'submenu' => [
                 [
                     'text' => 'Base de données',
-                    'url'  => 'suivi',
+                    'url'  => 'suivi/staff',
+                    'icon_color' => 'cyan'
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Suivi des students',
+            'url'         => 'suivi/student',
+            'icon'        => 'fas fa-user',
+            'icon_color'  => 'yellow',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'suivi/student',
                     'icon_color' => 'cyan'
                 ],
             ],

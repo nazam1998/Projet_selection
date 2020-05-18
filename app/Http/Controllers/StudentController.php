@@ -25,11 +25,11 @@ class StudentController extends Controller
     }
 
     // permet de valider la matière d'un student
-    public function valider(Request $request, $idMatiere, $idUser)
+    public function valider(Request $request, $id, $matiere)
     {
-        $user = User::find($idUser);
-        $user->matieres()->updateExistingPivot($idMatiere, ['valide' => $request->has('valide')]);
-        return redirect()->back()->with('msg', 'La matière a été validée');
+        $user = User::find($id);
+        $user->matieres()->updateExistingPivot($matiere, ['valide' => true]);
+        return redirect()->back()->with('valide', 'La matière a été validée');
     }
 
     // Permet de filtrer les student par groupe
@@ -46,20 +46,24 @@ class StudentController extends Controller
         return view('backoffice.suivi.editStudent',compact('user','groups','matieres'));
     }
 
-    public function update(Request $request, $id){
+
+    public function addMatiere($id){
+        $user=User::find($id);
+        $matieres=Matiere::all();
+        return view('backoffice.suivi.formMatiere', compact('user', 'matieres'));
+    }
+
+    public function saveMatiere(Request $request, $id){
         $request->validate([
             'matiere.*'=>'required|integer',
-            'group_id'=>'required|integer',
-            'role_id'=>'required|integer'
         ]);
 
         $user=User::find($id);
-        $user->group_id=$request->group_id;
-        $user->role_id=$request->role_id;
-        $user->save();
-        $user->detach();
-        $user->matieres()->attach($request->matiere);
-        return redirect()->back()->with('msg','Le student a été modifié avec succès');
+        
+        $user->matieres()->detach();
+        $user->matieres()->attach($request->matiere, ['valide'=>false]);
 
+        return redirect()->route('student.show', $id)->with('msg','Le student a été modifié avec succès');
     }
+
 }

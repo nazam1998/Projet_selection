@@ -39,7 +39,8 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
-Route::resource('suivi', 'StaffController');
+Route::resource('suivi/staff', 'StaffController');
+Route::resource('suivi/student', 'StudentController');
 Route::resource('titre', 'TitreController');
 Route::resource('description', 'DescriptionController');
 // Candidat
@@ -49,6 +50,11 @@ Route::resource('candidat', 'CandidatController', ['parameters' => [
     'candidat' => 'user'
 ]]);
 
+
+Route::get('/suivi/student/{id}/matiere', 'StudentController@addMatiere')->name('addMatiere');
+Route::post('/suivi/student/{id}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
+
+Route::get('/suivi/student/{id}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
 
 Route::get('note/{id}/create', 'NoteController@create')->name('note.create');
 Route::get('note/{id}/edit', 'NoteController@edit')->name('note.edit');

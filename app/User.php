@@ -52,12 +52,11 @@ class User extends Authenticatable
     public function group_coach(){
         return $this->hasMany('App\Group', 'coach_id');
     }
-
     public function notes(){
         return $this->hasMany('App\Note');
     }
     public function matieres(){
-        return $this->belongsToMany('App\Matiere');
+        return $this->belongsToMany('App\Matiere')->withPivot('valide');
     }
     public function interets(){
         return $this->belongsToMany('App\Interet');

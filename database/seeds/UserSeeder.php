@@ -31,6 +31,23 @@ class UserSeeder extends Seeder
                 'password'=>Hash::make('admin@admin')
             ],
             [
+                'nom' => 'Bakiasi',
+                'prenom' => 'Noel',
+                'genre' => 'Homme',
+                'statut' => 'Célibataire',
+                'commune' => 'Anderlecht',
+                'adresse' => 'Rue Eloy, 96',
+                'telephone' => '+32 492 80 18 58',
+                'ordinateur' => true,
+                'objectif' => 'Tout réussir',
+                'photo' => 'On va Tous Rater.png',
+                'abo'=>true,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
+                'role_id'=>6,
+                'email'=>'noel@noel',
+                'password'=>Hash::make('noel@noel')
+            ],
+            [
                 'nom' => 'Primo',
                 'prenom' => 'Nicolas',
                 'genre' => 'Homme',
