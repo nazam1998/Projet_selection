@@ -101,7 +101,7 @@
                 <tr>
                     <td>{{$item->titre}}</td>
                     <td>{{$item->note}}</td>
-                    <td>{{$item->date}}</td>
+                    <td>{{$item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</td>
                     <td class="d-flex justify-content-center">
                         {{-- <a href="{{route('note.show', $item->id)}}"
                         class="btn btn-info mr-3">Show</a> --}}
