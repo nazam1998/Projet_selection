@@ -56,7 +56,7 @@
                 @foreach ($users as $item)
                 <tr>
                     <td>
-                        @if (!$item->group->first()||!$item->group == null)
+                        @if (!$item->group->first() || $item->group == null)
                         Pas de groupe
 
                         @else
