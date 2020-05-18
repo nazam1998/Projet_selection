@@ -48,13 +48,7 @@ class EvenementController extends Controller
         $evenement = new Evenement();
         $evenement->date = $request->date;
         $date = new Carbon();
-        if ($evenement->date->isToday()) {
-            $evenement->etat = 'En cours';
-        } else if ($date < $evenement->date) {
-            $evenement->etat = 'Futur';
-        } else {
-            $evenement->etat = 'Terminé';
-        }
+        $evenement->etat=$request->etat;
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
@@ -96,11 +90,12 @@ class EvenementController extends Controller
         $request->validate([
             'date' => 'required|date',
             'formulaire_id' => 'required|integer',
-            'etat' => 'required|string'
+            'etat' => 'required|string',
         ]);
 
 
         $evenement->date = $request->date;
+        
         $date = new Carbon();
 
         if ($request->has('etat')) {
