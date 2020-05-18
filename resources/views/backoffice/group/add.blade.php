@@ -37,7 +37,7 @@
           <div class="form-group col-sm-10">
             <label>Nom du coach</label>
             <select class="form-control" name="coach_id">
-              <option>Choisir un choisir...</option>
+              <option value=''>Choisir un coach...</option>
                 @foreach ($coachs as $item)
                     <option value="{{$item->id}}">{{$item->nom}}</option>
                 @endforeach

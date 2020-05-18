@@ -30,19 +30,19 @@ class GroupSeeder extends Seeder
         ]);
         DB::table('group_user')->insert([
             [
-                'user_id' => User::inRandomOrder()->where('role_id', '>', 3)->whereDoesntHave('group')->first()->id,
+                'user_id' => User::inRandomOrder()->where('role_id', '>', 4)->whereDoesntHave('group')->first()->id,
                 'group_id' => Group::inRandomOrder()->first()->id
             ],
             [
-                'user_id' => User::inRandomOrder()->where('role_id', '>', 3)->whereDoesntHave('group')->first()->id,
+                'user_id' => User::inRandomOrder()->where('role_id', '>', 4)->whereDoesntHave('group')->first()->id,
                 'group_id' => Group::inRandomOrder()->first()->id
             ],
             [
-                'user_id' => User::inRandomOrder()->where('role_id', '>', 3)->whereDoesntHave('group')->first()->id,
+                'user_id' => User::inRandomOrder()->where('role_id', '>', 4)->whereDoesntHave('group')->first()->id,
                 'group_id' => Group::inRandomOrder()->first()->id
             ],
             [
-                'user_id' => User::inRandomOrder()->where('role_id', '>', 3)->whereDoesntHave('group')->first()->id,
+                'user_id' => User::inRandomOrder()->where('role_id', '>', 4)->whereDoesntHave('group')->first()->id,
                 'group_id' => Group::inRandomOrder()->first()->id
             ],
 

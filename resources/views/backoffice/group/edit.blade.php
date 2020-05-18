@@ -23,23 +23,26 @@
             <select class="form-control" name="responsable_id">
               <option>Choisir un responsable...</option>
                 @foreach ($responsables as $item)
-                @if ($item->id == $group->responsable->id)    
-                    <option selected value="{{$item->id}}">{{$item->nom}}</option>
+                    
+                @if ($item->id == $user->id)    
+                <option selected value="{{$item->id}}">{{$item->nom}}</option>
                 @else
-                    <option value="{{$item->id}}">{{$item->nom}}</option>
+                <option value="{{$item->id}}">{{$item->nom}}</option>
                 @endif
+                
                 @endforeach
             </select>
           </div>
           <div class="form-group col-sm-10">
             <label>Nom du coach</label>
             <select class="form-control" name="responsable_id">
-              <option>Choisir un coach...</option>
+              <option value="">Choisir un coach...</option>
                 @foreach ($coachs as $item)
-                @if ($item->id == $group->coach->id)    
-                    <option selected value="{{$item->id}}">{{$item->nom}}</option>
+                    
+                @if ($item->id == $user->id)    
+                <option selected value="{{$item->id}}">{{$item->nom}}</option>
                 @else
-                    <option value="{{$item->id}}">{{$item->nom}}</option>
+                <option value="{{$item->id}}">{{$item->nom}}</option>
                 @endif
                 @endforeach
             </select>
