@@ -96,7 +96,7 @@ class EvenementController extends Controller
         $request->validate([
             'date' => 'required|date',
             'formulaire_id' => 'required|integer',
-            'etat'=>($date >= $request->date?'required|string':'nullable')
+            'etat' => ($date >= $request->date ? 'required|string' : 'nullable')
         ]);
 
 
@@ -104,10 +104,10 @@ class EvenementController extends Controller
         $date = new Carbon();
 
         if ($date >= $evenement->date) {
-            $evenement->etat=$evenement->etat;
+            $evenement->etat = $evenement->etat;
         } else if ($evenement->date->isToday()) {
             $evenement->etat = 'En cours';
-        } else if ($date < $evenement->date) {
+        } else if ($date > $evenement->date) {
             $evenement->etat = 'Futur';
         } else {
             $evenement->etat = 'Terminé';

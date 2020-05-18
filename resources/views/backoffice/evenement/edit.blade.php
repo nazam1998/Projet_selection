@@ -15,7 +15,7 @@
 
 
             <div class="form-group row">
-                @error('description')
+                @error('date')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
                 @enderror
                 <div class="col-sm-10">
@@ -46,13 +46,13 @@
 
 
 
-            @if (Carbon\Carbon::now() >= $evenement->date)
+            @if (Carbon\Carbon::now() <= $evenement->date)
             @error('etat')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror
             <div class="form-group col-sm-10">
                 <label>Etat</label>
-                <select class="form-control" name="formulaire_id">
+                <select class="form-control" name="etat">
 
                     @if ('En cours'==$evenement->etat)
                     <option selected value="En cours">En cours</option>
@@ -64,6 +64,11 @@
                     <option selected value="Terminé">Terminé</option>
                     @else
                     <option value="Terminé">Terminé</option>
+                    @endif
+                    @if ('Futur'==$evenement->etat)
+                    <option selected value="Futur">Futur</option>
+                    @else
+                    <option value="Futur">Futur</option>
                     @endif
 
                 </select>
