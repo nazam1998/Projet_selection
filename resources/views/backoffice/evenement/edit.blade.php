@@ -46,7 +46,6 @@
 
 
 
-            @if (Carbon\Carbon::now() <= $evenement->date)
             @error('etat')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror
@@ -73,7 +72,6 @@
 
                 </select>
             </div>
-            @endif
 
 
 

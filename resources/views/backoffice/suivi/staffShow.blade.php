@@ -26,19 +26,23 @@
             </tbody>
         </table>
     </div>
+</div>
     <!-- /.card-body -->
+    @if (session()->has('msg'))
+        <div style="margin-top:50px;" class="card-header alert alert-success alert-dismissible fade show" role="alert">
+            <h3 class="card-title">{{session('msg')}}
+            <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+            </h3>
+        </div>
+    @endif
+
+<div class="card">
     <div class="card-header bg-info">
         <h3 class="card-title">Notes laissés par le staff </h3>
     </div>
-    @if (session()->has('msg'))
-    <div class="card-header alert alert-success alert-dismissible fade show" role="alert">
-        <h3 class="card-title">{{session('msg')}}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-        </h3>
-    </div>
-    @endif
+
     <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
             <thead>
@@ -46,7 +50,7 @@
                     <th>Titre</th>
                     <th>Note</th>
                     <th>Date</th>
-                    <th>Actions: EDIT & DELETE</th>
+                    <th class="text-center">Actions: EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +59,7 @@
                     <td>{{$item->titre}}</td>
                     <td>{{$item->note}}</td>
                     <td>{{$item->date}}</td>
-                    <td class="d-flex">
+                    <td class="d-flex justify-content-center">
                         {{-- <a href="{{route('note.show', $item->id)}}"
                         class="btn btn-info mr-3">Show</a> --}}
                         <a href="{{route('note.edit', $item->id)}}"
@@ -103,3 +107,7 @@
             </form>
 
 @stop
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+@endsection

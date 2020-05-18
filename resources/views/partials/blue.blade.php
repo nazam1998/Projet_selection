@@ -8,7 +8,7 @@
                     @foreach ($form->chunk(5) as $chunk)
                         <ul class="col-md-4">
                             @foreach ($chunk as $item)
-                                <li class="light">
+                                <li style="margin: 7px 0;" class="light">
                                     <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a> <span>-> date limite: {{$item->date->format('d/M/y')}}</span>
                                 </li>
                             @endforeach

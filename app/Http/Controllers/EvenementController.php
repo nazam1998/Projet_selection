@@ -96,7 +96,7 @@ class EvenementController extends Controller
         $request->validate([
             'date' => 'required|date',
             'formulaire_id' => 'required|integer',
-            'etat' => ($date >= $request->date ? 'required|string' : 'nullable')
+            'etat' => 'required|string'
         ]);
 
 
@@ -110,7 +110,7 @@ class EvenementController extends Controller
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
-    }
+        }
 
     /**
      * Remove the specified resource from storage.
