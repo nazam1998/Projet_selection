@@ -32,16 +32,15 @@
                 @foreach ($users as $item)
                 <tr>
                     <td><a href="{{route('group.show', $item->id)}}">
-                        @if ($item->group == null)
+                        @if ($item->group == null && $item->role_id<4)
                         Pas de groupe
-                        
                         @else 
                         {{$item->group->first()->nom}}
                         @endif </a>
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td class="d-flex justify-content-center"><a href="{{route('staff.show', $item->id)}}"
+                    <td class="d-flex justify-content-center"><a href="{{route('student.show', $item->id)}}"
                         class="btn btn-primary mr-3">Show</a>
                     </td>
                 </tr>
