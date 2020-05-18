@@ -17,7 +17,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $evenements = Evenement::latest()->where('etat', 'En cours')->whereHas('etapes')->get();
+        $evenements = Evenement::latest()->where('etat', 'En cours')->get();
         $form = Evenement::orderBy('date', 'asc')->where('etat', 'Futur')->get();
         $annonce = Annonce::all();
         $phrase = Phrase::all();

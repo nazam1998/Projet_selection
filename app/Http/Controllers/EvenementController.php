@@ -48,13 +48,7 @@ class EvenementController extends Controller
         $evenement = new Evenement();
         $evenement->date = $request->date;
         $date = new Carbon();
-        if ($evenement->date->isToday()) {
-            $evenement->etat = 'En cours';
-        } else if ($date < $evenement->date) {
-            $evenement->etat = 'Futur';
-        } else {
-            $evenement->etat = 'Terminé';
-        }
+        $evenement->etat=$request->etat;
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
@@ -96,26 +90,22 @@ class EvenementController extends Controller
         $request->validate([
             'date' => 'required|date',
             'formulaire_id' => 'required|integer',
-            'etat'=>($date >= $request->date?'required|string':'nullable')
+            'etat' => 'required|string',
         ]);
 
 
         $evenement->date = $request->date;
+        
         $date = new Carbon();
 
-        if ($date >= $evenement->date) {
-            $evenement->etat=$evenement->etat;
-        } else if ($evenement->date->isToday()) {
-            $evenement->etat = 'En cours';
-        } else if ($date < $evenement->date) {
-            $evenement->etat = 'Futur';
-        } else {
-            $evenement->etat = 'Terminé';
+        if ($request->has('etat')) {
+            $evenement->etat = $request->etat;
         }
+
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
-    }
+        }
 
     /**
      * Remove the specified resource from storage.

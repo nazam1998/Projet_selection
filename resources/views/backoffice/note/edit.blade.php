@@ -40,3 +40,7 @@
   </form>
 </div>
 @stop
+
+@section('css')
+ <link rel="stylesheet" href="{{asset('css/admin.css')}}">   
+@endsection

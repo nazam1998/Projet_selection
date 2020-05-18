@@ -10,8 +10,6 @@
     <form class="form-horizontal" action="{{route('evenement.store')}}" method="POST">
         @csrf
         <div class="card-body">
-
-
             <div class="form-group row">
                 @error('date')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
@@ -23,7 +21,7 @@
                         placeholder="Veuillez saisir la date de l'évènement">
                 </div>
             </div>
-            
+
             @error('formulaire_id')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror
@@ -36,7 +34,18 @@
                     @endforeach
                 </select>
             </div>
-            
+
+            @error('etat')
+            <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+            @enderror
+            <div class="form-group col-sm-10">
+                <label>Etat</label>
+                <select class="form-control" name="etat">
+                    <option value="En cours">En cours</option>
+                    <option value="Terminé">Terminé</option>
+                    <option value="Futur">Futur</option>
+                </select>
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

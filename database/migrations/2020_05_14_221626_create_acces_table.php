@@ -16,7 +16,6 @@ class CreateAccesTable extends Migration
         Schema::create('acces', function (Blueprint $table) {
             $table->id();
             $table->boolean('write');
-            $table->boolean('responsable');
             $table->unsignedBigInteger('auth_role');
             $table->unsignedBigInteger('permission_role');
             $table->foreign('auth_role')->on('roles')->references('id')->onDelete('cascade')->onUpdate('cascade');

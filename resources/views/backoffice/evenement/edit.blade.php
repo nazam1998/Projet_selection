@@ -12,10 +12,8 @@
         @method('PUT')
         <div class="card-body">
 
-
-
             <div class="form-group row">
-                @error('description')
+                @error('date')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
                 @enderror
                 <div class="col-sm-10">
@@ -46,13 +44,16 @@
 
 
 
-            @if (Carbon\Carbon::now() >= $evenement->date)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 276db05bc689d8fd83701b4e16773447a7d958ab
             @error('etat')
             <div class="alert text-danger font-weight-bold">{{ $message }}</div>
             @enderror
             <div class="form-group col-sm-10">
                 <label>Etat</label>
-                <select class="form-control" name="formulaire_id">
+                <select class="form-control" name="etat">
 
                     @if ('En cours'==$evenement->etat)
                     <option selected value="En cours">En cours</option>
@@ -65,10 +66,14 @@
                     @else
                     <option value="Terminé">Terminé</option>
                     @endif
+                    @if ('Futur'==$evenement->etat)
+                    <option selected value="Futur">Futur</option>
+                    @else
+                    <option value="Futur">Futur</option>
+                    @endif
 
                 </select>
             </div>
-            @endif
 
 
 
