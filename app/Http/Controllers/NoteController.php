@@ -88,7 +88,7 @@ class NoteController extends Controller
         $note->note = $request->note;
         $note->date = $request->date;
         $note->save();
-        return redirect()->route('suivi.show', $note->user_id)->with('msg', 'Note modifiée avec succés');
+        return redirect()->route('staff.show', $note->user_id)->with('msg', 'Note modifiée avec succés');
     }
 
     /**
