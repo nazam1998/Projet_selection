@@ -301,6 +301,25 @@ return [
             'can'=>'groupe',
         ],
         [
+            'text'        => 'Roles',
+            'url'         => 'role',
+            'icon'        => 'fas fa-users',
+            'icon_color'  => 'yellow',
+            'can'=>'groupe',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'role',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez un role',
+                    'url'  => 'role/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],
+        [
             'text'        => 'Groupes',
             'url'         => 'group',
             'icon'        => 'fas fa-users',

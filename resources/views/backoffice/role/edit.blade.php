@@ -132,7 +132,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-info">Ajoutez le role</button>
+            <button type="submit" class="btn btn-info">Editez le role</button>
         </div>
         <!-- /.card-footer -->
     </form>

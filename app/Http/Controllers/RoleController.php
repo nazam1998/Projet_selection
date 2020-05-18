@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -125,7 +129,6 @@ class RoleController extends Controller
             'nom' => 'required|string|unique:roles,nom,' . $role->id,
         ]);
 
-        $role = new Role();
         $role->nom = $request->nom;
         $role->save();
         $role->permissions()->detach();
