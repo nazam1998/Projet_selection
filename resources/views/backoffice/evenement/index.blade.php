@@ -24,8 +24,7 @@
                     <th>Titre Formulaire</th>
                     <th>Etat</th>
                     <th>Date</th>
-                    <th>Etape(s)</th>
-                    <th>Action: SHOW & EDIT & DELETE</th>
+                    <th class="text-center">Action: SHOW & EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,8 +35,8 @@
                 
                     <td>{{$item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</td>
                     
-                    <td class="d-flex"><a href="{{route('evenement.show', $item->id)}}"
-                        class="btn btn-primary mr-3">Show</a>
+                    <td class="d-flex justify-content-center"><a href="{{route('evenement.show', $item->id)}}"
+                        class="btn btn-primary">Show</a>
                         <a href="{{route('evenement.edit', $item->id)}}"
                             class="btn btn-warning mx-2">Edit</a>
                         <form action="{{route('evenement.destroy', $item->id)}}" method="POST">@csrf

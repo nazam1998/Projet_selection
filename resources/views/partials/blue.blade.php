@@ -4,13 +4,17 @@
         <div class="owl-twitter owl-carousel">
             @if (count($form)>1)
             <div class="item" id="formulaire">
-                <ul>
-                    @foreach ($form as $item)
-                    <li class="light">
-                    <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a> <span>limite:{{$item->date->format('d/M/y')}}</span>
-                    </li>
+                <div style="margin: 30px 0;" class="row">
+                    @foreach ($form->chunk(5) as $chunk)
+                        <ul class="col-md-4">
+                            @foreach ($chunk as $item)
+                                <li class="light">
+                                    <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a> <span>-> date limite: {{$item->date->format('d/M/y')}}</span>
+                                </li>
+                            @endforeach
+                        </ul>
                     @endforeach
-                </ul>
+                </div>
             </div>
             @elseif(count($form)==1)
             <div class="item" id="formulaire">
