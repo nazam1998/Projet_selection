@@ -252,6 +252,17 @@ return [
         ],
         
         [
+            'text'        => 'Liste des Candidats',
+            'url'         => 'candidat',
+            'icon'        => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'candidat',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Formulaires',
             'url'         => 'formulaire',
             'icon'        => 'fas fa-marker',

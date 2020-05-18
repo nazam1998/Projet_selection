@@ -65,6 +65,23 @@ class UserSeeder extends Seeder
                 'password'=>Hash::make('nico@nico.com')
             ],
             [
+                'nom' => 'S.Y.',
+                'prenom' => 'Kadir',
+                'genre' => 'Homme',
+                'statut' => 'Marié(e)',
+                'commune' => 'Molenbeek',
+                'adresse' => 'Place de la minoterie',
+                'telephone' => '+32 123 77 88 99',
+                'ordinateur' => true,
+                'objectif' => 'Tout réussir',
+                'photo' => 'On va Tous Rater.png',
+                'abo'=>true,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
+                'role_id'=>2,
+                'email'=>'kadir@kadir',
+                'password'=>Hash::make('kadir@kadir.com')
+            ],
+            [
                 'nom' => 'Fz',
                 'prenom' => 'Elias',
                 'genre' => 'Homme',

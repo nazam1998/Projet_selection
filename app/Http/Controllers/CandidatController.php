@@ -101,17 +101,8 @@ class CandidatController extends Controller
         $user->abo = $request->has('abo');
         $user->role_id = $request->role_id;
         $user->group()->detach();
-        if ($user->role_id == 5) {
-            $group = Group::find($request->group_id);
-            $group->coach_id = $user->id;
-            $group->save();
-        } else if ($user->role_id == 2) {
-            $group = Group::find($request->group_id);
-            $group->responsable_id = $user->id;
-            $group->save();
-        } else {
-            $user->group()->attach($request->group);
-        }
+        $user->group()->attach($request->group, ['role_id' => $user->role_id]);
+
         if ($request->role_id != 7 && $request->password != $user->password) {
             $user->password = Hash::make($request->password);
             Mail::to($user->email)->send(new PasswordMail($user, $request->password));

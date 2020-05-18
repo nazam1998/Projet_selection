@@ -12,8 +12,9 @@ class StudentController extends Controller
     // Affiche tous les student et candidats
     public function index()
     {
+        $groups = Group::all();
         $users = User::where('role_id', '6')->orWhere('role_id', '7')->get();
-        return view('backoffice.suivi.student', compact('users'));
+        return view('backoffice.suivi.student', compact('users','groups'));
     }
 
     // Permet de voir le suivi d'un student précis et pouvoir lui écrire une note
@@ -33,10 +34,23 @@ class StudentController extends Controller
     }
 
     // Permet de filtrer les student par groupe
-    public function indexGroup($id)
+    public function indexGroup(Request $request)
     {
-        $user = User::where('role_id', '6')->orWhere('role_id', '7')->where('group_id', $id)->get();
-        return view('backoffice.suivi.student', compact('users'));
+        if ($request->has('group')) {
+
+            $groups = Group::whereIn('id', $request->group)->get();
+            $users = $groups->pluck('users')->where('role_id', '6')->orWhere('role_id', '7');
+            $groups = Group::all();
+        } else {
+            $groups = Group::all();
+            $users = $groups->pluck('users')->where('role_id', '6')->orWhere('role_id', '7');
+        }
+        $related = $users->first();
+        foreach ($users as $tag) {
+            $related = $related->merge($tag);
+        }
+        $users = $related;
+        return view('backoffice.suivi.student', compact('users','groups'));
     }
     // Permet de modifier un student ou candidat
     public function edit($id)
@@ -48,23 +62,24 @@ class StudentController extends Controller
     }
 
 
-    public function addMatiere($id){
-        $user=User::find($id);
-        $matieres=Matiere::all();
+    public function addMatiere($id)
+    {
+        $user = User::find($id);
+        $matieres = Matiere::all();
         return view('backoffice.suivi.formMatiere', compact('user', 'matieres'));
     }
 
-    public function saveMatiere(Request $request, $id){
+    public function saveMatiere(Request $request, $id)
+    {
         $request->validate([
-            'matiere.*'=>'required|integer',
+            'matiere.*' => 'required|integer',
         ]);
 
-        $user=User::find($id);
-        
+        $user = User::find($id);
+
         $user->matieres()->detach();
-        $user->matieres()->attach($request->matiere, ['valide'=>false]);
+        $user->matieres()->attach($request->matiere, ['valide' => false]);
 
-        return redirect()->route('student.show', $id)->with('msg','Le student a été modifié avec succès');
+        return redirect()->route('student.show', $id)->with('msg', 'Le student a été modifié avec succès');
     }
-
 }

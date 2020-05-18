@@ -127,6 +127,7 @@ class RoleController extends Controller
 
         $role->nom = $request->nom;
         $role->save();
+        
         $role->permissions()->detach();
         if ($request->has('full')) {
             foreach (Permission::all()->pluck('id') as $item) {

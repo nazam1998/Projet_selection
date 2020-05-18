@@ -32,6 +32,12 @@ class CreateGroupsTable extends Migration
                 ->references('id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->bigInteger('role_id')->unsigned();
+            $table->foreign('role_id')
+                ->on('roles')
+                ->references('id')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
 
         });
