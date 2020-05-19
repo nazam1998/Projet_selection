@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class UserEcriture
 {
@@ -15,6 +16,12 @@ class UserEcriture
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+
+        $permissions = Auth::user()->permissions->where('nom', 'LIKE', 'user-ecriture%')->first();
+        if ($permissions) {
+
+            return $next($request);
+        }
+        return redirect()->back()->with('msg',"Vous n'avez pas les permissions d'accèder à cette page");
     }
 }

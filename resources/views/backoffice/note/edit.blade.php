@@ -29,7 +29,7 @@
         @enderror
         <div class="col-sm-10">
           <label>Date</label>
-          <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" value="@if($errors->first('date')){{$note->date}}@else{{old('date', $note->date)}}@endif" id="inputEmail3" placeholder="Veuillez editer la date">
+          <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" value="@if($errors->first('date')){{$note->date->format('Y-m-d')}}@else{{old('date', $note->date->format('Y-m-d'))}}@endif" id="inputEmail3" placeholder="Veuillez editer la date">
         </div>
     </div>
     <!-- /.card-body -->

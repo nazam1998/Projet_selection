@@ -47,7 +47,6 @@ class EvenementController extends Controller
 
         $evenement = new Evenement();
         $evenement->date = $request->date;
-        $date = new Carbon();
         $evenement->etat=$request->etat;
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
@@ -86,7 +85,6 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
-        $date = new Carbon();
         $request->validate([
             'date' => 'required|date',
             'formulaire_id' => 'required|integer',
@@ -96,7 +94,6 @@ class EvenementController extends Controller
 
         $evenement->date = $request->date;
         
-        $date = new Carbon();
 
         if ($request->has('etat')) {
             $evenement->etat = $request->etat;

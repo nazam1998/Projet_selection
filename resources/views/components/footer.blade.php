@@ -28,7 +28,12 @@
                 </form>
             </div>
             <div class="col-sm-7 text-center">
-                <h3 class="white">Opening Hours <span class="open-blink"></span></h3>
+                @if (Carbon\Carbon::now()<new Datetime('17:00') && Carbon\Carbon::now()>new Datetime('9:00'))
+                    <h3 class="white">Opening Hours <span class="open-blink"></span></h3>
+                    @else
+                    <h3 class="white">Opening Hours <span class="close-blink"></span></h3>
+                    
+                @endif
                 <div class="row opening-hours">
                     <div class="col-sm-6 text-center">
                         <h5 class="light-white light">Mon - Fri</h5>

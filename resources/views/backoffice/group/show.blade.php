@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center p-3">Détails du groupe</h1>
+<h1 class="text-center p-3">Détails du groupe <span class="text-secondary">{{$group->nom}}</span></h1>
 
 
 <table class="table table-bordered table-hover shadow">
@@ -15,20 +15,6 @@
         </tr>
     </thead>
     <tbody class="bg-white">
-        <tr>
-            <td>{{$group->responsable->id}}</td>
-            <td>{{$group->responsable->nom}}</td>
-            <td>{{$group->responsable->prenom}}</td>
-            <td>{{$group->responsable->role->nom}}</td>
-        </tr>
-        @if ($group->coach_id!=null)
-        <tr>
-            <td>{{$group->coach->id}}</td>
-            <td>{{$group->coach->nom}}</td>
-            <td>{{$group->coach->prenom}}</td>
-            <td>{{$group->coach->role->nom}}</td>
-        </tr>
-        @endif
         @foreach($group->users as $item)
         <tr>
             <td>{{ $item->id }}</td>

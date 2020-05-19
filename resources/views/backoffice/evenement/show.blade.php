@@ -45,7 +45,6 @@
         @endforeach
     </tbody>
 </table>
-
 @endsection
 
 @section('css')

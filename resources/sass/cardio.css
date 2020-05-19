@@ -640,6 +640,7 @@ footer .open-blink {
     animation-iteration-count: infinite;
 }
 
+
 footer .open-blink:before {
     content: ' ';
     position: absolute;
@@ -651,6 +652,37 @@ footer .open-blink:before {
     opacity: 0.1;
     border-radius: 50%;
     background-color: #4caf50;
+}
+
+footer .close-blink {
+    content: ' ';
+    position: relative;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 20px;
+    border-radius: 50%;
+    background-color: red;
+    -webkit-animation-name: flash;
+    animation-name: flash;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+
+footer .close-blink:before {
+    content: ' ';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    opacity: 0.1;
+    border-radius: 50%;
+    background-color: red;
 }
 
 footer .opening-hours {
