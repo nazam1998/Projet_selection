@@ -59,8 +59,8 @@
                 </ul>
             </div>
             <div>
-                <p>&copy; 2015 All Rights Reserved. Powered by <a href="http://www.phir.co/">PHIr</a> exclusively
-                    for <a href="http://tympanus.net/codrops/">Codrops</a></p>
+                <p>&copy; 2015 All Rights Reserved. Powered by <a href="http://www.phir.co/">NKN</a> exclusively
+                    for <a href="http://molengeek.com">MolenGeek</a></p>
             </div>
         </div>
     </div>

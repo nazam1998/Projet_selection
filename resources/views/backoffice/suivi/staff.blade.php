@@ -65,8 +65,24 @@
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td class="d-flex justify-content-center"><a href="{{route('staff.show', $item->id)}}"
+                    <td class="d-flex justify-content-center">
+                        @if ($item->deleted_at)
+                        <a href="{{route('staff.restore', $item->id)}}"
+                            class="btn btn-info mr-3">Restore</a>
+                            <form action="{{route('staff.forceDestroy', $item->id)}}" method="POST">@csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-warning">Force Delete</button>
+                            </form>
+                        @else  
+                        <a href="{{route('staff.show', $item->id)}}"
                             class="btn btn-primary mr-3">Show</a>
+                            <a href="{{route('staff.edit', $item->id)}}"
+                                class="btn btn-danger mr-3">Edit</a>
+                                <form action="{{route('staff.destroy', $item->id)}}" method="POST">@csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-warning">Delete</button>
+                                </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

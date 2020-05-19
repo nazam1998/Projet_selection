@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Role
 {
@@ -15,8 +16,9 @@ class Role
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role_id == 1 && Auth::user()->role_id == 2) {
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
             return $next($request);
         }
+        return redirect()->back();
     }
 }
