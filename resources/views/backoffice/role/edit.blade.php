@@ -45,13 +45,22 @@
                     <label class="form-check-label">Lecture Seulement</label>
                 </div>
                 <div class="form-check">
-                    @if($role->permissions->contains(App\Permission::where('nom','annonce')->first()->id))
-                    <input checked class="form-check-input" type="checkbox" name="annonce" value="annonce">
+                    @if($role->permissions->contains(App\Permission::where('nom','annonce-ecriture')->first()->id))
+                    <input checked class="form-check-input" type="checkbox" name="annonce">
 
                     @else
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce">
+                    <input class="form-check-input" type="checkbox" name="annonce">
                     @endif
-                    <label class="form-check-label">Annonce</label>
+                    <label class="form-check-label">Annonce Ecriture</label>
+                </div>
+                <div class="form-check">
+                    @if($role->permissions->contains(App\Permission::where('nom','annonce-lecture')->first()->id))
+                    <input checked class="form-check-input" type="checkbox" name="annonce-lecture">
+
+                    @else
+                    <input class="form-check-input" type="checkbox" name="annonce-lecture">
+                    @endif
+                    <label class="form-check-label">Annonce Lecture</label>
                 </div>
                 <div class="form-check">
                     @if($role->permissions->contains(App\Permission::where('nom','groupe')->first()->id))
@@ -132,7 +141,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-info">Ajoutez le role</button>
+            <button type="submit" class="btn btn-info">Editez le role</button>
         </div>
         <!-- /.card-footer -->
     </form>

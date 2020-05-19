@@ -15,7 +15,7 @@ class Role extends Model
     {
         return $this->belongsToMany('App\Role', 'suivis', 'role_id', 'auth_id');
     }
-    public function role()
+    public function roles()
     {
         return $this->belongsToMany('App\Role', 'suivis', 'auth_id', 'role_id');
     }

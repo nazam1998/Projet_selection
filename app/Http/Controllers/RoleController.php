@@ -28,8 +28,8 @@ class RoleController extends Controller
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
-        $roles=Role::all();
-        return view('backoffice.role.add', compact('candidat_lectures', 'user_lectures', 'user_ecritures','roles'));
+        $roles = Role::all();
+        return view('backoffice.role.add', compact('candidat_lectures', 'user_lectures', 'user_ecritures', 'roles'));
     }
 
     /**
@@ -44,6 +44,7 @@ class RoleController extends Controller
             'nom' => 'required|string|unique:roles',
 
         ]);
+        $roles = Role::all();
 
         $role = new Role();
         $role->nom = $request->nom;
@@ -56,9 +57,16 @@ class RoleController extends Controller
             foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
+            foreach ($roles as $item) {
+                $item->roles()->attach($role->id, ['ecriture' => false]);
+            }
+            
         } else {
-            if ($request->has('annonce')) {
-                $role->permissions()->attach(Permission::where('nom', 'annonce')->first()->id);
+            if ($request->has('annonce-ecriture')) {
+                $role->permissions()->attach(Permission::where('nom', 'annonce-ecriture')->first()->id);
+                $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
+            } else if ($request->has('annonce-ecriture')) {
+                $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
             }
             if ($request->has('contact')) {
                 $role->permissions()->attach(Permission::where('nom', 'contact')->first()->id);
@@ -82,6 +90,12 @@ class RoleController extends Controller
                 foreach ($request->has('user-ecriture') as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
+                }
+            }
+
+            if ($request->has('suivi-ecriture')) {
+                foreach ($request->has('suivi-ecriture') as $item) {
+                    $item->roles()->attach($item->id, ['ecriture' => true]);
                 }
             }
         }
@@ -110,8 +124,8 @@ class RoleController extends Controller
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
-        $roles=Role::all();
-        return view('backoffice.role.edit', compact('role','candidat_lectures', 'user_lectures', 'user_ecritures','roles'));
+        $roles = Role::all();
+        return view('backoffice.role.edit', compact('role', 'candidat_lectures', 'user_lectures', 'user_ecritures', 'roles'));
     }
 
     /**
@@ -129,7 +143,7 @@ class RoleController extends Controller
 
         $role->nom = $request->nom;
         $role->save();
-        
+
         $role->permissions()->detach();
         if ($request->has('full')) {
             foreach (Permission::all()->pluck('id') as $item) {
@@ -143,9 +157,8 @@ class RoleController extends Controller
             if ($request->has('annonce')) {
 
                 $role->permissions()->attach(Permission::where('nom', $request->annonce)->first()->id);
-                if($request->annonce=='annonce-écriture'){
+                if ($request->annonce == 'annonce-écriture') {
                     $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
-
                 }
             }
             if ($request->has('contact')) {
