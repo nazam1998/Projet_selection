@@ -3,13 +3,13 @@
 @section('content')
 
 @if (session()->has('msg'))
-    <div class="card-header alert alert-success alert-dismissible fade show" role="alert">
-        <h3 class="card-title">{{session('msg')}}
+<div class="card-header alert alert-success alert-dismissible fade show" role="alert">
+    <h3 class="card-title">{{session('msg')}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-        </h3>
-    </div>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h3>
+</div>
 @endif
 
 <div class="card">
