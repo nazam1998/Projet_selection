@@ -28,7 +28,8 @@ class RoleController extends Controller
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
-        return view('backoffice.role.add', compact('candidat_lectures', 'user_lectures', 'user_ecritures'));
+        $roles=Role::all();
+        return view('backoffice.role.add', compact('candidat_lectures', 'user_lectures', 'user_ecritures','roles'));
     }
 
     /**
@@ -109,7 +110,8 @@ class RoleController extends Controller
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
-        return view('backoffice.role.edit', compact('role','candidat_lectures', 'user_lectures', 'user_ecritures'));
+        $roles=Role::all();
+        return view('backoffice.role.edit', compact('role','candidat_lectures', 'user_lectures', 'user_ecritures','roles'));
     }
 
     /**

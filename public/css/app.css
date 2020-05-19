@@ -11167,16 +11167,18 @@ footer .social-footer li a {
     white-space: nowrap;
 }
 
-.d-flex-center-gros{
+.d-flex-center-gros {
 
     margin: auto !important;
     width: 70%;
 }
-.d-flex-center{
+
+.d-flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
-}@charset "UTF-8";
+}
+@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com

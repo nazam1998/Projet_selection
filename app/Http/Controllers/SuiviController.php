@@ -14,7 +14,7 @@ class SuiviController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

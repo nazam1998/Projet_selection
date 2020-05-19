@@ -1158,12 +1158,13 @@ footer .social-footer li a {
     white-space: nowrap;
 }
 
-.d-flex-center-gros{
+.d-flex-center-gros {
 
     margin: auto !important;
     width: 70%;
 }
-.d-flex-center{
+
+.d-flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
