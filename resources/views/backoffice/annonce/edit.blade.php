@@ -65,3 +65,7 @@
 @section('css')
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 @endsection
+
+@section('js')
+<script src="{{asset('js/admin.js')}}"></script>
+@endsection

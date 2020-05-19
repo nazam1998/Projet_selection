@@ -1,145 +1,163 @@
 .main-sidebar {
     background-color: #2a3237 !important;
-    a{
+
+    a {
         color: #fffce9 !important;
     }
-    i{
-        color:#fffce9 !important;
+
+    i {
+        color: #fffce9 !important;
     }
 }
 
-.content-wrapper{
+.content-wrapper {
     background-color: #fffce9 !important;
-    .btnLogin{
+
+    .btnLogin {
         color: #fffce9;
     }
-    .btnLogin:hover{
+
+    .btnLogin:hover {
         color: #8b897b !important;
     }
 }
 
-body{
+body {
     background-color: #fffce9 !important;
 }
 
-.card-header{
+.card-header {
     background-color: #2a3237 !important;
 }
 
-.headShow{
+.headShow {
     background-color: #2a3237 !important;
 }
 
-.card-footer{
-    .btn{
+.card-footer {
+    .btn {
         background-color: #2a3237 !important;
         border: 1px solid #2a3237;
     }
-    .btn:hover{
+
+    .btn:hover {
         background-color: #2a3237a2 !important;
         border: 1px solid #2a323738;
     }
 }
-.showStaff{
-    .btn{
+
+.showStaff {
+    .btn {
         background-color: #2a3237 !important;
         border: 1px solid #2a3237;
     }
-    .btn:hover{
+
+    .btn:hover {
         background-color: #2a3237a2 !important;
         border: 1px solid #2a323738;
     }
 }
-.card-body{
-    img{
+
+.card-body {
+    img {
         width: 130px;
     }
 }
-.navbar{
+
+.navbar {
     background-color: #2a3237 !important;
-    .fa-bars{
+
+    .fa-bars {
         color: #fffce9 !important;
     }
-    .fa-bars:hover{
+
+    .fa-bars:hover {
         color: #8b897b !important;
     }
-    .fa-search{
+
+    .fa-search {
         color: #2a3237 !important;
     }
-    .fa-search:hover{
+
+    .fa-search:hover {
         color: #8b897b !important;
     }
 }
 
 .light {
-	color: #fffce9;
+    color: #fffce9;
 }
 
-.dark{
-	color: #272626;
+.dark {
+    color: #272626;
 }
 
 .light-bg {
-	background-color: #fffce9;
+    background-color: #fffce9;
 }
 
 .dark-bg {
-	background-color: #272626;
+    background-color: #272626;
 }
 
-.btnShow{
+.btnShow {
     background-color: #2a3237 !important;
     border: 1px solid #2a3237;
     color: white !important;
 }
-.btnShow:hover{
+
+.btnShow:hover {
     background-color: #2a3237a2 !important;
     border: 1px solid #2a323738;
     color: white !important;
 }
 
 .btn-blue {
-	color: #2a3237;
-	background: #fffce9;
+    color: #2a3237;
+    background: #fffce9;
 }
 
 .btn.btn-blue:hover {
-	color: #fffce9;
-	background: #2a3237;
+    color: #fffce9;
+    background: #2a3237;
 }
 
 
 
-.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active{
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
     background-color: rgba(255, 255, 255, 0.445);
     color: #2a3237 !important;
-    i{
+
+    i {
         color: #2a3237 !important;
     }
 }
 
-[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active {
-    background-color: rgba(255,255,255,.9);
+[class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active {
+    background-color: rgba(255, 255, 255, .9);
     color: #2a3237 !important;
-    i{
+
+    i {
         color: #2a3237 !important;
     }
 }
 
-.btnMail{
+.btnMail {
     background-color: #2a3237 !important;
     border: 1px solid #2a3237;
 }
-.btnMail:hover{
+
+.btnMail:hover {
     background-color: #2a3237a2 !important;
     border: 1px solid #2a323738;
 }
 
-.input-icon{
-        float: right;
-        margin-right: 10px;
-        margin-top: -27px;
-        position: relative;
-        z-index: 2;
-        color: gray;
+.input-icon {
+    float: right;
+    margin-right: 10px;
+    margin-top: -27px;
+    position: relative;
+    z-index: 2;
+    color: gray;
 }
+

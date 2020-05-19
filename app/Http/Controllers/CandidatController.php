@@ -71,7 +71,7 @@ class CandidatController extends Controller
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
             'role_id' => ['required', 'integer'],
-            'group_id' => ['required', 'integer'],
+            'group' => ['required', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -108,7 +108,7 @@ class CandidatController extends Controller
             Mail::to($user->email)->send(new PasswordMail($user, $request->password));
         }
         $user->save();
-        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Merci pour votre insciption');;
+        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Candidat modifié avec succès');
     }
 
     /**
@@ -125,7 +125,6 @@ class CandidatController extends Controller
 
     public function forceDestroy($user)
     {
-        dd('fdfd');
         $user = User::withTrashed()->whereId($user)->first();
         $user->forceDelete();
         return redirect()->back()->with('msg', 'Le candidat a été supprimé définitivement avec succès');

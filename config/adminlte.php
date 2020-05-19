@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
+    'usermenu_enabled' => false,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
@@ -326,6 +326,25 @@ return [
                 [
                     'text' => 'Ajoutez un groupe',
                     'url'  => 'group/create',
+                    'icon_color' => 'yellow'
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Roles',
+            'url'         => 'role',
+            'icon'        => 'fas fa-users',
+            'icon_color'  => 'yellow',
+            'can'=>'groupe',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'role',
+                    'icon_color' => 'cyan'
+                ],
+                [
+                    'text' => 'Ajoutez un role',
+                    'url'  => 'role/create',
                     'icon_color' => 'yellow'
                 ],
             ],

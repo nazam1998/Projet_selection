@@ -139,7 +139,12 @@ class RoleController extends Controller
             }
         } else {
             if ($request->has('annonce')) {
-                $role->permissions()->attach(Permission::where('nom', 'annonce')->first()->id);
+
+                $role->permissions()->attach(Permission::where('nom', $request->annonce)->first()->id);
+                if($request->annonce=='annonce-écriture'){
+                    $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
+
+                }
             }
             if ($request->has('contact')) {
                 $role->permissions()->attach(Permission::where('nom', 'contact')->first()->id);

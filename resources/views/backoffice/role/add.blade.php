@@ -30,8 +30,12 @@
           <label class="form-check-label">Lecture Seulement</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="annonce" value="annonce">
-          <label class="form-check-label">Annonce</label>
+          <input class="form-check-input" type="checkbox" name="annonce" value="annonce-écriture">
+          <label class="form-check-label">Annonce écriture</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="annonce" value="annonce-lecture">
+          <label class="form-check-label">Annonce lecture</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" name="groupe">
@@ -92,4 +96,8 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+@endsection
+
+@section('js')
+<script src="{{asset('js/admin.js')}}"></script>
 @endsection

@@ -66,9 +66,9 @@
             <div class='form-group'>
                 <label style="margin-right: 12px;" for="">Genre: </label>
                 <label style="margin-right: 5px;" class="white" for="">Homme</label>
-                <input @if($user->genre=='Homme')checked @endif style="margin-right: 8px;" name="genre" type="radio">
+                <input @if($user->genre=='Homme')checked @endif style="margin-right: 8px;" value='Homme' name="genre" type="radio">
                 <label style="margin-right: 5px;" class="white" for="">Femme</label>
-                <input @if($user->genre=='Femme')checked @endif name="genre" type="radio">
+                <input @if($user->genre=='Femme')checked @endif name="genre" value='Femme' type="radio">
             </div>
             <div class='form-group'>
                 <label style="margin-right: 10px;" for="">Statut</label>
@@ -116,8 +116,8 @@
     @enderror
     <div class="form-group col-sm-10">
         <label>Groupes</label>
-        <select class="form-control" name="group_id">
-            <option>Choisir un groupe...</option>
+        <select class="form-control" name="group">
+            <option value="">Choisir un groupe...</option>
             @foreach ($groups as $item)
             @if ($item->id==$user->group->contains($item->id))
 
@@ -144,4 +144,8 @@
 
 @section('css')
   <link rel="stylesheet" href="{{asset('css/admin.css')}}">    
+@endsection
+
+@section('js')
+<script src="{{asset('js/admin.js')}}"></script>
 @endsection
