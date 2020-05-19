@@ -33,26 +33,45 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('user-lecture', function ($user, $input) {
             $lecture = Permission::where('nom', 'LIKE', 'user-lecture-' . $input)->first()->id;
             $ecriture = Permission::where('nom', 'LIKE', 'user-ecriture-' . $input)->first()->id;
-            return $user->role->permissions->contain($lecture) || $user->role->permissions->contain($ecriture);
+            return $user->role->permissions->contains($lecture) || $user->role->permissions->contains($ecriture);
         });
+
+        Gate::define('user-ecriture', function ($user, $input) {
+            $ecriture = Permission::where('nom', 'LIKE', 'user-ecriture-' . $input)->first()->id;
+            return $user->role->permissions->contains($ecriture);
+        });
+
+
+        Gate::define('user-edit', function ($user) {
+            $ecriture = Permission::where('nom', 'LIKE', 'user-ecriture-%')->first()->id;
+            return $user->role->permissions->contains($ecriture);
+        });
+
+
 
         Gate::define('candidat-lecture', function ($user, $input) {
-            $lecture = Permission::where('nom', 'LIKE', 'user-lecture-' . $input)->first()->id;
-            $ecriture = Permission::where('nom', 'LIKE', 'user-ecriture-' . $input)->first()->id;
-            return $user->role->permissions->contain($lecture) || $user->role->permissions->contain($ecriture);
+            $lecture = Permission::where('nom', 'LIKE', 'candidat-lecture-' . $input)->first()->id;
+            return $user->role->permissions->contains($lecture);
         });
 
-        Gate::define('annonce',function($user){
-            $annonce=Permission::where('nom','LIKE','%annonce%')->first()->id;
+
+
+        Gate::define('candidat-edit', function ($user) {
+            $lecture = Permission::where('nom', 'LIKE', 'candidat-lecture-%')->first()->id;
+            return $user->role->permissions->contains($lecture);
+        });
+
+        Gate::define('annonce', function ($user) {
+            $annonce = Permission::where('nom', 'LIKE', '%annonce%')->first()->id;
             return $user->role->permissions->contains($annonce);
         });
 
-        Gate::define('contact',function($user){
-            $contact=Permission::where('nom','LIKE','%contact%')->first()->id;
+        Gate::define('contact', function ($user) {
+            $contact = Permission::where('nom', 'LIKE', '%contact%')->first()->id;
             return $user->role->permissions->contains($contact);
         });
-        Gate::define('groupe',function($user){
-            $groupe=Permission::where('nom','LIKE','%groupe%')->first()->id;
+        Gate::define('groupe', function ($user) {
+            $groupe = Permission::where('nom', 'LIKE', '%groupe%')->first()->id;
             return $user->role->permissions->contains($groupe);
         });
     }

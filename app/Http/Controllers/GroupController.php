@@ -52,11 +52,11 @@ class GroupController extends Controller
 
         $group = new Group();
         $group->nom = $request->nom;
-        $group->responsable_id = $request->responsable_id;
-        if ($request->has('coach_id')) {
-            $group->coach_id = $request->coach_id;
-        }
         $group->save();
+        $group->users()->attach($request->responsable_id, ['role_id' => User::find($request->responsable_id)->role_id]);
+        if ($request->has('coach_id')) {
+            $group->users()->attach($request->coach_id, ['role_id' => User::find($request->coach_id)->role_id]);
+        }
         return redirect()->route('group.index')->with('msg', 'Groupe créé avec succès');
     }
 
@@ -100,10 +100,19 @@ class GroupController extends Controller
         ]);
 
         $group->nom = $request->nom;
-        $group->responsable_id = $request->responsable_id;
-        if ($request->has('coach_id')) {
-            $group->coach_id = $request->coach_id;
+
+        $group->users()->detach($group->users->where('role_id', 2)->first()->id);
+        User::find($request->responsable_id)->group()->detach();
+        $group->users()->attach($request->responsable_id, ['role_id' => User::find($request->responsable_id)->role_id]);
+
+        if ($group->users->where('role_id', 5)->first()) {
+            $group->users()->detach($group->users->where('role_id', 5)->first()->id);
         }
+        if ($request->coach_id != '') {
+            User::find($request->coach_id)->group()->detach();
+            $group->users()->attach($request->coach_id, ['role_id' => User::find($request->coach_id)->role_id]);
+        }
+
         $group->save();
         return redirect()->route('group.index')->with('msg', 'Groupe modifié avec succès');
     }

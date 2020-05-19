@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -10,18 +11,16 @@ class StaffController extends Controller
     // Afficher tout les membres du staff, càd tout le monde sauf les candidats et users 
     public function index()
     {
-<<<<<<< HEAD
-        $users = User::where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7')->get();
-=======
-        $users = User::where('role_id', '!=', '1')->where('role_id', '!=', '6')->where('role_id', '!=', '7')->whereHas('group')->orWhereHas('group_responsable')->orWhereHas('group_coach')->get();
->>>>>>> 276db05bc689d8fd83701b4e16773447a7d958ab
-        return view('backoffice.suivi.staff', compact('users'));
+        $groups = Group::all();
+        $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7)->whereHas('group')->get();
+        return view('backoffice.suivi.staff', compact('users', 'groups'));
     }
 
     // Afficher un membre du staff précis et pouvoir lui écrire une note via le note controller
 
     public function show($id)
     {
+
         $user = User::find($id);
         return view('backoffice.suivi.staffShow', compact('user', 'notes'));
     }
@@ -31,12 +30,26 @@ class StaffController extends Controller
     }
 
 
-    public function indexGroup($id)
+    public function indexGroup(Request $request)
     {
-        $users = User::find($id);
-        if ($users->role_id == 2) {
-            $group = User::find($id);
+        if ($request->has('group')) {
+
+            $groups = Group::whereIn('id', $request->group)->get();
+            $users = $groups->pluck('users')->where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7);
+            $groups = Group::all();
+            $related = $users->first();
+            if ($users->first()) {
+
+                foreach ($users as $tag) {
+                    $related = $related->merge($tag);
+                }
+                $users = $related;
+            }
+        } else {
+            $groups = Group::all();
+            $users = User::where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7)->get();
         }
-        return view('backoffice.suivi.staff', compact('users'));
+
+        return view('backoffice.suivi.staff', compact('users', 'groups'));
     }
 }

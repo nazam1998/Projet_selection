@@ -18,7 +18,6 @@ class Annonce
     public function handle($request, Closure $next)
     {
         $annonce = Permission::where('nom', 'LIKE', '%annonce%')->first()->id;
-
         if (Auth::user()->role->permissions->contains($annonce)) {
             return $next($request);
         }

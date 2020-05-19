@@ -30,6 +30,10 @@ Route::get('mailing/role', 'MailingController@role');
 Route::get('mailing/group', 'MailingController@group');
 Route::post('mailing/StoreUser', 'MailingController@storeUser')->name('mailing.storeUser');
 
+
+Route::get('suivi/student/group/', 'StudentController@indexGroup')->name('student.group');
+Route::get('suivi/staff/group/', 'StaffController@indexGroup')->name('staff.group');
+
 Route::resource('matiere', 'MatiereController');
 Route::resource('mailing', 'MailingController');
 Route::resource('annonce', 'AnnonceController');
@@ -39,16 +43,24 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
-Route::resource('suivi', 'StaffController');
+Route::resource('suivi/staff', 'StaffController');
+Route::resource('suivi/student', 'StudentController');
 Route::resource('titre', 'TitreController');
 Route::resource('description', 'DescriptionController');
 // Candidat
-Route::get('candidat/{user}/restore','CandidatController@restore')->name('candidat.restore');
-Route::delete('candidat/{user}/forceDestroy','CandidatController@forceDestroy')->name('candidat.forceDestroy');
+Route::get('candidat/{user}/restore', 'CandidatController@restore')->name('candidat.restore');
+Route::delete('candidat/{user}/forceDestroy', 'CandidatController@forceDestroy')->name('candidat.forceDestroy');
 Route::resource('candidat', 'CandidatController', ['parameters' => [
     'candidat' => 'user'
 ]]);
 
+
+
+
+Route::get('/suivi/student/{id}/matiere', 'StudentController@addMatiere')->name('addMatiere');
+Route::post('/suivi/student/{id}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
+
+Route::get('/suivi/student/{id}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
 
 Route::get('note/{id}/create', 'NoteController@create')->name('note.create');
 Route::get('note/{id}/edit', 'NoteController@edit')->name('note.edit');

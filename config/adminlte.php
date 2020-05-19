@@ -46,8 +46,8 @@ return [
     */
 
     'logo' => '<b>NKN</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img' => '/img/navIconWhite.png',
+    'logo_img_class' => 'brand-image elevation-1',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
@@ -252,6 +252,17 @@ return [
         ],
         
         [
+            'text'        => 'Liste des Candidats',
+            'url'         => 'candidat',
+            'icon'        => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'candidat',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Formulaires',
             'url'         => 'formulaire',
             'icon'        => 'fas fa-marker',
@@ -340,13 +351,26 @@ return [
         ],
         [
             'text'        => 'Suivi du staff',
-            'url'         => 'suivi',
-            'icon'        => 'fas fa-users',
+            'url'         => 'suivi/staff',
+            'icon'        => 'fas fa-user-friends',
             'icon_color'  => 'yellow',
             'submenu' => [
                 [
                     'text' => 'Base de données',
-                    'url'  => 'suivi',
+                    'url'  => 'suivi/staff',
+                    'icon_color' => 'cyan'
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Suivi des students',
+            'url'         => 'suivi/student',
+            'icon'        => 'fas fa-user',
+            'icon_color'  => 'yellow',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'suivi/student',
                     'icon_color' => 'cyan'
                 ],
             ],

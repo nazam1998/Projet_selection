@@ -18,28 +18,37 @@
           <label>Nom du groupe</label>
           <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror" value="@if($errors->first('nom')){{$group->nom}}@else{{old('nom', $group->nom)}}@endif" id="inputEmail3" placeholder="Veuillez editer le nom du groupe">
         </div>
+        @error('responsable_id')
+            <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+        @enderror
         <div class="form-group col-sm-10">
             <label>Nom du responsable</label>
             <select class="form-control" name="responsable_id">
               <option>Choisir un responsable...</option>
                 @foreach ($responsables as $item)
-                @if ($item->id == $group->responsable_id)    
-                    <option selected value="{{$item->id}}">{{$item->nom}}</option>
+                    
+                @if ($group->users->contains($item->id))    
+                <option selected value="{{$item->id}}">{{$item->nom}}</option>
                 @else
-                    <option value="{{$item->id}}">{{$item->nom}}</option>
+                <option value="{{$item->id}}">{{$item->nom}}</option>
                 @endif
+                
                 @endforeach
             </select>
           </div>
+          @error('coach_id')
+            <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+        @enderror
           <div class="form-group col-sm-10">
             <label>Nom du coach</label>
-            <select class="form-control" name="responsable_id">
-              <option>Choisir un coach...</option>
+            <select class="form-control" name="coach_id">
+              <option value="">Choisir un coach...</option>
                 @foreach ($coachs as $item)
-                @if ($item->id == $group->coach_id)    
-                    <option selected value="{{$item->id}}">{{$item->nom}}</option>
+                    
+                @if ($group->users->contains($item->id))    
+                <option selected value="{{$item->id}}">{{$item->nom}}</option>
                 @else
-                    <option value="{{$item->id}}">{{$item->nom}}</option>
+                <option value="{{$item->id}}">{{$item->nom}}</option>
                 @endif
                 @endforeach
             </select>

@@ -27,6 +27,49 @@
         </table>
     </div>
 </div>
+
+@if (session()->has('valide'))
+<div style="margin-top:50px;" class="card-header alert alert-success alert-dismissible fade show" role="alert">
+    <h3 class="card-title">{{session('valide')}}
+    <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+    </h3>
+</div>
+@endif
+
+<div class="card">
+<div class="card-header bg-info d-flex align-items-center">
+    <h3 class="card-title ">Matières du student</h3>
+    <a class="ml-3 btn btn-info" href="{{route('addMatiere', $user->id)}}">Associer une matière</a>
+</div>
+<div class="card-body table-responsive p-0">
+<table class="table table-hover text-nowrap">
+    <thead>
+        <tr>
+            <th class="text-center">Matières</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Valider</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($user->matieres as $item)
+        <tr>
+            <td class="text-center">{{$item->nom}}</td>
+            <td class="text-center"><img width="8%" src="{{asset('storage/'.$item->image)}}" alt=""></td>
+            <td class="d-flex justify-content-center">
+                @if ($item->pivot->valide)
+                    <i class="fas fa-check text-success"></i>
+                @else   
+                    <a class="btn btn-success" href="{{route('validerMatiere', [$user->id, $item->id])}}">Valider</a>
+                @endif
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
+</div>
     <!-- /.card-body -->
     @if (session()->has('msg'))
         <div style="margin-top:50px;" class="card-header alert alert-success alert-dismissible fade show" role="alert">
@@ -75,6 +118,8 @@
         </table>
     </div>
 </div>
+
+
             <h4>Formulaire pour ajouter une note</h4>
             <form class="form-horizontal" action="{{route('note.store', $user->id)}}" method="POST">
                 @csrf

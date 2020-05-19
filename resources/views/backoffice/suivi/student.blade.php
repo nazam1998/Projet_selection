@@ -6,7 +6,7 @@
         <h3 class="card-title">Filtrer Par Groupe</h3>
     </div>
 
-    <form class="form-horizontal" action="{{route('staff.group')}}" method="GET">
+    <form class="form-horizontal" action="{{route('student.group')}}" method="GET">
         <div class="card-body">
             <div class="form-group row mt-2">
                 @foreach ($groups as $item)
@@ -24,7 +24,6 @@
         <!-- /.card-footer -->
     </form>
 </div>
-
 
 @if (session()->has('msg'))
 <div class="card-header alert alert-success alert-dismissible fade show" role="alert">
@@ -56,16 +55,15 @@
                 @foreach ($users as $item)
                 <tr>
                     <td>
-                        @if (!$item->group->first() || $item->group == null)
+                        @if ($item->group == null || !$item->group->first())
                         Pas de groupe
-
                         @else
-                        <a href="{{route('group.show', $item->group->first()->id)}}">{{$item->group->first()->nom}} </a>
+                        <a href="{{route('group.show', $item->id)}}">{{$item->group->first()->nom}}</a>
                         @endif
                     <td>{{$item->nom}}</td>
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
-                    <td class="d-flex justify-content-center"><a href="{{route('staff.show', $item->id)}}"
+                    <td class="d-flex justify-content-center"><a href="{{route('student.show', $item->id)}}"
                             class="btn btn-primary mr-3">Show</a>
                     </td>
                 </tr>
