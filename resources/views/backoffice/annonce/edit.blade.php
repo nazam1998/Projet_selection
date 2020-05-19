@@ -30,7 +30,7 @@
                 <div class="col-sm-10">
                     <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
                         id="inputEmail3"
-                        value="@if($errors->first('date')){{$annonce->date}}@else{{old('date', $annonce->date)}}@endif">
+                        value="@if($errors->first('date')){{$annonce->date}}@else{{old('date', $annonce->date->format('Y-m-d'))}}@endif">
                 </div>
             </div>
 
