@@ -11166,6 +11166,18 @@ footer .social-footer li a {
     /* tout afficher sur une seule ligne */
     white-space: nowrap;
 }
+
+.d-flex-center-gros {
+
+    margin: auto !important;
+    width: 70%;
+}
+
+.d-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 @charset "UTF-8";
 
 /*!

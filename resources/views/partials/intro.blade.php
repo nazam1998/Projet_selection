@@ -1,6 +1,7 @@
 <section class="light-bg">
     <div class="container">
         <div class="row intro-tables">
+            @if (count($evenements)!=0)
             @foreach ($evenements as $item)
 
 
@@ -35,6 +36,21 @@
                 </div>
             </div>
             @endforeach
+            @else
+
+
+            <div class="d-flex-center-gros">
+                <div class="intro-table intro-table-first d-flex-center">
+                <h4 class="white heading">Il n'y a actuellement aucun évènement en cours</h4>
+                    <div class="owl-carousel owl-schedule bottom">
+                        
+
+
+                    </div>
+                </div>
+            </div>
+            @endif
+     
             
         </div>
     </div>

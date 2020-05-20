@@ -45,13 +45,22 @@
                     <label class="form-check-label">Lecture Seulement</label>
                 </div>
                 <div class="form-check">
-                    @if($role->permissions->contains(App\Permission::where('nom','annonce')->first()->id))
-                    <input checked class="form-check-input" type="checkbox" name="annonce" value="annonce">
+                    @if($role->permissions->contains(App\Permission::where('nom','annonce-ecriture')->first()->id))
+                    <input checked class="form-check-input" type="checkbox" name="annonce">
 
                     @else
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce">
+                    <input class="form-check-input" type="checkbox" name="annonce">
                     @endif
-                    <label class="form-check-label">Annonce</label>
+                    <label class="form-check-label">Annonce Ecriture</label>
+                </div>
+                <div class="form-check">
+                    @if($role->permissions->contains(App\Permission::where('nom','annonce-lecture')->first()->id))
+                    <input checked class="form-check-input" type="checkbox" name="annonce-lecture">
+
+                    @else
+                    <input class="form-check-input" type="checkbox" name="annonce-lecture">
+                    @endif
+                    <label class="form-check-label">Annonce Lecture</label>
                 </div>
                 <div class="form-check">
                     @if($role->permissions->contains(App\Permission::where('nom','groupe')->first()->id))
@@ -141,4 +150,8 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+@endsection
+
+@section('js')
+<script src="{{asset('js/admin.js')}}"></script>
 @endsection

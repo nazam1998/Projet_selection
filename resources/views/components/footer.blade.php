@@ -32,18 +32,18 @@
                     <h3 class="white">Opening Hours <span class="open-blink"></span></h3>
                     @else
                     <h3 class="white">Opening Hours <span class="close-blink"></span></h3>
-                    
-                @endif
-                <div class="row opening-hours">
-                    <div class="col-sm-6 text-center">
-                        <h5 class="light-white light">Mon - Fri</h5>
-                        <h3 class="regular white">9:00 - 17:00</h3>
+
+                    @endif
+                    <div class="row opening-hours">
+                        <div class="col-sm-6 text-center">
+                            <h5 class="light-white light">Mon - Fri</h5>
+                            <h3 class="regular white">9:00 - 17:00</h3>
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            <h5 class="light-white light">Sat - Sun</h5>
+                            <h3 class="regular white">Closed</h3>
+                        </div>
                     </div>
-                    <div class="col-sm-6 text-center">
-                        <h5 class="light-white light">Sat - Sun</h5>
-                        <h3 class="regular white">Closed</h3>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="bottom-footer text-center">

@@ -55,9 +55,13 @@ Route::resource('suivi/student', 'StudentController', ['parameters' => [
 ]]);
 Route::resource('titre', 'TitreController');
 Route::resource('description', 'DescriptionController');
+
+
 // Candidat
+
 Route::get('candidat/{user}/restore', 'CandidatController@restore')->name('candidat.restore');
 Route::delete('candidat/{user}/forceDestroy', 'CandidatController@forceDestroy')->name('candidat.forceDestroy');
+
 Route::resource('candidat', 'CandidatController', ['parameters' => [
     'candidat' => 'user'
 ]]);

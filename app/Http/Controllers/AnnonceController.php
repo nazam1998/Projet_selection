@@ -48,7 +48,6 @@ class AnnonceController extends Controller
             'texte'=>'required|string',
             'date'=>'required|date',
         ]);
-
         $annonce->texte=$request->texte;
         $annonce->date=$request->date;
         $annonce->afficher=$request->has('afficher');

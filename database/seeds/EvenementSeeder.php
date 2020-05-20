@@ -14,16 +14,16 @@ class EvenementSeeder extends Seeder
     public function run()
     {
         DB::table('evenements')->insert([
-            'date'=>Carbon::now(),
-            'etat'=>'En Cours',
-            
-            'formulaire_id'=>Formulaire::inRandomOrder()->first()->id
+            'date' => Carbon::now(),
+            'etat' => 'En Cours',
+
+            'formulaire_id' => Formulaire::inRandomOrder()->first()->id
         ]);
         DB::table('evenements')->insert([
-            'date'=>Carbon::now(),
-            'etat'=>'Terminé',
-            
-            'formulaire_id'=>Formulaire::inRandomOrder()->first()->id
+            'date' => Carbon::now(),
+            'etat' => 'Terminé',
+
+            'formulaire_id' => Formulaire::inRandomOrder()->first()->id
         ]);
     }
 }
