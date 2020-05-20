@@ -116,7 +116,7 @@ class StudentController extends Controller
         $user->group()->attach($request->group, ['role_id' => $user->role_id]);
 
         $user->save();
-        return redirect()->route('student.index')->with('msg', 'Student modifié avec succés !');;
+        return redirect()->route('user')->with('msg', 'Student modifié avec succés !');;
     }
 
     public function addMatiere($id)

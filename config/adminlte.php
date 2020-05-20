@@ -312,6 +312,13 @@ return [
             'can'=>'groupe',
         ],
         [
+            'text'        => "Liste d'utilisateurs",
+            'url'         => 'users',
+            'icon'        => 'fas fa-users',
+            'icon_color'  => 'yellow',
+            'can'=>'groupe',
+        ],
+        [
             'text'        => 'Roles',
             'url'         => 'role',
             'icon'        => 'fas fa-users',

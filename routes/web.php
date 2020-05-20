@@ -81,4 +81,6 @@ Route::get('note/{id}/show', 'NoteController@show')->name('note.show');
 Route::post('note/{id}/update', 'NoteController@update')->name('note.update');
 Route::delete('note/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
+Route::get('users', 'UserController@index')->name('user');
+
 Route::get('/home', 'HomeController@index')->name('home');
