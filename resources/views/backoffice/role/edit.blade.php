@@ -55,10 +55,10 @@
                 </div>
                 <div class="form-check">
                     @if($role->permissions->contains(App\Permission::where('nom','annonce-lecture')->first()->id))
-                    <input checked class="form-check-input" type="checkbox" name="annonce-lecture">
+                    <input checked class="form-check-input" type="checkbox" name="annonce_lecture">
 
                     @else
-                    <input class="form-check-input" type="checkbox" name="annonce-lecture">
+                    <input class="form-check-input" type="checkbox" name="annonce_lecture">
                     @endif
                     <label class="form-check-label">Annonce Lecture</label>
                 </div>
@@ -78,9 +78,9 @@
                     <div class="form-check">
                         @if($role->permissions->contains(App\Permission::where('nom','candidat-full')->first()->id))
 
-                        <input checked class="form-check-input" type="checkbox" name="candidat-full">
+                        <input checked class="form-check-input" type="checkbox" name="candidat_full">
                         @else
-                        <input class="form-check-input" type="checkbox" name="candidat-full">
+                        <input class="form-check-input" type="checkbox" name="candidat_full">
 
                         @endif
                         <label class="form-check-label">Tous</label>
@@ -88,10 +88,10 @@
                     @foreach ($candidat_lectures as $item)
                     <div class="form-check mx-5">
                         @if($role->permissions->contains($item->id))
-                        <input checked class="form-check-input" type="checkbox" name="candidat-lecture[]">
+                        <input checked class="form-check-input" type="checkbox" name="candidat_lecture[]">
 
                         @else
-                        <input class="form-check-input" type="checkbox" name="candidat-lecture[]">
+                        <input class="form-check-input" type="checkbox" name="candidat_lecture[]">
 
                         @endif
                         <label class="form-check-label">{{substr($item->nom,17)}}</label>
@@ -107,9 +107,9 @@
                     <div class="form-check mx-5">
                         @if($role->permissions->contains($item->id))
 
-                        <input checked class="form-check-input" type="checkbox" name="user-ecriture[]">
+                        <input checked class="form-check-input" type="checkbox" name="user_ecriture[]">
                         @else
-                        <input class="form-check-input" type="checkbox" name="user-ecriture[]">
+                        <input class="form-check-input" type="checkbox" name="user_ecriture[]">
                         @endif
 
                         <label class="form-check-label">{{substr($item->nom,14)}}</label>
@@ -125,9 +125,9 @@
                     <div class="form-check mx-5">
                         @if($role->permissions->contains($item->id))
 
-                        <input checked class="form-check-input" type="checkbox" name="user-lecture[]">
+                        <input checked class="form-check-input" type="checkbox" name="user_lecture[]">
                         @else
-                        <input class="form-check-input" type="checkbox" name="user-lecture[]">
+                        <input class="form-check-input" type="checkbox" name="user_lecture[]">
 
                         @endif
                         <label class="form-check-label">{{substr($item->nom,13)}}</label>

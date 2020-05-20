@@ -32,11 +32,11 @@
                     <label class="form-check-label">Lecture Seulement</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce-écriture">
+                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce_écriture">
                     <label class="form-check-label">Annonce écriture</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce-lecture">
+                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce_lecture">
                     <label class="form-check-label">Annonce lecture</label>
                 </div>
                 <div class="form-check">
@@ -48,12 +48,12 @@
                 <div class="row">
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="candidat-full">
+                        <input class="form-check-input" type="checkbox" name="candidat_full">
                         <label class="form-check-label">Tous</label>
                     </div>
                     @foreach ($candidat_lectures as $item)
                     <div class="form-check mx-5">
-                        <input class="form-check-input" type="checkbox" name="candidat-lecture[]">
+                    <input class="form-check-input" type="checkbox" name="candidat_lecture[]" value="{{substr($item->nom,17)}}">
                         <label class="form-check-label">{{substr($item->nom,17)}}</label>
                     </div>
                     @endforeach
@@ -65,7 +65,7 @@
                 <div class="row">
                     @foreach ($user_ecritures as $item)
                     <div class="form-check mx-5">
-                        <input class="form-check-input" type="checkbox" name="user-ecriture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,14)}}" type="checkbox" name="user_ecriture[]">
                         <label class="form-check-label">{{substr($item->nom,14)}}</label>
                     </div>
                     @endforeach
@@ -77,7 +77,7 @@
                 <div class="row">
                     @foreach ($user_lectures as $item)
                     <div class="form-check mx-5">
-                        <input class="form-check-input" type="checkbox" name="user-lecture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,13)}}" type="checkbox" name="user_lecture[]">
                         <label class="form-check-label">{{substr($item->nom,13)}}</label>
                     </div>
                     @endforeach
@@ -89,26 +89,26 @@
                     <div class="row mx-auto">
                         <div class="col-5 offset-2">
 
-                            <input class="form-check-input" type="checkbox" name="suivi-ecriture[]">
+                            <input class="form-check-input" type="checkbox" name="suivi_ecriture[]">
                             <label class="form-check-label">Ecriture</label>
                         </div>
 
                         <div class="col-5">
 
 
-                            <input class="form-check-input" type="checkbox" name="suivi-lecture[]">
+                            <input class="form-check-input" type="checkbox" name="suivi_lecture[]">
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
 
                     <label>Role</label>
-                    <select class="form-control" name="suivi-role[]">
+                    <select class="form-control" name="suivi_role[]">
                         @foreach ($roles as $item)
                         <option value="{{$item->id}}">{{$item->nom}}</option>
                         @endforeach
                     </select>
                     <div class="row offset-2">
-                      <input class="form-check-input" type="checkbox" name="suivi-responsable[]">
+                      <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
                       <label class="form-check-label">Seulement responsable</label>
                     </div>
                 </div>

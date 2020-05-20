@@ -50,7 +50,6 @@ class RoleController extends Controller
 
         ]);
         $roles = Role::where('id', '!=', 1)->get();
-
         $role = new Role();
         $role->nom = $request->nom;
         $role->save();
@@ -66,10 +65,10 @@ class RoleController extends Controller
                 $item->roles()->attach($role->id, ['ecriture' => true]);
             }
         } else {
-            if ($request->has('annonce-ecriture')) {
+            if ($request->has('annonce_ecriture')) {
                 $role->permissions()->attach(Permission::where('nom', 'annonce-ecriture')->first()->id);
                 $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
-            } else if ($request->has('annonce-ecriture')) {
+            } else if ($request->has('annonce_ecriture')) {
                 $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
             }
             if ($request->has('contact')) {
@@ -78,29 +77,34 @@ class RoleController extends Controller
             if ($request->has('groupe')) {
                 $role->permissions()->attach(Permission::where('nom', 'groupe')->first()->id);
             }
-            if ($request->has('candidat-full')) {
-                $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
-            } else if ($request->has('candidat-lecture')) {
+            if ($request->has('candidat_full')) {
+                $role->permissions()->attach(Permission::where('nom', 'candidat-$')->pluck('id'));
+            } else if ($request->has('candidat_lecture')) {
                 foreach ($request->candidat_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
             }
-            if ($request->has('user-lecture')) {
-                foreach ($request->has('user-lecture') as $item) {
+            if ($request->has('user_lecture')) {
+                foreach ($request->user_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                 }
             }
-            if ($request->has('user-ecriture')) {
-                foreach ($request->has('user-ecriture') as $item) {
+            if ($request->has('user_ecriture')) {
+                foreach ($request->user_ecriture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
                 }
             }
 
-            if ($request->has('suivi-role')) {
-                foreach ($request->has('suivi-role') as $item) {
-                    if($request->has(''))
-                    $item->roles()->attach($item->id, ['ecriture' => true]);
+            if ($request->has('suivi_role')) {
+                foreach ($request->suivi_role as $item) {
+                    if ($request->has('suivi_ecriture.' . $item)) {
+                        dd();
+                        $item->roles()->attach($item->id, ['ecriture' => true]);
+                    } else if ($request->has('suivi_lecture.' . $item)) {
+
+                        $item->roles()->attach($item->id, ['ecriture' => false]);
+                    }
                 }
             }
         }
@@ -162,8 +166,9 @@ class RoleController extends Controller
             if ($request->has('annonce')) {
 
                 $role->permissions()->attach(Permission::where('nom', $request->annonce)->first()->id);
-                if ($request->annonce == 'annonce-écriture') {
+                if ($request->annonce == 'annonce_écriture') {
                     $role->permissions()->attach(Permission::where('nom', 'annonce-lecture')->first()->id);
+                    $role->permissions()->attach(Permission::where('nom', 'annonce-ecriture')->first()->id);
                 }
             }
             if ($request->has('contact')) {
@@ -172,20 +177,21 @@ class RoleController extends Controller
             if ($request->has('groupe')) {
                 $role->permissions()->attach(Permission::where('nom', 'groupe')->first()->id);
             }
-            if ($request->has('candidat-full')) {
+            if ($request->has('candidat_full')) {
+                $role->permissions()->attach(Permission::where('nom', 'candidat-$')->pluck('id'));
                 $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
             } else {
-                foreach ($request->has('candidat-lecture') as $item) {
+                foreach ($request->has('candidat_lecture') as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
             }
-            if ($request->has('user-lecture')) {
-                foreach ($request->has('user-lecture') as $item) {
+            if ($request->has('user_lecture')) {
+                foreach ($request->has('user_lecture') as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                 }
             }
-            if ($request->has('user-ecriture')) {
-                foreach ($request->has('user-ecriture') as $item) {
+            if ($request->has('user_ecriture')) {
+                foreach ($request->has('user_ecriture') as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
                 }
             }
