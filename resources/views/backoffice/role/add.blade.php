@@ -5,7 +5,6 @@
     <div class="card-header">
         <h3 class="card-title">Formulaire d'ajout de roles</h3>
     </div>
-    <!-- /.card-header -->
     <!-- form start -->
     <form class="form-horizontal" action="{{route('role.store')}}" method="POST">
         @csrf
@@ -21,7 +20,8 @@
                         placeholder="Veuillez saisir un role">
                 </div>
             </div>
-            <label for="">Permission</label>
+
+            <label class="mt-3" for="">Permission</label>
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="full" value="full">
@@ -43,85 +43,76 @@
                     <input class="form-check-input" type="checkbox" name="groupe">
                     <label class="form-check-label">Groupe</label>
                 </div>
-                <label for="">Candidat</label>
+                <label class="mt-5" for="">Candidat</label>
 
                 <div class="row">
-
-                    <div class="form-check">
+                    <div class="form-check mx-2">
                         <input class="form-check-input" type="checkbox" name="candidat-full">
                         <label class="form-check-label">Tous</label>
                     </div>
                     @foreach ($candidat_lectures as $item)
-                    <div class="form-check mx-5">
+                    <div class="form-check mx-2">
                         <input class="form-check-input" type="checkbox" name="candidat-lecture[]">
                         <label class="form-check-label">{{substr($item->nom,17)}}</label>
                     </div>
                     @endforeach
-
                 </div>
 
-                <label for="">Users Ecriture</label>
-
+                <label class="mt-5" for="">Users Ecriture</label>
                 <div class="row">
                     @foreach ($user_ecritures as $item)
-                    <div class="form-check mx-5">
+                    <div class="form-check mx-2">
                         <input class="form-check-input" type="checkbox" name="user-ecriture[]">
                         <label class="form-check-label">{{substr($item->nom,14)}}</label>
                     </div>
                     @endforeach
-
                 </div>
 
-                <label for="">Users Lecture</label>
-
+                <label class="mt-5" for="">Users Lecture</label>
                 <div class="row">
                     @foreach ($user_lectures as $item)
-                    <div class="form-check mx-5">
+                    <div class="form-check mx-2">
                         <input class="form-check-input" type="checkbox" name="user-lecture[]">
                         <label class="form-check-label">{{substr($item->nom,13)}}</label>
                     </div>
                     @endforeach
                 </div>
 
-                <label for="">Suivi</label>
-
-                <div id="suivi" class="my-3">
-                    <div class="row mx-auto">
-                        <div class="col-5 offset-2">
-
+                <label class="mt-5" for="">Suivi</label>
+                <div class="row">
+                    <div class="row col-4">
+                        <div class="form-check mx-2">
                             <input class="form-check-input" type="checkbox" name="suivi-ecriture[]">
                             <label class="form-check-label">Ecriture</label>
                         </div>
-
-                        <div class="col-5">
-
-
+                        <div class="form-check mx-2">
                             <input class="form-check-input" type="checkbox" name="suivi-lecture[]">
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
-
-                    <label>Role</label>
-                    <select class="form-control" name="suivi-role[]">
-                        @foreach ($roles as $item)
-                        <option value="{{$item->id}}">{{$item->nom}}</option>
-                        @endforeach
-                    </select>
-                    <div class="row offset-2">
-                      <input class="form-check-input" type="checkbox" name="suivi-responsable[]">
-                      <label class="form-check-label">Seulement responsable</label>
+                    <div class="col-4">
+                        <label class="mr-2">Role</label>
+                        <select name="suivi-role[]">
+                            @foreach ($roles as $item)
+                            <option value="{{$item->id}}">{{$item->nom}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                   
+                    <div class="col-4 text-center">
+                        <input class="form-check-input" type="checkbox" name="suivi-responsable[]">
+                        <label class="form-check-label">Seulement responsable</label>
                     </div>
                 </div>
 
+                
 
+                <button type="button" id="dupliquer" class="btn btnShow text-white mt-3">Dupliquer</button>
             </div>
-            <button type="button" id="dupliquer" class="btn btn-info mx-auto">Dupliquer</button>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            <button type="submit" class="btn btn-info">Ajoutez le role</button>
-        </div>
-        <!-- /.card-footer -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-info">Ajoutez le role</button>
+            </div>
     </form>
 </div>
 @stop
@@ -136,30 +127,30 @@
 
 
 
-var i = 0;
-var original = document.getElementById('suivi');
+    var i = 0;
+    var original = document.getElementById('suivi');
 
-function duplicate() {
-    var clone = original.cloneNode(true);
-    clone.id = "suivi" + ++i;
-    original.parentNode.appendChild(clone);
+    function duplicate() {
+        var clone = original.cloneNode(true);
+        clone.id = "suivi" + ++i;
+        original.parentNode.appendChild(clone);
 
-    let temp = document.createElement('button');
-    temp.type = 'button';
-    temp.innerHTML = '&times;';
-    temp.className = 'btn btn-danger remove';
-    temp.style.width='100%';
-    clone.appendChild(temp);
+        let temp = document.createElement('button');
+        temp.type = 'button';
+        temp.innerHTML = '&times;';
+        temp.className = 'btn btn-danger remove';
+        temp.style.width = '100%';
+        clone.appendChild(temp);
 
-    let remove = document.querySelectorAll('.remove');
-    remove.forEach(e => {
-        e.addEventListener('click', function (event) {
-            event.currentTarget.parentElement.remove();
+        let remove = document.querySelectorAll('.remove');
+        remove.forEach(e => {
+            e.addEventListener('click', function (event) {
+                event.currentTarget.parentElement.remove();
+            });
         });
-    });
-}
+    }
 
-button.addEventListener('click', duplicate);
+    button.addEventListener('click', duplicate);
 
 </script>
 <script src="{{asset('js/admin.js')}}"></script>
