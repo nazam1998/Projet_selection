@@ -49,7 +49,7 @@ class RoleController extends Controller
             'nom' => 'required|string|unique:roles',
 
         ]);
-        $roles = Role::all();
+        $roles = Role::where('id','!=',1)->get();
 
         $role = new Role();
         $role->nom = $request->nom;
@@ -63,7 +63,7 @@ class RoleController extends Controller
                 $role->permissions()->attach($item);
             }
             foreach ($roles as $item) {
-                $item->roles()->attach($role->id, ['ecriture' => false]);
+                $item->roles()->attach($role->id, ['ecriture' => true]);
             }
             
         } else {

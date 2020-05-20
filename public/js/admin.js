@@ -103,6 +103,18 @@ function duplicate() {
   var clone = original.cloneNode(true);
   clone.id = "suivi" + ++i;
   original.parentNode.appendChild(clone);
+  var temp = document.createElement('button');
+  temp.type = 'button';
+  temp.innerHTML = '&times;';
+  temp.className = 'btn btn-danger remove';
+  temp.style.width = '100%';
+  clone.appendChild(temp);
+  var remove = document.querySelectorAll('.remove');
+  remove.forEach(function (e) {
+    e.addEventListener('click', function (event) {
+      event.currentTarget.parentElement.remove();
+    });
+  });
 }
 
 button.addEventListener('click', duplicate);
@@ -116,7 +128,7 @@ button.addEventListener('click', duplicate);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/molengeek/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })
