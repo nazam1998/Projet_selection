@@ -49,7 +49,7 @@ class RoleController extends Controller
             'nom' => 'required|string|unique:roles',
 
         ]);
-        $roles = Role::where('id','!=',1)->get();
+        $roles = Role::where('id', '!=', 1)->get();
 
         $role = new Role();
         $role->nom = $request->nom;
@@ -65,7 +65,6 @@ class RoleController extends Controller
             foreach ($roles as $item) {
                 $item->roles()->attach($role->id, ['ecriture' => true]);
             }
-            
         } else {
             if ($request->has('annonce-ecriture')) {
                 $role->permissions()->attach(Permission::where('nom', 'annonce-ecriture')->first()->id);
@@ -98,8 +97,9 @@ class RoleController extends Controller
                 }
             }
 
-            if ($request->has('suivi-ecriture')) {
-                foreach ($request->has('suivi-ecriture') as $item) {
+            if ($request->has('suivi-role')) {
+                foreach ($request->has('suivi-role') as $item) {
+                    if($request->has(''))
                     $item->roles()->attach($item->id, ['ecriture' => true]);
                 }
             }

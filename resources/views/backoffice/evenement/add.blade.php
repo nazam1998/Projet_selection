@@ -10,7 +10,7 @@
     <form class="form-horizontal" action="{{route('evenement.store')}}" method="POST">
         @csrf
         <div class="card-body">
-            <div class="form-group row">
+            <div class="form-group row" id="date">
                 @error('date')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
                 @enderror
@@ -40,7 +40,7 @@
             @enderror
             <div class="form-group col-sm-10">
                 <label>Etat</label>
-                <select class="form-control" name="etat">
+                <select class="form-control" name="etat" id='etat'>
                     <option value="En cours">En cours</option>
                     <option value="Terminé">Terminé</option>
                     <option value="Futur">Futur</option>
@@ -60,5 +60,24 @@
 <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 @endsection
 @section('js')
+<script>
+    let select = document.getElementById('etat');
+    let date= document.getElementById('date');
+    if(select.value!='En cours'){
+        date.style.display='block'
+    }else{
+        date.style.display='none'
+
+    }
+select.addEventListener('change',function(e){
+    if(e.target.value!='En cours'){
+        date.style.display='block'
+    }else{
+        date.style.display='none'
+
+    }
+    
+})
+</script>
 <script src="{{asset('js/admin.js')}}"></script>
 @endsection

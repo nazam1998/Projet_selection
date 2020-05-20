@@ -45,14 +45,19 @@ class EvenementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => 'required|date',
-            'formulaire_id' => 'required|integer'
+            'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date',
+            'formulaire_id' => 'required|integer',
+            'etat' => 'required|string'
         ]);
 
 
         $evenement = new Evenement();
-        $evenement->date = $request->date;
-        $evenement->etat=$request->etat;
+        $evenement->etat = $request->etat;
+        if ($request->etat == 'En cours') {
+            $evenement->date = Carbon::now()->toDateTimeString();
+        } else if ($request->etat == 'Futur') {
+            $evenement->date = $request->date;
+        }
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
@@ -91,23 +96,23 @@ class EvenementController extends Controller
     public function update(Request $request, Evenement $evenement)
     {
         $request->validate([
-            'date' => 'required|date',
+            'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date',
             'formulaire_id' => 'required|integer',
-            'etat' => 'required|string',
+            'etat'=>'required|string',
         ]);
 
 
-        $evenement->date = $request->date;
-        
-
-        if ($request->has('etat')) {
-            $evenement->etat = $request->etat;
+        $evenement->etat = $request->etat;
+        if ($request->etat == 'En cours') {
+            $evenement->date = Carbon::now()->toDateTimeString();
+        } else if ($request->etat == 'Futur') {
+            $evenement->date = $request->date;
         }
 
         $evenement->formulaire_id = $request->formulaire_id;
         $evenement->save();
         return redirect()->route('evenement.index')->with('msg', 'Evènement créé avec succès');
-        }
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -12,7 +12,7 @@
         @method('PUT')
         <div class="card-body">
 
-            <div class="form-group row">
+            <div class="form-group row" id="date">
                 @error('date')
                 <div class="alert text-danger font-weight-bold">{{ $message }}</div>
                 @enderror
@@ -28,7 +28,7 @@
             @enderror
             <div class="form-group col-sm-10">
                 <label>Formulaire</label>
-                <select class="form-control" name="formulaire_id">
+                <select class="form-control" name="formulaire_id" >
                     <option>Choisir un formulaire...</option>
                     @foreach ($formulaires as $item)
                     @if ($item->id==$evenement->formulaire_id)
@@ -49,7 +49,7 @@
             @enderror
             <div class="form-group col-sm-10">
                 <label>Etat</label>
-                <select class="form-control" name="etat">
+                <select class="form-control" name="etat" id="etat">
 
                     @if ('En cours'==$evenement->etat)
                     <option selected value="En cours">En cours</option>
@@ -90,5 +90,25 @@
 @endsection
 
 @section('js')
+<script>
+      let select = document.getElementById('etat');
+    let date= document.getElementById('date');
+    if(select.value!='En cours'){
+        date.style.display='block'
+    }else{
+        date.style.display='none'
+
+    }
+select.addEventListener('change',function(e){
+    if(e.target.value!='En cours'){
+        date.style.display='block'
+    }else{
+        date.style.display='none'
+
+    }
+    
+})
+
+</script>
 <script src="{{asset('js/admin.js')}}"></script>
 @endsection
