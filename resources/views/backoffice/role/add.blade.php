@@ -86,6 +86,7 @@
                 <label for="">Suivi</label>
 
                 <div id="suivi" class="my-3">
+                    <button type="button" id="remove">&times;</button>
                     <div class="row mx-auto">
                         <div class="col-5 offset-2">
 
