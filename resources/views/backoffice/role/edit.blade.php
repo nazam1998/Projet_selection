@@ -168,24 +168,34 @@
 
 
     var i = 0;
-    var original = document.getElementById('suivi');
+    var original = document.querySelector('.suivi');
 
     function duplicate() {
         var clone = original.cloneNode(true);
         clone.id = "suivi" + ++i;
         original.parentNode.appendChild(clone);
-
         let temp = document.createElement('button');
         temp.type = 'button';
         temp.innerHTML = '&times;';
         temp.style.width='10%';
         temp.className = 'btn btn-danger col remove';
         clone.appendChild(temp);
-
+        let suivi=document.querySelectorAll('.suivi');
+                suivi.forEach((element,index) => {
+                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
+                    element.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+index;
+                    
+                });
         let remove = document.querySelectorAll('.remove');
         remove.forEach(e => {
             e.addEventListener('click', function (event) {
                 event.currentTarget.parentElement.remove();
+                let suivi=document.querySelectorAll('.suivi');
+                suivi.forEach((element,index) => {
+                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
+                    element.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+index;
+                    
+                });              
             });
         });
     }
