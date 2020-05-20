@@ -91,24 +91,40 @@
 
 @section('js')
 <script>
-      let select = document.getElementById('etat');
-    let date= document.getElementById('date');
-    if(select.value!='En cours'){
-        date.style.display='block'
-    }else{
-        date.style.display='none'
 
-    }
-select.addEventListener('change',function(e){
-    if(e.target.value!='En cours'){
-        date.style.display='block'
-    }else{
-        date.style.display='none'
 
+    let button = document.getElementById('dupliquer');
+
+
+
+    var i = 0;
+    var original = document.getElementById('suivi');
+
+    function duplicate() {
+        var clone = original.cloneNode(true);
+        clone.id = "my-2 suivi" + ++i;
+        original.parentNode.appendChild(clone);
+        console.log(clone.childNodes[1].childNodes[1].childNodes[1].name);
+        
+        clone.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+i;
+        clone.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+i;
+        console.log(clone.childNodes[1].childNodes[1].childNodes[1].name);
+        let temp = document.createElement('button');
+        temp.type = 'button';
+        temp.innerHTML = '&times;';
+        temp.className = 'btn btn-danger remove';
+        clone.appendChild(temp);
+
+        let remove = document.querySelectorAll('.remove');
+        remove.forEach(e => {
+            e.addEventListener('click', function (event) {
+                event.currentTarget.parentElement.remove();
+            });
+        });
     }
-    
-})
+    button.addEventListener('click', duplicate);
 
 </script>
+
 <script src="{{asset('js/admin.js')}}"></script>
 @endsection

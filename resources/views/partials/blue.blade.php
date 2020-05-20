@@ -64,7 +64,7 @@
                         <div style="margin-bottom: 10px;">
                             <label style="margin-right: 12px;" class="light" for="">Genre: </label>
                             <label style="margin-right: 5px;" class="white" for="">Homme</label>
-                            <input style="margin-right: 8px;" value="Homme" name="genre" type="radio">
+                            <input style="margin-right: 8px;" value="Homme" checked name="genre" type="radio">
                             <label style="margin-right: 5px;" class="white" for="">Femme</label>
                             <input name="genre" type="radio" value="Femme">
                         </div>

@@ -97,13 +97,12 @@ class RoleController extends Controller
             }
 
             if ($request->has('suivi_role')) {
-                foreach ($request->suivi_role as $item) {
-                    if ($request->has('suivi_ecriture.' . $item)) {
-                        dd();
-                        $item->roles()->attach($item->id, ['ecriture' => true]);
-                    } else if ($request->has('suivi_lecture.' . $item)) {
+                foreach ($request->suivi_role as $key=>$item) {
+                    if ($request->has('suivi_ecriture' . $key)) {
+                        $role->roles()->attach($item, ['ecriture' => true]);
+                    } else if ($request->has('suivi_lecture' . $key)) {
 
-                        $item->roles()->attach($item->id, ['ecriture' => false]);
+                        $role->roles()->attach($item, ['ecriture' => false]);
                     }
                 }
             }
