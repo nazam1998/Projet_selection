@@ -43,8 +43,16 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
-Route::resource('suivi/staff', 'StaffController');
-Route::resource('suivi/student', 'StudentController');
+Route::get('staff/{user}/restore', 'StaffController@restore')->name('staff.restore');
+Route::delete('staff/{user}/forceDestroy', 'StaffController@forceDestroy')->name('staff.forceDestroy');
+Route::resource('suivi/staff', 'StaffController', ['parameters' => [
+    'staff' => 'user'
+]]);
+Route::get('student/{user}/restore', 'StudentController@restore')->name('student.restore');
+Route::delete('student/{user}/forceDestroy', 'StudentController@forceDestroy')->name('student.forceDestroy');
+Route::resource('suivi/student', 'StudentController', ['parameters' => [
+    'student' => 'user'
+]]);
 Route::resource('titre', 'TitreController');
 Route::resource('description', 'DescriptionController');
 
@@ -72,5 +80,7 @@ Route::post('note/{id}/store', 'NoteController@store')->name('note.store');
 Route::get('note/{id}/show', 'NoteController@show')->name('note.show');
 Route::post('note/{id}/update', 'NoteController@update')->name('note.update');
 Route::delete('note/{id}/delete', 'NoteController@destroy')->name('note.destroy');
+
+Route::get('users', 'UserController@index')->name('user');
 
 Route::get('/home', 'HomeController@index')->name('home');

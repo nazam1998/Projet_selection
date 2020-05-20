@@ -116,7 +116,7 @@ button.addEventListener('click', duplicate);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! /home/molengeek/Projet_selection/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })
