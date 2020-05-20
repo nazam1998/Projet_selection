@@ -106,7 +106,7 @@ class CandidatController extends Controller
         $user->group()->attach($request->group, ['role_id' => $user->role_id]);
 
         $user->save();
-        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Candidat modifié avec succès');
+        return redirect()->route('candidat.show', $user->id)->with('msg', 'Candidat modifié avec succès');
     }
 
     /**
