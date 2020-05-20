@@ -54,7 +54,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role->permissions->contains($lecture);
         });
 
-
+        
 
         Gate::define('candidat-edit', function ($user) {
             $lecture = Permission::where('nom', 'LIKE', 'candidat-lecture-%')->first()->id;
