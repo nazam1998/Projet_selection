@@ -9,7 +9,12 @@ var original = document.getElementById('suivi');
 function duplicate() {
     var clone = original.cloneNode(true);
     clone.id = "suivi" + ++i;
+    let kid=clone.childNodes;
+    console.log(kid);
+    
     original.parentNode.appendChild(clone);
 }
 
 button.addEventListener('click',duplicate);
+
+let remove = document.querySelectorAll('remove');

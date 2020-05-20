@@ -103,10 +103,6 @@ class CandidatController extends Controller
         $user->group()->detach();
         $user->group()->attach($request->group, ['role_id' => $user->role_id]);
 
-        if ($request->role_id != 7 && $request->password != $user->password) {
-            $user->password = Hash::make($request->password);
-            Mail::to($user->email)->send(new PasswordMail($user, $request->password));
-        }
         $user->save();
         return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Candidat modifié avec succès');
     }

@@ -58,6 +58,8 @@ class Kernel extends HttpKernel
         'user-lecture' => \App\Http\Middleware\UserLecture::class,
         'group' => \App\Http\Middleware\Group::class,
         'contact' => \App\Http\Middleware\Group::class,
+        'role' => \App\Http\Middleware\Role::class,
+        'evenement' => \App\Http\Middleware\Evenement::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
