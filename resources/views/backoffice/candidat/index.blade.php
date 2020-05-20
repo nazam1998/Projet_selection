@@ -23,16 +23,15 @@
                 <tr>
                     <th>Titre Formulaire</th>
                     @can('candidat-lecture','nom')
-
-                    <th>Nom</th>
+                        <th>Nom</th>
                     @endcan
                     @can('candidat-lecture','prenom')
-                    <th>Prenom</th>
+                        <th>Prenom</th>
                     @endcan
-                    {{-- @can('candidat-lecture','email') --}}
-                    <th>Email</th>
-                    {{-- @endcan --}}
-                    <th>Action: SHOW & EDIT & DELETE | RESTORE |FORCE DELETE</th>
+                    @can('candidat-lecture','email')
+                        <th>Email</th>
+                    @endcan
+                    <th class="text-center">Action: SHOW & EDIT & DELETE</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,18 +48,8 @@
                     <td>{{$item->email}}</td>
                     @endcan
 
-                    <td class="d-flex">
-
-                        @if ($item->deleted_at)
-                        <form action="{{route('candidat.forceDestroy', $item->id)}}" method="POST">@csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger mr-3">Force Delete</button>
-                        </form>
-                        <form action="{{route('candidat.restore', $item->id)}}" method="GET">@csrf
-                            <button type="submit" class="btn btn-danger">Restore</button>
-                        </form>
-                        @else
-                        <a href="{{route('candidat.show', $item->id)}}" class="btn btn-primary mr-3">Show</a>
+                    <td class="d-flex justify-content-center">
+                        <a href="{{route('candidat.show', $item->id)}}" class="btn btn-primary">Show</a>
                         @can('candidat-edit')
 
                         <a href="{{route('candidat.edit', $item->id)}}" class="btn btn-warning mx-2">Edit</a>
@@ -69,8 +58,6 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
-
-                        @endif
                     </td>
                 </tr>
                 @endforeach
