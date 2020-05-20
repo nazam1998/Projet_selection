@@ -230,12 +230,14 @@ return [
             'can'=>'annonce',
         ],
         [
-            'header' => 'Évènement'
+            'header' => 'Évènement',
+            'can'=>'evenement',
         ],
         [
             'text'        => 'Évènements',
             'url'         => 'evenement',
             'icon'        => 'far fa-calendar-alt',
+            'can'=>'evenement',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -248,17 +250,20 @@ return [
             ],
         ],
         [
-            'header' => 'Formulaire Inscription'
+            'header' => 'Formulaire Inscription',
+            'can'=>'evenement',
         ],
         
         [
             'text'        => 'Liste des Candidats',
             'url'         => 'candidat',
             'icon'        => 'fas fa-users',
+            'can'=>'candidat',
             'submenu' => [
                 [
                     'text' => 'Base de données',
                     'url'  => 'candidat',
+                    'can'=>'candidat',
                 ],
             ],
         ],
@@ -266,6 +271,7 @@ return [
             'text'        => 'Formulaires',
             'url'         => 'formulaire',
             'icon'        => 'fas fa-marker',
+            'can'=>'evenement',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -281,6 +287,7 @@ return [
             'text'        => 'Interets',
             'url'         => 'interet',
             'icon'        => 'fas fa-boxes',
+            'can'=>'evenement',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -296,6 +303,7 @@ return [
             'text'        => 'Matieres',
             'url'         => 'matiere',
             'icon'        => 'fas fa-language',
+            'can'=>'evenement',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -318,24 +326,39 @@ return [
             'icon_color'  => 'yellow',
             'can'=>'groupe',
         ],
+        
+        
         [
-            'text'        => 'Roles',
-            'url'         => 'role',
-            'icon'        => 'fas fa-users',
+            'text'        => 'Suivi du staff',
+            'url'         => 'suivi/staff',
+            'icon'        => 'fas fa-user-friends',
             'icon_color'  => 'yellow',
-            'can'=>'groupe',
+            'can'=>'suivi',
             'submenu' => [
                 [
                     'text' => 'Base de données',
-                    'url'  => 'role',
+                    'url'  => 'suivi/staff',
                     'icon_color' => 'cyan'
                 ],
+            ],
+        ],
+        [
+            'text'        => 'Suivi des students',
+            'url'         => 'suivi/student',
+            'icon'        => 'fas fa-user',
+            'icon_color'  => 'yellow',
+            'can'=>'suivi',
+            'submenu' => [
                 [
-                    'text' => 'Ajoutez un role',
-                    'url'  => 'role/create',
-                    'icon_color' => 'yellow'
+                    'text' => 'Base de données',
+                    'url'  => 'suivi/student',
+                    'icon_color' => 'cyan'
                 ],
             ],
+        ],
+        [
+            'header' => 'Groupes',
+            'can'=>'groupe',
         ],
         [
             'text'        => 'Groupes',
@@ -357,11 +380,15 @@ return [
             ],
         ],
         [
+            'header' => 'Roles',
+            'can'=>'admin',
+        ],
+        [
             'text'        => 'Roles',
             'url'         => 'role',
             'icon'        => 'fas fa-users',
             'icon_color'  => 'yellow',
-            'can'=>'groupe',
+            'can'=>'admin',
             'submenu' => [
                 [
                     'text' => 'Base de données',
@@ -376,34 +403,8 @@ return [
             ],
         ],
         [
-            'text'        => 'Suivi du staff',
-            'url'         => 'suivi/staff',
-            'icon'        => 'fas fa-user-friends',
-            'icon_color'  => 'yellow',
-            'submenu' => [
-                [
-                    'text' => 'Base de données',
-                    'url'  => 'suivi/staff',
-                    'icon_color' => 'cyan'
-                ],
-            ],
-        ],
-        [
-            'text'        => 'Suivi des students',
-            'url'         => 'suivi/student',
-            'icon'        => 'fas fa-user',
-            'icon_color'  => 'yellow',
-            'submenu' => [
-                [
-                    'text' => 'Base de données',
-                    'url'  => 'suivi/student',
-                    'icon_color' => 'cyan'
-                ],
-            ],
-        ],
-        [
             'can'=>'contact',
-            'header' => 'Formulaire Contact'
+            'header' => 'Contact'
         ],
         [
             'text'=>'Reçus',

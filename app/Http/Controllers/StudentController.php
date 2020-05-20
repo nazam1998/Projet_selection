@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
+    public function __construct(){
+        $this->middleware('suivi')->only('index');
+    }
+
     // Affiche tous les student et candidats
     public function index()
     {
