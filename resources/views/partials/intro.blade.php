@@ -23,7 +23,7 @@
                                 <div class="col-xs-6 text-right">
                                     <h5 class="white">{{$etape->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</h5>
                                 </div>
-                                <p style="margin-top: 36px; font-weight: 15;" class="white heading content">{{$etape->description}}</p>
+                                <p style="margin-top: 40px; font-weight: 15;" class="white heading content">{{$etape->description}}</p>
                             </div>
                             
                             

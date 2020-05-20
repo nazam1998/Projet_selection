@@ -73,9 +73,9 @@
                             </form>
                         @else  
                         <a href="{{route('student.show', $item->id)}}"
-                            class="btn btn-primary mr-3">Show</a>
+                            class="btn btn-primary">Show</a>
                             <a href="{{route('student.edit', $item->id)}}"
-                                class="btn btn-danger mr-3">Edit</a>
+                                class="btn btn-danger mx-2">Edit</a>
                                 <form action="{{route('student.destroy', $item->id)}}" method="POST">@csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-warning">Delete</button>
