@@ -54,6 +54,7 @@ class RoleController extends Controller
         $role->nom = $request->nom;
         $role->save();
         if ($request->has('full')) {
+            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => false]);
             foreach (Permission::all()->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
@@ -97,7 +98,9 @@ class RoleController extends Controller
             }
 
             if ($request->has('suivi_role')) {
-                foreach ($request->suivi_role as $key=>$item) {
+
+                foreach ($request->suivi_role as $key => $item) {
+
                     if ($request->has('suivi_ecriture' . $key)) {
                         $role->roles()->attach($item, ['ecriture' => true]);
                     } else if ($request->has('suivi_lecture' . $key)) {
@@ -154,6 +157,7 @@ class RoleController extends Controller
 
         $role->permissions()->detach();
         if ($request->has('full')) {
+            $role->roles->attach(Role::all()->pluck('id'), ['ecriture' => false]);
             foreach (Permission::all()->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
@@ -192,6 +196,18 @@ class RoleController extends Controller
             if ($request->has('user_ecriture')) {
                 foreach ($request->has('user_ecriture') as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
+                }
+            }
+            if ($request->has('suivi_role')) {
+                $role->roles()->detach();
+                foreach ($request->suivi_role as $key => $item) {
+
+                    if ($request->has('suivi_ecriture' . $key)) {
+                        $role->roles()->attach($item, ['ecriture' => true]);
+                    } else if ($request->has('suivi_lecture' . $key)) {
+
+                        $role->roles()->attach($item, ['ecriture' => false]);
+                    }
                 }
             }
         }

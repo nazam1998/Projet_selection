@@ -17,8 +17,8 @@
                 @enderror
                 <div class="col-sm-10">
                     <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror"
-                        value="@if($errors->first('nom')){{$role->nom}}@else{{old('nom',$role->nom)}}@endif" id="inputEmail3"
-                        placeholder="Veuillez saisir un role">
+                        value="@if($errors->first('nom')){{$role->nom}}@else{{old('nom',$role->nom)}}@endif"
+                        id="inputEmail3" placeholder="Veuillez saisir un role">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-check">
                     @if($role->permissions->contains(App\Permission::where('nom','groupe')->first()->id))
-                    
+
                     <input checked class="form-check-input" type="checkbox" name="groupe">
                     @else
                     <input class="form-check-input" type="checkbox" name="groupe">
@@ -79,9 +79,11 @@
                     @foreach ($candidat_lectures as $item)
                     <div class="form-check mx-2">
                         @if($role->permissions->contains($item->id))
-                        <input checked class="form-check-input" value="{{substr($item->nom,17)}}" type="checkbox" name="candidat_lecture[]">
+                        <input checked class="form-check-input" value="{{substr($item->nom,17)}}" type="checkbox"
+                            name="candidat_lecture[]">
                         @else
-                        <input class="form-check-input" value="{{substr($item->nom,17)}}" type="checkbox" name="candidat_lecture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,17)}}" type="checkbox"
+                            name="candidat_lecture[]">
                         @endif
                         <label class="form-check-label">{{substr($item->nom,17)}}</label>
                     </div>
@@ -93,9 +95,11 @@
                     @foreach ($user_ecritures as $item)
                     <div class="form-check mx-2">
                         @if($role->permissions->contains($item->id))
-                        <input checked class="form-check-input" value="{{substr($item->nom,14)}}" type="checkbox" name="user_ecriture[]">
+                        <input checked class="form-check-input" value="{{substr($item->nom,14)}}" type="checkbox"
+                            name="user_ecriture[]">
                         @else
-                        <input class="form-check-input" value="{{substr($item->nom,14)}}" type="checkbox" name="user_ecriture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,14)}}" type="checkbox"
+                            name="user_ecriture[]">
                         @endif
                         <label class="form-check-label">{{substr($item->nom,14)}}</label>
                     </div>
@@ -107,9 +111,11 @@
                     @foreach ($user_lectures as $item)
                     <div class="form-check mx-2">
                         @if($role->permissions->contains($item->id))
-                        <input checked class="form-check-input" value="{{substr($item->nom,13)}}" type="checkbox" name="user_lecture[]">
+                        <input checked class="form-check-input" value="{{substr($item->nom,13)}}" type="checkbox"
+                            name="user_lecture[]">
                         @else
-                        <input class="form-check-input" value="{{substr($item->nom,13)}}" type="checkbox" name="user_lecture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,13)}}" type="checkbox"
+                            name="user_lecture[]">
                         @endif
                         <label class="form-check-label">{{substr($item->nom,13)}}</label>
                     </div>
@@ -117,14 +123,27 @@
                 </div>
 
                 <label class="mt-5" for="">Suivi</label>
-                <div class="row" id="suivi">
+
+                @foreach ($role->roles as $suivi)
+
+                <div class="row suivi">
                     <div class="row col-4">
                         <div class="form-check mx-2">
+                            @if ($suivi->pivot)
+                            <input checked class="form-check-input" type="checkbox" name="suivi_ecriture[]">
+                            @else
                             <input class="form-check-input" type="checkbox" name="suivi_ecriture[]">
+                            @endif
                             <label class="form-check-label">Ecriture</label>
                         </div>
                         <div class="form-check mx-2">
+                            @if ($suivi->pivot->auth_id==$role->id)
+                            <input checked class="form-check-input" type="checkbox" name="suivi_lecture[]">
+
+                            @else
                             <input class="form-check-input" type="checkbox" name="suivi_lecture[]">
+
+                            @endif
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
@@ -132,25 +151,34 @@
                         <label class="mr-2">Role</label>
                         <select name="suivi_role[]">
                             @foreach ($roles as $item)
+                            @if ($item->id==$suivi->id)
+                            <option selected value="{{$item->id}}">{{$item->nom}}</option>
+                            @else
                             <option value="{{$item->id}}">{{$item->nom}}</option>
+                            @endif
                             @endforeach
                         </select>
                     </div>
-                   
+
                     <div class="col-3 text-center">
                         <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
-                </div>
+                    @if ($loop->index!=0)
 
-                
+                    <button type="button" style="width: 10%;" class="btn btn-danger col remove">×</button>
+                    @endif
+                </div>
+                @endforeach
+
+
 
             </div>
             <button type="button" id="dupliquer" class="btn btnShow text-white mt-3">Dupliquer</button>
         </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-info">Editez le role</button>
-            </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info">Editez le role</button>
+        </div>
     </form>
 </div>
 @stop
@@ -161,8 +189,6 @@
 
 @section('js')
 <script>
-
-
     let button = document.getElementById('dupliquer');
 
 
@@ -177,28 +203,35 @@
         let temp = document.createElement('button');
         temp.type = 'button';
         temp.innerHTML = '&times;';
-        temp.style.width='10%';
+        temp.style.width = '10%';
         temp.className = 'btn btn-danger col remove';
         clone.appendChild(temp);
-        let suivi=document.querySelectorAll('.suivi');
-                suivi.forEach((element,index) => {
-                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
-                    element.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+index;
-                    
-                });
-        let remove = document.querySelectorAll('.remove');
+        let suivi = document.querySelectorAll('.suivi');
+        suivi.forEach((element, index) => {
+
+            element.childNodes[1].childNodes[1].childNodes[1].name = 'suivi_ecriture' + index;
+            element.childNodes[1].childNodes[3].childNodes[1].name = 'suivi_lecture' + index;
+
+
+        });
+        
+    }
+    let remove = document.querySelectorAll('.remove');
         remove.forEach(e => {
             e.addEventListener('click', function (event) {
+                console.log('hello');
+
                 event.currentTarget.parentElement.remove();
-                let suivi=document.querySelectorAll('.suivi');
-                suivi.forEach((element,index) => {
-                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
-                    element.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+index;
-                    
-                });              
+                let suivi = document.querySelectorAll('.suivi');
+                suivi.forEach((element, index) => {
+                    element.childNodes[1].childNodes[1].childNodes[1].name = 'suivi_ecriture' +
+                        index;
+                    element.childNodes[1].childNodes[3].childNodes[1].name = 'suivi_lecture' +
+                        index;
+
+                });
             });
         });
-    }
     button.addEventListener('click', duplicate);
 
 </script>

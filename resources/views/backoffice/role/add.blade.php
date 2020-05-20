@@ -144,10 +144,10 @@
         clone.appendChild(temp);
         let suivi=document.querySelectorAll('.suivi');
                 suivi.forEach((element,index) => {
-                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
-                    element.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+index;
                     
-                    console.log(clone.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index);
+                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
+                    element.childNodes[1].childNodes[3].childNodes[1].name='suivi_lecture'+index;
+                    
                     
                 });
         let remove = document.querySelectorAll('.remove');
@@ -157,7 +157,7 @@
                 let suivi=document.querySelectorAll('.suivi');
                 suivi.forEach((element,index) => {
                     element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
-                    element.childNodes[1].childNodes[1].childNodes[3].name='suivi_lecture'+index;
+                    element.childNodes[1].childNodes[3].childNodes[1].name='suivi_lecture'+index;
                     
                 });              
             });
