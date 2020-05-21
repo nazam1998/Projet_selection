@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-check">
                     @if($role->permissions->contains(App\Permission::where('nom','annonce-ecriture')->first()->id))
-                    <input checked class="form-check-input" type="checkbox" name="annonce" value="annonce_écriture">
+                    <input checked class="form-check-input" type="checkbox" name="annonce" value="annonce-écriture">
                     @else
                     <input class="form-check-input" type="checkbox" name="annonce" value="annonce_écriture">
                     @endif
@@ -50,9 +50,9 @@
                 </div>
                 <div class="form-check">
                     @if($role->permissions->contains(App\Permission::where('nom','annonce-lecture')->first()->id))
-                    <input checked class="form-check-input" type="checkbox" name="annonce" value="annonce_lecture">
+                    <input checked class="form-check-input" type="checkbox" name="annonce" value="annonce-lecture">
                     @else
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce_lecture">
+                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce-lecture">
                     @endif
                     <label class="form-check-label">Annonce lecture</label>
                 </div>
@@ -123,7 +123,39 @@
                 </div>
 
                 <label class="mt-5" for="">Suivi</label>
+                @if (count($role->roles)==0)
 
+
+                <div class="row suivi">
+                    <div class="row col-4">
+                        <div class="form-check mx-2">
+
+                            <input class="form-check-input" type="checkbox" name="suivi_ecriture[]">
+                            <label class="form-check-label">Ecriture</label>
+                        </div>
+                        <div class="form-check mx-2">
+                            <input class="form-check-input" type="checkbox" name="suivi_lecture[]">
+                            <label class="form-check-label">Lecture</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="mr-2">Role</label>
+                        <select name="suivi_role[]">
+                            @foreach ($roles as $item)
+
+                            <option value="{{$item->id}}">{{$item->nom}}</option>
+
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-3 text-center">
+                        <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
+                        <label class="form-check-label">Seulement responsable</label>
+                    </div>
+                </div>
+
+                @else
                 @foreach ($role->roles as $suivi)
 
                 <div class="row suivi">
@@ -170,6 +202,8 @@
                     @endif
                 </div>
                 @endforeach
+                @endif
+
 
 
 
@@ -214,24 +248,24 @@
 
 
         });
-        
+
     }
     let remove = document.querySelectorAll('.remove');
-        remove.forEach(e => {
-            e.addEventListener('click', function (event) {
-                console.log('hello');
+    remove.forEach(e => {
+        e.addEventListener('click', function (event) {
+            console.log('hello');
 
-                event.currentTarget.parentElement.remove();
-                let suivi = document.querySelectorAll('.suivi');
-                suivi.forEach((element, index) => {
-                    element.childNodes[1].childNodes[1].childNodes[1].name = 'suivi_ecriture' +
-                        index;
-                    element.childNodes[1].childNodes[3].childNodes[1].name = 'suivi_lecture' +
-                        index;
+            event.currentTarget.parentElement.remove();
+            let suivi = document.querySelectorAll('.suivi');
+            suivi.forEach((element, index) => {
+                element.childNodes[1].childNodes[1].childNodes[1].name = 'suivi_ecriture' +
+                    index;
+                element.childNodes[1].childNodes[3].childNodes[1].name = 'suivi_lecture' +
+                    index;
 
-                });
             });
         });
+    });
     button.addEventListener('click', duplicate);
 
 </script>

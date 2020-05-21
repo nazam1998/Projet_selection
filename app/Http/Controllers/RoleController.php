@@ -54,7 +54,7 @@ class RoleController extends Controller
         $role->nom = $request->nom;
         $role->save();
         if ($request->has('full')) {
-            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => false]);
+            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => true]);
             foreach (Permission::all()->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
@@ -63,7 +63,7 @@ class RoleController extends Controller
                 $role->permissions()->attach($item);
             }
             foreach ($roles as $item) {
-                $item->roles()->attach($role->id, ['ecriture' => true]);
+                $item->roles()->attach($role->id, ['ecriture' => false]);
             }
         } else {
             if ($request->has('annonce_ecriture')) {
@@ -184,17 +184,17 @@ class RoleController extends Controller
                 $role->permissions()->attach(Permission::where('nom', 'candidat-$')->pluck('id'));
                 $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
             } else {
-                foreach ($request->has('candidat_lecture') as $item) {
+                foreach ($request->candidat_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
             }
             if ($request->has('user_lecture')) {
-                foreach ($request->has('user_lecture') as $item) {
+                foreach ($request->user_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-lecture-' . $item)->first()->id);
                 }
             }
             if ($request->has('user_ecriture')) {
-                foreach ($request->has('user_ecriture') as $item) {
+                foreach ($request->user_ecriture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
                 }
             }
