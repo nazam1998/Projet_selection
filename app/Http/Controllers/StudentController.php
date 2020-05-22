@@ -17,7 +17,7 @@ class StudentController extends Controller
         $this->middleware('auth');
         $this->middleware('suivi')->only('index', 'indexGroup');
         $this->middleware('suivi-lecture')->only('show');
-        $this->middleware('suivi-ecriture')->only('edit', 'update', 'forceDestroy', 'destroy', 'restore');
+        $this->middleware('suivi-ecriture')->only('edit', 'update','destroy');
     }
 
     // Affiche tous les student et candidats
@@ -30,9 +30,10 @@ class StudentController extends Controller
 
     // Permet de voir le suivi d'un student précis et pouvoir lui écrire une note
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::find($id);
+        // $user = User::find($id)
+        ;
         return view('backoffice.suivi.studentShow', compact('user'));
     }
 
@@ -69,9 +70,9 @@ class StudentController extends Controller
         return view('backoffice.suivi.student', compact('users', 'groups'));
     }
     // Permet de modifier un student ou candidat
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
+        // $user = User::find($id);
         $matieres = Matiere::all();
         $groups = Group::all();
         $roles = Role::all();
@@ -156,6 +157,7 @@ class StudentController extends Controller
 
     public function forceDestroy($user)
     {
+        
         $user = User::withTrashed()->whereId($user)->first();
         $user->forceDelete();
         return redirect()->back()->with('msg', 'Le student a été supprimé définitivement avec succès');
@@ -163,6 +165,7 @@ class StudentController extends Controller
 
     public function restore($user)
     {
+        
         $user = User::withTrashed()->whereId($user)->first();
         $user->restore();
         return redirect()->back()->with('msg', 'Le student a été restauré avec succès');

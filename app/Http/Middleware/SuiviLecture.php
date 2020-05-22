@@ -17,9 +17,7 @@ class SuiviLecture
      */
     public function handle($request, Closure $next)
     {
-        $id = $request->route()->parameters()['user'];
-
-        $user = User::find($id);
+        $user = $request->route()->parameters()['user'];
         $role = $user->role;
         if (Auth::user()->role->roles->contains($role->id)) {
 

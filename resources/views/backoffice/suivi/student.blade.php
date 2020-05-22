@@ -72,11 +72,11 @@
                                 <button type="submit" class="btn btn-warning">Force Delete</button>
                             </form>
                         @else  
-                        <a href="{{route('student.show', $item->id)}}"
+                        <a href="{{route('student.show', $item)}}"
                             class="btn btn-primary">Show</a>
-                            <a href="{{route('student.edit', $item->id)}}"
+                            <a href="{{route('student.edit', $item)}}"
                                 class="btn btn-danger mx-2">Edit</a>
-                                <form action="{{route('student.destroy', $item->id)}}" method="POST">@csrf
+                                <form action="{{route('student.destroy', $item)}}" method="POST">@csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-warning">Delete</button>
                                 </form>
