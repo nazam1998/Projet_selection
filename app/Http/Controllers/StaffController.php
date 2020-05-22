@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     // Afficher tout les membres du staff, càd tout le monde sauf les candidats et users 
     public function index()
     {

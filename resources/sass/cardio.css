@@ -1153,13 +1153,13 @@ footer .social-footer li a {
 
 #banniere p {
     /* centrer le texte */
+    position: relative;
     margin: 0.5em 0 0 0;
     /* tout afficher sur une seule ligne */
     white-space: nowrap;
 }
 
 .d-flex-center-gros {
-
     margin: auto !important;
     width: 70%;
 }

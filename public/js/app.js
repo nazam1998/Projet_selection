@@ -19307,14 +19307,14 @@ var texte = banniere.firstElementChild;
 var tailleTexte = banniere.scrollWidth;
 
 function defile() {
-  var pos = texte.style.marginLeft.replace('px', '');
+  var pos = texte.style.left.replace('px', '');
 
-  if (pos - 100 < -tailleTexte) {
-    pos = 1200;
+  if (pos - 300 < -tailleTexte) {
+    pos = 800;
   }
 
   pos -= 1;
-  texte.style.marginLeft = pos + "px";
+  texte.style.left = pos + "px";
   setTimeout(defile, 1);
 }
 
