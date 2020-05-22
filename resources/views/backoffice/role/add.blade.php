@@ -100,7 +100,7 @@
                     </div>
                    
                     <div class="col-3 text-center">
-                        <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
+                        <input class="form-check-input" type="checkbox" name="suivi_responsable0">
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
                 </div>
@@ -147,6 +147,7 @@
                     
                     element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
                     element.childNodes[1].childNodes[3].childNodes[1].name='suivi_lecture'+index;
+                    element.childNodes[5].childNodes[1].name='suivi_responsable'+index;
                     
                     
                 });
@@ -158,6 +159,7 @@
                 suivi.forEach((element,index) => {
                     element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
                     element.childNodes[1].childNodes[3].childNodes[1].name='suivi_lecture'+index;
+                    element.childNodes[5].childNodes[1].name='suivi_responsable'+index
                     
                 });              
             });

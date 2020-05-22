@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Validator;
 
 class CandidatController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $users = User::withTrashed()->where('role_id', 7)->paginate(10);

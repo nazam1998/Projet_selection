@@ -131,6 +131,23 @@ class UserSeeder extends Seeder
                 'role_id'=>2,
                 'email'=>'zak@zak.com',
                 'password'=>Hash::make('zak@zak.com')
+            ],
+            [
+                'nom' => 'Candidat',
+                'prenom' => 'Bg',
+                'genre' => 'Homme',
+                'statut' => 'Célibataire',
+                'commune' => 'Molenbeek',
+                'adresse' => 'Place de la minoterie',
+                'telephone' => '+32 123 77 88 99',
+                'ordinateur' => true,
+                'objectif' => 'Tout réussir',
+                'photo' => 'On va Tous Rater.png',
+                'abo'=>true,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
+                'role_id'=>7,
+                'email'=>'candidat@candidat',
+                'password'=>Hash::make('candidat@candidat')
             ]
         ]);
     }

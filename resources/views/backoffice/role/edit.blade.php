@@ -130,11 +130,11 @@
                     <div class="row col-4">
                         <div class="form-check mx-2">
 
-                            <input class="form-check-input" type="checkbox" name="suivi_ecriture[]">
+                            <input class="form-check-input" type="checkbox" name="suivi_ecriture0">
                             <label class="form-check-label">Ecriture</label>
                         </div>
                         <div class="form-check mx-2">
-                            <input class="form-check-input" type="checkbox" name="suivi_lecture[]">
+                            <input class="form-check-input" type="checkbox" name="suivi_lecture0">
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="col-3 text-center">
-                        <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
+                        <input class="form-check-input" type="checkbox" name="suivi_responsable0">
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
                 </div>
@@ -162,18 +162,18 @@
                     <div class="row col-4">
                         <div class="form-check mx-2">
                             @if ($suivi->pivot)
-                            <input checked class="form-check-input" type="checkbox" name="suivi_ecriture[]">
+                            <input checked class="form-check-input" type="checkbox" name="suivi_ecriture0">
                             @else
-                            <input class="form-check-input" type="checkbox" name="suivi_ecriture[]">
+                            <input class="form-check-input" type="checkbox" name="suivi_ecriture0">
                             @endif
                             <label class="form-check-label">Ecriture</label>
                         </div>
                         <div class="form-check mx-2">
                             @if ($suivi->pivot->auth_id==$role->id)
-                            <input checked class="form-check-input" type="checkbox" name="suivi_lecture[]">
+                            <input checked class="form-check-input" type="checkbox" name="suivi_lecture0">
 
                             @else
-                            <input class="form-check-input" type="checkbox" name="suivi_lecture[]">
+                            <input class="form-check-input" type="checkbox" name="suivi_lecture0">
 
                             @endif
                             <label class="form-check-label">Lecture</label>
@@ -193,7 +193,13 @@
                     </div>
 
                     <div class="col-3 text-center">
-                        <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
+                        @if ($suivi->responsable)
+                        <input checked class="form-check-input" type="checkbox" name="suivi_responsable0">
+                            
+                        @else
+                            
+                        <input class="form-check-input" type="checkbox" name="suivi_responsable0">
+                        @endif
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
                     @if ($loop->index!=0)
@@ -245,8 +251,8 @@
 
             element.childNodes[1].childNodes[1].childNodes[1].name = 'suivi_ecriture' + index;
             element.childNodes[1].childNodes[3].childNodes[1].name = 'suivi_lecture' + index;
-
-
+            element.childNodes[5].childNodes[1].name='suivi_responsable'+index;
+            
         });
 
     }
@@ -262,6 +268,7 @@
                     index;
                 element.childNodes[1].childNodes[3].childNodes[1].name = 'suivi_lecture' +
                     index;
+                    element.childNodes[5].childNodes[1].name='suivi_responsable'+index;
 
             });
         });

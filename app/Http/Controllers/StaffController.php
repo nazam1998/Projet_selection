@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('suivi')->only('index', 'indexGroup');
+        $this->middleware('suivi-lecture')->only('show');
+        $this->middleware('suivi-ecriture')->only('edit', 'update', 'destroy');
+    }
+
     // Afficher tout les membres du staff, càd tout le monde sauf les candidats et users 
     public function index()
     {
@@ -21,10 +29,9 @@ class StaffController extends Controller
 
     // Afficher un membre du staff précis et pouvoir lui écrire une note via le note controller
 
-    public function show($id)
+    public function show(User $user)
     {
 
-        $user = User::find($id);
         return view('backoffice.suivi.staffShow', compact('user', 'notes'));
     }
 
