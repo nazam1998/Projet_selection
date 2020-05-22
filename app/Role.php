@@ -19,4 +19,5 @@ class Role extends Model
     {
         return $this->belongsToMany('App\Role', 'suivis', 'auth_id', 'role_id')->withPivot('ecriture');
     }
+    
 }

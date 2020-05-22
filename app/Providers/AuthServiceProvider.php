@@ -89,11 +89,17 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('suivi-ecriture', function ($user, $suivi) {
             $role = $user->role->roles()->where('role_id', $suivi->role->id)->first();
-            return $user->role->roles->contains($suivi->role->id) && $role->pivot->ecriture;
+            if ($role->responsable && $user->role_id == 1 || ($user->role_id == 2 && $user->groups->contains($suivi->groups->first()->id))) {
+                return true;
+            }
+            return ($user->role->roles->contains($suivi->role->id) && $role->pivot->ecriture);
         });
 
         Gate::define('suivi-lecture', function ($user, $suivi) {
             $role = $user->role;
+            if ($role->responsable && $user->role_id == 1 || ($user->role_id == 2 && $user->groups->contains($suivi->groups->first()->id))) {
+                return true;
+            }
             return $user->role->roles->contains($role->id);
         });
     }

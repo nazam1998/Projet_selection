@@ -33,7 +33,7 @@ class RoleController extends Controller
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
-        $roles = Role::all();
+        $roles = Role::where('id', '!=', 1)->get();
         return view('backoffice.role.add', compact('candidat_lectures', 'user_lectures', 'user_ecritures', 'roles'));
     }
 
@@ -47,6 +47,7 @@ class RoleController extends Controller
     {
         $request->validate([
             'nom' => 'required|string|unique:roles',
+            // 'suivi_role.*' => 'nullable|min:2,max:' . count(Role::all()),
 
         ]);
         $roles = Role::where('id', '!=', 1)->get();
@@ -103,9 +104,12 @@ class RoleController extends Controller
 
                     if ($request->has('suivi_ecriture' . $key)) {
                         $role->roles()->attach($item, ['ecriture' => true]);
-                    } else if ($request->has('suivi_lecture' . $key)) {
-
-                        $role->roles()->attach($item, ['ecriture' => false]);
+                    } else if ($request->has('suivi_responsable' . $key)) {
+                        $responsable_onlyRole = Role::find($item);
+                        $responsable_onlyRole->responsable = true;
+                    } else {
+                        $responsable_onlyRole = Role::find($item);
+                        $responsable_onlyRole->responsable = false;
                     }
                 }
             }
@@ -135,7 +139,7 @@ class RoleController extends Controller
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
-        $roles = Role::all();
+        $roles = Role::where('id', '!=', 1)->get();
         return view('backoffice.role.edit', compact('role', 'candidat_lectures', 'user_lectures', 'user_ecritures', 'roles'));
     }
 
@@ -150,6 +154,7 @@ class RoleController extends Controller
     {
         $request->validate([
             'nom' => 'required|string|unique:roles,nom,' . $role->id,
+            // 'suivi_role.*' => 'nullable|min:2,max:' . count(Role::all()),
         ]);
 
         $role->nom = $request->nom;
@@ -207,6 +212,12 @@ class RoleController extends Controller
                     } else if ($request->has('suivi_lecture' . $key)) {
 
                         $role->roles()->attach($item, ['ecriture' => false]);
+                    } else if ($request->has('suivi_responsable' . $key)) {
+                        $responsable_onlyRole = Role::find($item);
+                        $responsable_onlyRole->responsable = true;
+                    } else {
+                        $responsable_onlyRole = Role::find($item);
+                        $responsable_onlyRole->responsable = false;
                     }
                 }
             }

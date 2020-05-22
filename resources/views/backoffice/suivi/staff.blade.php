@@ -69,8 +69,7 @@
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
                     <td class="d-flex justify-content-center">
-                        <a href="{{route('staff.show', $item->id)}}"
-                            class="btn btn-primary mr-3">Show</a>
+                        
                         @if ($item->deleted_at)
                         <a href="{{route('staff.restore', $item)}}"
                             class="btn btn-info mr-3">Restore</a>

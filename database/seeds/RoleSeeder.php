@@ -13,25 +13,32 @@ class RoleSeeder extends Seeder
     {
         DB::table('roles')->insert([
             'nom' => 'Administrateur',
+            'responsable' => true,
         ]);
 
         DB::table('roles')->insert([
             'nom' => 'Responsable',
+            'responsable' => true,
         ]);
         DB::table('roles')->insert([
             'nom' => 'Lead Coach',
+            'responsable' => true,
         ]);
         DB::table('roles')->insert([
             'nom' => 'Partenaire',
+            'responsable' => true,
         ]);
         DB::table('roles')->insert([
             'nom' => 'Coach',
+            'responsable' => true,
         ]);
         DB::table('roles')->insert([
             'nom' => 'Student',
+            'responsable' => true,
         ]);
         DB::table('roles')->insert([
             'nom' => 'Candidat',
+            'responsable' => true,
         ]);
 
         App\Role::find(1)->permissions()->attach(App\Permission::all()->pluck('id'));

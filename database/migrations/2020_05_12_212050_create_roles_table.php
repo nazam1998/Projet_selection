@@ -16,6 +16,7 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->boolean('responsable');
             $table->timestamps();
         });
         Schema::create('permission_role', function (Blueprint $table) {
@@ -26,7 +27,6 @@ class CreateRolesTable extends Migration
             $table->foreign('permission_id')->on('permissions')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
-        
     }
 
     /**

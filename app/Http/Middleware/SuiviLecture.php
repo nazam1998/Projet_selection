@@ -19,7 +19,10 @@ class SuiviLecture
     {
         $user = $request->route()->parameters()['user'];
         $role = $user->role;
-        if (Auth::user()->role->roles->contains($role->id)) {
+
+        if ($role->responsable && Auth::user()->role_id == 1 || (Auth::user()->role_id == 2 && Auth::user()->groups->contains($user->groups->first()->id))) {
+            return $next($request);
+        } else if (Auth::user()->role->roles->contains($role->id)) {
 
             return $next($request);
         }

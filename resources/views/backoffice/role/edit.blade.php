@@ -193,7 +193,13 @@
                     </div>
 
                     <div class="col-3 text-center">
+                        @if ($suivi->responsable)
+                        <input checked class="form-check-input" type="checkbox" name="suivi_responsable0">
+                            
+                        @else
+                            
                         <input class="form-check-input" type="checkbox" name="suivi_responsable0">
+                        @endif
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
                     @if ($loop->index!=0)

@@ -20,8 +20,10 @@ class SuiviEcriture
 
         $user = $request->route()->parameters()['user'];
         $role = Auth::user()->role->roles()->where('role_id', $user->role->id)->first();
+        if ($role->responsable && Auth::user()->role_id == 1 || (Auth::user()->role_id == 2 && Auth::user()->groups->contains($user->groups->first()->id))) {
 
-        if (Auth::user()->role->roles->contains($user->role->id) && $role->pivot->ecriture) {
+            return $next($request);
+        } else if (Auth::user()->role->roles->contains($user->role->id) && $role->pivot->ecriture) {
 
             return $next($request);
         }
