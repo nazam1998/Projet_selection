@@ -35,14 +35,21 @@
                 <div class="form-check">
                     @php
                         $lecture = true;
+                        $ecriture = false;
                         foreach (App\Permission::where('nom','LIKE','%lecture%')->get() as $value) {
                             $lecture = $role->permissions->contains($role->id);
                             if(!$lecture){
                             break;
                             }
                         }
-                    @endphp
-                    @if(!$role->permissions->contains(App\Permission::where('nom','LIKE','%ecriture%')->first()->id) && $lecture)
+                        foreach (App\Permission::where('nom','LIKE','%ecriture%')->get() as $value) {
+                            $ecriture = $role->permissions->contains($role->id);
+                            if($ecriture){
+                            break;
+                            }
+                        }
+                        @endphp
+                    @if(!$ecriture && $lecture)
                     <input checked class="form-check-input" type="checkbox" name="lecture" value="lecture">
                     @else
                     <input class="form-check-input" type="checkbox" name="lecture" value="lecture">
