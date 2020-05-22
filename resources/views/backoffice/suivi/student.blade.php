@@ -53,6 +53,7 @@
             </thead>
             <tbody>
                 @foreach ($users as $item)
+                @can('suivi-lecture',$item)
                 <tr>
                     <td>
                         @if ($item->group == null || !$item->group->first())
@@ -83,6 +84,7 @@
                         @endif
                     </td>
                 </tr>
+                @endcan
                 @endforeach
             </tbody>
         </table>

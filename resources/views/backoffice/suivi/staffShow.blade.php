@@ -50,7 +50,9 @@
                     <th>Titre</th>
                     <th>Note</th>
                     <th>Date</th>
+                    @can('suivi-ecriture',$user)
                     <th class="text-center">Actions: EDIT & DELETE</th>
+                    @endcan
                 </tr>
             </thead>
             <tbody>
@@ -59,9 +61,9 @@
                     <td>{{$item->titre}}</td>
                     <td>{{$item->note}}</td>
                     <td>{{$item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</td>
+                    @can('suivi-ecriture',$user)
                     <td class="d-flex justify-content-center">
-                        {{-- <a href="{{route('note.show', $item->id)}}"
-                        class="btn btn-info mr-3">Show</a> --}}
+                        
                         <a href="{{route('note.edit', $item->id)}}"
                         class="btn btn-warning mr-3">Edit</a>
                     <form action="{{route('note.destroy', $item->id)}}" method="POST">@csrf
@@ -69,12 +71,14 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
+                @endcan
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+@can('suivi-ecriture',$user)
             <h4>Formulaire pour ajouter une note</h4>
             <form class="form-horizontal" action="{{route('note.store', $user->id)}}" method="POST">
                 @csrf
@@ -105,6 +109,8 @@
                 </div>
                 <div class="showStaff"><button type="submit" class="btn text-white">Ajoutez la note</button></div>
             </form>
+
+            @endcan
 
 @stop
 

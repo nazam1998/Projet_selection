@@ -17,8 +17,10 @@ class SuiviEcriture
      */
     public function handle($request, Closure $next)
     {
+
         $user = $request->route()->parameters()['user'];
         $role = Auth::user()->role->roles()->where('role_id', $user->role->id)->first();
+
         if (Auth::user()->role->roles->contains($user->role->id) && $role->pivot->ecriture) {
 
             return $next($request);
