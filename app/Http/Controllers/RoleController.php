@@ -53,6 +53,7 @@ class RoleController extends Controller
         $roles = Role::where('id', '!=', 1)->get();
         $role = new Role();
         $role->nom = $request->nom;
+        $role->responsable = false;
         $role->save();
         if ($request->has('full')) {
             $role->roles()->attach(Role::where('id', '!=', 1)->pluck('id'), ['ecriture' => true]);
@@ -168,6 +169,7 @@ class RoleController extends Controller
                 $role->permissions()->attach($item);
             }
         } else if ($request->has('lecture')) {
+            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => false]);
             foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
