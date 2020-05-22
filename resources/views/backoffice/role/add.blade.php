@@ -32,11 +32,11 @@
                     <label class="form-check-label">Lecture Seulement</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce-écriture">
+                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce_écriture">
                     <label class="form-check-label">Annonce écriture</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce-lecture">
+                    <input class="form-check-input" type="checkbox" name="annonce" value="annonce_lecture">
                     <label class="form-check-label">Annonce lecture</label>
                 </div>
                 <div class="form-check">
@@ -47,12 +47,12 @@
 
                 <div class="row">
                     <div class="form-check mx-2">
-                        <input class="form-check-input" type="checkbox" name="candidat-full">
+                        <input class="form-check-input" type="checkbox" name="candidat_full">
                         <label class="form-check-label">Tous</label>
                     </div>
                     @foreach ($candidat_lectures as $item)
                     <div class="form-check mx-2">
-                        <input class="form-check-input" type="checkbox" name="candidat-lecture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,17)}}" type="checkbox" name="candidat_lecture[]">
                         <label class="form-check-label">{{substr($item->nom,17)}}</label>
                     </div>
                     @endforeach
@@ -62,7 +62,7 @@
                 <div class="row">
                     @foreach ($user_ecritures as $item)
                     <div class="form-check mx-2">
-                        <input class="form-check-input" type="checkbox" name="user-ecriture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,14)}}" type="checkbox" name="user_ecriture[]">
                         <label class="form-check-label">{{substr($item->nom,14)}}</label>
                     </div>
                     @endforeach
@@ -72,43 +72,43 @@
                 <div class="row">
                     @foreach ($user_lectures as $item)
                     <div class="form-check mx-2">
-                        <input class="form-check-input" type="checkbox" name="user-lecture[]">
+                        <input class="form-check-input" value="{{substr($item->nom,13)}}" type="checkbox" name="user_lecture[]">
                         <label class="form-check-label">{{substr($item->nom,13)}}</label>
                     </div>
                     @endforeach
                 </div>
 
                 <label class="mt-5" for="">Suivi</label>
-                <div class="row">
+                <div class="row suivi">
                     <div class="row col-4">
                         <div class="form-check mx-2">
-                            <input class="form-check-input" type="checkbox" name="suivi-ecriture[]">
+                            <input class="form-check-input suivi_lecture" type="checkbox" name="suivi_ecriture0">
                             <label class="form-check-label">Ecriture</label>
                         </div>
                         <div class="form-check mx-2">
-                            <input class="form-check-input" type="checkbox" name="suivi-lecture[]">
+                            <input class="form-check-input suivi_lecture" type="checkbox" name="suivi_lecture0">
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
                     <div class="col-4">
                         <label class="mr-2">Role</label>
-                        <select name="suivi-role[]">
+                        <select name="suivi_role[]">
                             @foreach ($roles as $item)
                             <option value="{{$item->id}}">{{$item->nom}}</option>
                             @endforeach
                         </select>
                     </div>
                    
-                    <div class="col-4 text-center">
-                        <input class="form-check-input" type="checkbox" name="suivi-responsable[]">
+                    <div class="col-3 text-center">
+                        <input class="form-check-input" type="checkbox" name="suivi_responsable[]">
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
                 </div>
 
                 
 
-                <button type="button" id="dupliquer" class="btn btnShow text-white mt-3">Dupliquer</button>
             </div>
+            <button type="button" id="dupliquer" class="btn btnShow text-white mt-3">Dupliquer</button>
         </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Ajoutez le role</button>
@@ -123,33 +123,46 @@
 
 @section('js')
 <script>
+
+
     let button = document.getElementById('dupliquer');
 
 
 
     var i = 0;
-    var original = document.getElementById('suivi');
+    var original = document.querySelector('.suivi');
 
     function duplicate() {
         var clone = original.cloneNode(true);
         clone.id = "suivi" + ++i;
         original.parentNode.appendChild(clone);
-
         let temp = document.createElement('button');
         temp.type = 'button';
         temp.innerHTML = '&times;';
-        temp.className = 'btn btn-danger remove';
-        temp.style.width = '100%';
+        temp.style.width='10%';
+        temp.className = 'btn btn-danger col remove';
         clone.appendChild(temp);
-
+        let suivi=document.querySelectorAll('.suivi');
+                suivi.forEach((element,index) => {
+                    
+                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
+                    element.childNodes[1].childNodes[3].childNodes[1].name='suivi_lecture'+index;
+                    
+                    
+                });
         let remove = document.querySelectorAll('.remove');
         remove.forEach(e => {
             e.addEventListener('click', function (event) {
                 event.currentTarget.parentElement.remove();
+                let suivi=document.querySelectorAll('.suivi');
+                suivi.forEach((element,index) => {
+                    element.childNodes[1].childNodes[1].childNodes[1].name='suivi_ecriture'+index;
+                    element.childNodes[1].childNodes[3].childNodes[1].name='suivi_lecture'+index;
+                    
+                });              
             });
         });
     }
-
     button.addEventListener('click', duplicate);
 
 </script>

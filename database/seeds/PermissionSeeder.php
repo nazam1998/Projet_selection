@@ -29,6 +29,7 @@ class PermissionSeeder extends Seeder
             ['nom' => 'user-lecture-abo'],
             ['nom' => 'user-lecture-groupe'],
             ['nom' => 'user-lecture-role'],
+            ['nom' => 'user-lecture-interet'],
 
             ['nom' => 'user-ecriture-nom'],
             ['nom' => 'user-ecriture-prenom'],
@@ -44,6 +45,7 @@ class PermissionSeeder extends Seeder
             ['nom' => 'user-ecriture-abo'],
             ['nom' => 'user-ecriture-groupe'],
             ['nom' => 'user-ecriture-role'],
+            ['nom' => 'user-ecriture-interet'],
 
             ['nom' => 'contact'],
             ['nom' => 'groupe'],
@@ -63,6 +65,7 @@ class PermissionSeeder extends Seeder
             ['nom' => 'candidat-lecture-photo'],
             ['nom' => 'candidat-lecture-abo'],
             ['nom' => 'candidat-lecture-groupe'],
+            ['nom' => 'candidat-lecture-interet'],
         ]);
     }
 }

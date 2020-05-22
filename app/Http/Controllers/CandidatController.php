@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CandidatController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -76,7 +78,7 @@ class CandidatController extends Controller
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         if ($validator->fails()) {
-            return redirect()->to(url()->previous() . '#formulaire')->withErrors($validator)->withInput();
+            return redirect()->back()->withErrors($validator)->withInput();
         }
         if ($request->hasFile('photo')) {
             if (Storage::disk('public')->exists($user->photo)) {
@@ -104,7 +106,7 @@ class CandidatController extends Controller
         $user->group()->attach($request->group, ['role_id' => $user->role_id]);
 
         $user->save();
-        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Candidat modifié avec succès');
+        return redirect()->route('candidat.show', $user->id)->with('msg', 'Candidat modifié avec succès');
     }
 
     /**

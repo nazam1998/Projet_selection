@@ -35,7 +35,8 @@ class StaffController extends Controller
         return view('backoffice.suivi.editStaff', compact('user', 'groups', 'roles'));
     }
 
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+    {
         $validator = Validator::make($request->all(), [
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
@@ -106,7 +107,8 @@ class StaffController extends Controller
         return view('backoffice.suivi.staff', compact('users', 'groups'));
     }
 
-    public function destroy(User $user){
+    public function destroy(User $user)
+    {
         $user->delete();
         return redirect()->back();
     }

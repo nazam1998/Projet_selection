@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TitreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('evenement');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +50,7 @@ class TitreController extends Controller
         return redirect()->route('titre.index')->with('msg', 'Titre créé avec succès');
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
