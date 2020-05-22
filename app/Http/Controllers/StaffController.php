@@ -13,6 +13,9 @@ class StaffController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('suivi')->only('index', 'indexGroup');
+        $this->middleware('suivi-lecture')->only('show');
+        $this->middleware('suivi-ecriture')->only('edit', 'update', 'forceDestroy', 'destroy', 'restore');
     }
 
     // Afficher tout les membres du staff, càd tout le monde sauf les candidats et users 

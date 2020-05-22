@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
-        $this->middleware('suivi')->only('index');
+        $this->middleware('suivi')->only('index', 'indexGroup');
+        $this->middleware('suivi-lecture')->only('show');
+        $this->middleware('suivi-ecriture')->only('edit', 'update', 'forceDestroy', 'destroy', 'restore');
     }
 
     // Affiche tous les student et candidats
@@ -50,7 +53,7 @@ class StudentController extends Controller
             $users = $groups->pluck('users')->where('role_id', 6);
             $groups = Group::all();
             $related = $users->first();
-            
+
             if ($users->first()) {
 
                 foreach ($users as $tag) {
@@ -58,7 +61,6 @@ class StudentController extends Controller
                 }
                 $users = $related;
             }
-            
         } else {
             $groups = Group::all();
             $users = User::where('role_id', 6)->get();
@@ -76,7 +78,8 @@ class StudentController extends Controller
         return view('backoffice.suivi.editStudent', compact('user', 'groups', 'matieres', 'roles'));
     }
 
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+    {
         $validator = Validator::make($request->all(), [
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
@@ -145,7 +148,8 @@ class StudentController extends Controller
         return redirect()->route('student.show', $id)->with('msg', 'Le student a été modifié avec succès');
     }
 
-    public function destroy(User $user){
+    public function destroy(User $user)
+    {
         $user->delete();
         return redirect()->back();
     }

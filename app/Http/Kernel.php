@@ -70,5 +70,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'suivi' => \App\Http\Middleware\Suivi::class,
+        'suivi-lecture' => \App\Http\Middleware\SuiviLecture::class,
+        'suivi-ecriture' => \App\Http\Middleware\SuiviEcriture::class,
     ];
 }
