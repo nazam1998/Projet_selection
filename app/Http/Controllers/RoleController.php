@@ -53,6 +53,7 @@ class RoleController extends Controller
         $roles = Role::where('id', '!=', 1)->get();
         $role = new Role();
         $role->nom = $request->nom;
+        $role->responsable = false;
         $role->save();
         if ($request->has('full')) {
             $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => true]);
@@ -162,11 +163,12 @@ class RoleController extends Controller
 
         $role->permissions()->detach();
         if ($request->has('full')) {
-            $role->roles->attach(Role::all()->pluck('id'), ['ecriture' => false]);
+            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => true]);
             foreach (Permission::all()->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
         } else if ($request->has('lecture')) {
+            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => false]);
             foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
@@ -203,6 +205,7 @@ class RoleController extends Controller
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
                 }
             }
+            dd('hello');
             if ($request->has('suivi_role')) {
                 $role->roles()->detach();
                 foreach ($request->suivi_role as $key => $item) {

@@ -161,7 +161,7 @@
                 <div class="row suivi">
                     <div class="row col-4">
                         <div class="form-check mx-2">
-                            @if ($suivi->pivot)
+                            @if ($suivi->pivot->ecriture)
                             <input checked class="form-check-input" type="checkbox" name="suivi_ecriture0">
                             @else
                             <input class="form-check-input" type="checkbox" name="suivi_ecriture0">
