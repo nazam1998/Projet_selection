@@ -206,9 +206,9 @@ class RoleController extends Controller
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'user-ecriture-' . $item)->first()->id);
                 }
             }
-            if ($request->has('suivi_role[]')) {
+            if ($request->has('suivi_role')) {
                 foreach ($request->suivi_role as $key => $item) {
-                    dd('eeehhhh meeec');
+                    
                     if ($request->has('suivi_ecriture' . $key)) {
                         $role->roles()->attach($item, ['ecriture' => true]);
                     } else if ($request->has('suivi_lecture' . $key)) {

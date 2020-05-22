@@ -33,7 +33,16 @@
                     <label class="form-check-label">Tout les droits</label>
                 </div>
                 <div class="form-check">
-                    @if(!$role->permissions->contains(App\Permission::where('nom','LIKE','%ecriture%')->first()->id))
+                    @php
+                        $lecture = true;
+                        foreach (App\Permission::where('nom','LIKE','%lecture%')->get() as $value) {
+                            $lecture = $role->permissions->contains($role->id);
+                            if(!$lecture){
+                            break;
+                            }
+                        }
+                    @endphp
+                    @if(!$role->permissions->contains(App\Permission::where('nom','LIKE','%ecriture%')->first()->id) && $lecture)
                     <input checked class="form-check-input" type="checkbox" name="lecture" value="lecture">
                     @else
                     <input class="form-check-input" type="checkbox" name="lecture" value="lecture">
