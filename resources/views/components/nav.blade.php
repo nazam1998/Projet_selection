@@ -21,8 +21,15 @@
                 @can('backoffice')
                 <li><a href="{{route('home')}}">Backoffice</a></li>
                 @endcan
-                @guest    
-                <li><a href="{{route('login')}}" class="">Sign in</a></li>
+                @guest
+                <li><a href="{{route('login')}}">Sign in</a></li>
+                @else
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+				document.getElementById('logout-form').submit();">{{ __('Sign out') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
                 @endguest
             </ul>
         </div>
