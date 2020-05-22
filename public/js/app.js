@@ -19307,14 +19307,14 @@ var texte = banniere.firstElementChild;
 var tailleTexte = banniere.scrollWidth;
 
 function defile() {
-  var pos = texte.style.marginLeft.replace('px', '');
+  var pos = texte.style.left.replace('px', '');
 
   if (pos - 100 < -tailleTexte) {
     pos = 1200;
   }
 
   pos -= 1;
-  texte.style.marginLeft = pos + "px";
+  texte.style.left = pos + "px";
   setTimeout(defile, 1);
 }
 
@@ -26085,9 +26085,9 @@ jQuery(function ($) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /mnt/c/Users/User/Desktop/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /mnt/c/Users/nazam/Desktop/source/home/coding-school/Projet_selection/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

@@ -17,6 +17,6 @@ class Role extends Model
     }
     public function roles()
     {
-        return $this->belongsToMany('App\Role', 'suivis', 'auth_id', 'role_id');
+        return $this->belongsToMany('App\Role', 'suivis', 'auth_id', 'role_id')->withPivot('ecriture');
     }
 }

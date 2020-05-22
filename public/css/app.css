@@ -11163,6 +11163,7 @@ footer .social-footer li a {
 #banniere p {
     /* centrer le texte */
     margin: 0.5em 0 0 0;
+    position: relative;
     /* tout afficher sur une seule ligne */
     white-space: nowrap;
 }
