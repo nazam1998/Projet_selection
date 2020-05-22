@@ -126,7 +126,7 @@
                 @if (count($role->roles)==0)
 
 
-                <div class="row suivi">
+                <div class="row suivi my-1">
                     <div class="row col-4">
                         <div class="form-check mx-2">
 
@@ -158,7 +158,7 @@
                 @else
                 @foreach ($role->roles as $suivi)
 
-                <div class="row suivi">
+                <div class="row suivi my-1">
                     <div class="row col-4">
                         <div class="form-check mx-2">
                             @if ($suivi->pivot)
