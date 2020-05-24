@@ -66,21 +66,24 @@
                     <td>{{$item->email}}</td>
                     <td class="d-flex justify-content-center">
                         @if ($item->deleted_at)
-                        <a href="{{route('student.restore', $item->id)}}"
-                            class="btn btn-info mr-3">Restore</a>
-                            <form action="{{route('student.forceDestroy', $item->id)}}" method="POST">@csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-warning">Force Delete</button>
-                            </form>
-                        @else  
-                        <a href="{{route('student.show', $item)}}"
-                            class="btn btn-primary">Show</a>
-                            <a href="{{route('student.edit', $item)}}"
-                                class="btn btn-danger mx-2">Edit</a>
-                                <form action="{{route('student.destroy', $item)}}" method="POST">@csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-warning">Delete</button>
-                                </form>
+                        <a href="{{route('student.restore', $item->id)}}" class="btn btn-info mr-3">Restore</a>
+                        <form action="{{route('student.forceDestroy', $item->id)}}" method="POST">@csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-warning">Force Delete</button>
+                        </form>
+                        @else
+                        <a href="{{route('student.show', $item)}}" class="btn btn-primary">Show</a>
+                        @can('user-edit')
+
+
+                        <a href="{{route('student.edit', $item)}}" class="btn btn-danger mx-2">Edit</a>
+                        <form action="{{route('student.destroy', $item)}}" method="POST">@csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-warning">Delete</button>
+                        </form>
+                        @endcan
+
+
                         @endif
                     </td>
                 </tr>
