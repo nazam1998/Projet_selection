@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('etape/{id}/create', 'EtapeController@create')->name('etape.create');
 Route::get('etape/{etape}/edit', 'EtapeController@edit')->name('etape.edit');
 Route::post('etape/{id}/store', 'EtapeController@store')->name('etape.store');

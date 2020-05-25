@@ -15,9 +15,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="{{route('welcome').'#intro'}}">Intro</a></li>
+                <li><a href="{{route('welcome').'#services'}}">Services</a></li>
+                <li><a href="{{route('welcome').'#team'}}">Team</a></li>
+                <li><a href="{{route('welcome').'#formulaire'}}">Inscription</a></li>
+                <li><a href="{{route('welcome').'#contact'}}">Contact</a></li>
                 @can('backoffice')
                 <li><a href="{{route('home')}}">Backoffice</a></li>
                 @endcan
