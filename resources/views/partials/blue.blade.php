@@ -30,35 +30,35 @@
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Nom</label>
                             @error('nom')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="nom" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Prenom</label>
                             @error('prenom')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="prenom" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Email</label>
                             @error('email')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="email" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Commune</label>
                             @error('commune')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="commune" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Adresse</label>
                             @error('adresse')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="adresse" type="text">
                         </div>
@@ -67,27 +67,27 @@
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Téléphone</label>
                             @error('telephone')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="telephone" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Objectif</label>
                             @error('objectif')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="objectif" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Photo</label>
                             @error('photo')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%; background-color: white;" name="photo" type="file">
                         </div>
                         <div style="margin-bottom: 10px;">
                             @error('genre')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <label style="margin-right: 12px;" class="light" for="">Genre: </label>
                             <label style="margin-right: 5px;" class="white" for="">Homme</label>
@@ -99,7 +99,7 @@
                             
                             <label style="margin-right: 10px;" class="light" for="">Statut</label>
                             @error('statut')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                             <select name="statut" id="">
                                 <option value="Célibataire">Célibataire</option>
@@ -120,7 +120,7 @@
                     </div>
                     <div style="margin-bottom: 10px; text-align: center;">
                         @error('interet')
-                        <p>{{$message}}</p>
+                        <div class="erreur">{{$message}}</div>
                             @enderror
                         <label style="margin-right: 12px;" class="light" for="">Intérêt: </label>
                         @foreach ($form->first()->formulaire->interets as $item)
