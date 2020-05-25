@@ -73,5 +73,7 @@ class Kernel extends HttpKernel
         'suivi-lecture' => \App\Http\Middleware\SuiviLecture::class,
         'suivi-ecriture' => \App\Http\Middleware\SuiviEcriture::class,
         'student' => \App\Http\Middleware\isStudent::class,
+        'isStaff' => \App\Http\Middleware\isStaff::class,
+        'isCandidat' => \App\Http\Middleware\isCandidat::class,
     ];
 }

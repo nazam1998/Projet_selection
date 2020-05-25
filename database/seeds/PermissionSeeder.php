@@ -28,6 +28,7 @@ class PermissionSeeder extends Seeder
             ['nom' => 'user-lecture-photo'],
             ['nom' => 'user-lecture-abo'],
             ['nom' => 'user-lecture-groupe'],
+            ['nom' => 'user-lecture-role'],
             ['nom' => 'user-lecture-interet'],
 
             ['nom' => 'user-ecriture-nom'],
@@ -43,6 +44,7 @@ class PermissionSeeder extends Seeder
             ['nom' => 'user-ecriture-photo'],
             ['nom' => 'user-ecriture-abo'],
             ['nom' => 'user-ecriture-groupe'],
+            ['nom' => 'user-ecriture-role'],
             ['nom' => 'user-ecriture-interet'],
 
             ['nom' => 'contact'],
