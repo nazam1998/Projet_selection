@@ -71,7 +71,7 @@ class WelcomeController extends Controller
         $user->interets()->attach($data->interet);
         $evenement = Evenement::find($id);
         Mail::to($data->email)->send(new Inscription($evenement->formulaire->titre, $user, $evenement));
-        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Merci pour votre insciption');;
+        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Merci pour votre insciption');
     }
 
     public function create($id){

@@ -1,9 +1,9 @@
-<section class="section section-padded dark-bg">
+<section class="section section-padded dark-bg" id="formulaire">
     <div class="container">
         <h1 class="text-center light">Inscription</h1>
         <div class="owl-twitter owl-carousel">
             @if (count($form)>1)
-            <div class="item" id="formulaire">
+            <div class="item">
                 <div style="margin: 30px 0;" class="row">
                     @foreach ($form->chunk(5) as $chunk)
                         <ul class="col-md-4">
@@ -17,7 +17,7 @@
                 </div>
             </div>
             @elseif(count($form)==1)
-            <div class="item" id="formulaire">
+            <div class="item">
                 @if (session()->has('msg'))
             <p class="white text-center">{{session('msg')}}</p>
                 @endif
