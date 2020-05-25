@@ -57,7 +57,7 @@ class Kernel extends HttpKernel
         'user-ecriture' => \App\Http\Middleware\UserEcriture::class,
         'user-lecture' => \App\Http\Middleware\UserLecture::class,
         'group' => \App\Http\Middleware\Group::class,
-        'contact' => \App\Http\Middleware\Group::class,
+        'contact' => \App\Http\Middleware\Contact::class,
         'role' => \App\Http\Middleware\Role::class,
         'evenement' => \App\Http\Middleware\Evenement::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
