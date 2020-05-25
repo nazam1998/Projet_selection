@@ -25,5 +25,17 @@ class EvenementSeeder extends Seeder
 
             'formulaire_id' => Formulaire::inRandomOrder()->first()->id
         ]);
+        DB::table('evenements')->insert([
+            'date' => Carbon::now(),
+            'etat' => 'Futur',
+
+            'formulaire_id' => Formulaire::inRandomOrder()->first()->id
+        ]);
+        DB::table('evenements')->insert([
+            'date' => Carbon::now(),
+            'etat' => 'En Cours',
+
+            'formulaire_id' => Formulaire::inRandomOrder()->first()->id
+        ]);
     }
 }

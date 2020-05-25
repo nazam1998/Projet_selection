@@ -22,6 +22,7 @@ class WelcomeController extends Controller
         $annonce = Annonce::all();
         $phrase = Phrase::all();
         $interets = Interet::all();
+        
         return view('welcome', compact('interets', 'annonce', 'evenements', 'form', 'phrase'));
     }
 

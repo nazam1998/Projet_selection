@@ -47,5 +47,19 @@ class EtapeSeeder extends Seeder
             'date' => $evenement->date,
             'evenement_id' => $evenement->id,
         ]);
+        $evenement = Evenement::inRandomOrder()->first();
+        DB::table('etapes')->insert([
+            'titre' => Titre::inRandomOrder()->first()->titre,
+            'description' => Description::inRandomOrder()->first()->description,
+            'date' => $evenement->date,
+            'evenement_id' => $evenement->id,
+        ]);
+        $evenement = Evenement::inRandomOrder()->first();
+        DB::table('etapes')->insert([
+            'titre' => Titre::inRandomOrder()->first()->titre,
+            'description' => Description::inRandomOrder()->first()->description,
+            'date' => $evenement->date,
+            'evenement_id' => $evenement->id,
+        ]);
     }
 }

@@ -6,59 +6,61 @@
             <div class="item">
                 <div style="margin: 30px 0;" class="row">
                     @foreach ($form->chunk(5) as $chunk)
-                        <ul class="col-md-4">
-                            @foreach ($chunk as $item)
-                                <li style="margin: 7px 0;" class="light">
-                                    <a class="light" href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a> <span>-> date limite: {{$item->date->format('d/M/y')}}</span>
-                                </li>
-                            @endforeach
-                        </ul>
+                    <ul class="col-md-4">
+                        @foreach ($chunk as $item)
+                        <li style="margin: 7px 0;" class="light">
+                            <a class="light"
+                                href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a>
+                            <span>-> date limite: {{$item->date->format('d/M/y')}}</span>
+                        </li>
+                        @endforeach
+                    </ul>
                     @endforeach
                 </div>
             </div>
             @elseif(count($form)==1)
             <div class="item">
                 @if (session()->has('msg'))
-            <p class="white text-center">{{session('msg')}}</p>
+                <p class="white text-center">{{session('msg')}}</p>
                 @endif
-            <h3 class="light text-center">{{$form->first()->formulaire->titre.' '.$form->first()->id}}</h3>
-                <form class="row" style="margin-top: 30px;" action="{{route('inscription',$form->first()->id)}}" method="POST"
-                    enctype="multipart/form-data">
+                <h3 class="light text-center">{{$form->first()->formulaire->titre.' '.$form->first()->id}}</h3>
+                <form class="row" style="margin-top: 30px;" action="{{route('inscription',$form->first()->id)}}"
+                    method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="formulaire_id" value="1">
                     <div class="col-md-6">
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Nom</label>
                             @error('nom')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="nom" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Prenom</label>
                             @error('prenom')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="prenom" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Email</label>
                             @error('email')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="email" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Commune</label>
                             @error('commune')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="commune" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Adresse</label>
                             @error('adresse')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="adresse" type="text">
                         </div>
@@ -67,27 +69,27 @@
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Téléphone</label>
                             @error('telephone')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="telephone" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Objectif</label>
                             @error('objectif')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%;" name="objectif" type="text">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Photo</label>
                             @error('photo')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <input style="width: 100%; background-color: white;" name="photo" type="file">
                         </div>
                         <div style="margin-bottom: 10px;">
                             @error('genre')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <label style="margin-right: 12px;" class="light" for="">Genre: </label>
                             <label style="margin-right: 5px;" class="white" for="">Homme</label>
@@ -96,10 +98,10 @@
                             <input name="genre" type="radio" value="Femme">
                         </div>
                         <div style="margin-bottom: 10px;">
-                            
+
                             <label style="margin-right: 10px;" class="light" for="">Statut</label>
                             @error('statut')
-                        <div class="erreur">{{$message}}</div>
+                            <div class="erreur">{{$message}}</div>
                             @enderror
                             <select name="statut" id="">
                                 <option value="Célibataire">Célibataire</option>
@@ -121,7 +123,7 @@
                     <div style="margin-bottom: 10px; text-align: center;">
                         @error('interet')
                         <div class="erreur">{{$message}}</div>
-                            @enderror
+                        @enderror
                         <label style="margin-right: 12px;" class="light" for="">Intérêt: </label>
                         @foreach ($form->first()->formulaire->interets as $item)
                         @if(!$loop->last)
@@ -140,7 +142,7 @@
             </div>
             @else
             @foreach ($phrase as $item)
-        <h3 class="light text-center">{{$item->texte}}</h3>
+            <h3 class="light text-center">{{$item->texte}}</h3>
             @endforeach
             @endif
         </div>
