@@ -6,6 +6,7 @@ use App\Contact;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -35,24 +36,27 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'noms' => 'required|string|unique:contacts',
-            'prenoms' => 'required|string|unique:contacts',
-            'email' => 'required|string|unique:contacts',
-            'message' => 'required|string|unique:contacts',
+        $validator = Validator::make($request->all(), [
+            'noms' => 'required|string',
+            'prenoms' => 'required|string',
+            'emails' => 'required|email|unique:contacts',
+            'messages' => 'required|string',
         ]);
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous() . '#contact')->withErrors($validator)->withInput();
+        }
 
         $contact = new Contact();
         $contact->nom = $request->input('noms');
         $contact->prenom = $request->input('prenoms');
-        $contact->email = $request->input('email');
-        $contact->message = $request->input('message');
+        $contact->email = $request->input('emails');
+        $contact->message = $request->input('messages');
         $contact->save();
 
         $nom = $request->input('noms');
-        $prenom =  $request->input('prenom');
-        $email =  $request->input('email');
-        $msg = $request->input('message');
+        $prenom =  $request->input('prenoms');
+        $email =  $request->input('emails');
+        $msg = $request->input('messages');
         
         Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
 
