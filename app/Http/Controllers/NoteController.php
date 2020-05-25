@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -47,7 +48,7 @@ class NoteController extends Controller
     public function edit(User $user, $id)
     {
         $note = Note::find($id);
-        return view('backoffice.note.edit', compact('note','user'));
+        return view('backoffice.note.edit', compact('note', 'user'));
     }
 
     /**

@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('student')->only('edit', 'update', 'show', 'valider', 'addMatiere', 'saveMatiere');
+        $this->middleware('student')->only('edit', 'update', 'show', 'valider', 'invalider', 'addMatiere', 'saveMatiere');
         $this->middleware('suivi')->only('index', 'indexGroup');
         $this->middleware('suivi-lecture')->only('show');
         $this->middleware('suivi-ecriture')->only('edit', 'update', 'destroy');
@@ -43,6 +43,13 @@ class StudentController extends Controller
     {
         $user->matieres()->updateExistingPivot($matiere, ['valide' => true]);
         return redirect()->back()->with('valide', 'La matière a été validée');
+    }
+
+    // permet de valider la matière d'un student
+    public function invalider(Request $request, User $user, $matiere)
+    {
+        $user->matieres()->updateExistingPivot($matiere, ['valide' => false]);
+        return redirect()->back()->with('valide', 'La matière a été invalidée');
     }
 
     // Permet de filtrer les student par groupe
@@ -142,7 +149,7 @@ class StudentController extends Controller
         $user->matieres()->detach();
         $user->matieres()->attach($request->matiere, ['valide' => false]);
 
-        return redirect()->route('student.show', $id)->with('msg', 'Le student a été modifié avec succès');
+        return redirect()->route('student.show', $user->id)->with('msg', 'Le student a été modifié avec succès');
     }
 
     public function destroy(User $user)

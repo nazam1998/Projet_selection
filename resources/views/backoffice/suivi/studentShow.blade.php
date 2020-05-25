@@ -59,7 +59,8 @@
                     <td class="text-center"><img width="8%" src="{{asset('storage/'.$item->image)}}" alt=""></td>
                     <td class="d-flex justify-content-center">
                         @if ($item->pivot->valide)
-                        <i class="fas fa-check text-success"></i>
+                        <a class="btn btn-danger"
+                            href="{{route('invaliderMatiere', [$user->id, $item->id])}}">Invalider</a>
                         @else
                         <a class="btn btn-success"
                             href="{{route('validerMatiere', [$user->id, $item->id])}}">Valider</a>

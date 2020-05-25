@@ -77,6 +77,7 @@ Route::get('/suivi/student/{user}/matiere', 'StudentController@addMatiere')->nam
 Route::post('/suivi/student/{user}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
 
 Route::get('/suivi/student/{user}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
+Route::get('/suivi/student/{user}/{matiere}/invalide', 'StudentController@invalider')->name('invaliderMatiere');
 
 Route::get('note/{user}/{id}/edit', 'NoteController@edit')->name('note.edit');
 Route::post('note/{user}/store', 'NoteController@store')->name('note.store');
