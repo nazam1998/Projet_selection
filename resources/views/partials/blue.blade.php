@@ -34,35 +34,35 @@
                             @error('nom')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="nom" type="text">
+                        <input style="width: 100%;" name="nom" type="text" value="{{old('nom')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Prenom</label>
                             @error('prenom')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="prenom" type="text">
+                            <input style="width: 100%;" name="prenom" type="text" value="{{old('prenom')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Email</label>
                             @error('email')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="email" type="text">
+                            <input style="width: 100%;" name="email" type="text" value="{{old('email')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Commune</label>
                             @error('commune')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="commune" type="text">
+                            <input style="width: 100%;" name="commune" type="text" value="{{old('commune')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Adresse</label>
                             @error('adresse')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="adresse" type="text">
+                            <input style="width: 100%;" name="adresse" type="text" value="{{old('adresse')}}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -71,14 +71,14 @@
                             @error('telephone')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="telephone" type="text">
+                            <input style="width: 100%;" name="telephone" type="text" value="{{old('telephone')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Objectif</label>
                             @error('objectif')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="objectif" type="text">
+                            <input style="width: 100%;" name="objectif" type="text" value="{{old('telephone')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Photo</label>
@@ -93,9 +93,9 @@
                             @enderror
                             <label style="margin-right: 12px;" class="light" for="">Genre: </label>
                             <label style="margin-right: 5px;" class="white" for="">Homme</label>
-                            <input style="margin-right: 8px;" value="Homme" checked name="genre" type="radio">
+                            <input style="margin-right: 8px;" value="Homme" @if(old('genre')=='Homme') checked @endif name="genre" type="radio">
                             <label style="margin-right: 5px;" class="white" for="">Femme</label>
-                            <input name="genre" type="radio" value="Femme">
+                            <input name="genre" type="radio" value="Femme" @if(old('genre')=='Femme') checked @endif>
                         </div>
                         <div style="margin-bottom: 10px;">
 
@@ -104,23 +104,23 @@
                             <div class="erreur">{{$message}}</div>
                             @enderror
                             <select name="statut" id="">
-                                <option value="Célibataire">Célibataire</option>
-                                <option value="Divorcé(e)">Divorcé(e)</option>
-                                <option value="Marié(e)">Marié(e)</option>
+                                <option @if(old('statut')=='Célibataire') selected @endif value="Célibataire">Célibataire</option>
+                                <option @if(old('statut')=='Divorcé(e)') selected @endif value="Divorcé(e)">Divorcé(e)</option>
+                                <option @if(old('statut')=='Marié(e)') selected @endif value="Marié(e)">Marié(e)</option>
                             </select>
                         </div>
 
                         <div style="margin-bottom: 10px;">
                             <label style="margin-right: 10px;" class="light" for="">S'abonner pour découvrir prochains
                                 évènements</label>
-                            <input name="abo" type="checkbox">
+                            <input @if(old('abo')) checked @endif name="abo" type="checkbox">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label style="margin-right: 10px;" class="light" for="">Possède un ordinateur</label>
-                            <input name="ordinateur" type="checkbox">
+                            <input @if(old('ordinateur')) checked @endif name="ordinateur" type="checkbox">
                         </div>
                     </div>
-                    <div style="margin-bottom: 10px; text-align: center;">
+                    <div style="margin-bottom: 10px; text-align: center;width:100%">
                         @error('interet')
                         <div class="erreur">{{$message}}</div>
                         @enderror
@@ -128,10 +128,10 @@
                         @foreach ($form->first()->formulaire->interets as $item)
                         @if(!$loop->last)
                         <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
-                        <input style="margin-right: 8px;" name="interet[]" value="{{$item->id}}" type="checkbox">
+                        <input @if(is_array(old('interet')) && in_array($item->id,old('interet'))) checked @endif  style="margin-right: 8px;" name="interet[]" value="{{$item->id}}" type="checkbox">
                         @else
                         <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
-                        <input name="interet[]" type="checkbox" value="{{$item->id}}">
+                        <input @if(is_array(old('interet')) && in_array($item->id,old('interet'))) checked @endif name="interet[]" type="checkbox" value="{{$item->id}}">
                         @endif
                         @endforeach
                     </div>
