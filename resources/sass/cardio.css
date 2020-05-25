@@ -1020,6 +1020,11 @@ footer .social-footer li a {
     background: white;
 }
 
+.erreur {
+    color: #ff1f1f;
+    font-weight: bold;
+}
+
 .light-bg {
     background-color: #fffce9;
 }
