@@ -17,12 +17,12 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $evenements = Evenement::latest()->where('etat', 'En cours')->whereHas('etapes')->get();
-        $form = Evenement::orderBy('date', 'asc')->where('etat', 'Futur')->get();
+        $evenements = Evenement::latest()->where('etat','!=', 'Terminé')->whereHas('etapes')->get();
+        $form = Evenement::orderBy('date', 'asc')->whereHas('etapes')->where('etat', 'En cours')->get();
         $annonce = Annonce::all();
         $phrase = Phrase::all();
         $interets = Interet::all();
-        return view('welcome', compact('interets', 'annonce', 'evenements', 'form','phrase'));
+        return view('welcome', compact('interets', 'annonce', 'evenements', 'form', 'phrase'));
     }
 
     public function register(Request $data, $id)
@@ -74,8 +74,9 @@ class WelcomeController extends Controller
         return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Merci pour votre insciption');
     }
 
-    public function create($id){
-        $form = Evenement::where('id',$id)->get();
+    public function create($id)
+    {
+        $form = Evenement::where('id', $id)->get();
         return view('inscription', compact('form'));
     }
 }
