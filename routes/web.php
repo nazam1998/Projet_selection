@@ -69,10 +69,10 @@ Route::resource('candidat', 'CandidatController', ['parameters' => [
 
 
 
-Route::get('/suivi/student/{id}/matiere', 'StudentController@addMatiere')->name('addMatiere');
-Route::post('/suivi/student/{id}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
+Route::get('/suivi/student/{user}/matiere', 'StudentController@addMatiere')->name('addMatiere');
+Route::post('/suivi/student/{user}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
 
-Route::get('/suivi/student/{id}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
+Route::get('/suivi/student/{user}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
 
 Route::get('note/{id}/create', 'NoteController@create')->name('note.create');
 Route::get('note/{id}/edit', 'NoteController@edit')->name('note.edit');

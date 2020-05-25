@@ -15,9 +15,10 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('student')->only('edit', 'update', 'show', 'valider', 'addMatiere', 'saveMatiere');
         $this->middleware('suivi')->only('index', 'indexGroup');
         $this->middleware('suivi-lecture')->only('show');
-        $this->middleware('suivi-ecriture')->only('edit', 'update','destroy');
+        $this->middleware('suivi-ecriture')->only('edit', 'update', 'destroy');
     }
 
     // Affiche tous les student et candidats
@@ -32,15 +33,14 @@ class StudentController extends Controller
 
     public function show(User $user)
     {
-        // $user = User::find($id)
+            // $user = User::find($id)
         ;
         return view('backoffice.suivi.studentShow', compact('user'));
     }
 
     // permet de valider la matière d'un student
-    public function valider(Request $request, $id, $matiere)
+    public function valider(Request $request, User $user, $matiere)
     {
-        $user = User::find($id);
         $user->matieres()->updateExistingPivot($matiere, ['valide' => true]);
         return redirect()->back()->with('valide', 'La matière a été validée');
     }
@@ -128,21 +128,17 @@ class StudentController extends Controller
         return redirect()->route('user')->with('msg', 'Student modifié avec succés !');;
     }
 
-    public function addMatiere($id)
+    public function addMatiere(User $user)
     {
-        $user = User::find($id);
         $matieres = Matiere::all();
         return view('backoffice.suivi.formMatiere', compact('user', 'matieres'));
     }
 
-    public function saveMatiere(Request $request, $id)
+    public function saveMatiere(Request $request, User $user)
     {
         $request->validate([
             'matiere.*' => 'required|integer',
         ]);
-
-        $user = User::find($id);
-
         $user->matieres()->detach();
         $user->matieres()->attach($request->matiere, ['valide' => false]);
 
@@ -157,7 +153,7 @@ class StudentController extends Controller
 
     public function forceDestroy($user)
     {
-        
+
         $user = User::withTrashed()->whereId($user)->first();
         $user->forceDelete();
         return redirect()->back()->with('msg', 'Le student a été supprimé définitivement avec succès');
@@ -165,7 +161,7 @@ class StudentController extends Controller
 
     public function restore($user)
     {
-        
+
         $user = User::withTrashed()->whereId($user)->first();
         $user->restore();
         return redirect()->back()->with('msg', 'Le student a été restauré avec succès');
