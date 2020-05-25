@@ -3,20 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Note;
+use App\User;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($user)
+    public function __construct()
     {
-        return view('backoffice.note.add', compact('user'));
+        $this->middleware('auth');
+        $this->middleware('suivi-ecriture');
     }
 
     /**
@@ -25,7 +20,7 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $user)
+    public function store(Request $request, User $user)
     {
         $request->validate([
             'titre' => 'required|string',
@@ -38,21 +33,9 @@ class NoteController extends Controller
         $note->titre = $request->titre;
         $note->note = $request->note;
         $note->date = $request->date;
-        $note->user_id = $user;
+        $note->user_id = $user->id;
         $note->save();
         return redirect()->back()->with('msg', 'Note ajoutée avec succés');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function show($user)
-    {
-        $notes = Note::where('user_id', $user)->get();
-        return view('backoffice.note.show', compact('notes'));
     }
 
     /**
@@ -61,10 +44,10 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, $id)
     {
         $note = Note::find($id);
-        return view('backoffice.note.edit', compact('note'));
+        return view('backoffice.note.edit', compact('note','user'));
     }
 
     /**
@@ -74,7 +57,7 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user, $id)
     {
         $request->validate([
             'titre' => 'required|string',
@@ -88,12 +71,11 @@ class NoteController extends Controller
         $note->note = $request->note;
         $note->date = $request->date;
         $note->save();
-        if($note->user->role_id==6){
+        if ($note->user->role_id == 6) {
 
             return redirect()->route('student.show', $note->user_id)->with('msg', 'Note modifiée avec succés');
-        }else{
+        } else {
             return redirect()->route('staff.show', $note->user_id)->with('msg', 'Note modifiée avec succés');
-
         }
     }
 
@@ -103,7 +85,7 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user, $id)
     {
         $note = Note::find($id);
         $note->delete();
