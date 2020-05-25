@@ -12,7 +12,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         DB::table('permissions')->insert([
-            ['nom' => 'annonce-écriture'],
+            ['nom' => 'annonce-ecriture'],
             ['nom' => 'annonce-lecture'],
 
             ['nom' => 'user-lecture-nom'],

@@ -53,8 +53,8 @@
                 </tr>
             </thead>
             <tbody>
-                
-                
+
+
                 @foreach ($users as $item)
                 @can('suivi-ecriture',$item)
                 <tr>
@@ -69,23 +69,26 @@
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
                     <td class="d-flex justify-content-center">
-                        
+
                         @if ($item->deleted_at)
-                        <a href="{{route('staff.restore', $item)}}"
-                            class="btn btn-info mr-3">Restore</a>
-                            <form action="{{route('staff.forceDestroy', $item)}}" method="POST">@csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-warning">Force Delete</button>
-                            </form>
-                        @else  
-                        <a href="{{route('staff.show', $item)}}"
-                            class="btn btn-primary mr-3">Show</a>
-                            <a href="{{route('staff.edit', $item)}}"
-                                class="btn btn-danger mr-3">Edit</a>
-                                <form action="{{route('staff.destroy', $item)}}" method="POST">@csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-warning">Delete</button>
-                                </form>
+                        <a href="{{route('staff.restore', $item)}}" class="btn btn-info mr-3">Restore</a>
+                        <form action="{{route('staff.forceDestroy', $item)}}" method="POST">@csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-warning">Force Delete</button>
+                        </form>
+                        @else
+                        <a href="{{route('staff.show', $item)}}" class="btn btn-primary mr-3">Show</a>
+                        @can('user-edit')
+
+
+                        <a href="{{route('staff.edit', $item)}}" class="btn btn-danger mr-3">Edit</a>
+                        <form action="{{route('staff.destroy', $item)}}" method="POST">@csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-warning">Delete</button>
+                        </form>
+
+                        
+                        @endcan
                         @endif
                     </td>
                 </tr>

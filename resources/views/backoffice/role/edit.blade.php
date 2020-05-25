@@ -33,7 +33,23 @@
                     <label class="form-check-label">Tout les droits</label>
                 </div>
                 <div class="form-check">
-                    @if(!$role->permissions->contains(App\Permission::where('nom','LIKE','%ecriture%')->first()->id))
+                    @php
+                        $lecture = true;
+                        $ecriture = false;
+                        foreach (App\Permission::where('nom','LIKE','%lecture%')->get() as $value) {
+                            $lecture = $role->permissions->contains($role->id);
+                            if(!$lecture){
+                            break;
+                            }
+                        }
+                        foreach (App\Permission::where('nom','LIKE','%ecriture%')->get() as $value) {
+                            $ecriture = $role->permissions->contains($role->id);
+                            if($ecriture){
+                            break;
+                            }
+                        }
+                        @endphp
+                    @if(!$ecriture && $lecture)
                     <input checked class="form-check-input" type="checkbox" name="lecture" value="lecture">
                     @else
                     <input class="form-check-input" type="checkbox" name="lecture" value="lecture">
@@ -126,7 +142,7 @@
                 @if (count($role->roles)==0)
 
 
-                <div class="row suivi">
+                <div class="row suivi my-1">
                     <div class="row col-4">
                         <div class="form-check mx-2">
 
@@ -158,10 +174,10 @@
                 @else
                 @foreach ($role->roles as $suivi)
 
-                <div class="row suivi">
+                <div class="row suivi my-1">
                     <div class="row col-4">
                         <div class="form-check mx-2">
-                            @if ($suivi->pivot)
+                            @if ($suivi->pivot->ecriture)
                             <input checked class="form-check-input" type="checkbox" name="suivi_ecriture0">
                             @else
                             <input class="form-check-input" type="checkbox" name="suivi_ecriture0">
