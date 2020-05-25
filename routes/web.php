@@ -43,16 +43,19 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
+
 Route::get('staff/{user}/restore', 'StaffController@restore')->name('staff.restore');
 Route::delete('staff/{user}/forceDestroy', 'StaffController@forceDestroy')->name('staff.forceDestroy');
 Route::resource('suivi/staff', 'StaffController', ['parameters' => [
     'staff' => 'user'
 ]]);
+
 Route::get('student/{user}/restore', 'StudentController@restore')->name('student.restore');
 Route::delete('student/{user}/forceDestroy', 'StudentController@forceDestroy')->name('student.forceDestroy');
 Route::resource('suivi/student', 'StudentController', ['parameters' => [
     'student' => 'user'
 ]]);
+
 Route::resource('titre', 'TitreController');
 Route::resource('description', 'DescriptionController');
 
@@ -60,6 +63,7 @@ Route::resource('description', 'DescriptionController');
 // Candidat
 
 Route::get('candidat/{user}/restore', 'CandidatController@restore')->name('candidat.restore');
+
 Route::delete('candidat/{user}/forceDestroy', 'CandidatController@forceDestroy')->name('candidat.forceDestroy');
 
 Route::resource('candidat', 'CandidatController', ['parameters' => [
@@ -69,17 +73,16 @@ Route::resource('candidat', 'CandidatController', ['parameters' => [
 
 
 
-Route::get('/suivi/student/{id}/matiere', 'StudentController@addMatiere')->name('addMatiere');
-Route::post('/suivi/student/{id}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
+Route::get('/suivi/student/{user}/matiere', 'StudentController@addMatiere')->name('addMatiere');
+Route::post('/suivi/student/{user}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
 
-Route::get('/suivi/student/{id}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
+Route::get('/suivi/student/{user}/{matiere}/valide', 'StudentController@valider')->name('validerMatiere');
+Route::get('/suivi/student/{user}/{matiere}/invalide', 'StudentController@invalider')->name('invaliderMatiere');
 
-Route::get('note/{id}/create', 'NoteController@create')->name('note.create');
-Route::get('note/{id}/edit', 'NoteController@edit')->name('note.edit');
-Route::post('note/{id}/store', 'NoteController@store')->name('note.store');
-Route::get('note/{id}/show', 'NoteController@show')->name('note.show');
-Route::post('note/{id}/update', 'NoteController@update')->name('note.update');
-Route::delete('note/{id}/delete', 'NoteController@destroy')->name('note.destroy');
+Route::get('note/{user}/{id}/edit', 'NoteController@edit')->name('note.edit');
+Route::post('note/{user}/store', 'NoteController@store')->name('note.store');
+Route::post('note/{user}/{id}/update', 'NoteController@update')->name('note.update');
+Route::delete('note/{user}/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
 Route::get('users', 'UserController@index')->name('user');
 

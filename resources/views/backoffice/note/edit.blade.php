@@ -7,7 +7,7 @@
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form class="form-horizontal" action="{{route('note.update', $note->id)}}" method="POST">
+  <form class="form-horizontal" action="{{route('note.update', [$user,$note->id])}}" method="POST">
     @csrf
     <div class="card-body">
         @error('titre')

@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CandidatController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
         $this->middleware('isCandidat')->only('edit', 'show', 'update');
     }
 
-    
+
     public function index()
     {
         $users = User::withTrashed()->where('role_id', 7)->paginate(10);
@@ -74,7 +75,6 @@ class CandidatController extends Controller
             'role_id' => ['required', 'integer'],
             'group' => ['required', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
-            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -101,10 +101,13 @@ class CandidatController extends Controller
 
         $user->abo = $request->has('abo');
         $user->role_id = $request->role_id;
-        $user->group()->detach();
-        $user->group()->attach($request->group, ['role_id' => $user->role_id]);
-
         $user->save();
+
+        if ($user->role_id != 7) {
+            $user->group()->detach();
+            $user->group()->attach($request->group, ['role_id' => $user->role_id]);
+            return redirect()->route('candidat.index')->with('msg', 'Candidat a été accepté avec succès avec succès');
+        }
         return redirect()->route('candidat.show', $user->id)->with('msg', 'Candidat modifié avec succès');
     }
 
