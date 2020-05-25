@@ -14,6 +14,7 @@ class StaffController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isStaff')->only('edit', 'update', 'show');
         $this->middleware('suivi')->only('index', 'indexGroup');
         $this->middleware('suivi-lecture')->only('show');
         $this->middleware('suivi-ecriture')->only('edit', 'update', 'destroy');
