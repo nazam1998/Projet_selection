@@ -35,12 +35,15 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($data->all(), [
             'nom' => 'required|string|unique:contacts',
             'prenom' => 'required|string|unique:contacts',
             'email' => 'required|string|unique:contacts',
             'message' => 'required|string|unique:contacts',
         ]);
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous() . '#contact')->withErrors($validator)->withInput();
+        }
 
         $contact = new Contact();
         $contact->nom = $request->input('nom');

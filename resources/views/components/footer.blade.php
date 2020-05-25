@@ -8,18 +8,30 @@
                     @csrf
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Nom</label>
+                        @error('nom')
+                            <div class="text-danger font-weight-bold">{{ $message }}</div>
+                        @enderror
                         <input style="width: 100%;" name="nom" type="text">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Prenom</label>
+                        @error('prenom')
+                            <div class="text-danger font-weight-bold">{{ $message }}</div>
+                        @enderror
                         <input style="width: 100%;" name="prenom" type="text">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Email</label>
+                        @error('email')
+                            <div class="text-danger font-weight-bold">{{ $message }}</div>
+                        @enderror
                         <input style="width: 100%;" name="email" type="text">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Message</label>
+                        @error('message')
+                            <div class="text-danger font-weight-bold">{{ $message }}</div>
+                        @enderror
                         <input style="width: 100%;" name="message" type="text">
                     </div>
                     <div style="margin-top: 15px;" class="text-center">
