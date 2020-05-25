@@ -132,8 +132,7 @@
                 <select class="form-control" name="role_id">
                     <option>Choisir un role...</option>
                     @foreach ($roles as $item)
-                    @if (old('role_id',$user->role_id)==$user->role_id)
-
+                    @if (old('role_id',$user->role_id)==$item->id)
                     <option selected value="{{$item->id}}">{{$item->nom}}</option>
                     @else
 
