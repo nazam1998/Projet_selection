@@ -78,7 +78,7 @@
                             @error('objectif')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                            <input style="width: 100%;" name="objectif" type="text" value="{{old('telephone')}}">
+                            <input style="width: 100%;" name="objectif" type="text" value="{{old('objectif')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Photo</label>

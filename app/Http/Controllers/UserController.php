@@ -15,4 +15,6 @@ class UserController extends Controller
         $users = User::withTrashed()->get();
         return view('backoffice.user.index', compact('users'));
     }
+
+
 }

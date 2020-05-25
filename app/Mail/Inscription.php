@@ -13,16 +13,18 @@ class Inscription extends Mailable
     public $titre;
     public $user;
     public $evenement;
+    public $password;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($titre, $user, $evenement)
+    public function __construct($titre, $user, $evenement,$password)
     {
         $this->titre = $titre;
         $this->user = $user;
         $this->evenement = $evenement;
+        $this->password = $password;
     }
 
     /**
@@ -32,6 +34,6 @@ class Inscription extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@email.com')->view('mails.inscription', compact('titre', 'user', 'evenement'));
+        return $this->from('admin@email.com')->view('mails.inscription', compact('titre', 'user', 'evenement','password'));
     }
 }

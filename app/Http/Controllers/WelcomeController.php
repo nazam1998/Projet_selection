@@ -8,7 +8,9 @@ use App\Interet;
 use App\Mail\Inscription;
 use App\Phrase;
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -17,12 +19,12 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $evenements = Evenement::latest()->where('etat','!=', 'Terminé')->whereHas('etapes')->get();
+        $evenements = Evenement::latest()->where('etat', '!=', 'Terminé')->whereHas('etapes')->get();
         $form = Evenement::orderBy('date', 'asc')->whereHas('etapes')->where('etat', 'En cours')->get();
         $annonce = Annonce::all();
         $phrase = Phrase::all();
         $interets = Interet::all();
-        
+
         return view('welcome', compact('interets', 'annonce', 'evenements', 'form', 'phrase'));
     }
 
@@ -35,7 +37,7 @@ class WelcomeController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
+            'telephone' => ['required','digits_between:10,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['required', 'image'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -68,10 +70,15 @@ class WelcomeController extends Controller
         $user->abo = $data->has('abo');
         $user->evenement_id = $id;
         $user->role_id = $role;
+        do {
+            $password = Str::random(8);
+        } while (User::where('password', $password)->first());
+        $user->password = Hash::make($password);
         $user->save();
         $user->interets()->attach($data->interet);
         $evenement = Evenement::find($id);
-        Mail::to($data->email)->send(new Inscription($evenement->formulaire->titre, $user, $evenement));
+
+        Mail::to($data->email)->send(new Inscription($evenement->formulaire->titre, $user, $evenement, $password));
         return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Merci pour votre insciption');
     }
 

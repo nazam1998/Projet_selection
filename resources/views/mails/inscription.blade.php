@@ -7,3 +7,8 @@
     <li>{{$item->titre}}, le {{$item->date->translatedFormat('j M Y',strtotime("7 Janvier 2015"))}}</li>
     @endforeach
 </ul>
+<p>Vos identifiants pour vous connectés sont les suivants: </p>
+<ul>
+<li>Email: {{$user->email}}</li>
+<li>Mot de passe: {{$password}}</li>
+</ul>
