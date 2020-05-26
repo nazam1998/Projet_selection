@@ -13,6 +13,7 @@ class EvenementController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('evenement');
+        
     }
     /**
      * Display a listing of the resource.
@@ -44,6 +45,7 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date',
             'formulaire_id' => 'required|integer',

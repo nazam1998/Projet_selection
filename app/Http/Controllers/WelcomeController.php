@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Validator;
 
 class WelcomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isEnCours')->only('create', 'register');
+    }
     public function index()
     {
         $evenements = Evenement::latest()->where('etat', '!=', 'Terminé')->whereHas('etapes')->get();
@@ -37,7 +41,7 @@ class WelcomeController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required','digits_between:10,11'],
+            'telephone' => ['required', 'digits_between:10,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['required', 'image'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
