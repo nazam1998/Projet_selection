@@ -178,18 +178,18 @@
                     <div class="row col-4">
                         <div class="form-check mx-2">
                             @if ($suivi->pivot->ecriture)
-                            <input checked class="form-check-input" type="checkbox" name="suivi_ecriture0">
+                            <input checked class="form-check-input" type="checkbox" name="suivi_ecriture{{$loop->index}}">
                             @else
-                            <input class="form-check-input" type="checkbox" name="suivi_ecriture0">
+                            <input class="form-check-input" type="checkbox" name="suivi_ecriture{{$loop->index}}">
                             @endif
                             <label class="form-check-label">Ecriture</label>
                         </div>
                         <div class="form-check mx-2">
                             @if ($suivi->pivot->auth_id==$role->id)
-                            <input checked class="form-check-input" type="checkbox" name="suivi_lecture0">
+                            <input checked class="form-check-input" type="checkbox" name="suivi_lecture{{$loop->index}}">
 
                             @else
-                            <input class="form-check-input" type="checkbox" name="suivi_lecture0">
+                            <input class="form-check-input" type="checkbox" name="suivi_lecture{{$loop->index}}">
 
                             @endif
                             <label class="form-check-label">Lecture</label>
@@ -210,11 +210,11 @@
 
                     <div class="col-3 text-center">
                         @if ($suivi->responsable)
-                        <input checked class="form-check-input" type="checkbox" name="suivi_responsable0">
+                        <input checked class="form-check-input" type="checkbox" name="suivi_responsable{{$loop->index}}">
                             
                         @else
                             
-                        <input class="form-check-input" type="checkbox" name="suivi_responsable0">
+                        <input class="form-check-input" type="checkbox" name="suivi_responsable{{$loop->index}}">
                         @endif
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
