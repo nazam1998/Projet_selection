@@ -250,6 +250,38 @@ return [
             ],
         ],
         [
+            'text'        => 'Titre',
+            'url'         => 'titre',
+            'icon'        => 'fas fa-heading',
+            'can'=>'evenement',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'titre',
+                ],
+                [
+                    'text' => 'Ajoutez un titre',
+                    'url'  => 'titre/create',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Description',
+            'url'         => 'description',
+            'icon'        => 'far fa-file-alt',
+            'can'=>'evenement',
+            'submenu' => [
+                [
+                    'text' => 'Base de données',
+                    'url'  => 'description',
+                ],
+                [
+                    'text' => 'Ajoutez un description',
+                    'url'  => 'description/create',
+                ],
+            ],
+        ],
+        [
             'header' => 'Formulaire Inscription',
             'can'=>'evenement',
         ],

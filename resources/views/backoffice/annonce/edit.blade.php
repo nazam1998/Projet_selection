@@ -36,7 +36,7 @@
 
             <div class="form-group row">
                 <div class="form-check mx-auto">
-                    @if ($annonce->afficher)
+                    @if ($annonce->afficher || old('afficher'))
 
                     <input style="margin-top: 37px;" checked class="form-check-input" type="checkbox" name="afficher">
 
