@@ -11,7 +11,6 @@
                         <li style="margin: 7px 0;" class="light">
                             <a class="light"
                                 href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a>
-                            <span>-> date limite: {{$item->date->format('d/M/y')}}</span>
                         </li>
                         @endforeach
                     </ul>
@@ -34,7 +33,7 @@
                             @error('nom')
                             <div class="erreur">{{$message}}</div>
                             @enderror
-                        <input style="width: 100%;" name="nom" type="text" value="{{old('nom')}}">
+                            <input style="width: 100%;" name="nom" type="text" value="{{old('nom')}}">
                         </div>
                         <div style="margin-bottom: 10px;">
                             <label class="light" for="">Prenom</label>
@@ -93,9 +92,10 @@
                             @enderror
                             <label style="margin-right: 12px;" class="light" for="">Genre: </label>
                             <label style="margin-right: 5px;" class="white" for="">Homme</label>
-                            <input style="margin-right: 8px;" value="Homme" @if(old('genre')=='Homme') checked @endif name="genre" type="radio">
+                            <input style="margin-right: 8px;" value="Homme" @if(old('genre')=='Homme' ) checked @endif
+                                name="genre" type="radio">
                             <label style="margin-right: 5px;" class="white" for="">Femme</label>
-                            <input name="genre" type="radio" value="Femme" @if(old('genre')=='Femme') checked @endif>
+                            <input name="genre" type="radio" value="Femme" @if(old('genre')=='Femme' ) checked @endif>
                         </div>
                         <div style="margin-bottom: 10px;">
 
@@ -104,9 +104,12 @@
                             <div class="erreur">{{$message}}</div>
                             @enderror
                             <select name="statut" id="">
-                                <option @if(old('statut')=='Célibataire') selected @endif value="Célibataire">Célibataire</option>
-                                <option @if(old('statut')=='Divorcé(e)') selected @endif value="Divorcé(e)">Divorcé(e)</option>
-                                <option @if(old('statut')=='Marié(e)') selected @endif value="Marié(e)">Marié(e)</option>
+                                <option @if(old('statut')=='Célibataire' ) selected @endif value="Célibataire">
+                                    Célibataire</option>
+                                <option @if(old('statut')=='Divorcé(e)' ) selected @endif value="Divorcé(e)">Divorcé(e)
+                                </option>
+                                <option @if(old('statut')=='Marié(e)' ) selected @endif value="Marié(e)">Marié(e)
+                                </option>
                             </select>
                         </div>
 
@@ -128,10 +131,12 @@
                         @foreach ($form->first()->formulaire->interets as $item)
                         @if(!$loop->last)
                         <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
-                        <input @if(is_array(old('interet')) && in_array($item->id,old('interet'))) checked @endif  style="margin-right: 8px;" name="interet[]" value="{{$item->id}}" type="checkbox">
+                        <input @if(is_array(old('interet')) && in_array($item->id,old('interet'))) checked @endif
+                        style="margin-right: 8px;" name="interet[]" value="{{$item->id}}" type="checkbox">
                         @else
                         <label style="margin-right: 5px;" class="white" for="">{{$item->nom}}</label>
-                        <input @if(is_array(old('interet')) && in_array($item->id,old('interet'))) checked @endif name="interet[]" type="checkbox" value="{{$item->id}}">
+                        <input @if(is_array(old('interet')) && in_array($item->id,old('interet'))) checked @endif
+                        name="interet[]" type="checkbox" value="{{$item->id}}">
                         @endif
                         @endforeach
                     </div>

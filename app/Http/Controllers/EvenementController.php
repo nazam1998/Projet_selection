@@ -98,7 +98,7 @@ class EvenementController extends Controller
         $request->validate([
             'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date',
             'formulaire_id' => 'required|integer',
-            'etat'=>'required|string',
+            'etat' => 'required|string',
         ]);
 
 

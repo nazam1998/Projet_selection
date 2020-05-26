@@ -151,7 +151,7 @@
                 <select class="form-control" name="group">
                     <option value="">Choisir un groupe...</option>
                     @foreach ($groups as $item)
-                    @if ($item->id==$user->group->contains($item->id))
+                    @if ($user->group->contains($item->id) || old('group')==$item->id)
 
                     <option selected value="{{$item->id}}">{{$item->nom}}</option>
                     @else
@@ -161,8 +161,6 @@
                     @endforeach
                 </select>
             </div>
-
-
 
         </div>
         <!-- /.card-body -->
