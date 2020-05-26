@@ -19,12 +19,12 @@ Route::get('etape/{etape}/edit', 'EtapeController@edit')->name('etape.edit');
 Route::post('etape/{id}/store', 'EtapeController@store')->name('etape.store');
 Route::put('etape/{etape}/update', 'EtapeController@update')->name('etape.update');
 Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etape.destroy');
-
+// Inscription formulaire
 Route::post('inscription/{id}', 'WelcomeController@register')->name('inscription');
 Route::get('inscription/{id}/create', 'WelcomeController@create')->name('inscription.add');
 
 Auth::routes();
-
+// Mailing
 Route::get('mailing/personne', 'MailingController@personne');
 Route::get('mailing/role', 'MailingController@role');
 Route::get('mailing/group', 'MailingController@group');
@@ -33,7 +33,7 @@ Route::post('mailing/StoreUser', 'MailingController@storeUser')->name('mailing.s
 
 Route::get('suivi/student/group/', 'StudentController@indexGroup')->name('student.group');
 Route::get('suivi/staff/group/', 'StaffController@indexGroup')->name('staff.group');
-
+// Resources
 Route::resource('matiere', 'MatiereController');
 Route::resource('mailing', 'MailingController');
 Route::resource('annonce', 'AnnonceController');
@@ -43,6 +43,9 @@ Route::resource('formulaire', 'FormulaireController');
 Route::resource('interet', 'InteretController');
 Route::resource('role', 'RoleController');
 Route::resource('group', 'GroupController');
+Route::resource('titre', 'TitreController');
+Route::resource('description', 'DescriptionController');
+
 
 Route::get('staff/{user}/restore', 'StaffController@restore')->name('staff.restore');
 Route::delete('staff/{user}/forceDestroy', 'StaffController@forceDestroy')->name('staff.forceDestroy');
@@ -56,9 +59,6 @@ Route::resource('suivi/student', 'StudentController', ['parameters' => [
     'student' => 'user'
 ]]);
 
-Route::resource('titre', 'TitreController');
-Route::resource('description', 'DescriptionController');
-
 
 // Candidat
 
@@ -70,6 +70,11 @@ Route::resource('candidat', 'CandidatController', ['parameters' => [
     'candidat' => 'user'
 ]]);
 
+// User
+Route::get('user/{users}/restore', 'UserController@restore')->name('users.restore');
+Route::delete('user/{users}/forceDestroy', 'UserController@forceDestroy')->name('users.forceDestroy');
+
+Route::resource('users', 'UserController');
 
 
 
@@ -84,10 +89,5 @@ Route::post('note/{user}/store', 'NoteController@store')->name('note.store');
 Route::post('note/{user}/{id}/update', 'NoteController@update')->name('note.update');
 Route::delete('note/{user}/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
-
-Route::get('user/{users}/restore', 'UserController@restore')->name('users.restore');
-Route::delete('user/{users}/forceDestroy', 'UserController@forceDestroy')->name('users.forceDestroy');
-
-Route::resource('users', 'UserController');
 
 Route::get('/home', 'HomeController@index')->name('home');
