@@ -19,6 +19,7 @@ class DescriptionController extends Controller
      */
     public function index()
     {
+        
         $descriptions = Description::all();
         return view('backoffice.description.index', compact('descriptions'));
     }
@@ -59,7 +60,7 @@ class DescriptionController extends Controller
      */
     public function edit(Description $description)
     {
-        return view('backoffice.description.edit',compact('description'));
+        return view('backoffice.description.edit', compact('description'));
     }
 
     /**
