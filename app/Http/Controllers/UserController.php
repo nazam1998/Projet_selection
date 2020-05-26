@@ -75,6 +75,25 @@ class UserController extends Controller
         $user->group()->attach($request->group, ['role_id' => $user->role_id]);
 
         $user->save();
-        return redirect()->route('users.index')->with('msg', 'Staff modifié avec succés !');;
+        return redirect()->route('users.index')->with('msg', 'User modifié avec succés !');;
+    }
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->back();
+    }
+
+    public function forceDestroy($users)
+    {
+        $users = User::withTrashed()->whereId($users)->first();
+        $users->forceDelete();
+        return redirect()->back()->with('msg', 'Le staff a été supprimé définitivement avec succès');
+    }
+
+    public function restore($users)
+    {
+        $users = User::withTrashed()->whereId($users)->first();
+        $users->restore();
+        return redirect()->back()->with('msg', 'Le staff a été restauré avec succès');
     }
 }
