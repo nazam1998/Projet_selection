@@ -35,16 +35,16 @@
                     <td>{{$item->email}}</td>
                     <td class="d-flex justify-content-center">
                         @if ($item->deleted_at)
-                        <a href="{{route('staff.restore', $item->id)}}"
+                        <a href="{{route('users.restore', $item->id)}}"
                             class="btn btn-info mr-3">Restore</a>
-                            <form action="{{route('staff.forceDestroy', $item->id)}}" method="POST">@csrf
+                            <form action="{{route('users.forceDestroy', $item->id)}}" method="POST">@csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-warning">Force Delete</button>
                             </form>
                         @else  
-                            <a href="{{route('staff.edit', $item->id)}}"
+                            <a href="{{route('users.edit', $item->id)}}"
                                 class="btn btn-danger mr-3">Edit</a>
-                                <form action="{{route('staff.destroy', $item->id)}}" method="POST">@csrf
+                                <form action="{{route('users.destroy', $item->id)}}" method="POST">@csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-warning">Delete</button>
                                 </form>

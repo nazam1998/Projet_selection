@@ -89,7 +89,7 @@ class StaffController extends Controller
         $user->group()->attach($request->group, ['role_id' => $user->role_id]);
 
         $user->save();
-        return redirect()->route('user')->with('msg', 'Staff modifié avec succés !');;
+        return redirect()->route('staff.index')->with('msg', 'Staff modifié avec succés !');;
     }
 
     public function indexGroup(Request $request)

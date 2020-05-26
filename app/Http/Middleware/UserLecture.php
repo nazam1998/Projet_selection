@@ -16,7 +16,7 @@ class UserLecture
      */
     public function handle($request, Closure $next)
     {
-        $permissions = Auth::user()->permissions->where('nom', 'LIKE', '%user%')->first();
+        $permissions = Auth::user()->role->permissions()->where('nom', 'LIKE', '%user%')->first();
         if ($permissions) {
 
             return $next($request);

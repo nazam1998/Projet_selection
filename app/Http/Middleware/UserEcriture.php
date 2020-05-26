@@ -17,7 +17,7 @@ class UserEcriture
     public function handle($request, Closure $next)
     {
 
-        $permissions = Auth::user()->permissions->where('nom', 'LIKE', 'user-ecriture%')->first();
+        $permissions = Auth::user()->role->permissions()->where('nom', 'LIKE', 'user-ecriture%')->first();
         if ($permissions) {
 
             return $next($request);

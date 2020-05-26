@@ -84,6 +84,6 @@ Route::post('note/{user}/store', 'NoteController@store')->name('note.store');
 Route::post('note/{user}/{id}/update', 'NoteController@update')->name('note.update');
 Route::delete('note/{user}/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
-Route::get('users', 'UserController@index')->name('user');
+Route::resource('users', 'UserController');
 
 Route::get('/home', 'HomeController@index')->name('home');
