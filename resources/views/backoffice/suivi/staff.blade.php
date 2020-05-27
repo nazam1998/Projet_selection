@@ -71,11 +71,13 @@
                     <td class="d-flex justify-content-center">
 
                         @if ($item->deleted_at)
+                        @can('user-edit')
                         <a href="{{route('staff.restore', $item)}}" class="btn btn-info mr-3">Restore</a>
                         <form action="{{route('staff.forceDestroy', $item)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-warning">Force Delete</button>
                         </form>
+                        @endcan
                         @else
                         <a href="{{route('staff.show', $item)}}" class="btn btn-primary mr-3">Show</a>
                         @can('user-edit')

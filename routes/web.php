@@ -19,7 +19,9 @@ Route::get('etape/{etape}/edit', 'EtapeController@edit')->name('etape.edit');
 Route::post('etape/{id}/store', 'EtapeController@store')->name('etape.store');
 Route::put('etape/{etape}/update', 'EtapeController@update')->name('etape.update');
 Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etape.destroy');
+
 // Inscription formulaire
+
 Route::post('inscription/{id}', 'WelcomeController@register')->name('inscription');
 Route::get('inscription/{id}/create', 'WelcomeController@create')->name('inscription.add');
 
