@@ -26,7 +26,7 @@ class ContactController extends Controller
         return view('backoffice/contact/index', compact('contact'));
     }
 
-  
+
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +39,7 @@ class ContactController extends Controller
         $validator = Validator::make($request->all(), [
             'noms' => 'required|string',
             'prenoms' => 'required|string',
-            'emails' => 'required|email|unique:contacts',
+            'emails' => 'required|email|unique:contacts,email',
             'messages' => 'required|string',
         ]);
         if ($validator->fails()) {
@@ -57,11 +57,9 @@ class ContactController extends Controller
         $prenom =  $request->input('prenoms');
         $email =  $request->input('emails');
         $msg = $request->input('messages');
-        
+
         Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
 
         return redirect()->to(url()->previous() . '#contact')->with('msgContact', 'Merci pour votre message');;
     }
-
-
 }
