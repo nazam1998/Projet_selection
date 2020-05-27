@@ -31,10 +31,9 @@ class StudentController extends Controller
 
     // Permet de voir le suivi d'un student précis et pouvoir lui écrire une note
 
-    public function show(User $user)
+    public function show($user)
     {
-            // $user = User::find($id)
-        ;
+        $user = User::withTrashed()->whereId($user)->first();
         return view('backoffice.suivi.studentShow', compact('user'));
     }
 

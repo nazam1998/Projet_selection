@@ -65,6 +65,7 @@
                     <td>{{$item->prenom}}</td>
                     <td>{{$item->email}}</td>
                     <td class="d-flex justify-content-center">
+                        <a href="{{route('student.show', $item)}}" class="btn btn-primary">Show</a>
                         @if ($item->deleted_at)
                         @can('user-edit')
                         <a href="{{route('student.restore', $item->id)}}" class="btn btn-info mr-3">Restore</a>
@@ -74,7 +75,6 @@
                         </form>
                         @endcan
                         @else
-                        <a href="{{route('student.show', $item)}}" class="btn btn-primary">Show</a>
                         @can('user-edit')
 
 

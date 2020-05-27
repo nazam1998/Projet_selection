@@ -77,6 +77,9 @@
         </table>
     </div>
 </div>
+@if (!$user->deleted_at)
+    
+
 @can('suivi-ecriture',$user)
 <h4>Formulaire pour ajouter une note</h4>
 <form class="form-horizontal" action="{{route('note.store', $user->id)}}" method="POST">
@@ -116,6 +119,7 @@
 </form>
 
 @endcan
+@endif
 
 @stop
 

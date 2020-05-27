@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Role;
 use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,12 @@ class SuiviEcriture
     {
 
         $user = $request->route()->parameters()['user'];
-        $role = Auth::user()->role->roles()->where('role_id', $user->role->id)->first();
+        if (is_numeric($user)) {
+            $user = User::withTrashed()->whereId($user)->first();
+            $role = Role::find($user->role_id);
+        } else {
+            $role = Auth::user()->role->roles()->where('role_id', $user->role->id)->first();
+        }
         if ($role->responsable && Auth::user()->role_id == 1 || (Auth::user()->role_id == 2 && Auth::user()->groups->contains($user->groups->first()->id))) {
 
             return $next($request);

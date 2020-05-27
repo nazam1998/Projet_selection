@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\User;
+use App\Role;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,12 @@ class SuiviLecture
     public function handle($request, Closure $next)
     {
         $user = $request->route()->parameters()['user'];
-        $role = $user->role;
+        if(is_numeric($user)){
+            $user=User::withTrashed()->whereId($user)->first();
+            $role=Role::find($user->role_id);
+        }else{
+            $role = $user->role;
+        }
 
         if ($role->responsable && Auth::user()->role_id == 1 || (Auth::user()->role_id == 2 && Auth::user()->groups->contains($user->groups->first()->id))) {
             return $next($request);

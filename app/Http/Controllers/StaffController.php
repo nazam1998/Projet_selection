@@ -30,10 +30,10 @@ class StaffController extends Controller
 
     // Afficher un membre du staff précis et pouvoir lui écrire une note via le note controller
 
-    public function show(User $user)
+    public function show($user)
     {
-
-        return view('backoffice.suivi.staffShow', compact('user', 'notes'));
+        $user = User::withTrashed()->whereId($user)->first();
+        return view('backoffice.suivi.staffShow', compact('user'));
     }
 
     public function edit(User $user)
