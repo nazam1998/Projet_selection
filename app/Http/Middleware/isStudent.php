@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Role;
 use App\User;
 use Closure;
 
@@ -17,8 +18,11 @@ class isStudent
     public function handle($request, Closure $next)
     {
         $user = $request->route()->parameters()['user'];
-        if(is_int($user)){
-            $user=User::withTrashed()->find($user);
+        if(is_numeric($user)){
+            $user=User::withTrashed()->whereId($user)->first();
+            $role=Role::find($user->role_id);
+        }else{
+            $role = $user->role;
         }
         if ($user->role_id == 6) {
             return $next($request);
