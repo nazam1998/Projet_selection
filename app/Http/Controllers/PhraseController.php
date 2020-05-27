@@ -42,7 +42,7 @@ class PhraseController extends Controller
     public function update(Request $request, Phrase $phrase)
     {
         $request->validate([
-            'titre' => 'required|string',
+            'texte' => 'required|string',
         ]);
         $phrase->texte = $request->texte;
         $phrase->save();

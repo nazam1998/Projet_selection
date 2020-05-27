@@ -52,6 +52,12 @@
     <!-- /.card-body -->
 </div>
 
+<form action="">
+    <label for="">Phrase</label>
+    <input value="@if($errors->first('texte')){{$phrase->texte}}@else{{old('texte',$phrase->texte)}}@endif" name="texte" type="text">
+    <button type="submit" class="btn btn-blue"></button>
+</form>
+
 @stop
 @section('css')
   <link rel="stylesheet" href="{{asset('css/admin.css')}}">    

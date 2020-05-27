@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Evenement;
 use App\Formulaire;
 use Carbon\Carbon;
+use App\Phrase;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -22,8 +23,9 @@ class EvenementController extends Controller
      */
     public function index()
     {
+        $phrase = Phrase::first();
         $evenements = Evenement::all();
-        return view('backoffice.evenement.index', compact('evenements'));
+        return view('backoffice.evenement.index', compact('evenements', 'phrase'));
     }
 
     /**
