@@ -8,31 +8,6 @@ use Illuminate\Http\Request;
 class PhraseController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $phrase = Phrase::all();
-        return view('backoffice.phrase.index');
-    }
-
-
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Phrase  $phrase
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Phrase $phrase)
-    {
-        return view('backoffice.phrase.edit', compact('phrase'));
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,7 +17,7 @@ class PhraseController extends Controller
     public function update(Request $request, Phrase $phrase)
     {
         $request->validate([
-            'titre' => 'required|string',
+            'texte' => 'required|string',
         ]);
         $phrase->texte = $request->texte;
         $phrase->save();

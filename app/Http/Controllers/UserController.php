@@ -43,7 +43,7 @@ class UserController extends Controller
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
             'role_id' => ['required', 'integer'],
-            'group' => [$request->role_id!=1?'required':'nullable', 'integer'],
+            'group' => [$request->role_id!=1 && $request->role_id!=7?'required':'nullable', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
         ]);
         if ($validator->fails()) {

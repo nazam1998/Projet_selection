@@ -79,7 +79,7 @@ Route::delete('user/{users}/forceDestroy', 'UserController@forceDestroy')->name(
 Route::resource('users', 'UserController');
 
 
-
+Route::put('/phrase/{phrase}/update','PhraseController@update')->name('phrase.update');
 Route::get('/suivi/student/{user}/matiere', 'StudentController@addMatiere')->name('addMatiere');
 Route::post('/suivi/student/{user}/storeMatiere', 'StudentController@saveMatiere')->name('saveMatiere');
 

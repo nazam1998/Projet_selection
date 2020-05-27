@@ -46,7 +46,7 @@ class AnnonceController extends Controller
     {
         $request->validate([
             'texte'=>'required|string',
-            'date'=>'required|date',
+            'date'=>'required|date|after:yesterday',
         ]);
         $annonce->texte=$request->texte;
         $annonce->date=$request->date;

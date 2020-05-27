@@ -1,13 +1,13 @@
 <footer>
     <div class="contenu2">
         <div class="row">
-            <div class="col-sm-5 text-center-mobile">
+            <div id="contact" class="col-sm-5 text-center-mobile">
                 <h3 class="light">Contact us!</h3>
                 @if (session()->has('msgContact'))
             <h6 style='color: green'>{{session('msgContact')}}</h6>
                 @endif
                 <h5 class="light regular">We'd like to know if you have any comments.</h5>
-                <form id="contact" style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
+                <form  style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
                     @csrf
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Nom</label>
