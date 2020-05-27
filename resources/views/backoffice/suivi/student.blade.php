@@ -68,7 +68,7 @@
                         <a href="{{route('student.show', $item)}}" class="btn btn-primary">Show</a>
                         @if ($item->deleted_at)
                         @can('user-edit')
-                        <a href="{{route('student.restore', $item->id)}}" class="btn btn-info mr-3">Restore</a>
+                        <a href="{{route('student.restore', $item->id)}}" class="btn btn-info mx-2">Restore</a>
                         <form action="{{route('student.forceDestroy', $item->id)}}" method="POST">@csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-warning">Force Delete</button>

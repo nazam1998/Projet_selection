@@ -52,6 +52,17 @@
     <!-- /.card-body -->
 </div>
 
+<form action="{{route('phrase.update',$phrase)}}" method="POST">
+    @csrf
+    @method('PUT')
+    <div class="form-group">
+
+        <label for="">Phrase qui doit s'afficher lorsqu'il n'y a pas d'évènement en cours</label>
+        <input class="form-control" value="@if($errors->first('texte')){{$phrase->texte}}@else{{old('texte',$phrase->texte)}}@endif" name="texte" type="text">
+    </div>
+    <button type="submit" class="btn btn-dark">Modifier</button>
+</form>
+
 @stop
 @section('css')
   <link rel="stylesheet" href="{{asset('css/admin.css')}}">    

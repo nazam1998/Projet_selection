@@ -57,16 +57,14 @@ class StudentController extends Controller
         if ($request->has('group')) {
 
             $groups = Group::whereIn('id', $request->group)->get();
-            $users = $groups->pluck('users')->where('role_id', 6);
+            $users = $groups->pluck('users');
             $groups = Group::all();
             $related = $users->first();
-
             if ($users->first()) {
-
                 foreach ($users as $tag) {
                     $related = $related->merge($tag);
                 }
-                $users = $related;
+                $users = $related->where('role_id', 6);
             }
         } else {
             $groups = Group::all();

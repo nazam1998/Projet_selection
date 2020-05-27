@@ -61,6 +61,8 @@ class RoleController extends Controller
                 $role->permissions()->attach($item);
             }
         } else if ($request->has('lecture')) {
+            $role->roles()->attach(Role::where('id', '!=', 1)->pluck('id'), ['ecriture' => false]);
+
             foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
@@ -164,12 +166,12 @@ class RoleController extends Controller
         $role->roles()->detach();
         $role->permissions()->detach();
         if ($request->has('full')) {
-            $role->roles()->attach(Role::where('id', '!=', 1)->pluck('id'), ['ecriture' => false]);
+            $role->roles()->attach(Role::where('id', '!=', 1)->pluck('id'), ['ecriture' => true]);
             foreach (Permission::all()->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
         } else if ($request->has('lecture')) {
-            $role->roles()->attach(Role::all()->pluck('id'), ['ecriture' => false]);
+            $role->roles()->attach(Role::where('id', '!=', 1)->pluck('id'), ['ecriture' => false]);
             foreach (Permission::where('nom', 'LIKE', '%lecture%')->pluck('id') as $item) {
                 $role->permissions()->attach($item);
             }
@@ -208,7 +210,7 @@ class RoleController extends Controller
             }
             if ($request->has('suivi_role')) {
                 foreach ($request->suivi_role as $key => $item) {
-                    
+
                     if ($request->has('suivi_ecriture' . $key)) {
                         $role->roles()->attach($item, ['ecriture' => true]);
                     } else if ($request->has('suivi_lecture' . $key)) {

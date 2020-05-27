@@ -10,10 +10,10 @@
     <form class="form-horizontal" action="{{route('evenement.store')}}" method="POST">
         @csrf
         <div class="card-body">
+            @error('date')
+            <div class="alert text-danger font-weight-bold">{{ $message }}</div>
+            @enderror
             <div class="form-group row" id="date">
-                @error('date')
-                <div class="alert text-danger font-weight-bold">{{ $message }}</div>
-                @enderror
                 <div class="col-sm-10">
                     <label>Date</label>
                     <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"

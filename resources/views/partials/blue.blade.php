@@ -10,7 +10,7 @@
                         @foreach ($chunk as $item)
                         <li style="margin: 7px 0;" class="light">
                             <a class="light"
-                                href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre.' '.$item->id}}</a>
+                                href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre}}</a>
                         </li>
                         @endforeach
                     </ul>
@@ -22,7 +22,7 @@
                 @if (session()->has('msg'))
                 <p class="white text-center">{{session('msg')}}</p>
                 @endif
-                <h3 class="light text-center">{{$form->first()->formulaire->titre.' '.$form->first()->id}}</h3>
+                <h3 class="light text-center">{{$form->first()->formulaire->titre}}</h3>
                 <form class="row" style="margin-top: 30px;" action="{{route('inscription',$form->first()->id)}}"
                     method="POST" enctype="multipart/form-data">
                     @csrf

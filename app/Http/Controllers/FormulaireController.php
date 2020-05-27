@@ -40,7 +40,8 @@ class FormulaireController extends Controller
     {
         $request->validate([
             'titre' => 'required|string',
-            'interet.*' => 'required|integer'
+            'interet' => 'required',
+            'interet.*' => 'integer'
         ]);
 
         $formulaire = new Formulaire();
@@ -74,7 +75,8 @@ class FormulaireController extends Controller
     {
         $request->validate([
             'titre' => 'required|string',
-            'interet.*' => 'required|integer'
+            'interet' => 'required',
+            'interet.*' => 'integer'
         ]);
 
         $formulaire->titre = $request->titre;

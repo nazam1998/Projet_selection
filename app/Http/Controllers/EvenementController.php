@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Evenement;
 use App\Formulaire;
-use App\Phrase;
 use Carbon\Carbon;
+use App\Phrase;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -23,9 +23,9 @@ class EvenementController extends Controller
      */
     public function index()
     {
-        $evenements = Evenement::all();
         $phrase = Phrase::first();
-        return view('backoffice.evenement.index', compact('evenements','phrase'));
+        $evenements = Evenement::all();
+        return view('backoffice.evenement.index', compact('evenements', 'phrase'));
     }
 
     /**
@@ -49,7 +49,7 @@ class EvenementController extends Controller
     {
 
         $request->validate([
-            'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date',
+            'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date|after:yesterday',
             'formulaire_id' => 'required|integer',
             'etat' => 'required|string'
         ]);
@@ -100,7 +100,7 @@ class EvenementController extends Controller
     public function update(Request $request, Evenement $evenement)
     {
         $request->validate([
-            'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date',
+            'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date|after:yesterday',
             'formulaire_id' => 'required|integer',
             'etat' => 'required|string',
         ]);
