@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 
 class isCandidat
@@ -15,8 +16,11 @@ class isCandidat
      */
     public function handle($request, Closure $next)
     {
-        $user=$request->route()->parameters()['user'];
-        if ($user->role->id==7) {
+        $user = $request->route()->parameters()['user'];
+        if (is_numeric($user)) {
+            $user = User::withTrashed()->whereId($user)->first();
+        }
+        if ($user->role_id == 7) {
             return $next($request);
         }
         return redirect()->back();

@@ -35,8 +35,9 @@ class CandidatController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($user)
     {
+        $user = User::withTrashed()->whereId($user)->first();
         return view('backoffice.candidat.show', compact('user'));
     }
 
@@ -127,7 +128,7 @@ class CandidatController extends Controller
     {
         $user = User::withTrashed()->whereId($user)->first();
         $user->forceDelete();
-        return redirect()->back()->with('msg', 'Le candidat a été supprimé définitivement avec succès');
+        return redirect()->route('candidat.index')->with('msg', 'Le candidat a été supprimé définitivement avec succès');
     }
 
     public function restore($user)

@@ -50,6 +50,7 @@
 
                     <td class="d-flex justify-content-center">
                         <a href="{{route('candidat.show', $item->id)}}" class="btn btn-primary">Show</a>
+                        @if (!$item->deleted_at)
                         @can('candidat-edit')
 
                         <a href="{{route('candidat.edit', $item->id)}}" class="btn btn-warning mx-2">Edit</a>
@@ -58,6 +59,15 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
+                        @else 
+                        @can('user-edit')
+                        <a href="{{route('candidat.restore', $item)}}" class="btn btn-info mx-2">Restore</a>
+                        <form action="{{route('candidat.forceDestroy', $item)}}" method="POST">@csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-warning">Force Delete</button>
+                        </form>
+                        @endcan
+                        @endif
                     </td>
                 </tr>
                 @endforeach
