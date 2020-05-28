@@ -29,11 +29,11 @@ class CreateUsersTable extends Migration
             $table->string('photo');
             $table->boolean('abo');
             $table->string('password')->nullable();
-            $table->bigInteger('evenement_id')->unsigned();
+            $table->bigInteger('evenement_id')->unsigned()->nullable();
             $table->foreign('evenement_id')
                 ->on('evenements')
                 ->references('id')
-                ->onDelete('cascade')
+                ->onDelete('set null')
                 ->onUpdate('cascade');
             $table->bigInteger('role_id')->unsigned();
             $table->foreign('role_id')

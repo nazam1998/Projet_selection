@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class FormulaireController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('evenement');
+    }
     /**
      * Display a listing of the resource.
      *

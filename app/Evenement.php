@@ -18,7 +18,7 @@ class Evenement extends Model
     }
     public function formulaire()
     {
-        return $this->belongsTo('App\Formulaire');
+        return $this->belongsTo('App\Formulaire','formulaire_id');
     }
     
 }
