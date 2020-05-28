@@ -16,7 +16,7 @@ class isEssential
     public function handle($request, Closure $next)
     {
         $role = $request->route()->parameters()['role'];
-        if($role->id>=7){
+        if($role->id>7){
 
             return $next($request);
         }
