@@ -1,7 +1,7 @@
-<footer>
+<footer id="contact">
     <div class="contenu2">
         <div class="row">
-            <div id="contact" class="col-sm-5 text-center-mobile">
+            <div  class="col-sm-5 text-center-mobile">
                 <h3 class="light">Contact us!</h3>
                 @if (session()->has('msgContact'))
             <h6 style='color: green'>{{session('msgContact')}}</h6>
@@ -79,4 +79,5 @@
             </div>
         </div>
     </div>
+    <div  ></div>
 </footer>
