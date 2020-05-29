@@ -1162,8 +1162,8 @@ footer .social-footer li a {
 
 #banniere {
     /*couleurs et dimensions de la fenêtre*/
-    background: #fffce9;
-    color: #64696b;
+    background: #5390d9;
+    
     width: 100%;
     height: 3em;
     /* masquer ce qui dépasse */
@@ -1178,6 +1178,7 @@ footer .social-footer li a {
     position: relative;
     margin: 0.5em 0 0 0;
     position: relative;
+    color:white;
     /* tout afficher sur une seule ligne */
     white-space: nowrap;
 }
