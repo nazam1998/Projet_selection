@@ -6,7 +6,7 @@
   --color-bg: #282B24;
 
   --animation-sentence: 'You know you\'re supposed to leave, right?';
-  --animation-duration: 40s;
+  --animation-duration: 5s;
 }
 * {
   box-sizing: border-box;
@@ -27,6 +27,7 @@ body {
 .container h1 {
   font-family: var(--font-header);
   font-size: calc(4rem + 2vw);
+  transition: 1s;
 	text-transform: uppercase;
 }
 .container p {
@@ -86,7 +87,7 @@ svg.key {
   */
   animation:
     showText calc(var(--animation-duration)/8) calc(var(--animation-duration)*3/16) ease-out forwards,
-    showNewText calc(var(--animation-duration)/8) calc(var(--animation-duration)*27/40) ease-out forwards,
+    showNewText calc(var(--animation-duration)/8) calc(var(--animation-duration)*27/80) ease-out forwards,
     showFinalText calc(var(--animation-duration)/8) var(--animation-duration) ease-out forwards;
 
 }
