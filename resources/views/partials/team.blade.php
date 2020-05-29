@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="team text-center dark-bg">
-                    <div class="cover" style="background:url('img/team/team-cover1.jpg'); background-size:cover;">
+                    <div class="cover" style="background:url('img/code1.jpg'); background-size:cover;">
                         <div class="overlay text-center">
                             <h3 class="white">30€</h3>
                             <h5 class="white">8 hours/month</h5>
@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-4">
                 <div class="team text-center dark-bg">
-                    <div class="cover" style="background:url('img/team/team-cover2.jpg'); background-size:cover;">
+                    <div class="cover" style="background:url('img/code2.jpg'); background-size:cover;">
                         <div class="overlay text-center">
                             <h3 class="white">40€</h3>
                             <h5 class="white">9 hours/month</h5>
@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-4">
                 <div class="team text-center dark-bg">
-                    <div class="cover" style="background:url('img/team/team-cover3.jpg'); background-size:cover;">
+                    <div class="cover" style="background:url('img/code3.jpg'); background-size:cover;">
                         <div class="overlay text-center">
                             <h3 class="white">50€</h3>
                             <h5 class="white">10 hours/month</h5>

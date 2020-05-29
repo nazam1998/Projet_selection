@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1 class="text-center text-danger">403 | Page Expired</h1>
+    <h1 class="text-center text-danger">419 | Page Expired</h1>
     <div class="bowl">
         <div class="water">
             <img src="{{asset('img/fish.png')}}" class="fish" alt="">
