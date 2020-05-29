@@ -12,6 +12,7 @@ class RoleController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role');
+        $this->middleware('essential')->only('destroy');
     }
     /**
      * Display a listing of the resource.

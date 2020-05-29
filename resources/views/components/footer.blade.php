@@ -1,4 +1,4 @@
-<footer>
+<footer id="contact">
     <div class="contenu2">
         <div class="row">
             <div class="col-sm-5 text-center-mobile">
@@ -79,4 +79,5 @@
             </div>
         </div>
     </div>
+    <div  ></div>
 </footer>
