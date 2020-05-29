@@ -48,7 +48,7 @@ class WelcomeController extends Controller
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         if ($validator->fails()) {
-            return redirect()->to(url()->previous() . '#formulaire')->withErrors($validator)->withInput();
+            return redirect()->to(url()->previous().'#formulaire')->withErrors($validator)->withInput();
         }
         if (count(User::all()) == 0) {
             $role = 1;
@@ -83,7 +83,7 @@ class WelcomeController extends Controller
         $evenement = Evenement::find($id);
 
         Mail::to($data->email)->send(new Inscription($evenement->formulaire->titre, $user, $evenement, $password));
-        return redirect()->to(url()->previous() . '#formulaire')->with('msg', 'Merci pour votre insciption');
+        return redirect()->to(url()->previous().'#formulaire')->with('msg', 'Merci pour votre insciption');
     }
 
     public function create($id)

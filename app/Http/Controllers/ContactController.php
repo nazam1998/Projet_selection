@@ -43,7 +43,7 @@ class ContactController extends Controller
             'messages' => 'required|string',
         ]);
         if ($validator->fails()) {
-            return redirect()->to(url()->previous() . '#contact')->withErrors($validator)->withInput();
+            return redirect()->to(url()->previous().'#contact')->withErrors($validator)->withInput();
         }
 
         $contact = new Contact();
@@ -60,6 +60,6 @@ class ContactController extends Controller
 
         Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
 
-        return redirect()->to(url()->previous() . '#contact')->with('msgContact', 'Merci pour votre message');;
+        return redirect()->to(url()->previous().'#contact')->with('msgContact', 'Merci pour votre message');;
     }
 }
