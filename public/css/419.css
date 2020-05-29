@@ -82,6 +82,8 @@ img.fish {
   width: 80px;
   -webkit-animation: fish 5s linear infinite;
           animation: fish 5s linear infinite;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
 }
 
 @-webkit-keyframes fish {
@@ -121,7 +123,16 @@ img.fish {
 }
 
 h1 {
+  position: absolute;
+  left: 42%;
+  top: 10%;
   text-align: center;
-  margin-top: 100px;
+}
+
+@media (max-width: 1900px) {
+  h1 {
+    position: initial;
+    text-align: center;
+  }
 }
 
