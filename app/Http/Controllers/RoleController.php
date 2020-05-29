@@ -10,8 +10,8 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('role');
+        // $this->middleware('auth');
+        // $this->middleware('role');
         $this->middleware('essential')->only('destroy');
     }
     /**
@@ -21,6 +21,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         $roles = Role::all();
         return view('backoffice.role.index', compact('roles'));
     }

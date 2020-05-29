@@ -16,11 +16,11 @@
 
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 //variables
-$purple: #28254C;
-$l-purple: #332F63;
-$t-purple: #8C8AA7;
-$pink: #FF5E65;
-$white: #fff;
+$purple: #c0beb0;
+$l-purple: #272626;
+$t-purple: #fffce9;
+$pink: #fffce9;
+$white: #fffce9;
 
 
 .box {
@@ -218,7 +218,7 @@ $white: #fff;
       
     .box__ghost-shadow {
       height: 20px;
-      box-shadow: 0 50px 15px 5px #3B3769;
+      box-shadow: 0 50px 15px 5px rgb(107, 107, 107);
       border-radius: 50%;
       margin: 0 auto;
       animation: smallnbig 3s ease-in-out infinite;
