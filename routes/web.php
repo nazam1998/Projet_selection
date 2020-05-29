@@ -93,7 +93,3 @@ Route::delete('note/{user}/{id}/delete', 'NoteController@destroy')->name('note.d
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/419',function(){
-    return view('errors/419');
-});

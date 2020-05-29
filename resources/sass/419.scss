@@ -98,7 +98,8 @@ img.fish{
 h1{
     position: absolute;
     left: 42%;
-    top: 10%; 
+    top: 10%;
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -106,5 +107,6 @@ h1{
     h1{
         position: initial;
         text-align: center;
+        margin-top: 50px;
     }
 }
