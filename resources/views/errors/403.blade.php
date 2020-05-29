@@ -19,7 +19,7 @@
   </svg>
   
   <!-- include in a container a heading, paragraph and svg for the keyhole -->
-  <div class="container">
+  <div class="container mx-auto">
     <h1>403</h1>
     <p>access not granted</p>
     <svg class="keyhole">
@@ -105,21 +105,24 @@ const updateKeyPosition = (e) => {
 };
 
 // define the function which notifies the user of the grant access
+
 const grantAccess = () => {
-  // restore the cursor
+
   key.parentElement.parentElement.style.cursor = "default";
-
-  // change the text of the heading and paragraph elements
-  heading.textContent = '🎉 yay 🎉';
-  paragraph.textContent = 'access granted';
-
   // remove the svg elements for the key and keywhole from the flow of the document
   keyhole.style.display = "none";
-  key.style.display = "none";
+      key.style.display = "none";
 
-  // remove the event listeners, most notably the one on the window
-  window.removeEventListener("mousemove", updateKeyPosition);
-  keyhole.removeEventListener("mouseover", grantAccess);
+  setTimeout(function(){
+
+    // change the text of the heading and paragraph elements
+      heading.textContent = 'Haha!';
+      paragraph.innerHTML = "You thought it was that easy? <br> <a href='/' class='btn btn-blue'>Go back</a>";
+
+      // remove the event listeners, most notably the one on the window
+      window.removeEventListener("mousemove", updateKeyPosition);
+      keyhole.removeEventListener("mouseover", grantAccess);
+    }, 500)
 };
 
     </script>
