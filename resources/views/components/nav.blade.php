@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="img/navIconWhite.png" data-active-url="img/navIcon.png"
+            <a class="navbar-brand" href="#"><img src="img/navIconWhite.png" data-active-url="img/navIconWhite.png"
                     alt=""></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->

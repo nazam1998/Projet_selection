@@ -60,7 +60,7 @@
         <label for="">Phrase qui doit s'afficher lorsqu'il n'y a pas d'évènement en cours</label>
         <input class="form-control" value="@if($errors->first('texte')){{$phrase->texte}}@else{{old('texte',$phrase->texte)}}@endif" name="texte" type="text">
     </div>
-    <button type="submit" class="btn btn-dark">Modifier</button>
+    <button type="submit" class="btn btnShow">Modifier</button>
 </form>
 
 @stop

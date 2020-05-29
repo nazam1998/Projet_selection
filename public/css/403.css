@@ -10936,8 +10936,8 @@ a.text-dark:focus {
 :root {
   --font-header: "Nova Mono", monospace;
   --font-text: "Open Sans", sans-serif;
-  --color-theme: #F1EEDB;
-  --color-bg: #272626;
+  --color-theme: white;
+  --color-bg: #5390d9;
   --animation-sentence: "You know you're supposed to leave, right?";
   --animation-duration: 10s;
 }
@@ -11173,12 +11173,13 @@ svg.key {
 
 .btn.btn-blue {
   margin-top: 30px;
-  color: #2a3237;
-  background: #fffce9;
+  border: white solid 1px;
+  color: white;
+  background: #5390d9;
 }
 
 .btn.btn-blue:hover {
-  color: #fffce9;
-  background: #2a3237;
+  color: #5390d9;
+  background: white;
 }
 

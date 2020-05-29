@@ -145,7 +145,7 @@ header .typed-cursor {
     font-size: 60px;
     display: inline-block;
     margin: 0 10px;
-    color: #fffce9;
+    color: white;
     -webkit-animation-name: flash;
     animation-name: flash;
     -webkit-animation-duration: 1s;
@@ -162,7 +162,7 @@ a {
 }
 
 .nav > li > a:hover{
-    color: black !important;
+    color: white !important;
     transition: 0.5 ease;
 }
 
@@ -178,7 +178,7 @@ nav.navbar {
 }
 
 nav.navbar .navbar-nav li.active a:not(.btn) {
-    color: black !important;
+    color: white !important;
 }
 
 nav.navbar-fixed-top {
@@ -186,8 +186,8 @@ nav.navbar-fixed-top {
     top: 0;
     padding: 25px 0;
     opacity: 0;
-    background: #fffce9;
-    border-bottom: 2px solid #2a3237;
+    background: #5390d9;
+    border-bottom: 2px solid white;
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -218,13 +218,25 @@ nav.navbar-fixed-top .navbar-nav>li>a:not(.btn) {
 
 .btn.btn-blue {
     margin-top: 30px;
-    color: #2a3237;
-    background: #fffce9;
+    color: white;
+    background: #5390d9;
 }
 
 .btn.btn-blue:hover {
-    color: #fffce9;
-    background: #2a3237;
+    color: #5390d9;
+    background: white;
+}
+.btn.btn-white {
+    margin-top: 30px;
+    color: white;
+    background: #5390d9;
+    border: 1px solid white;
+    
+}
+
+.btn.btn-white:hover {
+    color: #5390d9;
+    background: white;
 }
 
 .btn.btn-blue-fill {
@@ -316,7 +328,7 @@ section {
 .intro-table {
     -webkit-background-size: cover;
     background-size: cover;
-    background: rgba(48, 47, 47, 0.7);
+    background: rgba(47, 48, 48, 0.5);
     background-repeat: repeat;
     background-position: 0% 0%;
     border-radius: 5px;
@@ -324,7 +336,7 @@ section {
 
 
 .intro-table:hover {
-    background: rgba(100, 99, 99, 0.5);
+    background: rgba(100, 99, 99, 0.4);
     transition: 0.3s ease;
 }
 
@@ -413,7 +425,7 @@ section {
     height: 320px;
     margin: 80px 0;
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid #386091;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
@@ -442,7 +454,7 @@ section {
 
 
 .service:hover {
-    border-color: #fffce9;
+    border-color: white;
 }
 
 .service:hover .icon-holder {
@@ -482,7 +494,7 @@ section {
     height: 250px;
     padding-top: 60px;
     opacity: 0;
-    background: rgba(240, 235, 206, 0.9);
+    background: #538fd962;
     -webkit-transition: opacity 0.45s ease;
     transition: opacity 0.45s ease;
 }
@@ -1008,11 +1020,11 @@ footer .social-footer li a {
 }
 
 .light {
-    color: #fffce9;
+    color: white;
 }
 
 .dark {
-    color: #272626;
+    color: #5390d9;
 }
 
 
@@ -1026,7 +1038,7 @@ footer .social-footer li a {
 }
 
 .light-bg {
-    background-color: #fffce9;
+    background-color: white;
 }
 
 .gray-bg {
@@ -1034,7 +1046,7 @@ footer .social-footer li a {
 }
 
 .dark-bg {
-    background-color: #272626;
+    background-color: #5390d9;
 }
 
 .blue {
