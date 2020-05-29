@@ -13,7 +13,6 @@ class EvenementController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('evenement');
         
     }
     /**
@@ -23,6 +22,7 @@ class EvenementController extends Controller
      */
     public function index()
     {
+        $this->authorize('evenement');
         $phrase = Phrase::first();
         $evenements = Evenement::all();
         return view('backoffice.evenement.index', compact('evenements', 'phrase'));
@@ -35,6 +35,7 @@ class EvenementController extends Controller
      */
     public function create()
     {
+        $this->authorize('evenement');
         $formulaires = Formulaire::all();
         return view('backoffice.evenement.add', compact('formulaires'));
     }
@@ -47,7 +48,7 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->authorize('evenement');
         $request->validate([
             'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date|after:yesterday',
             'formulaire_id' => 'required|integer',
@@ -75,6 +76,7 @@ class EvenementController extends Controller
      */
     public function show(Evenement $evenement)
     {
+        $this->authorize('evenement');
         return view('backoffice.evenement.show', compact('evenement'));
     }
 
@@ -86,6 +88,7 @@ class EvenementController extends Controller
      */
     public function edit(Evenement $evenement)
     {
+        $this->authorize('evenement');
         $formulaires = Formulaire::all();
         return view('backoffice.evenement.edit', compact('formulaires', 'evenement'));
     }
@@ -99,6 +102,7 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
+        $this->authorize('evenement');
         $request->validate([
             'date' => ($request->etat == 'En cours' ? 'nullable' : 'required') . '|date|after:yesterday',
             'formulaire_id' => 'required|integer',
@@ -126,6 +130,7 @@ class EvenementController extends Controller
      */
     public function destroy(Evenement $evenement)
     {
+        $this->authorize('evenement');
         $evenement->delete();
         return redirect()->back()->with('msg', 'Evènement supprimé avec succès');
     }

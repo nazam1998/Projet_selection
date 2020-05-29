@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class MatiereController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +19,7 @@ class MatiereController extends Controller
      */
     public function index()
     {
+        $this->authorize('evenement');
         $matieres = Matiere::all();
         return view('backoffice.matiere.index', compact('matieres'));
     }
@@ -26,6 +31,7 @@ class MatiereController extends Controller
      */
     public function create()
     {
+        $this->authorize('evenement');
         return view('backoffice.matiere.add');
     }
 
@@ -37,6 +43,7 @@ class MatiereController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('evenement');
         $request->validate([
             'nom' => 'required|string|unique:matieres',
             'image' => 'required|image'
@@ -59,6 +66,7 @@ class MatiereController extends Controller
      */
     public function edit(Matiere $matiere)
     {
+        $this->authorize('evenement');
         return view('backoffice.matiere.edit', compact('matiere'));
     }
 
@@ -71,6 +79,7 @@ class MatiereController extends Controller
      */
     public function update(Request $request, Matiere $matiere)
     {
+        $this->authorize('evenement');
         $request->validate([
             'nom' => 'required|string|unique:matieres,nom,'.$matiere->id,
             'image' => 'sometimes|image'
@@ -97,6 +106,7 @@ class MatiereController extends Controller
      */
     public function destroy(Matiere $matiere)
     {
+        $this->authorize('evenement');
         if (Storage::disk('public')->exists($matiere->image)) {
             Storage::disk('public')->delete($matiere->image);
         }

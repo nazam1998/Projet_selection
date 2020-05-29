@@ -10,7 +10,6 @@ class DescriptionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('evenement');
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +18,7 @@ class DescriptionController extends Controller
      */
     public function index()
     {
-        
+        $this->authorize('evenement');
         $descriptions = Description::all();
         return view('backoffice.description.index', compact('descriptions'));
     }
@@ -31,7 +30,7 @@ class DescriptionController extends Controller
      */
     public function create()
     {
-        return view('backoffice.description.index');
+        return view('backoffice.description.add');
     }
 
     /**

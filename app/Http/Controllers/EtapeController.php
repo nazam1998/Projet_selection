@@ -10,7 +10,10 @@ use Illuminate\Http\Request;
 
 class EtapeController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -19,6 +22,7 @@ class EtapeController extends Controller
      */
     public function create($id)
     {
+        $this->authorize('evenement');
         $evenement = Evenement::find($id);
         $titres = Titre::all();
         $descriptions = Description::all();
@@ -33,6 +37,7 @@ class EtapeController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $this->authorize('evenement');
         $evenement = Evenement::find($id);
         $min = $evenement->date . ' -1 day';
         $request->validate([
@@ -60,6 +65,7 @@ class EtapeController extends Controller
      */
     public function edit(Etape $etape)
     {
+        $this->authorize('evenement');
         $titres = Titre::all();
         $descriptions = Description::all();
         return view('backoffice.etape.edit', compact('etape','titres','descriptions'));
@@ -74,6 +80,7 @@ class EtapeController extends Controller
      */
     public function update(Request $request, Etape $etape)
     {
+        $this->authorize('evenement');
         $evenement = Evenement::find($etape->evenement_id);
         $min = $evenement->date . ' -1 day';
         $request->validate([
@@ -97,6 +104,7 @@ class EtapeController extends Controller
      */
     public function destroy(Etape $etape)
     {
+        $this->authorize('evenement');
         $etape->delete();
         return redirect()->back()->with('msg', 'Etape supprimée avec succès');
     }

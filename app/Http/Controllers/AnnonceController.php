@@ -19,6 +19,7 @@ class AnnonceController extends Controller
      */
     public function index()
     {
+        $this->authorize('annonce');
         $annonce= Annonce::all();
         return view('backoffice.annonce.index',compact('annonce'));
     }
@@ -32,6 +33,7 @@ class AnnonceController extends Controller
      */
     public function edit(Annonce $annonce)
     {
+        $this->authorize('annonce');
         return view('backoffice.annonce.edit',compact('annonce'));
     }
 
@@ -44,6 +46,7 @@ class AnnonceController extends Controller
      */
     public function update(Request $request, Annonce $annonce)
     {
+        $this->authorize('annonce');
         $request->validate([
             'texte'=>'required|string',
             'date'=>'required|date|after:yesterday',

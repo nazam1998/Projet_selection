@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class InteretController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +18,7 @@ class InteretController extends Controller
      */
     public function index()
     {
+        $this->authorize('evenement');
         $interet = Interet::all();
         return view('backoffice/interet/index', compact('interet'));
     }
@@ -25,6 +30,7 @@ class InteretController extends Controller
      */
     public function create()
     {
+        $this->authorize('evenement');
         return view('backoffice/interet/add');
     }
 
@@ -36,6 +42,7 @@ class InteretController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('evenement');
         $request->validate([
             'nom' => 'required|string|unique:interets',
         ]);
@@ -56,7 +63,7 @@ class InteretController extends Controller
      */
     public function edit(Interet $interet)
     {
-
+        $this->authorize('evenement');
         return view('backoffice/interet/edit', compact('interet'));
     }
 
@@ -69,6 +76,7 @@ class InteretController extends Controller
      */
     public function update(Request $request, Interet $interet)
     {
+        $this->authorize('evenement');
         $request->validate([
             'nom' => 'required|string|unique:interets,nom,' . $interet->id,
         ]);
@@ -88,6 +96,7 @@ class InteretController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('evenement');
         $interet = Interet::find($id);
         $interet->delete();
         return redirect()->route('interet.index')->with('msg', 'Intérêt supprimé avec succès');

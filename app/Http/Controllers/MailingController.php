@@ -15,7 +15,6 @@ class MailingController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->only('index');
-        $this->middleware('contact')->only('index');
     }
     /**
      * Display a listing of the resource.
@@ -24,6 +23,7 @@ class MailingController extends Controller
      */
     public function index()
     {
+        $this->authorize('contact');
         $mailings = Mailing::all();
         return view('backoffice.mail.index', compact('mailings'));
     }
@@ -35,6 +35,7 @@ class MailingController extends Controller
      */
     public function create()
     {
+        $this->authorize('contact');
         return view('backoffice.mailing.add');
     }
 
@@ -46,6 +47,7 @@ class MailingController extends Controller
      */
     public function storeUser(Request $request)
     {
+        $this->authorize('contact');
         $request->validate([
             'message' => 'required|string',
             'user_id' => 'required|integer|nullable'
@@ -68,6 +70,7 @@ class MailingController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('contact');
         $request->validate([
             'message' => 'required|string',
             'group_id' => 'required_without:role_id|integer|nullable',
@@ -84,7 +87,7 @@ class MailingController extends Controller
             $mailing->group_id = $request->group_id;
             $mailing->role_id = null;
             $mailing->user_id = null;
-            $users =Group::find($request->group_id)->users;
+            $users = Group::find($request->group_id)->users;
         }
         foreach ($users as $value) {
             $nom = $value->nom;
@@ -97,19 +100,22 @@ class MailingController extends Controller
         return redirect()->back()->with('msg', 'Message envoyé avec succès');
     }
 
-    
+
     public function role()
     {
+        $this->authorize('contact');
         $roles = Role::all();
         return view('backoffice.mail.formRole', compact('roles'));
     }
     public function personne()
     {
+        $this->authorize('contact');
         $users = User::all();
         return view('backoffice.mail.formPersonne', compact('users'));
     }
     public function group()
     {
+        $this->authorize('contact');
         $groups = Group::all();
         return view('backoffice.mail.formGroup', compact('groups'));
     }

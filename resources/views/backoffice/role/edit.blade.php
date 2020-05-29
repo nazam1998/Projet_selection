@@ -143,7 +143,7 @@
 
 
                 <div class="row suivi my-1">
-                    <div class="row col-4">
+                    <div class="row col-lg-4 col-12">
                         <div class="form-check mx-2">
 
                             <input class="form-check-input" type="checkbox" name="suivi_ecriture0">
@@ -154,7 +154,7 @@
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-lg-4 col-12">
                         <label class="mr-2">Role</label>
                         <select name="suivi_role[]">
                             @foreach ($roles as $item)
@@ -165,7 +165,7 @@
                         </select>
                     </div>
 
-                    <div class="col-3 text-center">
+                    <div class="col-lg-3 col-12 text-center">
                         <input class="form-check-input" type="checkbox" name="suivi_responsable0">
                         <label class="form-check-label">Seulement responsable</label>
                     </div>
@@ -175,7 +175,7 @@
                 @foreach ($role->roles as $suivi)
 
                 <div class="row suivi my-1">
-                    <div class="row col-4">
+                    <div class="row col-lg-4 col-12">
                         <div class="form-check mx-2">
                             @if ($suivi->pivot->ecriture)
                             <input checked class="form-check-input" type="checkbox" name="suivi_ecriture{{$loop->index}}">
@@ -195,7 +195,7 @@
                             <label class="form-check-label">Lecture</label>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-lg-4 col-12">
                         <label class="mr-2">Role</label>
                         <select name="suivi_role[]">
                             @foreach ($roles as $item)
@@ -208,7 +208,7 @@
                         </select>
                     </div>
 
-                    <div class="col-3 text-center">
+                    <div class="col-lg-3 col-12 text-center">
                         @if ($suivi->responsable)
                         <input checked class="form-check-input" type="checkbox" name="suivi_responsable{{$loop->index}}">
                             

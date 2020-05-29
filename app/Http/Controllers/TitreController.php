@@ -10,7 +10,6 @@ class TitreController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('evenement');
     }
     /**
      * Display a listing of the resource.
@@ -19,6 +18,7 @@ class TitreController extends Controller
      */
     public function index()
     {
+        $this->authorize('evenement');
         $titres = Titre::all();
         return view('backoffice.titre.index', compact('titres'));
     }
@@ -30,6 +30,7 @@ class TitreController extends Controller
      */
     public function create()
     {
+        $this->authorize('evenement');
         return view('backoffice.titre.add');
     }
 
@@ -41,6 +42,7 @@ class TitreController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('evenement');
         $request->validate([
             'titre' => 'required|string|unique:titres',
         ]);
@@ -60,6 +62,7 @@ class TitreController extends Controller
      */
     public function edit(Titre $titre)
     {
+        $this->authorize('evenement');
         return view('backoffice.titre.edit', compact('titre'));
     }
 
@@ -72,6 +75,7 @@ class TitreController extends Controller
      */
     public function update(Request $request, Titre $titre)
     {
+        $this->authorize('evenement');
         $request->validate([
             'titre' => 'required|string|unique:titres,titre,' . $titre->id,
         ]);
@@ -88,6 +92,7 @@ class TitreController extends Controller
      */
     public function destroy(Titre $titre)
     {
+        $this->authorize('evenement');
         $titre->delete();
         return redirect()->back()->with('msg', 'Titre supprimé avec succès');
     }
