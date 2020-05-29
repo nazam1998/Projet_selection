@@ -48,6 +48,8 @@ class RoleSeeder extends Seeder
         App\Role::find(2)->roles()->attach(App\Role::where('id', '!=', 1)->pluck('id'), ['ecriture' => true]);
 
         App\Role::find(3)->permissions()->attach(App\Permission::all()->pluck('id'));
-        App\Role::find(3)->roles()->attach(App\Role::where('id', '>=', 3)->pluck('id'), ['ecriture' => true]);
+        App\Role::find(3)->roles()->attach(App\Role::where('id', '>=', 5)->pluck('id'), ['ecriture' => true]);
+        App\Role::find(5)->permissions()->attach(App\Permission::where('nom','LIKE','user%')->pluck('id'));
+        App\Role::find(5)->roles()->attach(App\Role::where('id', '>=', 5)->pluck('id'), ['ecriture' => true]);
     }
 }
