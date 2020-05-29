@@ -30,7 +30,7 @@ class DescriptionController extends Controller
      */
     public function create()
     {
-        return view('backoffice.description.index');
+        return view('backoffice.description.add');
     }
 
     /**
