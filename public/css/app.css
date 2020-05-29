@@ -10189,7 +10189,7 @@ header .typed-cursor {
     font-size: 60px;
     display: inline-block;
     margin: 0 10px;
-    color: #fffce9;
+    color: white;
     -webkit-animation-name: flash;
     animation-name: flash;
     -webkit-animation-duration: 1s;
@@ -10205,7 +10205,7 @@ a {
 }
 
 .nav > li > a:hover{
-    color: black !important;
+    color: white !important;
     transition: 0.5 ease;
 }
 
@@ -10220,7 +10220,7 @@ nav.navbar {
 }
 
 nav.navbar .navbar-nav li.active a:not(.btn) {
-    color: black !important;
+    color: white !important;
 }
 
 nav.navbar-fixed-top {
@@ -10228,8 +10228,8 @@ nav.navbar-fixed-top {
     top: 0;
     padding: 25px 0;
     opacity: 0;
-    background: #fffce9;
-    border-bottom: 2px solid #2a3237;
+    background: #5390d9;
+    border-bottom: 2px solid white;
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -10259,13 +10259,25 @@ nav.navbar-fixed-top .navbar-nav>li>a:not(.btn) {
 
 .btn.btn-blue {
     margin-top: 30px;
-    color: #2a3237;
-    background: #fffce9;
+    color: white;
+    background: #5390d9;
 }
 
 .btn.btn-blue:hover {
-    color: #fffce9;
-    background: #2a3237;
+    color: #5390d9;
+    background: white;
+}
+.btn.btn-white {
+    margin-top: 30px;
+    color: white;
+    background: #5390d9;
+    border: 1px solid white;
+    
+}
+
+.btn.btn-white:hover {
+    color: #5390d9;
+    background: white;
 }
 
 .btn.btn-blue-fill {
@@ -10356,7 +10368,7 @@ section {
 
 .intro-table {
     background-size: cover;
-    background: rgba(48, 47, 47, 0.7);
+    background: rgba(47, 48, 48, 0.5);
     background-repeat: repeat;
     background-position: 0% 0%;
     border-radius: 5px;
@@ -10364,7 +10376,7 @@ section {
 
 
 .intro-table:hover {
-    background: rgba(100, 99, 99, 0.5);
+    background: rgba(100, 99, 99, 0.4);
     transition: 0.3s ease;
 }
 
@@ -10449,7 +10461,7 @@ section {
     height: 320px;
     margin: 80px 0;
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid #386091;
     transition: all 0.3s ease;
 }
 
@@ -10475,7 +10487,7 @@ section {
 
 
 .service:hover {
-    border-color: #fffce9;
+    border-color: white;
 }
 
 .service:hover .icon-holder {
@@ -10510,7 +10522,7 @@ section {
     height: 250px;
     padding-top: 60px;
     opacity: 0;
-    background: rgba(240, 235, 206, 0.9);
+    background: #538fd962;
     transition: opacity 0.45s ease;
 }
 
@@ -11019,11 +11031,11 @@ footer .social-footer li a {
 }
 
 .light {
-    color: #fffce9;
+    color: white;
 }
 
 .dark {
-    color: #272626;
+    color: #5390d9;
 }
 
 
@@ -11037,7 +11049,7 @@ footer .social-footer li a {
 }
 
 .light-bg {
-    background-color: #fffce9;
+    background-color: white;
 }
 
 .gray-bg {
@@ -11045,7 +11057,7 @@ footer .social-footer li a {
 }
 
 .dark-bg {
-    background-color: #272626;
+    background-color: #5390d9;
 }
 
 .blue {
@@ -17258,7 +17270,7 @@ readers do not read off random characters that represent icons */
   height: 100%;
   max-height: 600px;
   min-height: 450px;
-  background: #272626;
+  background: #5390d9;
   border-radius: 20px;
   position: absolute;
   left: 50%;
@@ -17286,7 +17298,7 @@ readers do not read off random characters that represent icons */
   content: "";
   width: 12px;
   height: 4px;
-  background: #fffce9;
+  background: white;
   position: absolute;
   border-radius: 5px;
   bottom: 65px;
@@ -17309,7 +17321,7 @@ readers do not read off random characters that represent icons */
   width: 18px;
   border: 4px solid;
   border-radius: 50%;
-  border-color: #fffce9;
+  border-color: white;
   opacity: 0.2;
   -webkit-animation: shine 4s ease-in-out 1.3s infinite;
           animation: shine 4s ease-in-out 1.3s infinite;
@@ -17326,7 +17338,7 @@ readers do not read off random characters that represent icons */
   content: "";
   width: 12px;
   height: 4px;
-  background: #fffce9;
+  background: white;
   position: absolute;
   border-radius: 5px;
   top: 5px;
@@ -17352,7 +17364,7 @@ readers do not read off random characters that represent icons */
   content: "";
   width: 15px;
   height: 4px;
-  background: #fffce9;
+  background: white;
   position: absolute;
   border-radius: 5px;
   top: 10px;
@@ -17375,7 +17387,7 @@ readers do not read off random characters that represent icons */
   width: 12px;
   border: 3px solid;
   border-radius: 50%;
-  border-color: #fffce9;
+  border-color: white;
   opacity: 0.2;
   -webkit-animation: shine 1.7s ease-in-out 7s infinite;
           animation: shine 1.7s ease-in-out 7s infinite;
@@ -17392,7 +17404,7 @@ readers do not read off random characters that represent icons */
   content: "";
   width: 15px;
   height: 4px;
-  background: #fffce9;
+  background: white;
   position: absolute;
   border-radius: 5px;
   bottom: 65px;
@@ -17408,7 +17420,7 @@ readers do not read off random characters that represent icons */
 }
 
 .box .box__ghost .box__ghost-container {
-  background: #fffce9;
+  background: white;
   width: 100px;
   height: 100px;
   border-radius: 100px 100px 0 0;
@@ -17429,7 +17441,7 @@ readers do not read off random characters that represent icons */
 .box .box__ghost .box__ghost-container .box__ghost-eyes .box__eye-left {
   width: 12px;
   height: 12px;
-  background: #272626;
+  background: #5390d9;
   border-radius: 50%;
   margin: 0 10px;
   position: absolute;
@@ -17439,7 +17451,7 @@ readers do not read off random characters that represent icons */
 .box .box__ghost .box__ghost-container .box__ghost-eyes .box__eye-right {
   width: 12px;
   height: 12px;
-  background: #272626;
+  background: #5390d9;
   border-radius: 50%;
   margin: 0 10px;
   position: absolute;
@@ -17460,19 +17472,19 @@ readers do not read off random characters that represent icons */
   top: -10px;
   height: 20px;
   border-radius: 100%;
-  background-color: #fffce9;
+  background-color: white;
 }
 
 .box .box__ghost .box__ghost-container .box__ghost-bottom div:nth-child(2n) {
   top: -12px;
   margin: 0 0px;
-  border-top: 15px solid #272626;
+  border-top: 15px solid #5390d9;
   background: transparent;
 }
 
 .box .box__ghost .box__ghost-shadow {
   height: 20px;
-  box-shadow: 0 50px 15px 5px #6b6b6b;
+  box-shadow: 0 50px 15px 5px #85cdee;
   border-radius: 50%;
   margin: 0 auto;
   -webkit-animation: smallnbig 3s ease-in-out infinite;
@@ -17487,7 +17499,7 @@ readers do not read off random characters that represent icons */
 }
 
 .box .box__description .box__description-container {
-  color: #fffce9;
+  color: white;
   text-align: center;
   width: 200px;
   font-size: 16px;
@@ -17500,7 +17512,7 @@ readers do not read off random characters that represent icons */
 }
 
 .box .box__description .box__description-container .box__description-text {
-  color: #fffce9;
+  color: white;
   line-height: 20px;
   margin-top: 20px;
 }
@@ -17508,13 +17520,13 @@ readers do not read off random characters that represent icons */
 .box .box__description .box__button {
   display: block;
   position: relative;
-  background: #fffce9;
+  background: white;
   border: 1px solid transparent;
   border-radius: 50px;
   height: 50px;
   text-align: center;
   text-decoration: none;
-  color: #fffce9;
+  color: white;
   line-height: 50px;
   font-size: 18px;
   padding: 0 70px;
@@ -17530,17 +17542,17 @@ readers do not read off random characters that represent icons */
   position: absolute;
   width: 20px;
   height: 100px;
-  background: #fffce9;
+  background: white;
   bottom: -25px;
   left: 0;
-  border: 2px solid #fffce9;
+  border: 2px solid white;
   transform: translateX(-50px) rotate(45deg);
   transition: transform 0.5s ease;
 }
 
 .box .box__description .box__button:hover {
   background: transparent;
-  border-color: #fffce9;
+  border-color: white;
 }
 
 .box .box__description .box__button:hover:before {

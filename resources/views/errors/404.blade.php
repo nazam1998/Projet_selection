@@ -38,7 +38,8 @@
             <div class="box__description-title">Whoops!</div>
             <div class="box__description-text">It seems like we couldn't find the page you were looking for</div>
           </div>
-          <a style="padding: 12px 16px;" href="{{ URL::previous()}}"class="btn btn-blue">Go back</a>
+          
+          <a style="padding: 12px 16px;" href="{{ URL::previous()}}"class="btn btn-white">Go back</a>
           
         </div>
         

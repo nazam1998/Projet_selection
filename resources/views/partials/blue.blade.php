@@ -141,7 +141,7 @@
                         @endforeach
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-blue" type="submit">Send</button>
+                        <button class="btn btn-white" type="submit">Send</button>
                     </div>
                 </form>
             </div>

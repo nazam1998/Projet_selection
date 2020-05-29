@@ -30,7 +30,7 @@ class WelcomeController extends Controller
         $interets = Interet::all();
         $coachs=User::inRandomOrder()->where('role_id',5)->take(3)->get();
 
-        return view('welcome', compact('interets', 'annonce', 'evenements', 'form', 'phrase'));
+        return view('welcome', compact('interets', 'annonce', 'evenements', 'form', 'phrase','coachs'));
     }
 
     public function register(Request $data, $id)
