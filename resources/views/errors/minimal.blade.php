@@ -41,12 +41,13 @@
                 font-size: 26px;
                 padding: 0 15px 0 15px;
                 text-align: center;
+                animation: circle 0.1s linear infinite;
+
             }
 
             .message {
                 font-size: 18px;
                 text-align: center;
-                animation: circle 20s linear infinite;
 
             }
             @keyframes circle{

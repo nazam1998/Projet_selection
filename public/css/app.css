@@ -17252,16 +17252,6 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-html,
-body {
-  background: #28254C;
-  font-family: "Ubuntu";
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .box {
   width: 350px;
   height: 100%;
