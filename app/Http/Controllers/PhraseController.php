@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PhraseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -16,6 +20,7 @@ class PhraseController extends Controller
      */
     public function update(Request $request, Phrase $phrase)
     {
+        $this->authorize('evenement');
         $request->validate([
             'texte' => 'required|string',
         ]);

@@ -11,7 +11,6 @@ class GroupController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('group');
     }
     /**
      * Display a listing of the resource.
@@ -20,6 +19,7 @@ class GroupController extends Controller
      */
     public function index()
     {
+        $this->authorize('groupe');
         $groups = Group::all();
         return view('backoffice.group.index', compact('groups'));
     }
@@ -31,6 +31,7 @@ class GroupController extends Controller
      */
     public function create()
     {
+        $this->authorize('groupe');
         $responsables = User::where('role_id', 2)->get();
         $coachs = User::where('role_id', 5)->get();
         return view('backoffice.group.add', compact('coachs', 'responsables'));
@@ -44,6 +45,7 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('groupe');
         $request->validate([
             'nom' => 'required|string|unique:groups',
             'responsable_id' => 'required|integer',
@@ -68,6 +70,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
+        $this->authorize('groupe');
         return view('backoffice.group.show', compact('group'));
     }
 
@@ -79,6 +82,7 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
+        $this->authorize('groupe');
         $responsables = User::where('role_id', 2)->get();
         $coachs = User::where('role_id', 5)->get();
         return view('backoffice.group.edit', compact('coachs', 'responsables', 'group'));
@@ -93,6 +97,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
+        $this->authorize('groupe');
         $request->validate([
             'nom' => 'required|string|unique:groups,nom,' . $group->id,
             'responsable_id' => 'required|integer',
@@ -125,6 +130,7 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
+        $this->authorize('groupe');
         $group->delete();
         return redirect()->back()->with('msg', 'Groupe supprimé avec succès');
     }

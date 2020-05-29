@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\Permission;
+use App\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
-        $this->authorizeResource('admin');
-        $this->middleware('essential')->only('destroy');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,6 +20,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         $roles = Role::all();
         return view('backoffice.role.index', compact('roles'));
     }
@@ -31,6 +31,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin');
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
@@ -46,6 +47,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin');
         $request->validate([
             'nom' => 'required|string|unique:roles',
             // 'suivi_role.*' => 'nullable|min:2,max:' . count(Role::all()),
@@ -140,6 +142,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        $this->authorize('admin');
         $candidat_lectures = Permission::where('nom', 'LIKE', 'candidat-lecture%')->get();
         $user_lectures = Permission::where('nom', 'LIKE', 'user-lecture%')->get();
         $user_ecritures = Permission::where('nom', 'LIKE', 'user-ecriture%')->get();
@@ -156,6 +159,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        $this->authorize('admin');
         $request->validate([
             'nom' => 'required|string|unique:roles,nom,' . $role->id,
             // 'suivi_role.*' => 'nullable|min:2,max:' . count(Role::all()),
@@ -238,6 +242,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        $this->authorize('admin');
+        $this->authorize('essential');
         $role->delete();
         return redirect()->back()->with('Role supprimé avec succés');
     }

@@ -11,7 +11,6 @@ class FormulaireController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('evenement');
     }
     /**
      * Display a listing of the resource.
@@ -20,6 +19,7 @@ class FormulaireController extends Controller
      */
     public function index()
     {
+        $this->authorize('evenement');
         $formulaires = Formulaire::all();
         return view('backoffice.formulaire.index', compact('formulaires'));
     }
@@ -31,6 +31,7 @@ class FormulaireController extends Controller
      */
     public function create()
     {
+        $this->authorize('evenement');
         $interets = Interet::all();
         return view('backoffice.formulaire.add', compact('interets'));
     }
@@ -43,6 +44,7 @@ class FormulaireController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('evenement');
         $request->validate([
             'titre' => 'required|string',
             'interet' => 'required',
@@ -65,6 +67,7 @@ class FormulaireController extends Controller
      */
     public function edit(Formulaire $formulaire)
     {
+        $this->authorize('evenement');
         $interets = Interet::all();
         return view('backoffice.formulaire.edit', compact('interets', 'formulaire'));
     }
@@ -78,6 +81,7 @@ class FormulaireController extends Controller
      */
     public function update(Request $request, Formulaire $formulaire)
     {
+        $this->authorize('evenement');
         $request->validate([
             'titre' => 'required|string',
             'interet' => 'required',
@@ -99,6 +103,7 @@ class FormulaireController extends Controller
      */
     public function destroy(Formulaire $formulaire)
     {
+        $this->authorize('evenement');
         $formulaire->delete();
         return redirect()->back()->with('msg', 'Formulaire créé avec succès');
     }

@@ -13,7 +13,6 @@ class ContactController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->only('index');
-        $this->middleware('contact')->only('index');
     }
     /**
      * Display a listing of the resource.
@@ -22,6 +21,7 @@ class ContactController extends Controller
      */
     public function index()
     {
+        $this->authorize('contact');
         $contact = Contact::all();
         return view('backoffice/contact/index', compact('contact'));
     }
