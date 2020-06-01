@@ -116,6 +116,23 @@ class UserSeeder extends Seeder
                 'password'=>Hash::make('max@max.com')
             ],
             [
+                'nom' => 'Azoud',
+                'prenom' => 'Ismaël',
+                'genre' => 'Homme',
+                'statut' => 'Célibataire',
+                'commune' => 'Molenbeek',
+                'adresse' => 'Place de la minoterie',
+                'telephone' => '+32 123 77 88 99',
+                'ordinateur' => true,
+                'objectif' => 'Tout réussir',
+                'photo' => 'On va Tous Rater.png',
+                'abo'=>true,
+                'evenement_id'=>App\Evenement::inRandomOrder()->first()->id,
+                'role_id'=>5,
+                'email'=>'isma@isma.com',
+                'password'=>Hash::make('isma@isma.com')
+            ],
+            [
                 'nom' => 'Zak',
                 'prenom' => 'Zakaria',
                 'genre' => 'Homme',
