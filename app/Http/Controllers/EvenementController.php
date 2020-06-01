@@ -60,7 +60,7 @@ class EvenementController extends Controller
         $evenement->etat = $request->etat;
         if ($request->etat == 'En cours') {
             $evenement->date = Carbon::now()->toDateTimeString();
-        } else if ($request->etat == 'Futur') {
+        } else{
             $evenement->date = $request->date;
         }
         $evenement->formulaire_id = $request->formulaire_id;
@@ -113,7 +113,7 @@ class EvenementController extends Controller
         $evenement->etat = $request->etat;
         if ($request->etat == 'En cours') {
             $evenement->date = Carbon::now()->toDateTimeString();
-        } else if ($request->etat == 'Futur') {
+        } else{
             $evenement->date = $request->date;
         }
 

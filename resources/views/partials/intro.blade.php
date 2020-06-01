@@ -40,7 +40,7 @@
 
             <div class="d-flex-center-gros">
                 <div class="intro-table intro-table-first d-flex-center">
-                <h4 class="white heading">Il n'y a actuellement aucun évènement en cours</h4>
+                <h4 class="white heading">Il n'y a actuellement aucun évènement prévu</h4>
                     <div class="owl-carousel owl-schedule bottom">
                         
 

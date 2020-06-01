@@ -23,7 +23,7 @@ class WelcomeController extends Controller
     }
     public function index()
     {
-        $evenements = Evenement::latest()->where('etat', '!=', 'Terminé')->whereHas('etapes')->get();
+        $evenements = Evenement::orderBy('date', 'asc')->where('etat', '!=', 'Terminé')->whereHas('etapes')->get();
         $form = Evenement::orderBy('date', 'asc')->whereHas('etapes')->where('etat', 'En cours')->get();
         $annonce = Annonce::all();
         $phrase = Phrase::all();

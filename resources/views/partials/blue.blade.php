@@ -10,7 +10,7 @@
                         @foreach ($chunk as $item)
                         <li style="margin: 7px 0;" class="light">
                             <a class="light"
-                                href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre}}</a>
+                        href="{{route('inscription.add',$item->id)}}">{{$item->formulaire->titre}} | date début : {{$item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</a>
                         </li>
                         @endforeach
                     </ul>
