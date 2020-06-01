@@ -107,7 +107,7 @@ class CandidatController extends Controller
         if ($user->role_id != 7) {
             $user->group()->detach();
             $user->group()->attach($request->group, ['role_id' => $user->role_id]);
-            return redirect()->route('candidat.index')->with('msg', 'Candidat a été accepté avec succès avec succès');
+            return redirect()->route('candidat.index')->with('msg', 'Candidat a été accepté avec succès');
         }
         return redirect()->route('candidat.show', $user->id)->with('msg', 'Candidat modifié avec succès');
     }

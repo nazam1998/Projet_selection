@@ -25,7 +25,7 @@ Route::delete('etape/{etape}/delete', 'EtapeController@destroy')->name('etape.de
 Route::post('inscription/{id}', 'WelcomeController@register')->name('inscription');
 Route::get('inscription/{id}/create', 'WelcomeController@create')->name('inscription.add');
 
-Auth::routes(['register'=>false]);
+Auth::routes();
 // Mailing
 Route::get('mailing/personne', 'MailingController@personne');
 Route::get('mailing/role', 'MailingController@role');
@@ -91,9 +91,5 @@ Route::post('note/{user}/store', 'NoteController@store')->name('note.store');
 Route::post('note/{user}/{id}/update', 'NoteController@update')->name('note.update');
 Route::delete('note/{user}/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/419',function(){
-    return view('errors/419');
-});
