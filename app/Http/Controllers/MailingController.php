@@ -60,7 +60,6 @@ class MailingController extends Controller
         $mailing->message = $request->message;
         $mailing->user_id = $request->user_id;
         $user = User::find($request->user_id);
-
         $nom = $user->nom;
         $mailing->group_id = $user->group->first()->id;
         $mailing->role_id = $user->role_id;
