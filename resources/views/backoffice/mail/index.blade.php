@@ -12,7 +12,53 @@
     </div>
 @endif
 
-<div class="card">
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Filtrer par role</h3>
+    </div>
+    <form class="form-horizontal" action="{{route('mailRole')}}" method="GET">
+        <div class="card-body">
+            <div class="form-group row mt-2">
+                @foreach ($roles as $item)
+                <div class="form-check col-lg-2">
+                    <input class="form-check-input" type="checkbox" name="role[]" value="{{$item->id}}">
+                    <label class="form-check-label">{{$item->nom}}</label>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info">Filtrer</button>
+        </div>
+        <!-- /.card-footer -->
+    </form>
+</div>
+<div class="card card-info mt-3">
+    <div class="card-header">
+        <h3 class="card-title">Filtrer Par Groupe</h3>
+    </div>
+    <form class="form-horizontal" action="{{route('mailGroup')}}" method="GET">
+        <div class="card-body">
+            <div class="form-group row mt-2">
+                @foreach ($groups as $item)
+                <div class="form-check col-lg-2">
+                    <input class="form-check-input" type="checkbox" name="group[]" value="{{$item->id}}">
+                    <label class="form-check-label">{{$item->nom}}</label>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info">Filtrer</button>
+        </div>
+        <!-- /.card-footer -->
+    </form>
+</div>
+
+
+<div class="card mt-5">
     <div class="card-header bg-info">
         <h3 class="card-title">Base de données pour les messages envoyés </h3>
     </div>
