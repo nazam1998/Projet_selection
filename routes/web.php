@@ -27,6 +27,8 @@ Route::get('inscription/{id}/create', 'WelcomeController@create')->name('inscrip
 
 Auth::routes();
 // Mailing
+Route::get('mail/role', 'MailingController@filtreRole')->name('mailRole');
+Route::get('mail/groupe', 'MailingController@filtreGroup')->name('mailGroup');
 Route::get('mailing/personne', 'MailingController@personne');
 Route::get('mailing/role', 'MailingController@role');
 Route::get('mailing/group', 'MailingController@group');

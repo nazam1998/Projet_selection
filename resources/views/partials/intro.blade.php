@@ -6,12 +6,11 @@
 
 
             <div class="col-md-4">
-                <div class="intro-table intro-table-first">
+                <div class="{{($item->etat == 'En cours') ? 'intro-blue intro-table-first':'intro-table intro-table-first'}}">
                 <h5 class="white heading">{{$item->formulaire->titre}}</h5>
                     <div class="owl-carousel owl-schedule bottom">
                         @foreach ($item->etapes()->orderBy('date','asc')->get() as $etape)
 
-                        
 
                         <div class="item">
 

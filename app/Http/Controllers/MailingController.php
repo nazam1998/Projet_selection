@@ -27,6 +27,8 @@ class MailingController extends Controller
         $groups = Group::all();
         $roles = Role::all();
         $mailings = Mailing::all();
+        $roles=Role::all();
+        $groups=Group::all();
         return view('backoffice.mail.index', compact('mailings', 'roles', 'groups'));
     }
 
@@ -106,16 +108,39 @@ class MailingController extends Controller
         $roles = Role::all();
         return view('backoffice.mail.formRole', compact('roles'));
     }
+    public function filtreRole(Request $request){
+        if ($request->has('role')) {
+            $mailings = Mailing::whereIn('role_id', $request->role)->get();
+        }else{
+            $mailings = Mailing::all();
+        }
+        $roles=Role::all();
+        $groups=Group::all();
+        return view('backoffice.mail.index', compact('mailings', 'roles', 'groups'));
+    }
+
     public function personne()
     {
         $this->authorize('contact');
         $users = User::all();
         return view('backoffice.mail.formPersonne', compact('users'));
     }
+
     public function group()
     {
         $this->authorize('contact');
         $groups = Group::all();
         return view('backoffice.mail.formGroup', compact('groups'));
+    }
+    public function filtreGroup(Request $request){
+        if ($request->has('group')) {
+            $mailings = Mailing::whereIn('group_id', $request->group)->get();
+        }else{
+            $mailings = Mailing::all();
+        }
+        
+        $roles=Role::all();
+        $groups=Group::all();
+        return view('backoffice.mail.index', compact('mailings', 'roles', 'groups'));
     }
 }
