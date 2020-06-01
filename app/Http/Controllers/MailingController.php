@@ -24,8 +24,10 @@ class MailingController extends Controller
     public function index()
     {
         $this->authorize('contact');
+        $groups = Group::all();
+        $roles = Role::all();
         $mailings = Mailing::all();
-        return view('backoffice.mail.index', compact('mailings'));
+        return view('backoffice.mail.index', compact('mailings', 'roles', 'groups'));
     }
 
     /**
@@ -55,11 +57,11 @@ class MailingController extends Controller
         $mailing = new Mailing();
         $mailing->message = $request->message;
         $mailing->user_id = $request->user_id;
-        $mailing->group_id = null;
-        $mailing->role_id = null;
         $user = User::find($request->user_id);
 
         $nom = $user->nom;
+        $mailing->group_id = $user->group->first()->id;
+        $mailing->role_id = $user->role_id;
         $prenom =  $user->prenom;
         $email =  $user->email;
         $msg = $request->message;
@@ -79,17 +81,14 @@ class MailingController extends Controller
         $mailing = new Mailing();
         $mailing->message = $request->message;
         if ($request->has('role_id')) {
-            $mailing->role_id = $request->role_id;
-            $mailing->group_id = null;
-            $mailing->user_id = null;
             $users = User::where('role_id', $request->role_id)->get();
         } else {
-            $mailing->group_id = $request->group_id;
-            $mailing->role_id = null;
-            $mailing->user_id = null;
             $users = Group::find($request->group_id)->users;
         }
         foreach ($users as $value) {
+            $mailing->user_id = $value->id;
+            $mailing->group_id = $value->group->first()->id;
+            $mailing->role_id = $value->role_id;
             $nom = $value->nom;
             $prenom =  $value->prenom;
             $email =  $value->email;

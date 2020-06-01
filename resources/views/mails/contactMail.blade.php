@@ -1,4 +1,6 @@
-<p>L'expéditeur <span style="color:green;">{{$prename}} {{$name}}</span>, avec l'email: <span style="color:green;">{{$mail}}</span>, vous a laissés un message:</p>
+<p>Bonjour <span style="color:green;">{{$prename}} {{$name}}</span>,Nous avons bien reçu votre message</p>
+
+<p>Voici un résumé de celui-ci : </p>
 
 <p>{{$msg}}</p>
 

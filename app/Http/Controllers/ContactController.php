@@ -58,7 +58,7 @@ class ContactController extends Controller
         $email =  $request->input('emails');
         $msg = $request->input('messages');
 
-        Mail::to('admin@admin.com')->send(new ContactMail($nom, $prenom, $email, $msg));
+        Mail::to($email)->send(new ContactMail($nom, $prenom, $email, $msg));
 
         return redirect()->to(url()->previous().'#contact')->with('msgContact', 'Merci pour votre message');;
     }

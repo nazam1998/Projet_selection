@@ -97,6 +97,7 @@ class StaffController extends Controller
     {
         if ($request->has('group')) {
 
+            // Groupes qui correspondent à ceux qui sont cochés
             $groups = Group::whereIn('id', $request->group)->get();
             $users = $groups->pluck('users')->where('role_id', '!=', 1)->where('role_id', '!=', 6)->where('role_id', '!=', 7);
             $groups = Group::all();

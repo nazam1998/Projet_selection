@@ -12,10 +12,10 @@ class FormulaireSeeder extends Seeder
     public function run()
     {
         DB::table('formulaires')->insert([
-            'titre' => 'Formation longue',
+            'titre' => 'Séléction Coding School',
         ]);
         DB::table('formulaires')->insert([
-            'titre' => 'Formation courte',
+            'titre' => 'Séléction Marketing Labs',
         ]);
 
         $interets = App\Interet::all();
