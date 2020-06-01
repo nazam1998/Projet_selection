@@ -16,7 +16,7 @@ class EtapeSeeder extends Seeder
      */
     public function run()
     {
-        $evenement = Evenement::inRandomOrder()->first();
+        $evenement = Evenement::first();
         DB::table('etapes')->insert([
             'titre' => Titre::inRandomOrder()->first()->titre,
             'description' => Description::inRandomOrder()->first()->description,
