@@ -23,11 +23,8 @@ class WelcomeController extends Controller
     }
     public function index(Request $request)
     {
-        if($request->ajax()){
-            echo "<div class='whole-page-overlay' id='whole_page_loader'>";
-            echo "<img class='center-loader'  style='height:100px;' src='https://example.com/images/loader.gif'/>";
-        }
-        $evenements = Evenement::orderBy('date', 'asc')->where('etat', '!=', 'Terminé')->whereHas('etapes')->get();
+        
+        $evenements = Evenement::orderBy('date', 'asc')->where('etat', '!=', 'Terminé')->whereHas('etapes')->paginate(3);
         $form = Evenement::orderBy('date', 'asc')->whereHas('etapes')->where('etat', 'En cours')->get();
         $annonce = Annonce::all();
         $phrase = Phrase::all();

@@ -1,5 +1,6 @@
 <section class="light-bg">
     <div class="container">
+
         <div class="row intro-tables">
             @if (count($evenements)!=0)
             @foreach ($evenements as $item)
@@ -52,5 +53,9 @@
      
             
         </div>
+        <div class="text-center">
+            {{$evenements->links('pagination.default')}}
+        </div>
     </div>
+    
 </section>

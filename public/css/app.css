@@ -10364,6 +10364,7 @@ section {
 .intro-tables {
     top: -100px;
     position: relative;
+
 }
 
 .intro-table {
@@ -11243,7 +11244,6 @@ footer .social-footer li a {
     align-items: center;
     justify-content: center;
 }
-
 @charset "UTF-8";
 
 /*!
