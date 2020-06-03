@@ -12,7 +12,7 @@
 
                     @if ($item->afficher && $item->date>=Carbon\Carbon::now()->toDateString())
                 <div id="banniere">
-                        <p>{{$item->texte}} {{$item->date->format('d-m-y')}}</p>
+                        <p>{{$item->texte}} {{$item->date->format('d/m/y')}}</p>
                 </div>
                 @endif
                 @endforeach

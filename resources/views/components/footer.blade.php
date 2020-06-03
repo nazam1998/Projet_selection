@@ -4,38 +4,42 @@
             <div class="col-sm-5 text-center-mobile">
                 <h3 class="light">Contact us!</h3>
                 @if (session()->has('msgContact'))
-                    <h6 style='color: green'>{{session('msgContact')}}</h6>
+                <h6 style='color: green'>{{session('msgContact')}}</h6>
                 @endif
                 <h5 class="light regular">We'd like to know if you have any comments.</h5>
-                <form  style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
+                <form style="margin-top: 30px;" action="{{route('contact.store')}}" method="POST">
                     @csrf
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Nom</label>
                         @error('noms')
-                            <div class="erreur">{{ $message }}</div>
+                        <div class="erreur">{{ $message }}</div>
                         @enderror
-                        <input style="width: 100%;" name="noms" type="text" value="@if($errors->first('noms'))@else{{old('noms')}}@endif">
+                        <input style="width: 100%;" name="noms" type="text"
+                            value="@if($errors->first('noms'))@else{{old('noms')}}@endif">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Prenom</label>
                         @error('prenoms')
-                            <div class="erreur">{{ $message }}</div>
+                        <div class="erreur">{{ $message }}</div>
                         @enderror
-                        <input style="width: 100%;" name="prenoms" type="text" value="@if($errors->first('prenoms'))@else{{old('prenoms')}}@endif">
+                        <input style="width: 100%;" name="prenoms" type="text"
+                            value="@if($errors->first('prenoms'))@else{{old('prenoms')}}@endif">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Email</label>
                         @error('emails')
-                            <div class="erreur">{{ $message }}</div>
+                        <div class="erreur">{{ $message }}</div>
                         @enderror
-                        <input style="width: 100%;" name="emails" type="text" value="@if($errors->first('emails'))@else{{old('emails')}}@endif">
+                        <input style="width: 100%;" name="emails" type="text"
+                            value="@if($errors->first('emails'))@else{{old('emails')}}@endif">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label class="light" for="">Message</label>
                         @error('messages')
-                            <div class="erreur">{{ $message }}</div>
+                        <div class="erreur">{{ $message }}</div>
                         @enderror
-                        <input style="width: 100%;" name="messages" type="text" value="@if($errors->first('messages'))@else{{old('messages')}}@endif">
+                        <input style="width: 100%;" name="messages" type="text"
+                            value="@if($errors->first('messages'))@else{{old('messages')}}@endif">
                     </div>
                     <div style="margin-top: 15px;" class="text-center">
                         <button class="btn btn-blue" type="submit">Send</button>
@@ -74,10 +78,11 @@
                 </ul>
             </div>
             <div>
-                <p id="contact">&copy; 2015 All Rights Reserved. Powered by <a href="http://www.phir.co/">NKN</a> exclusively
+                <p id="contact">&copy; 2020 All Rights Reserved. Powered by <a href="http://www.phir.co/">NKN</a>
+                    exclusively
                     for <a href="http://molengeek.com">MolenGeek</a></p>
             </div>
         </div>
     </div>
-    <div  ></div>
+    <div></div>
 </footer>
