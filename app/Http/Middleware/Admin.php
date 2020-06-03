@@ -16,8 +16,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id==1){
+        $user = $request->route()->parameters()['user'];
+        if ($user->role_id != 1) {
             return $next($request);
         }
+        return redirect()->back()->with('msg', 'Vous ne pouvez pas supprimer cet utilisateur');
     }
 }

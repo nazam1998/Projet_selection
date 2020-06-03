@@ -33,6 +33,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+
         $validator = Validator::make($request->all(), [
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
@@ -43,8 +44,8 @@ class UserController extends Controller
             'telephone' => ['required', 'string', 'max:255'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
-            'role_id' => ['required', 'integer'],
-            'group' => [$request->role_id!=1 && $request->role_id!=7?'required':'nullable', 'integer'],
+            'role_id' => ['required', 'integer',$user->role_id==1 && count(User::where('role_id',1)->get())==1?'max:1':''],
+            'group' => [$request->role_id>5 && $request->role_id<7?'required':'nullable', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
         ]);
         if ($validator->fails()) {

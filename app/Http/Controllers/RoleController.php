@@ -12,6 +12,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('essential')->only('destroy');
     }
     /**
      * Display a listing of the resource.
@@ -243,7 +244,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $this->authorize('admin');
-        $this->authorize('essential');
         $role->delete();
         return redirect()->back()->with('Role supprimé avec succés');
     }

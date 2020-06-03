@@ -44,10 +44,12 @@
                         @else  
                             <a href="{{route('users.edit', $item->id)}}"
                                 class="btn btn-danger mr-3">Edit</a>
+                                @cannot('user-admin',$item)
                                 <form action="{{route('users.destroy', $item->id)}}" method="POST">@csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-warning">Delete</button>
                                 </form>
+                                @endcannot
                         @endif
                     </td>
                 </tr>

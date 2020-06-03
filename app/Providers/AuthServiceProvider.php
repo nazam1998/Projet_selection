@@ -29,7 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('backoffice', function ($user) {
             return count($user->role->permissions) != 0;
         });
-
+        Gate::define('user-admin',function($auth,$user){
+            return $user->role_id==1; 
+        });
         Gate::define('user-lecture', function ($user, $input) {
             $lecture = Permission::where('nom', 'LIKE', 'user-lecture-' . $input)->first()->id;
             $ecriture = Permission::where('nom', 'LIKE', 'user-ecriture-' . $input)->first()->id;
@@ -102,5 +104,7 @@ class AuthServiceProvider extends ServiceProvider
             }
             return $user->role->roles->contains($role->id);
         });
+
+
     }
 }

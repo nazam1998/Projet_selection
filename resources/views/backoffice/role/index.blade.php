@@ -39,7 +39,8 @@
                     </td>
                     <td class="d-flex"><a href="{{route('role.edit', $item->id)}}"
                             class="btn btn-warning mr-3">Edit</a>
-                        <form action="{{route('role.destroy', $item->id)}}" method="POST">@csrf
+                        <form action="{{route('role.destroy', $item->id)}}" method="POST">
+                            @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
