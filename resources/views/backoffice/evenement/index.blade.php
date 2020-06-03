@@ -36,7 +36,7 @@
                     <td>{{$item->date->translatedFormat('j M y',strtotime("7 Janvier 2015"))}}</td>
                     
                     <td class="d-flex justify-content-center"><a href="{{route('evenement.show', $item->id)}}"
-                        class="btn btn-primary">Show</a>
+                        class="btn btn-primary">Étape</a>
                         <a href="{{route('evenement.edit', $item->id)}}"
                             class="btn btn-warning mx-2">Edit</a>
                         <form action="{{route('evenement.destroy', $item->id)}}" method="POST">@csrf

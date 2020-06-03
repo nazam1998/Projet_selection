@@ -4,6 +4,7 @@
 
 <h1 class="text-center p-3">Détails de l'évènement</h1>
 <div class="text-center">
+    <a href="{{route('evenement.index')}}" class="mx-auto btn btnShow"><i class="fas fa-undo"></i></a>
     <a href="{{route('etape.create',$evenement->id)}}" class="mx-auto btn my-4 btnShow">Ajouter une étape</a>
 </div>
 @if (session()->has('msg'))
