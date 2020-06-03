@@ -19303,22 +19303,24 @@ __webpack_require__(/*! ./jquery.onepagenav.js */ "./resources/js/jquery.onepage
 __webpack_require__(/*! ./main.js */ "./resources/js/main.js");
 
 var banniere = document.getElementById('banniere');
-var texte = banniere.firstElementChild;
-var tailleTexte = banniere.scrollWidth;
 
-function defile() {
-  var pos = texte.style.left.replace('px', '');
+if (banniere != null) {
+  var defile = function defile() {
+    var pos = texte.style.left.replace('px', '');
 
-  if (pos - 300 < -tailleTexte) {
-    pos = 800;
-  }
+    if (pos - 300 < -tailleTexte) {
+      pos = 800;
+    }
 
-  pos -= 1;
-  texte.style.left = pos + "px";
-  setTimeout(defile, 1);
+    pos -= 1;
+    texte.style.left = pos + "px";
+    setTimeout(defile, 1);
+  };
+
+  var texte = banniere.firstElementChild;
+  var tailleTexte = banniere.scrollWidth;
+  defile();
 }
-
-defile();
 
 /***/ }),
 

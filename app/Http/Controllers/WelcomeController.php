@@ -21,8 +21,12 @@ class WelcomeController extends Controller
     {
         $this->middleware('isEnCours')->only('create', 'register');
     }
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax()){
+            echo "<div class='whole-page-overlay' id='whole_page_loader'>";
+            echo "<img class='center-loader'  style='height:100px;' src='https://example.com/images/loader.gif'/>";
+        }
         $evenements = Evenement::orderBy('date', 'asc')->where('etat', '!=', 'Terminé')->whereHas('etapes')->get();
         $form = Evenement::orderBy('date', 'asc')->whereHas('etapes')->where('etat', 'En cours')->get();
         $annonce = Annonce::all();

@@ -14,17 +14,20 @@ require('./jquery.onepagenav.js');
 require('./main.js');
 
 var banniere = document.getElementById('banniere');
-var texte = banniere.firstElementChild;
-var tailleTexte = banniere.scrollWidth;
+if (banniere != null) {
+    var texte = banniere.firstElementChild;
+    var tailleTexte = banniere.scrollWidth;
 
-function defile() {
-    var pos = texte.style.left.replace('px', '');
-    if (pos-300 < -tailleTexte) {
-        pos = 800;
+    function defile() {
+        var pos = texte.style.left.replace('px', '');
+        if (pos - 300 < -tailleTexte) {
+            pos = 800;
+        }
+        pos -= 1;
+        texte.style.left = pos + "px";
+
+        setTimeout(defile, 1);
     }
-    pos -= 1;
-    texte.style.left = pos + "px";
 
-    setTimeout(defile, 1);
+    defile();
 }
-defile();
