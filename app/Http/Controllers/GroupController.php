@@ -56,7 +56,7 @@ class GroupController extends Controller
         $group->nom = $request->nom;
         $group->save();
         $group->users()->attach($request->responsable_id, ['role_id' => User::find($request->responsable_id)->role_id]);
-        if ($request->has('coach_id')) {
+        if ($request->coach_id!='') {
             $group->users()->attach($request->coach_id, ['role_id' => User::find($request->coach_id)->role_id]);
         }
         return redirect()->route('group.index')->with('msg', 'Groupe créé avec succès');
