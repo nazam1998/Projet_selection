@@ -108,6 +108,10 @@ class CandidatController extends Controller
             $user->group()->detach();
             $user->group()->attach($request->group, ['role_id' => $user->role_id]);
             return redirect()->route('candidat.index')->with('msg', 'Candidat a été accepté avec succès');
+        }else{
+            $user->group()->attach($request->group,['role_id'=>$user->role_id]);
+            $user->role_id=6;
+            $user->save();
         }
         return redirect()->route('candidat.show', $user->id)->with('msg', 'Candidat modifié avec succès');
     }
