@@ -115,11 +115,11 @@
                         <label style="margin-right: 10px;" for="">Statut</label>
                         @can('user-ecriture', 'statut')
                         <select name="statut" id="">
-                            <option @if($user->statut=='Célibataire')selected @endif value="Célibataire">Célibataire
+                            <option @if($user->statut=="Demandeur d'emploi")selected @endif value="Demandeur d'emploi">Demandeur d'emploi
                             </option>
-                            <option @if($user->statut=='Divorcé(e)')selected @endif value="Divorcé(e)">Divorcé(e)
+                            <option @if($user->statut=="Employé")selected @endif value="Employé">Employé
                             </option>
-                            <option @if($user->statut=='Marié(e)')selected @endif value="Marié(e)">Marié(e)</option>
+                            <option @if($user->statut=="Autre")selected @endif value="Autre">Autre</option>
                         </select>
                         @endcan
                     </div>
