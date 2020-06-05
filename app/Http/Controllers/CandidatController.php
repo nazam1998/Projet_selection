@@ -70,11 +70,11 @@ class CandidatController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'digits_between:9,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
             'role_id' => ['required', 'integer'],
-            'group' => [$request->role_id!=6?'required':'nullable', 'integer'],
+            'group' => [$request->role_id != 6 ? 'required' : 'nullable', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
         ]);
         if ($validator->fails()) {
@@ -108,9 +108,9 @@ class CandidatController extends Controller
             $user->group()->detach();
             $user->group()->attach($request->group, ['role_id' => $user->role_id]);
             return redirect()->route('candidat.index')->with('msg', 'Candidat a été accepté avec succès');
-        }else{
-            $user->group()->attach($request->group,['role_id'=>$user->role_id]);
-            $user->role_id=6;
+        } else {
+            $user->group()->attach($request->group, ['role_id' => $user->role_id]);
+            $user->role_id = 6;
             $user->save();
         }
         return redirect()->route('candidat.show', $user->id)->with('msg', 'Candidat modifié avec succès');

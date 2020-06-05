@@ -92,7 +92,7 @@ class StudentController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'digits_between:9,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
             'role_id' => ['required', 'integer'],

@@ -43,7 +43,7 @@ class WelcomeController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'digits_between:10,11'],
+            'telephone' => ['required', 'digits_between:9,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['required', 'image'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

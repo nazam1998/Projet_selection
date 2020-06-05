@@ -89,6 +89,7 @@ class RoleController extends Controller
             if ($request->has('candidat_full')) {
                 $role->permissions()->attach(Permission::where('nom', 'candidat-$')->pluck('id'));
             } else if ($request->has('candidat_lecture')) {
+
                 foreach ($request->candidat_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
@@ -111,12 +112,16 @@ class RoleController extends Controller
 
                     if ($request->has('suivi_ecriture' . $key)) {
                         $role->roles()->attach($item, ['ecriture' => true]);
+                    } else if ($request->has('suivi_lecture' . $key)) {
+                        $role->roles()->attach($item, ['ecriture' => false]);
                     } else if ($request->has('suivi_responsable' . $key)) {
                         $responsable_onlyRole = Role::find($item);
                         $responsable_onlyRole->responsable = true;
+                        $responsable_onlyRole->save();
                     } else {
                         $responsable_onlyRole = Role::find($item);
                         $responsable_onlyRole->responsable = false;
+                        $responsable_onlyRole->save();
                     }
                 }
             }
@@ -165,7 +170,6 @@ class RoleController extends Controller
             'nom' => 'required|string|unique:roles,nom,' . $role->id,
             // 'suivi_role.*' => 'nullable|min:2,max:' . count(Role::all()),
         ]);
-
         $role->nom = $request->nom;
         $role->save();
 
@@ -199,7 +203,7 @@ class RoleController extends Controller
             if ($request->has('candidat_full')) {
                 $role->permissions()->attach(Permission::where('nom', 'candidat-$')->pluck('id'));
                 $role->permissions()->attach(Permission::where('nom', 'candidat-full')->first()->id);
-            } else {
+            } else if ($request->has('candidat_lecture')) {
                 foreach ($request->candidat_lecture as $item) {
                     $role->permissions()->attach(Permission::where('nom', 'LIKE', 'candidat-lecture-' . $item)->first()->id);
                 }
@@ -225,9 +229,11 @@ class RoleController extends Controller
                     } else if ($request->has('suivi_responsable' . $key)) {
                         $responsable_onlyRole = Role::find($item);
                         $responsable_onlyRole->responsable = true;
+                        $responsable_onlyRole->save();
                     } else {
                         $responsable_onlyRole = Role::find($item);
                         $responsable_onlyRole->responsable = false;
+                        $responsable_onlyRole->save();
                     }
                 }
             }

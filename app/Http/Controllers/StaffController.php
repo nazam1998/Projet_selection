@@ -19,7 +19,7 @@ class StaffController extends Controller
         $this->middleware('suivi-lecture')->only('show');
         $this->middleware('suivi-ecriture')->only('edit', 'update', 'destroy');
     }
-    
+
 
     // Afficher tout les membres du staff, càd tout le monde sauf les candidats et users 
     public function index()
@@ -53,7 +53,7 @@ class StaffController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'digits_between:9,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
             'role_id' => ['required', 'integer'],

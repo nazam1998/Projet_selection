@@ -16,7 +16,7 @@ class UserController extends Controller
         $this->middleware('auth');
         $this->middleware('Admin')->only('destroy');
         $this->middleware('user-lecture')->only('index');
-        $this->middleware('user-ecriture')->only('edit','update');
+        $this->middleware('user-ecriture')->only('edit', 'update');
     }
     public function index()
     {
@@ -41,11 +41,11 @@ class UserController extends Controller
             'statut' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'digits_between:9,11'],
             'objectif' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'image'],
-            'role_id' => ['required', 'integer',$user->role_id==1 && count(User::where('role_id',1)->get())==1?'max:1':''],
-            'group' => [$request->role_id>5 && $request->role_id<7?'required':'nullable', 'integer'],
+            'role_id' => ['required', 'integer', $user->role_id == 1 && count(User::where('role_id', 1)->get()) == 1 ? 'max:1' : ''],
+            'group' => [$request->role_id > 5 && $request->role_id < 7 ? 'required' : 'nullable', 'integer'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
         ]);
         if ($validator->fails()) {
