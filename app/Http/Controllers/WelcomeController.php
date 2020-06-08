@@ -24,7 +24,6 @@ class WelcomeController extends Controller
     }
     public function index(Request $request)
     {
-     dd(URL::to('/'));
         $evenements = Evenement::orderBy('date', 'asc')->where('etat', '!=', 'Terminé')->whereHas('etapes')->paginate(3);
         $form = Evenement::orderBy('date', 'asc')->whereHas('etapes')->where('etat', 'En cours')->get();
         $annonce = Annonce::all();
