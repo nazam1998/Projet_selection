@@ -50,7 +50,7 @@ class MatiereController extends Controller
         ]);
         $matiere = new Matiere();
         $matiere->nom = $request->nom;
-        dd(Storage::disk('public'));
+        dd(Storage::disk('local'));
         $image = Storage::disk('public')->put('', $request->image);
         $matiere->image = $image;
         $matiere->save();
