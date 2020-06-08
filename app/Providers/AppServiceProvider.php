@@ -28,6 +28,5 @@ class AppServiceProvider extends ServiceProvider
     {
         setlocale(LC_TIME, 'fr_FR.UTF-8');
         Carbon::setLocale(config('app.locale'));
-        Artisan::call('storage:link');
     }
 }
