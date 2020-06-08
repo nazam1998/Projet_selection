@@ -30,7 +30,7 @@
                 @foreach ($matieres as $item)
                 <tr>
                     <td>{{$item->nom}}</td>
-                    <td width="40%" class="text-center"><img src="{{Storage::url($item->image)}}" width="8%" alt=""></td>
+                    <td width="40%" class="text-center"><img src="{{asset('storage/'.$item->image)}}" width="8%" alt=""></td>
                     <td class="d-flex justify-content-center"><a href="{{route('matiere.edit', $item->id)}}"
                             class="btn btn-warning mr-2">Edit</a>
                         <form action="{{route('matiere.destroy', $item->id)}}" method="POST">@csrf
