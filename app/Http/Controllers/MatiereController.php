@@ -50,13 +50,14 @@ class MatiereController extends Controller
         ]);
         $matiere = new Matiere();
         $matiere->nom = $request->nom;
+        dd(Storage::disk('public'));
         $image = Storage::disk('public')->put('', $request->image);
         $matiere->image = $image;
         $matiere->save();
         return redirect()->route('matiere.index')->with('msg', 'Matière créée avec succès');
     }
 
-  
+
 
     /**
      * Show the form for editing the specified resource.
