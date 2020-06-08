@@ -12,12 +12,12 @@
     <meta name="keywords" content="html template, css, free, one page, gym, fitness, web design" />
     <meta name="author" content="Luka Cvetinovic for Codrops" />
     <!-- Favicons (created with http://realfavicongenerator.net/)-->
-    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
-    <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="img/favicons/manifest.json">
-    <link rel="shortcut icon" href="img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{asset('img/favicons/apple-touch-icon-57x57.png')}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{asset('img/favicons/apple-touch-icon-60x60.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/favicons/favicon-32x32.png')}}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{asset('img/favicons/favicon-16x16.png')}}" sizes="16x16">
+    <link rel="manifest" href="{{asset('img/favicons/manifest.json')}}">
+    <link rel="shortcut icon" href="{{asset('img/favicons/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <meta name="msapplication-TileColor" content="#00a8ff">
     <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    
+
     @yield('content')
 
     <div class="preloader">

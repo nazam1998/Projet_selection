@@ -35,7 +35,7 @@ $white: white;
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 30px 50px;
-  
+
   .box__ghost {
     padding: 15px 25px 25px;
     position: absolute;
@@ -47,7 +47,7 @@ $white: white;
       &:nth-child(1) {
         opacity: .2;
         animation: shine 4s ease-in-out 3s infinite;
-        
+
         &:before, &:after {
           content: '';
           width: 12px;
@@ -80,7 +80,7 @@ $white: white;
       &:nth-child(3) {
         opacity: .2;
         animation: shine 3s ease-in-out .5s infinite;
-        
+
         &:before, &:after {
           content: '';
           width: 12px;
@@ -101,7 +101,7 @@ $white: white;
       &:nth-child(4) {
         opacity: .2;
         animation: shine 6s ease-in-out 1.6s infinite;
-        
+
         &:before, &:after {
           content: '';
           width: 15px;
@@ -134,7 +134,7 @@ $white: white;
       &:nth-child(6) {
         opacity: .2;
         animation: shine 2s ease-in-out 6s infinite;
-        
+
         &:before, &:after {
           content: '';
           width: 15px;
@@ -167,10 +167,10 @@ $white: white;
         position: absolute;
         left: 50%;
         top: 45%;
-        //transform: translate(-50%, -45%); 
+        //transform: translate(-50%, -45%);
         height: 12px;
         width: 70px;
-        
+
         .box__eye-left {
           width: 12px;
           height: 12px;
@@ -184,7 +184,7 @@ $white: white;
           width: 12px;
           height: 12px;
           background: $l-purple;
-          border-radius: 50%;   
+          border-radius: 50%;
           margin: 0 10px;
           position: absolute;
           right: 0;
@@ -215,7 +215,7 @@ $white: white;
         }
       }
     }
-      
+
     .box__ghost-shadow {
       height: 20px;
       box-shadow: 0 50px 15px 5px rgb(133, 205, 238);
@@ -224,20 +224,20 @@ $white: white;
       animation: smallnbig 3s ease-in-out infinite;
     }
   }
-  
+
   .box__description {
     position: absolute;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    
+
     .box__description-container {
       color: $white;
       text-align: center;
       width: 200px;
       font-size: 16px;
       margin: 0 auto;
-    
+
       .box__description-title {
         font-size: 24px;
         letter-spacing: .5px;
@@ -249,7 +249,7 @@ $white: white;
         margin-top: 20px;
       }
     }
-    
+
     .box__button {
       display: block;
       position: relative;
@@ -268,7 +268,7 @@ $white: white;
       transition: background .5s ease;
       overflow: hidden;
       -webkit-mask-image: -webkit-radial-gradient(white, black);
-      
+
       &:before {
         content: '';
         position: absolute;
@@ -281,11 +281,11 @@ $white: white;
         transform: translateX(-50px) rotate(45deg);
         transition: transform .5s ease;
       }
-      
+
       &:hover {
         background: transparent;
         border-color: $white;
-        
+
         &:before {
           transform: translateX(250px) rotate(45deg);
         }
