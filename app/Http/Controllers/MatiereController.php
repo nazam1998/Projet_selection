@@ -48,10 +48,10 @@ class MatiereController extends Controller
             'nom' => 'required|string|unique:matieres',
             'image' => 'required|image'
         ]);
+        dd(public_path('storage'));
         $matiere = new Matiere();
         $matiere->nom = $request->nom;
-        dd(Storage::disk('local'));
-        $image = Storage::disk('public')->put('', $request->image);
+        $image = Storage::disk('local')->put('', $request->image);
         $matiere->image = $image;
         $matiere->save();
         return redirect()->route('matiere.index')->with('msg', 'Matière créée avec succès');
