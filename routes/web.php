@@ -94,4 +94,3 @@ Route::post('note/{user}/{id}/update', 'NoteController@update')->name('note.upda
 Route::delete('note/{user}/{id}/delete', 'NoteController@destroy')->name('note.destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
