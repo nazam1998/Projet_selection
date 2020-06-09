@@ -6,7 +6,7 @@
         </div>
         <div class="row">
             @foreach ($coachs as $item)
-                
+
             <div class="col-md-4">
                 <div class="team text-center dark-bg">
                     <div class="cover" style="background:url('img/code{{$loop->iteration}}.jpg'); background-size:cover;">
@@ -15,12 +15,12 @@
                             <h5 class="white">8 hours/month</h5>
                         </div>
                     </div>
-                <img width="140px" src="{{asset('storage/'.$item->photo)}}" alt="Team Image" class="avatar">
+                <img width="140px" src="{{asset('uploads/'.$item->photo)}}" alt="Team Image" class="avatar">
                     <div class="title">
                     <h4 class="light">{{$item->nom.' '.$item->prenom}}</h4>
                     <h5 class="white regular">{{$item->role->nom}}</h5>
                     </div>
-                    
+
                 </div>
             </div>
             @endforeach

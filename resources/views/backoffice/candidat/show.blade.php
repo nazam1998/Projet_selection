@@ -86,7 +86,7 @@
                     <th>Ordinateur</th>
                     @endcan
                     @can('candidat-lecture', 'abo')
-                    <th>Abonné</th> 
+                    <th>Abonné</th>
                     @endcan
                     @can('candidat-lecture', 'photo')
                     <th class="text-center">Photo</th>
@@ -117,7 +117,7 @@
                     @endcan
                     @can('candidat-lecture', 'photo')
                     <td>
-                        <img class="img-fluid" src="{{asset('storage/'.$user->photo)}}" alt="">
+                        <img class="img-fluid" src="{{asset('uploads/'.$user->photo)}}" alt="">
                     </td>
                     @endcan
                     {{-- @can('candidat-lecture', 'interet') --}}
@@ -137,7 +137,7 @@
                             <form action="{{route('candidat.restore', $user->id)}}" method="POST">@csrf
                                 <button type="submit" class="btn btn-danger">Restore</button>
                                 @else
-                                
+
                                 <a href="{{route('candidat.edit', $user->id)}}"
                                     class="btn btn-warning mx-2">Edit</a>
                                 <form action="{{route('candidat.destroy', $user->id)}}" method="POST">@csrf
@@ -156,7 +156,7 @@
 
 @stop
 @section('css')
-  <link rel="stylesheet" href="{{asset('css/admin.css')}}">    
+  <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 @endsection
 @section('js')
 <script src="{{asset('js/admin.js')}}"></script>

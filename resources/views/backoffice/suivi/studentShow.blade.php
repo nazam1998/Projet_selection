@@ -56,7 +56,7 @@
                 @foreach ($user->matieres as $item)
                 <tr>
                     <td class="text-center">{{$item->nom}}</td>
-                    <td class="text-center"><img width="8%" src="{{asset('storage/'.$item->image)}}" alt=""></td>
+                    <td class="text-center"><img width="8%" src="{{asset('uploads/'.$item->image)}}" alt=""></td>
                     <td class="d-flex justify-content-center">
                         @if ($item->pivot->valide)
                         <a class="btn btn-danger"
