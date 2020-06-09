@@ -114,7 +114,8 @@ class RoleController extends Controller
                         $role->roles()->attach($item, ['ecriture' => true]);
                     } else if ($request->has('suivi_lecture' . $key)) {
                         $role->roles()->attach($item, ['ecriture' => false]);
-                    } else if ($request->has('suivi_responsable' . $key)) {
+                    }
+                    if ($request->has('suivi_responsable' . $key)) {
                         $responsable_onlyRole = Role::find($item);
                         $responsable_onlyRole->responsable = true;
                         $responsable_onlyRole->save();
@@ -226,7 +227,8 @@ class RoleController extends Controller
                     } else if ($request->has('suivi_lecture' . $key)) {
 
                         $role->roles()->attach($item, ['ecriture' => false]);
-                    } else if ($request->has('suivi_responsable' . $key)) {
+                    }
+                    if ($request->has('suivi_responsable' . $key)) {
                         $responsable_onlyRole = Role::find($item);
                         $responsable_onlyRole->responsable = true;
                         $responsable_onlyRole->save();
