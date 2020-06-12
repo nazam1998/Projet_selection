@@ -35,6 +35,6 @@ class MailingMail extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@admin.com')->view('mails.mailing', ['name' => $this->name, 'prename' => $this->prename, 'mail' => $this->mail, 'msg' => $this->msg]);
+        return $this->from('admin@admin.com')->markdown('mails.mailing', ['name' => $this->name, 'prename' => $this->prename, 'mail' => $this->mail, 'msg' => $this->msg]);
     }
 }

@@ -1,3 +1,7 @@
+
+
+
+@component('mail::message')
 <h1>Bonjour {{$user->nom}}</h1>
 
 <p>Vous vous êtes inscrits à l'évènement suivant: {{$titre}}</p>
@@ -12,3 +16,4 @@
 <li>Email: {{$user->email}}</li>
 <li>Mot de passe: {{$password}}</li>
 </ul>
+@endcomponent

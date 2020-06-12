@@ -35,6 +35,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@admin')->subject("Accusé de réception")->view('mails.contactMail',['name'=>$this->name, 'prename'=>$this->prename, 'mail'=>$this->mail, 'msg'=>$this->msg]);
+        return $this->from('admin@admin')->subject("Accusé de réception")->markdown('mails.contactMail',['name'=>$this->name, 'prename'=>$this->prename, 'mail'=>$this->mail, 'msg'=>$this->msg]);
     }
 }

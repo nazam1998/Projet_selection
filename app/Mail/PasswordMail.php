@@ -30,6 +30,6 @@ class PasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@admin')->view('mail.password', compact('user', 'password'));
+        return $this->from('admin@admin')->markdown('mail.password', ['user' => $this->user, 'password' => $this->password]);
     }
 }

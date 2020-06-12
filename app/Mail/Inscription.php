@@ -34,6 +34,6 @@ class Inscription extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@email.com')->view('mails.inscription', ['titre'=>$this->titre, 'user'=>$this->user, 'evenement'=>$this->evenement,'password'=>$this->password]);
+        return $this->from('admin@email.com')->markdown('mails.inscription', ['titre'=>$this->titre, 'user'=>$this->user, 'evenement'=>$this->evenement,'password'=>$this->password]);
     }
 }
