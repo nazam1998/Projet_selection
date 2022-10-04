@@ -1,6 +1,6 @@
 # Projet Recrutement
 
-Cette plateforme permet de faire un recrutement de A à Z et de suivre les étudiants en leur attribuant des notes écrites et en les contactant. Via cette plateforme il est possible de garder une trace écrite d’un entretien, de mettre une note écrite sur une personne, de noter ses compétences dans une matière précise, d’assigner un étudiant à une formation, ainsi que d’effectuer d’autres tâches liés à un candidat.
+Cette plateforme permet de faire un recrutement de A à Z et de suivre les étudiants en leur attribuant des notes écrites et en les contactant. Via cette plateforme, il est possible de garder une trace écrite d’un entretien, de mettre une note écrite sur une personne, de noter ses compétences dans une matière précise, d’assigner un étudiant à une formation, ainsi que d’effectuer d’autres tâches liées à un candidat.
 
 ## Fonctionnalités du site web
 
